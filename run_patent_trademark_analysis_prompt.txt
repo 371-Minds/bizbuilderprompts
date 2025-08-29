@@ -1,0 +1,191 @@
+
+**Master Prompt for run_patent_trademark_analysis**
+
+**Task:** Analyze the following text to provide a comprehensive overview of the patent and trademark application process.
+
+**Content to Analyze:**
+
+Introduction
+
+This document provides a comprehensive overview of the process for applying for patents and trademarks, both in the United States and internationally. It covers the necessary steps, requirements, costs, and timelines to help guide you through the intellectual property protection process.
+
+Patent Application Process
+
+United States Patent Application
+
+Pre-Filing Steps
+
+- Research and Assessment
+- Confirm your invention is patentable (new, useful, and non-obvious)
+- Conduct a thorough patent search to verify novelty
+- Document your invention and the development process
+- Choose Patent Type
+- Utility patent (functional aspects of invention)
+- Design patent (ornamental design)
+- Plant patent (new variety of plant)
+- Decide on Application Type
+- Provisional application (12-month placeholder, simpler)
+- Nonprovisional application (full application for patent grant)
+
+Filing with USPTO
+
+- Required Documentation
+- Application Data Sheet (ADS)
+- Specification (detailed description of the invention)
+- Claims (define the legal scope of protection)
+- Drawings (if necessary)
+- Inventor's Oath/Declaration
+- Submission Method
+- Electronic filing via USPTO EFS-Web system (recommended)
+- Paper filing (higher fees apply)
+- Fees (as of 2025)
+- Filing fee: $75-$300 (varies by entity size)
+- Search fee: $165-$660
+- Examination fee: $190-$760
+- Issue fee: $250-$1,000 (if patent is granted)
+- Additional fees may apply for extensions, extra claims, etc.
+
+Post-Filing Process
+
+- Examination
+- USPTO assigns application to an examiner
+- Initial review takes approximately 1-2 years
+- Examiner issues "Office Actions" requiring responses
+- Prosecution
+- Respond to examiner's rejections and objections
+- Amend claims as necessary
+- Possibly conduct interviews with examiner
+- Allowance and Issuance
+- Pay issue fee after application is allowed
+- Patent typically granted 1-3 months after payment
+- Total process: approximately 24-36 months
+- Maintenance
+- Fees due at 3.5, 7.5, and 11.5 years after issuance
+- Failure to pay results in patent expiration
+
+International Patent Protection (PCT)
+
+- Initial Steps
+- File a national application (recommended to establish priority date)
+- Within 12 months, file PCT application claiming priority
+- International Phase
+- International Search Report (ISR) provided within 16-18 months
+- International publication at 18 months from priority date
+- Optional: Request International Preliminary Examination
+- National/Regional Phase
+- Enter desired countries by 30-31 months from priority date
+- Pay national fees and fulfill local requirements
+- Each country conducts its own examination
+- Costs and Considerations
+- International filing fee: approximately $1,200-$1,800
+- Search fee: $1,000-$2,000 (varies by searching authority)
+- National phase entry costs: $2,000-$6,000 per country
+- Translation costs can be significant
+
+Trademark Application Process
+
+United States Trademark Application
+
+Pre-Filing Steps
+
+- Trademark Selection and Research
+- Develop a distinctive mark for goods/services
+- Conduct a comprehensive search for conflicting marks
+- Determine filing basis (use in commerce or intent to use)
+- Prepare Application Materials
+- Identify exact mark to be registered
+- Specify goods/services covered by mark
+- Gather specimens showing use (if applicable)
+
+Filing with USPTO
+
+- Application Submission
+- File through Trademark Electronic Application System (TEAS)
+- Choose application type:
+- TEAS Plus: $250 per class (most restrictive)
+- TEAS Standard: $350 per class
+- TEAS RF: $275 per class
+- Required Information
+- Owner details
+- Mark representation (text, image, etc.)
+- Goods/services identification
+- Filing basis documentation
+- Specimens (for use-based applications)
+
+Post-Filing Process
+
+- Examination
+- Initial processing takes 3-4 months
+- Examining attorney reviews for compliance
+- Office Actions issued for any deficiencies
+- Publication
+- Mark published in Official Gazette for 30 days
+- Opposition period allows challenges by third parties
+- Registration
+- For use-based applications: registration certificate issued
+- For intent-to-use applications: Notice of Allowance issued, followed by Statement of Use requirement
+- Timeline
+- Total process: 9-15 months without complications
+- Intent-to-use applications may take longer (up to 36 months)
+- Maintenance
+- Declaration of Use between 5th-6th years
+- Renewal every 10 years
+
+International Trademark Protection (Madrid Protocol)
+
+- Initial Requirements
+- Base application/registration in a Madrid member country
+- Application through local trademark office
+- International Application Process
+- File through national IP office to WIPO
+- Designate desired member countries
+- Pay appropriate fees
+- Examination by Designated Countries
+- WIPO conducts formal examination
+- Each country performs substantive examination
+- Refusals must be issued within 12-18 months
+- Registration and Maintenance
+- Protection granted in countries that don't refuse
+- Single renewal process through WIPO
+- Dependent on base registration for first 5 years
+- Costs
+- Basic fee: approximately 650-900 Swiss francs
+- Individual country designation fees vary
+- Renewal fees apply every 10 years
+
+Key Considerations for Both Patents and Trademarks
+
+- Professional Assistance
+- Consider hiring a registered patent/trademark attorney
+- Complex applications benefit from professional drafting
+- Responses to office actions often require legal expertise
+- Recordkeeping
+- Maintain detailed records of invention/mark development
+- Document all use of the trademark in commerce
+- Keep track of all official communications
+- International Strategy
+- Develop a clear strategy for which countries need protection
+- Consider market potential versus filing costs
+- Be aware of different local requirements
+- Enforcement
+- Monitor for potential infringement
+- Be prepared to defend your rights
+- Budget for potential enforcement actions
+- Timing Considerations
+- File before public disclosure for patents
+- Consider early filing for trademarks to secure rights
+- Be aware of all deadlines—missed deadlines can be fatal
+
+Resources
+
+- USPTO Official Website: www.uspto.gov
+- WIPO Website: www.wipo.int
+- USPTO Trademark Electronic Search System (TESS): www.uspto.gov/trademarks/search
+- USPTO Patent Full-Text Database: patft.uspto.gov
+- PCT Applicant's Guide: www.wipo.int/pct/en/guide
+
+Disclaimer
+
+This document provides general information and is not legal advice. Patent and trademark laws change frequently. Consult with a qualified intellectual property attorney before making decisions about your specific situation.
+
+Last updated: June 2025

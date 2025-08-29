@@ -1,0 +1,31 @@
+# Project Brief Template
+
+## 1. Project Title
+[Enter Project Title]
+
+## 2. Problem Statement
+[Clearly articulate the problem you are trying to solve.]
+
+## 3. Core Idea
+[Describe your core idea for solving the problem.]
+
+## 4. Target Audience
+[Describe your target audience.]
+
+## 5. High-Level Goals
+[List the high-level goals of the project.]
+
+## 6. Non-Goals
+[List what is explicitly out of scope for the project.]
+
+## 7. Success Metrics
+[How will you measure the success of the project?]
+
+## 8. Key Features
+[List the key features of the project.]
+
+## 9.- Assumptions
+[List any assumptions you are making.]
+
+## 10. Dependencies
+[List any dependencies for the project.]

@@ -1,0 +1,52 @@
+The ModuMind Method: Tactical Playbook
+
+Purpose: This document outlines the official, standardized workflow for taking any project from initial concept to a launched, operational, and continuously improving product. It serves as the single source of truth for all project execution within the 371 Minds ecosystem.
+Phase 1: Discover (The "Why" and "What")
+
+Goal: To deeply understand the problem space, validate the core idea, define the scope of a Minimum Viable Product (MVP), and produce a detailed, actionable plan.
+Step	Objective	Lead Agent	Inputs	Key Activities	Deliverable(s)	Hand-off To
+1.1	Ideation & Briefing	Analyst (Mary)	User's initial idea/concept.	Execute "Project Briefing" mode, using the project-brief-tmpl.txt to guide the user from a high-level idea to a structured brief.	A completed Project Brief.	Product Manager (John)
+1.2	Requirements & Planning	Product Manager (John)	The signed-off Project Brief.	Execute the create-prd task to transform the brief into a detailed PRD with Epics and high-level User Stories. Validate the PRD against the pm-checklist.	A comprehensive Product Requirements Document (PRD).	SPACE Bot (Kimberly)
+Phase 2: Space (The "How")
+
+Goal: To create the "Collaboration Playbook" by designing the complete technical and user experience architecture, ensuring all plans are aligned and ready for implementation.
+Step	Objective	Lead Agent(s)	Inputs	Key Activities	Deliverable(s)	Hand-off To
+2.1	Orchestration & Setup	SPACE Bot (Kimberly)	The PRD.	Execute the "Tactical Playbook Composition" task to structure the architectural phase and prepare the "collaboration space".	A structured Project Workspace.	Architects
+2.2	System & UI/UX Architecture	Architect (Fred) & Design Architect (Jane)	The PRD and Project Workspace.	Fred executes the create-architecture task. Jane executes the create-uxui-spec and create-frontend-architecture tasks.	Architecture Document, UI/UX Specification, Frontend Architecture Document.	Product Owner (Sarah)
+2.3	Final Plan Validation	Product Owner (Sarah)	All previously created documents.	Execute the checklist-run-task using the po-master-checklist to ensure all documents are complete, consistent, and logically sequenced.	An "Approved MVP Plan".	FLOW Bot (Louis)
+Phase 3: Flow (The "Build and Improve")
+
+Goal: To manage the continuous cycle of building, testing, deploying, and optimizing the product, embodying the 80/20 automation principle.
+Step	Objective	Lead Agent(s)	Inputs	Key Activities	Deliverable(s)	Hand-off To
+3.1	Backlog & Story Generation	FLOW Bot (Louis) coordinating Scrum Master (Bob)	The Approved MVP Plan and Epics.	The FLOW Bot prioritizes work. The SM executes the story-draft-task to create detailed, actionable stories from the Epics.	A "Ready-to-Build" User Story.	Developer Agents
+3.2	Implementation & Development	Developer Agents	A single "Ready-to-Build" User Story.	Write and test the code to implement the story's requirements, adhering to all architectural documents and the story-dod-checklist.	Completed, Tested Code for the story.	Scrum Master (Bob) for final review.
+3.3	Continuous Improvement	FLOW Bot (Louis) & Yourself	Completed stories, user feedback, and PostHog analytics.	The FLOW Bot executes "Lessons Learned & Knowledge Capture" and "Process Improvement Recommendations." When major issues arise, the Root-to-Rise (R2R) Cycle is initiated.	An Updated Playbook and a smarter system.	This is a continuous loop.
+The ModuMind Root-to-Rise (R2R) Cycle
+
+The R2R Cycle is a specialized procedure within the "Flow" phase, initiated when a significant problem or opportunity for improvement is identified. It replaces a generic "root cause analysis" with a forward-looking process for improvement.
+
+    Phase 1: Initiation
+        Entry Criteria: A problem is identified that cannot be solved within a single story; initial stakeholder buy-in to investigate is secured.
+        Deliverable: A Project Charter defining the problem and initial scope.
+        Decision Gate: Project Authorization Review.
+
+    Phase 2: Planning
+        Entry Criteria: The Project Charter is approved.
+        Deliverable: A detailed Project Plan and Communication Plan for addressing the issue.
+        Decision Gate: Plan Approval Review.
+
+    Phase 3: Execution
+        Entry Criteria: The resolution plan is approved.
+        Deliverable: The implemented solution or process change, along with Progress Reports.
+        Decision Gate: Implementation Readiness Review.
+
+    Phase 4: Monitoring
+        Entry Criteria: The solution has been implemented and a metrics collection system is in place.
+        Deliverable: Performance Metrics Reports and Adjustment Recommendations.
+        Decision Gate: Performance Review.
+
+    Phase 5: Closure
+        Entry Criteria: The solution's performance is stable and has met its success criteria.
+        Deliverable: A Final Report and a Lessons Learned Document for our KnowledgeWarehouse.
+        Decision Gate: Project Closure Review.
+
