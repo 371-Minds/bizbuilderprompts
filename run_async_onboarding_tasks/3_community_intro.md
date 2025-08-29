@@ -1,0 +1,1 @@
+You have selected the "Community of Weavers." This is a path of learning and collaboration. It is an invitation to join a private, curated community of others who have solved the Cipher. Here, you will have access to unique tools, knowledge, and the opportunity to contribute to a growing ecosystem. It begins with a **Pledge of Participation.**
