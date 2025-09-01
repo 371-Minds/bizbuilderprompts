@@ -1,0 +1,30 @@
+{ 
+  "description": "A Lamborghini Aventador is revealed in a dark futuristic hangar. Metallic panels rise from the floor and float around, locking together piece by piece to form the car. Yellow lighting pulses with each connection, and the environment transforms into a high-end Lamborghini showroom.", 
+  "product_name": "Lamborghini Aventador", 
+  "product_type": "Luxury Sports Car", 
+  "brand_style": "bold, mechanical precision, ultra-luxury", 
+  "style": "futuristic cinematic, assembly animation", 
+  "camera": "slow orbit, macro detail shots on forming parts, wide pullback", 
+  "lighting": "intense spotlighting with yellow underglow and glossy black reflections", 
+  "location": "futuristic vehicle chamber with reflective floor", 
+  "time_of_day": "night", 
+  "atmosphere": "mysterious, ambient tech hum, light fog", 
+  "elements": [ 
+    "floating car parts assembling mid-air", 
+    "yellow energy pulses and connector sparks", 
+    "reflective black showroom platform emerging below" 
+  ], 
+  "motion": "Lamborghini forms from levitating parts, showroom rises as lighting activates", 
+  "cta_motion": "logo folds in like a metallic badge over top of the car", 
+  "ending": "finished Lamborghini surrounded by a glowing showroom with subtle camera rotation", 
+  "text": "none", 
+  "keywords": [ 
+    "16:9", 
+    "Lamborghini", 
+    "reveal animation", 
+    "car assembly", 
+    "cinematic", 
+    "no people", 
+    "futuristic showroom" 
+  ] 
+}

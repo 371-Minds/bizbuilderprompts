@@ -1,0 +1,30 @@
+{ 
+  "description": "A luxurious Noir Bloom perfume bottle materializes from swirling violet smoke, spins in the air with glowing runes, and lands on a reflective obsidian pedestal inside a high-end black glass chamber.", 
+  "product_name": "Noir Bloom", 
+  "product_type": "Perfume", 
+  "brand_style": "Luxury, dark elegance, mystic", 
+  "style": "glossy cinematic, dark moody tones", 
+  "camera": "floating dolly-in, glass reflections, macro glides", 
+  "lighting": "soft neon purple glow, ambient shadows, moving specular highlights", 
+  "location": "dark perfume chamber with reflective black walls", 
+  "time_of_day": "timeless / undefined", 
+  "atmosphere": "dense floral mist, glowing particles in the air", 
+  "elements": [ 
+    "perfume bottle rising out of swirling violet smoke", 
+    "hovering in air with animated symbols orbiting it", 
+    "lands on floating obsidian pedestal with soft light bloom" 
+  ], 
+  "motion": "slow rotational spin with ribbons of vapor wrapping around", 
+  "cta_motion": "slogan materializes letter by letter in elegant serif over particle background", 
+  "ending": "product glows gently with mist swirling and reflection shimmering", 
+  "text": "none", 
+  "keywords": [ 
+    "16:9", 
+    "Noir Bloom", 
+    "perfume", 
+    "particles", 
+    "floating bottle", 
+    "vapor FX", 
+    "no people" 
+  ] 
+}

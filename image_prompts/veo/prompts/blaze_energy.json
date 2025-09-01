@@ -1,0 +1,30 @@
+{ 
+  "description": "A hyper-cinematic ad showing a glowing Blaze Energy can forming from liquid particles mid-air, landing with an impact on a rock ledge as energy waves ripple out and light up the entire scene.", 
+  "product_name": "Blaze Energy", 
+  "product_type": "Energy Drink", 
+  "brand_style": "Bold, extreme, futuristic", 
+  "style": "cinematic, ultra slow-mo, high contrast", 
+  "camera": "high-speed macro close-up, whip zoom, orbiting shots", 
+  "lighting": "electric neon pulses with glowing mist", 
+  "location": "futuristic mountain cliff", 
+  "time_of_day": "twilight", 
+  "atmosphere": "charged, energetic air with sparks", 
+  "elements": [ 
+    "Blaze Energy can forming mid-air from swirling particles", 
+    "electric shockwave lighting up terrain on impact", 
+    "glowing crystal rock surface with crackling energy veins" 
+  ], 
+  "motion": "product assembles from particles, lands hard, sends energy pulse across ground", 
+  "cta_motion": "logo zooms in with glitch burst and freeze-frame glow", 
+  "ending": "wide angle of glowing can on the ledge with terrain still pulsing around it", 
+  "text": "none", 
+  "keywords": [ 
+    "16:9", 
+    "Blaze Energy", 
+    "glitch", 
+    "particle FX", 
+    "no people", 
+    "impact shot", 
+    "energy burst" 
+  ] 
+}

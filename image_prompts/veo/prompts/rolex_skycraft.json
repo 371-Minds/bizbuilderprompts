@@ -1,0 +1,30 @@
+{ 
+  "description": "A glass building façade begins to shift at night. Panels fold out, rotate, and pull back to form a giant Rolex watch face embedded into the building. Gears rotate behind the windows, and the city skyline reflects off the crystal-clear dial. Golden lights ripple around the structure like time itself is ticking through the skyline.", 
+  "product_name": "Rolex Skycraft", 
+  "product_type": "Luxury Watch", 
+  "brand_style": "timeless, prestigious, architectural", 
+  "style": "luxury CGI architectural ad", 
+  "camera": "dolly-up from street level, upward sweep to the skyline, dramatic pullback", 
+  "lighting": "golden city lights with cool glass glows", 
+  "location": "downtown cityscape, glass skyscraper", 
+  "time_of_day": "night", 
+  "atmosphere": "quiet prestige, wind ambiance, ticking sounds", 
+  "elements": [ 
+    "building façade rotating to reveal giant Rolex watch", 
+    "moving internal gears visible through windows", 
+    "glowing outlines of hour marks forming from lights" 
+  ], 
+  "motion": "building morphs into product from glass and steel plates, time pulses across scene", 
+  "cta_motion": "Rolex logo illuminates across the top of the skyscraper like a crown", 
+  "ending": "watch embedded in tower glass, shimmering with skyline reflections", 
+  "text": "none", 
+  "keywords": [ 
+    "16:9", 
+    "Rolex", 
+    "architectural CGI", 
+    "watch reveal", 
+    "city skyline", 
+    "no people", 
+    "night luxury" 
+  ] 
+}

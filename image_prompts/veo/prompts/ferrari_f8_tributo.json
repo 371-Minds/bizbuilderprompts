@@ -1,0 +1,30 @@
+{ 
+  "description": "The Ferrari F8 Tributo is revealed inside a dark red chamber as silky red cloth flows across the air and wraps around the invisible shape of a car. The fabric disintegrates mid-air, revealing the polished Ferrari underneath, surrounded by floating spotlight drones that activate as the logo appears.", 
+  "product_name": "Ferrari F8 Tributo", 
+  "product_type": "Luxury Sports Car", 
+  "brand_style": "sleek, refined, elegant power", 
+  "style": "elegant cinematic reveal", 
+  "camera": "slow dolly-ins, sweeping camera from low angles, dramatic zoom on curves", 
+  "lighting": "deep red and gold accents, focused spotlights, soft floor reflections", 
+  "location": "dimly lit red reveal chamber with glossy black floor", 
+  "time_of_day": "undefined / ambient", 
+  "atmosphere": "suspenseful, luxurious, silk particles in air", 
+  "elements": [ 
+    "floating silk fabric wrapping invisible car silhouette", 
+    "particles dispersing to reveal shiny Ferrari body", 
+    "spotlight drones activating and circling" 
+  ], 
+  "motion": "fabric flows and forms over car, vanishes to reveal full Ferrari", 
+  "cta_motion": "Ferrari logo emerges in soft gold shimmer above the hood", 
+  "ending": "F8 Tributo displayed center-stage with moving light accents and full-body reveal", 
+  "text": "none", 
+  "keywords": [ 
+    "16:9", 
+    "Ferrari", 
+    "luxury", 
+    "reveal animation", 
+    "silk effect", 
+    "elegant presentation", 
+    "no people" 
+  ] 
+}
