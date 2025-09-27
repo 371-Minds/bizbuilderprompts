@@ -1,0 +1,55 @@
+name: Manage and Classify Prompts
+
+# This workflow triggers only when files are pushed to the 'incoming/' directory
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'incoming/**'
+
+jobs:
+  classify_and_organize:
+    runs-on: ubuntu-latest
+    permissions:
+      # Give the workflow permission to commit and push changes back to the repo
+      contents: write
+
+    steps:
+    - name: Checkout bizbuilderprompts repo
+      uses: actions/checkout@v4
+      with:
+        # We need to fetch the full history to be able to push back
+        fetch-depth: 0
+
+    - name: Checkout os repo scripts
+      uses: actions/checkout@v4
+      with:
+        repository: 371-Minds/os
+        path: ./os-repo
+        sparse-checkout: |
+          scripts/
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Run Prompt Classifier
+      run: |
+        # Copy the classifier script to the root
+        cp ./os-repo/scripts/prompt_classifier.py ./prompt_classifier.py
+        # Run the script
+        python prompt_classifier.py
+
+    - name: Commit and Push Changes
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add .
+        # Check if there are any changes to commit
+        if git status --porcelain | grep -q .; then
+          git commit -m "chore: auto-classify new prompts from incoming/"
+          git push
+        else
+          echo "No changes to commit."
+        fi
