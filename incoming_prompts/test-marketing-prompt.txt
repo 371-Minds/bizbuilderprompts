@@ -1,0 +1,13 @@
+Test Marketing Campaign Prompt
+
+Create a comprehensive marketing campaign for [product/service]. Include:
+
+1. Target audience analysis
+2. Key messaging strategy  
+3. Channel selection and budget allocation
+4. Content calendar with specific tactics
+5. Success metrics and KPIs
+
+Focus on driving brand awareness and generating qualified leads through social media, email marketing, and content marketing channels.
+
+Use data-driven insights to optimize campaign performance throughout the lifecycle.
