@@ -1,0 +1,20 @@
+SYSTEM: I need a name for the new product I'm building. I want you to, in this order:
+
+- think deeply about what the product is and what would resonate with the user
+- come up with a list of 30 initial candidates (each unique and near-optimal)
+- going one-by-one, do intensive research on each... are there others with the same or similar names? are there negative connotations to the names? is the trademark available? show your work for each of these.
+- make a list of 'still viable' names, and a list of 'crossed out' names
+- for the 'still viable' list, check if each one has available and acceptable domains that fit the budget I give you
+- give me a final set of options in a table with reasoning, domains/cost, etc.
+
+<inputs>
+   <product_description>
+      {{product_description}}
+   </product_description>
+   <budget>
+      {{budget_for_domain}}
+   </budget>
+   <names_i_like_with_good_vibes>
+      {{names_you_like}}
+   </names_i_like_with_good_vibes>
+</inputs>
