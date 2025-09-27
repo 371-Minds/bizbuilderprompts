@@ -18,27 +18,48 @@ from pathlib import Path
 # --- Configuration ---
 INCOMING_DIR = "incoming_prompts"
 CATEGORIES = {
-    "sales": ["close", "deal", "offer", "discount", "price", "negotiate"],
-    "marketing": ["campaign", "brand", "social", "email", "ad", "audience"],
-    "product": ["feature", "build", "develop", "roadmap", "spec", "user story"],
-    "customer_success": ["onboard", "support", "help", "tutorial", "guide", "resolve"],
+    "sales": ["close", "deal", "offer", "discount", "price", "negotiate", "conversion", "copywriter", "persuasion", "closing", "sales"],
+    "marketing": ["campaign", "brand", "social", "email", "ad", "audience", "growth", "strategy", "marketing", "awareness"],
+    "product": ["feature", "build", "develop", "roadmap", "user story", "product", "name", "domain", "development"],
+    "customer_success": ["onboard", "support", "help", "tutorial", "guide", "resolve", "customer", "success", "onboarding"],
+    "business_strategy": ["kaizen", "mastermind", "value", "alchemist", "business", "strategy", "optimization", "improvement"],
     "general": [],  # Default category
 }
 
 def classify_prompt(content: str) -> str:
     """
-    A simple keyword-based classifier.
+    An improved keyword-based classifier with priority scoring.
     In a more advanced setup, you could use an ML model or an LLM API here.
     """
     content_lower = content.lower()
     
+    # Calculate scores for each category
+    category_scores = {}
+    
     for category, keywords in CATEGORIES.items():
         if category == "general":
             continue # Check this last
-        if any(keyword in content_lower for keyword in keywords):
-            return category
+        
+        score = 0
+        for keyword in keywords:
+            # Use word boundaries to avoid partial matches
+            import re
+            pattern = r'\b' + re.escape(keyword) + r'\b'
+            matches = len(re.findall(pattern, content_lower, re.IGNORECASE))
+            score += matches
+        
+        if score > 0:
+            category_scores[category] = score
     
-    return "general"
+    # Special handling for 'general' category - only if no other category matches
+    if not category_scores:
+        # Check if it has any business-related keywords at all
+        business_keywords = ["business", "company", "enterprise", "organization", "startup"]
+        if any(keyword in content_lower for keyword in business_keywords):
+            return "business_strategy"
+        return "general"
+    
+    return max(category_scores, key=category_scores.get)
 
 def create_category_dirs():
     """Ensure all category directories exist."""
@@ -52,7 +73,7 @@ def process_incoming_prompts():
         print("No 'incoming' directory found. Nothing to do.")
         return
 
-    prompt_files = list(incoming_path.glob("*.txt")) # Adjust glob as needed (.md, etc.)
+    prompt_files = list(incoming_path.glob("*.txt")) + list(incoming_path.glob("*.md"))
     if not prompt_files:
         print("No prompt files found in 'incoming/'.")
         return

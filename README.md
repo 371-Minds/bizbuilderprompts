@@ -11,6 +11,7 @@ A curated library of prompts for building your business.
 
 ## Sales
 
+- `Conversion Copywriter and Persuasion Engineer.md`
 - `Value Alchemist.txt`
 - `business-strategy-framework.txt`
 - `sales-closing-techniques.txt`
