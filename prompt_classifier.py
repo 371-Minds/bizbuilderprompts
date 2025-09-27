@@ -59,7 +59,7 @@ def classify_prompt(content: str) -> str:
             return "business_strategy"
         return "general"
     
-    return max(category_scores, key=category_scores.get)
+    return max(category_scores, key=lambda category: category_scores[category])
 
 def create_category_dirs():
     """Ensure all category directories exist."""
