@@ -1,11 +1,12 @@
 name: Manage and Classify Prompts
 
-# This workflow triggers only when files are pushed to the 'incoming/' directory
+# This workflow triggers when files are pushed to the 'incoming_prompts/' directory
 on:
   push:
     branches: [ "main" ]
     paths:
-      - 'incoming/**'
+      - 'incoming_prompts/**'
+  workflow_dispatch:
 
 jobs:
   classify_and_organize:
@@ -27,17 +28,19 @@ jobs:
         repository: 371-Minds/os
         path: ./os-repo
         sparse-checkout: |
-          scripts/
+          371-os/scripts/
 
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.10'
+        python-version: '3.11'
 
     - name: Run Prompt Classifier
       run: |
         # Copy the classifier script to the root
-        cp ./os-repo/scripts/prompt_classifier.py ./prompt_classifier.py
+        cp ./os-repo/371-os/scripts/prompt_classifier.py ./prompt_classifier.py
+        # Make it executable
+        chmod +x ./prompt_classifier.py
         # Run the script
         python prompt_classifier.py
 
@@ -48,8 +51,16 @@ jobs:
         git add .
         # Check if there are any changes to commit
         if git status --porcelain | grep -q .; then
-          git commit -m "chore: auto-classify new prompts from incoming/"
+          git commit -m "chore: auto-classify new prompts from incoming_prompts/"
           git push
         else
           echo "No changes to commit."
         fi
+
+    - name: Create workflow summary
+      run: |
+        echo "## Prompt Classification Results" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### Processing completed for incoming prompts" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "Check the repository for newly organized prompts in category folders." >> $GITHUB_STEP_SUMMARY
