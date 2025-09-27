@@ -1,0 +1,39 @@
+Business Strategy Framework
+
+## Strategic Planning Template
+
+### 1. Vision & Mission
+- **Vision Statement**: Where do you want your business to be in 5 years?
+- **Mission Statement**: What is your business's core purpose?
+- **Values**: What principles guide your business decisions?
+
+### 2. Market Analysis
+- **Target Market**: Who are your ideal customers?
+- **Market Size**: What's the total addressable market?
+- **Competition**: Who are your main competitors and what are their strengths/weaknesses?
+- **Market Trends**: What trends are shaping your industry?
+
+### 3. SWOT Analysis
+- **Strengths**: Internal factors that give you an advantage
+- **Weaknesses**: Internal factors that put you at a disadvantage  
+- **Opportunities**: External factors you could exploit
+- **Threats**: External factors that could harm your business
+
+### 4. Strategic Objectives
+- **Financial Goals**: Revenue, profit, growth targets
+- **Operational Goals**: Efficiency, quality, process improvements
+- **Customer Goals**: Satisfaction, retention, acquisition targets
+- **Innovation Goals**: New products, services, or capabilities
+
+### 5. Action Plan
+- **Priorities**: Top 3-5 strategic initiatives for the next year
+- **Resources**: Budget, team, and tools needed
+- **Timeline**: Key milestones and deadlines
+- **Metrics**: How will you measure success?
+
+### 6. Review Process
+- **Monthly**: Review progress on key metrics
+- **Quarterly**: Assess strategic initiatives and adjust as needed
+- **Annually**: Comprehensive strategic plan review and update
+
+This framework helps ensure your business strategy is comprehensive, actionable, and aligned with your long-term vision.
