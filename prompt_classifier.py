@@ -16,7 +16,7 @@ import re
 from pathlib import Path
 
 # --- Configuration ---
-INCOMING_DIR = "incoming"
+INCOMING_DIR = "incoming_prompts"
 CATEGORIES = {
     "sales": ["close", "deal", "offer", "discount", "price", "negotiate"],
     "marketing": ["campaign", "brand", "social", "email", "ad", "audience"],
