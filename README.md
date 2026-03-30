@@ -1,19 +1,164 @@
-# Biz Builder Prompts
+# BizBuilderPrompts MCP Server
 
-A curated library of prompts for building your business.
+A curated library of **158+ business AI prompts, workflows, and templates** — exposed as a fully-featured [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server. Connect it to Claude Desktop, Cursor, Continue.dev, or any MCP-compatible AI client.
 
-## Marketing
+## What's Inside
 
-- `Kaizen Mastermind.txt`
-- `bizgrowthstrategy.txt`
-- `idea_crucible_method.txt`
-- `prodnamedomaingen.txt`
-- `test-marketing-prompt.txt`
+| Category | Contents |
+|----------|----------|
+| **marketing** | Growth strategy, Kaizen, brand, idea validation |
+| **sales** | Conversion copywriting, persuasion, closing techniques |
+| **workflow** | 15 multi-step frameworks (legal, venture, project mgmt, DSF, DAO, etc.) |
+| **image-prompt** | JSON specs for AI product image/video generation (Veo) |
+| **project** | 45+ startup and project idea blueprints |
+| **promotion** | Ad copy, email hooks, promotional messages |
+| **video** | Thumbnail and video content prompts |
+| **general** | Game dev, patent/trademark prompts |
 
-## Sales
+## Quick Start
 
-- `Conversion Copywriter and Persuasion Engineer.md`
-- `Value Alchemist.txt`
-- `business-strategy-framework.txt`
-- `sales-closing-techniques.txt`
+### 1. Install & Build
 
+```bash
+npm install
+npm run build
+```
+
+### 2. Connect to Claude Desktop
+
+Add to your `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "bizbuilderprompts": {
+      "command": "node",
+      "args": ["/absolute/path/to/bizbuilderprompts/dist/index.js"]
+    }
+  }
+}
+```
+
+**Config file locations:**
+- **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+
+### 3. Connect to Cursor / Continue.dev
+
+Use the same stdio transport. Point to `dist/index.js` as the command.
+
+---
+
+## MCP Tools (10 tools)
+
+| Tool | Description |
+|------|-------------|
+| `list_categories` | Get all categories with prompt counts |
+| `list_prompts` | List prompts with optional category/type/tag filters |
+| `list_workflows` | List all multi-step workflows with step info |
+| `search_prompts` | Fuzzy search by query text |
+| `get_prompt` | Retrieve full content of any prompt by ID |
+| `get_workflow` | Get a complete workflow (master + all steps) |
+| `get_workflow_step` | Get a specific step within a workflow |
+| `fill_template` | Fill `{{Variable}}` placeholders with your values |
+| `suggest_prompts` | Get prompt suggestions for a goal or task description |
+| `get_prompt_metadata` | Get metadata without full content |
+
+## MCP Prompts (6 named prompts)
+
+| Prompt | Description |
+|--------|-------------|
+| `business_copywriting` | Transform any text into high-converting copy (AIDA/PAS) |
+| `kaizen_improvement` | Apply Kaizen philosophy to any business area |
+| `run_workflow` | Execute any multi-step workflow with your context |
+| `legal_compliance` | Legal & compliance framework for your business |
+| `generate_image_prompt` | Create structured product image/video generation specs |
+| `business_strategy` | Apply business strategy frameworks to your situation |
+
+## MCP Resources
+
+Every prompt file is available as a URI resource:
+
+```
+prompt://bizbuilderprompts/{category}/{id}
+workflow://bizbuilderprompts/{workflowId}
+workflow://bizbuilderprompts/{workflowId}/steps/{stepId}
+image-prompt://bizbuilderprompts/{id}
+project://bizbuilderprompts/{id}
+```
+
+---
+
+## Example Agent Interactions
+
+```
+"Find me prompts for sales conversion"
+→ search_prompts(query="sales conversion")
+
+"Walk me through the legal compliance workflow for my SaaS"
+→ run_workflow prompt with workflow_id="legal-tasks" and your context
+
+"Improve my landing page copy"
+→ business_copywriting prompt with your text
+
+"What business frameworks are available?"
+→ list_workflows()
+
+"Get step 3 of the venture forge workflow"
+→ get_workflow_step(workflow_id="venture-forge", step=3)
+
+"I need to validate my business idea — what should I use?"
+→ suggest_prompts(goal="validate business idea")
+```
+
+---
+
+## Workflow IDs
+
+| ID | Title | Steps |
+|----|-------|-------|
+| `alchemist-apprenticeship` | Alchemist Apprenticeship | 6 |
+| `ascension-exp` | Ascension Experience | 4 |
+| `async-onboarding-tasks` | Async Onboarding | 4 |
+| `async-rcrc` | RCRC Project Cycle | 5 |
+| `dsf-playbook` | DSF Tactical Playbook | 9 |
+| `googleaimode` | Google AI Mode | 7 |
+| `legal-tasks` | Legal & Compliance Guide | 7 |
+| `linkedin-tasks` | LinkedIn Strategy | master only |
+| `mini-dao-agent` | Mini DAO Agent | 5 |
+| `modumind-r2r` | ModuMind Root-to-Rise | 5 |
+| `patent-tasks` | Patent & Trademark | master only |
+| `tax-free-service` | Tax-Free Service Strategy | 5 |
+| `venture-forge` | Venture Forge | 5 |
+| `viral-freeshare` | Viral Free Share | 5 |
+| `virtuous-flywheel` | Virtuous Flywheel | 5 |
+
+---
+
+## Development
+
+```bash
+npm run build      # Compile TypeScript → dist/
+npm run typecheck  # Type-check without emitting
+npm start          # Run the server (stdio transport)
+```
+
+## Architecture
+
+```
+src/
+  index.ts          # Entry point — stdio transport
+  server.ts         # McpServer setup
+  manifest.ts       # File scanner + in-memory prompt index
+  resources.ts      # MCP Resource handlers (URI-addressable files)
+  tools.ts          # MCP Tool handlers (10 callable functions)
+  prompts.ts        # MCP Prompt handlers (6 named templates)
+  types.ts          # TypeScript interfaces
+  utils/
+    template.ts     # {{Variable}} extraction and substitution
+    search.ts       # Fuse.js fuzzy search + keyword suggestion
+```
+
+## License
+
+MIT © 2025 KingLeoJr
