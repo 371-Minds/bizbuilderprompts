@@ -3,7 +3,7 @@
  * Handles spaces and underscores in variable names.
  */
 export function extractVariables(content: string): string[] {
-  const matches = content.matchAll(/\{\{([\w][\w\s]*?)\}\}/g);
+  const matches = content.matchAll(/\{\{(\w[\w\s]*?)\}\}/g);
   const seen = new Set<string>();
   const variables: string[] = [];
   for (const match of matches) {

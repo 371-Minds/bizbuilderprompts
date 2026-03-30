@@ -9,7 +9,7 @@ A curated library of **158+ business AI prompts, workflows, and templates** — 
 | **marketing** | Growth strategy, Kaizen, brand, idea validation |
 | **sales** | Conversion copywriting, persuasion, closing techniques |
 | **workflow** | 15 multi-step frameworks (legal, venture, project mgmt, DSF, DAO, etc.) |
-| **image-prompt** | JSON specs for AI product image/video generation (Veo) |
+| **image-prompt** | JSON specs for AI product image/video generation (Veo) — 9 products |
 | **project** | 45+ startup and project idea blueprints |
 | **promotion** | Ad copy, email hooks, promotional messages |
 | **video** | Thumbnail and video content prompts |
