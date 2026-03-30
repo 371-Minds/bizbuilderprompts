@@ -1,0 +1,31 @@
+{
+  "server": "bizbuilderprompts",
+  "version": "1.0.0",
+  "description": "MCP server for BizBuilderPrompts — a curated library of business AI prompts, workflows, and templates",
+  "transport": ["stdio"],
+  "capabilities": {
+    "resources": true,
+    "tools": true,
+    "prompts": true
+  },
+  "tools": [
+    "list_categories",
+    "list_prompts",
+    "list_workflows",
+    "search_prompts",
+    "get_prompt",
+    "get_workflow",
+    "get_workflow_step",
+    "fill_template",
+    "suggest_prompts",
+    "get_prompt_metadata"
+  ],
+  "prompts": [
+    "business_copywriting",
+    "kaizen_improvement",
+    "run_workflow",
+    "legal_compliance",
+    "generate_image_prompt",
+    "business_strategy"
+  ]
+}
