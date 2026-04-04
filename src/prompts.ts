@@ -2,12 +2,13 @@ import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 import type { Manifest } from "./types.js";
 import { getPromptContent } from "./manifest.js";
+import type { AgentRegistry } from "./agents/types.js";
 
 /**
  * Registers named MCP Prompts — executable prompt templates that AI clients
  * can invoke by name with structured arguments.
  */
-export function registerPrompts(server: McpServer, manifest: Manifest): void {
+export function registerPrompts(server: McpServer, manifest: Manifest, registry?: AgentRegistry): void {
   // ── Prompt 1: business_copywriting ──────────────────────────────────────
   server.registerPrompt(
     "business_copywriting",
@@ -346,6 +347,150 @@ export function registerPrompts(server: McpServer, manifest: Manifest): void {
           {
             role: "user" as const,
             content: { type: "text" as const, text: message },
+          },
+        ],
+      };
+    }
+  );
+
+  // ── Prompt 7: assume_role ─────────────────────────────────────────────────
+  server.registerPrompt(
+    "assume_role",
+    {
+      title: "Assume C-Suite Role",
+      description:
+        "Activates a C-Suite agent persona. The AI will adopt the role's system prompt, priorities, and operating principles for the session.",
+      argsSchema: {
+        role: z
+          .enum(["ceo", "cmo", "cfo", "cto", "vp_sales", "vp_product", "legal_counsel", "head_of_ops"])
+          .describe("The C-Suite role to assume"),
+        context: z
+          .string()
+          .optional()
+          .describe("Your current business context or the task you want to work on"),
+      },
+    },
+    async ({ role, context }) => {
+      const persona = registry?.agents.find((a) => a.role === role);
+
+      if (!persona) {
+        return {
+          messages: [
+            {
+              role: "user" as const,
+              content: {
+                type: "text" as const,
+                text: `Role "${role}" not found. Available roles: ceo, cmo, cfo, cto, vp_sales, vp_product, legal_counsel, head_of_ops`,
+              },
+            },
+          ],
+        };
+      }
+
+      const defaultWorkflowList = persona.defaultWorkflows.length > 0
+        ? `\n\n**Your Default Workflows:** ${persona.defaultWorkflows.join(", ")}\nAccess them with: get_workflow`
+        : "";
+
+      const preferredCategoryList = persona.preferredCategories.length > 0
+        ? `\n\n**Your Preferred Asset Categories:** ${persona.preferredCategories.join(", ")}`
+        : "";
+
+      const orderExamples = persona.orderingPatterns.slice(0, 3)
+        .map((p, i) => `${i + 1}. "${p}"`)
+        .join("\n");
+
+      const sessionMessage = [
+        persona.systemPrompt,
+        defaultWorkflowList,
+        preferredCategoryList,
+        `\n\n**Example Orders You Can Place:**\n${orderExamples}`,
+        context ? `\n\n---\n\n**Current Context:**\n${context}` : "",
+        "\n\n---\n\nYou are now operating as the **" + persona.displayName + "**. Use `create_order` to request assets from the warehouse, `browse_warehouse` to explore available assets, or `commission_prompt` / `commission_workflow` to create new ones.",
+      ].filter(Boolean).join("");
+
+      return {
+        messages: [
+          {
+            role: "user" as const,
+            content: { type: "text" as const, text: sessionMessage },
+          },
+        ],
+      };
+    }
+  );
+
+  // ── Prompt 8: order_from_warehouse ────────────────────────────────────────
+  server.registerPrompt(
+    "order_from_warehouse",
+    {
+      title: "Order From Warehouse",
+      description:
+        "Guided ordering experience for C-Suite agents. Describe what you need and the system will find existing assets, identify gaps, and suggest what to commission.",
+      argsSchema: {
+        role: z
+          .enum(["ceo", "cmo", "cfo", "cto", "vp_sales", "vp_product", "legal_counsel", "head_of_ops"])
+          .describe("Your C-Suite role"),
+        intent: z
+          .string()
+          .describe("What you need — describe your goal, project, or challenge"),
+        urgency: z
+          .enum(["low", "normal", "high"])
+          .optional()
+          .describe("How urgently you need this"),
+      },
+    },
+    async ({ role, intent, urgency }) => {
+      const persona = registry?.agents.find((a) => a.role === role);
+      const roleDisplay = persona?.displayName ?? role.toUpperCase();
+
+      const orderInstructions = [
+        `# ${roleDisplay} — Warehouse Order`,
+        "",
+        `**Intent:** ${intent}`,
+        `**Urgency:** ${urgency ?? "normal"}`,
+        "",
+        "---",
+        "",
+        "## How to Fulfill This Order",
+        "",
+        "Follow these steps to get the assets you need:",
+        "",
+        "**Step 1: Search Existing Assets**",
+        "```",
+        `create_order({ role: "${role}", intent: "${intent}", urgency: "${urgency ?? "normal"}" })`,
+        "```",
+        "",
+        "**Step 2: Browse the Warehouse**",
+        "```",
+        `browse_warehouse({ role: "${role}", query: "${intent.slice(0, 50)}" })`,
+        "```",
+        "",
+        "**Step 3: Fill in Gaps**",
+        "If assets are missing, commission them:",
+        "```",
+        `commission_prompt({ topic: "[asset topic]", goal: "${intent}", requested_by: "${role}", save: true })`,
+        "```",
+        "",
+        "**Step 4: For Multi-Step Processes**",
+        "```",
+        `commission_workflow({ topic: "[workflow topic]", goal: "${intent}", requested_by: "${role}", save: true })`,
+        "```",
+        "",
+        "**Step 5: Package into a Bundle**",
+        "```",
+        `commission_bundle({ theme: "[bundle name]", goal: "${intent}", roles: ["${role}"] })`,
+        "```",
+        "",
+        persona?.defaultWorkflows.length
+          ? `## Your Default Workflows\n\nYou have quick access to: **${persona.defaultWorkflows.join(", ")}**\nRun them with \`get_workflow\` or the \`run_workflow\` prompt.`
+          : "",
+      ].filter(Boolean).join("\n");
+
+      return {
+        messages: [
+          {
+            role: "user" as const,
+            content: { type: "text" as const, text: orderInstructions },
           },
         ],
       };
