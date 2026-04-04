@@ -14,6 +14,8 @@ import {
   getBundle,
   listBundles,
   buildWarehouseCatalog,
+  updateWarehouseItem,
+  generateProductId,
 } from "./warehouse/catalog.js";
 import { listAgents, getAgentPersona, registerAgent } from "./agents/registry.js";
 import { dispatch } from "./factory/generator.js";
@@ -21,6 +23,12 @@ import { createBundle } from "./factory/bundle_creator.js";
 import { enrichInput } from "./enrichment/extractor.js";
 import { fulfillOrder } from "./orders/fulfiller.js";
 import { getOrder, listOrders } from "./orders/manager.js";
+import {
+  buildStorefrontCard,
+  formatMsrp,
+  formatX402Price,
+  validateCommerceConfig,
+} from "./commerce/config.js";
 
 export function registerTools(
   server: McpServer,
@@ -688,9 +696,14 @@ export function registerTools(
                   useCase: i.useCase,
                   status: i.status,
                   tags: i.tags,
+                  keywords: i.keywords ?? [],
                   variables: i.variables,
                   category: i.category,
                   commissionedAt: i.commissionedAt,
+                  productId: i.productId ?? null,
+                  msrp: i.msrp ?? null,
+                  msrpDisplay: i.msrp !== undefined ? formatMsrp(i.msrp) : null,
+                  isForSale: !!(i.commerce?.x402?.enabled || i.commerce?.creem || i.commerce?.polar),
                 })),
                 bundles: bundles.map((b) => ({
                   id: b.id,
@@ -952,14 +965,37 @@ export function registerTools(
           .boolean()
           .optional()
           .describe("Whether to save the prompt to the warehouse (default: false)"),
+        product_id: z
+          .string()
+          .optional()
+          .describe("Optional product SKU — auto-generated if omitted"),
+        msrp: z
+          .number()
+          .optional()
+          .describe("Optional retail price in USD cents (e.g. 99 = $0.99). Set to 0 for free."),
+        keywords: z
+          .array(z.string())
+          .optional()
+          .describe("Optional customer-facing search keywords"),
       },
     },
-    async ({ topic, goal, audience, style, framework, context, requested_by, save }) => {
+    async ({ topic, goal, audience, style, framework, context, requested_by, save, product_id, msrp, keywords }) => {
       const result = await dispatch({
         requestedBy: requested_by,
         assetSpec: { type: "prompt", topic, goal, audience, style, framework, context },
         save: save ?? false,
       });
+
+      // Apply commerce fields to the saved item if provided
+      if (result.saved && result.warehouseId && (product_id !== undefined || msrp !== undefined || keywords !== undefined)) {
+        const resolvedProductId = product_id ?? generateProductId("prompt", topic);
+        updateWarehouseItem(result.warehouseId, {
+          productId: resolvedProductId,
+          ...(msrp !== undefined ? { msrp } : {}),
+          ...(keywords !== undefined ? { keywords } : {}),
+        });
+      }
+
       return {
         content: [
           {
@@ -975,6 +1011,7 @@ export function registerTools(
                 variables: result.draft.variables,
                 suggestedFilename: result.draft.suggestedFilename,
                 content: result.draft.content,
+                ...(msrp !== undefined ? { msrp, msrpDisplay: formatMsrp(msrp) } : {}),
               },
               null,
               2
@@ -1019,14 +1056,37 @@ export function registerTools(
           .boolean()
           .optional()
           .describe("Whether to save the workflow to the warehouse (default: false)"),
+        product_id: z
+          .string()
+          .optional()
+          .describe("Optional product SKU — auto-generated if omitted"),
+        msrp: z
+          .number()
+          .optional()
+          .describe("Optional retail price in USD cents (e.g. 2900 = $29.00). Set to 0 for free."),
+        keywords: z
+          .array(z.string())
+          .optional()
+          .describe("Optional customer-facing search keywords"),
       },
     },
-    async ({ topic, goal, framework, steps, audience, context, requested_by, save }) => {
+    async ({ topic, goal, framework, steps, audience, context, requested_by, save, product_id, msrp, keywords }) => {
       const result = await dispatch({
         requestedBy: requested_by,
         assetSpec: { type: "workflow", topic, goal, audience, framework, steps, context },
         save: save ?? false,
       });
+
+      // Apply commerce fields to the saved item if provided
+      if (result.saved && result.warehouseId && (product_id !== undefined || msrp !== undefined || keywords !== undefined)) {
+        const resolvedProductId = product_id ?? generateProductId("workflow", topic);
+        updateWarehouseItem(result.warehouseId, {
+          productId: resolvedProductId,
+          ...(msrp !== undefined ? { msrp } : {}),
+          ...(keywords !== undefined ? { keywords } : {}),
+        });
+      }
+
       return {
         content: [
           {
@@ -1041,6 +1101,7 @@ export function registerTools(
                 stepCount: result.additionalFiles ? result.additionalFiles.length + 1 : result.draft.variables.length,
                 estimatedQuality: result.draft.estimatedQuality,
                 content: result.draft.content.slice(0, 2000) + (result.draft.content.length > 2000 ? "\n\n...[truncated — use get_warehouse_item to see full content]" : ""),
+                ...(msrp !== undefined ? { msrp, msrpDisplay: formatMsrp(msrp) } : {}),
               },
               null,
               2
@@ -1214,6 +1275,290 @@ export function registerTools(
           {
             type: "text" as const,
             text: JSON.stringify({ count: orders.length, orders }, null, 2),
+          },
+        ],
+      };
+    }
+  );
+
+  // ── Tool 27: set_item_pricing ─────────────────────────────────────────────
+  server.registerTool(
+    "set_item_pricing",
+    {
+      title: "Set Item Pricing & Commerce Config",
+      description:
+        "Configure pricing, product ID, keywords, and payment options (x402, Creem, Polar, Mercury) for any warehouse item. Makes the item customer-facing.",
+      inputSchema: {
+        id: z.string().describe("The warehouse item ID to configure"),
+        product_id: z
+          .string()
+          .optional()
+          .describe("Unique product SKU (auto-generated if omitted)"),
+        msrp: z
+          .number()
+          .optional()
+          .describe("MSRP in USD cents (e.g. 99 = $0.99, 2900 = $29.00, 0 = free)"),
+        keywords: z
+          .array(z.string())
+          .optional()
+          .describe("Search keywords for customer-facing discovery (broader than tags)"),
+        x402: z
+          .object({
+            enabled: z.boolean().describe("Whether to gate this item behind an x402 paywall"),
+            price: z.number().describe("Price in smallest token units (e.g. 1000000 = 1 USDC)"),
+            asset: z.string().describe("Payment asset symbol or contract address (e.g. 'USDC', 'ETH')"),
+            network: z
+              .enum(["base", "base-sepolia", "ethereum", "polygon", "solana", "optimism", "arbitrum"])
+              .describe("Blockchain network for settlement"),
+            pay_to: z.string().describe("Wallet address to receive payment"),
+            payment_type: z
+              .enum(["per-access", "per-request", "one-time", "subscription"])
+              .optional()
+              .describe("Payment model (default: per-access)"),
+            facilitator_url: z
+              .string()
+              .optional()
+              .describe("Optional facilitator URL (defaults to Coinbase x402 facilitator)"),
+            payment_description: z
+              .string()
+              .optional()
+              .describe("Human-readable description shown in the 402 response"),
+          })
+          .optional()
+          .describe("x402 HTTP payment protocol configuration for agentic/API access"),
+        creem: z
+          .object({
+            product_id: z.string().describe("Creem product ID from the Creem dashboard"),
+            price_usd_cents: z.number().describe("Price in USD cents"),
+            checkout_url: z.string().optional().describe("Creem checkout URL"),
+            checkout_type: z
+              .enum(["one_time", "recurring", "usage_based"])
+              .optional()
+              .describe("Checkout type (default: one_time)"),
+            webhook_path: z.string().optional().describe("Webhook path for purchase notifications"),
+            auto_fulfill: z.boolean().optional().describe("Auto-deliver on purchase webhook"),
+          })
+          .optional()
+          .describe("Creem.io fiat checkout configuration"),
+        polar: z
+          .object({
+            organization_slug: z.string().describe("Polar organization slug (e.g. '371-minds')"),
+            product_id: z.string().describe("Polar product ID"),
+            price_usd_cents: z.number().optional().describe("Price in USD cents (omit if free)"),
+            is_free: z.boolean().optional().describe("Whether this is a free/open-access tier"),
+            checkout_url: z.string().optional().describe("Polar checkout URL"),
+            benefit_type: z
+              .enum(["file_download", "license_keys", "custom", "discord_roles"])
+              .optional()
+              .describe("Type of benefit the buyer receives (default: file_download)"),
+            webhook_path: z.string().optional().describe("Webhook path for purchase notifications"),
+          })
+          .optional()
+          .describe("Polar.sh OSS monetization configuration"),
+        mercury: z
+          .object({
+            api_key_env_var: z
+              .string()
+              .describe("Name of the environment variable holding the Mercury API key (e.g. 'MERCURY_API_KEY')"),
+            account_id: z.string().optional().describe("Mercury account ID"),
+            account_label: z.string().optional().describe("Human-readable account label"),
+          })
+          .optional()
+          .describe("Mercury Bank treasury routing configuration"),
+      },
+    },
+    async ({ id, product_id, msrp, keywords, x402, creem, polar, mercury }) => {
+      const item = getWarehouseItemById(id);
+      if (!item) {
+        return {
+          content: [{ type: "text" as const, text: `Warehouse item not found: "${id}". Use browse_warehouse to find valid IDs.` }],
+          isError: true,
+        };
+      }
+
+      // Build commerce config from inputs
+      const commerce: import("./warehouse/types.js").WarehouseItem["commerce"] = { ...item.commerce };
+
+      if (x402) {
+        commerce.x402 = {
+          enabled: x402.enabled,
+          price: x402.price,
+          asset: x402.asset,
+          network: x402.network,
+          payTo: x402.pay_to,
+          paymentType: x402.payment_type ?? "per-access",
+          facilitatorUrl: x402.facilitator_url,
+          paymentDescription: x402.payment_description,
+        };
+      }
+
+      if (creem) {
+        commerce.creem = {
+          apiKeyEnvVar: "CREEM_API_KEY",
+          productId: creem.product_id,
+          priceUsdCents: creem.price_usd_cents,
+          checkoutUrl: creem.checkout_url,
+          checkoutType: creem.checkout_type ?? "one_time",
+          webhookPath: creem.webhook_path,
+          autoFulfill: creem.auto_fulfill,
+        };
+      }
+
+      if (polar) {
+        commerce.polar = {
+          apiKeyEnvVar: "POLAR_API_KEY",
+          organizationSlug: polar.organization_slug,
+          productId: polar.product_id,
+          priceUsdCents: polar.price_usd_cents ?? 0,
+          isFree: polar.is_free,
+          checkoutUrl: polar.checkout_url,
+          benefitType: polar.benefit_type ?? "file_download",
+          webhookPath: polar.webhook_path,
+        };
+      }
+
+      if (mercury) {
+        commerce.mercury = {
+          apiKeyEnvVar: mercury.api_key_env_var,
+          accountId: mercury.account_id,
+          accountLabel: mercury.account_label,
+        };
+      }
+
+      // Validate commerce config
+      const errors = validateCommerceConfig(commerce);
+      if (errors.length > 0) {
+        return {
+          content: [{ type: "text" as const, text: JSON.stringify({ success: false, errors }, null, 2) }],
+          isError: true,
+        };
+      }
+
+      // Generate product ID if not provided
+      const resolvedProductId =
+        product_id ?? item.productId ?? generateProductId(item.type, item.title);
+
+      const updates: Partial<import("./warehouse/types.js").WarehouseItem> = {
+        productId: resolvedProductId,
+        commerce: Object.keys(commerce).length > 0 ? commerce : undefined,
+      };
+      if (msrp !== undefined) updates.msrp = msrp;
+      if (keywords !== undefined) updates.keywords = keywords;
+
+      const updated = updateWarehouseItem(id, updates);
+
+      if (!updated) {
+        return {
+          content: [{ type: "text" as const, text: `Failed to update item "${id}".` }],
+          isError: true,
+        };
+      }
+
+      const freshItem = getWarehouseItemById(id)!;
+      const storefrontCard = buildStorefrontCard({
+        ...freshItem,
+        productId: freshItem.productId,
+        msrp: freshItem.msrp,
+        keywords: freshItem.keywords,
+        commerce: freshItem.commerce,
+      });
+
+      return {
+        content: [
+          {
+            type: "text" as const,
+            text: JSON.stringify(
+              {
+                success: true,
+                id,
+                productId: resolvedProductId,
+                msrp: freshItem.msrp,
+                msrpDisplay: freshItem.msrp !== undefined ? formatMsrp(freshItem.msrp) : null,
+                keywords: freshItem.keywords ?? [],
+                commerceEnabled: storefrontCard["commerceEnabled"],
+                paymentOptions: storefrontCard["paymentOptions"],
+                storefrontCard,
+              },
+              null,
+              2
+            ),
+          },
+        ],
+      };
+    }
+  );
+
+  // ── Tool 28: get_item_pricing ─────────────────────────────────────────────
+  server.registerTool(
+    "get_item_pricing",
+    {
+      title: "Get Item Pricing & Commerce Config",
+      description:
+        "Retrieve the full pricing, product ID, keywords, and payment configuration for a warehouse item. Also returns a ready-to-use storefront card.",
+      inputSchema: {
+        id: z.string().describe("The warehouse item ID"),
+      },
+    },
+    async ({ id }) => {
+      const item = getWarehouseItemById(id);
+      if (!item) {
+        return {
+          content: [{ type: "text" as const, text: `Warehouse item not found: "${id}". Use browse_warehouse to find valid IDs.` }],
+          isError: true,
+        };
+      }
+
+      const storefrontCard = buildStorefrontCard({
+        id: item.id,
+        title: item.title,
+        description: item.description,
+        productId: item.productId,
+        msrp: item.msrp,
+        keywords: item.keywords,
+        tags: item.tags,
+        type: item.type,
+        commerce: item.commerce,
+      });
+
+      // Build x402 payment-required header preview if configured
+      let x402HeaderPreview: string | null = null;
+      if (item.commerce?.x402?.enabled) {
+        const { buildX402PaymentRequiredHeader } = await import("./commerce/config.js");
+        x402HeaderPreview = buildX402PaymentRequiredHeader(item.commerce.x402);
+      }
+
+      return {
+        content: [
+          {
+            type: "text" as const,
+            text: JSON.stringify(
+              {
+                id: item.id,
+                productId: item.productId ?? null,
+                msrp: item.msrp ?? null,
+                msrpDisplay: item.msrp !== undefined ? formatMsrp(item.msrp) : null,
+                keywords: item.keywords ?? [],
+                commerce: item.commerce ?? null,
+                storefrontCard,
+                x402HeaderPreview,
+                integrationNotes: {
+                  x402: item.commerce?.x402?.enabled
+                    ? `Set HTTP header X-PAYMENT-REQUIRED: ${x402HeaderPreview?.slice(0, 40)}... on 402 responses. Facilitator: ${item.commerce.x402.facilitatorUrl ?? "https://x402.org/facilitator"}`
+                    : "Not configured — use set_item_pricing to enable",
+                  creem: item.commerce?.creem
+                    ? `Checkout URL: ${item.commerce.creem.checkoutUrl ?? "not set"}. Requires CREEM_API_KEY env var.`
+                    : "Not configured",
+                  polar: item.commerce?.polar
+                    ? `Product: ${item.commerce.polar.organizationSlug}/${item.commerce.polar.productId}. Requires POLAR_API_KEY env var.`
+                    : "Not configured",
+                  mercury: item.commerce?.mercury
+                    ? `Treasury: ${item.commerce.mercury.accountLabel ?? item.commerce.mercury.accountId ?? "configured"}. Requires ${item.commerce.mercury.apiKeyEnvVar} env var.`
+                    : "Not configured",
+                },
+              },
+              null,
+              2
+            ),
           },
         ],
       };

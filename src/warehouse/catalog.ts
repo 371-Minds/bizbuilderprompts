@@ -200,11 +200,25 @@ export function searchWarehouse(
         item.title.toLowerCase().includes(q) ||
         item.description.toLowerCase().includes(q) ||
         item.tags.some((t) => t.toLowerCase().includes(q)) ||
-        item.useCase.toLowerCase().includes(q)
+        (item.keywords ?? []).some((k) => k.toLowerCase().includes(q)) ||
+        item.useCase.toLowerCase().includes(q) ||
+        (item.productId ?? "").toLowerCase().includes(q)
     );
   }
 
   return results;
+}
+
+/** Generate a unique product ID for a warehouse item. */
+export function generateProductId(type: string, title: string): string {
+  const slug = title
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, "")
+    .replace(/\s+/g, "-")
+    .slice(0, 30);
+  const suffix = Date.now().toString(36).slice(-4).toUpperCase();
+  const prefix = type.slice(0, 3).toUpperCase();
+  return `${prefix}-${slug}-${suffix}`;
 }
 
 /** Get a specific warehouse item by id. */

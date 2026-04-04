@@ -107,54 +107,63 @@ function extractKeyEntities(text: string): string[] {
 }
 
 async function fetchUrl(url: string): Promise<string> {
+  let resp: Response;
   try {
-    const resp = await fetch(url, {
+    resp = await fetch(url, {
       headers: { "User-Agent": "BizBuilderPrompts/2.0 (+content-extractor)" },
       signal: AbortSignal.timeout(10000),
     });
-    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-    const html = await resp.text();
-    return stripHtml(html);
   } catch (err) {
-    throw new Error(`Failed to fetch URL: ${String(err)}`);
+    const msg = String(err);
+    if (msg.includes("TimeoutError") || msg.includes("timeout")) {
+      throw new Error(`URL fetch timed out after 10 seconds: ${url}`);
+    }
+    throw new Error(`Network error fetching URL: ${msg}`);
   }
+  if (!resp.ok) {
+    throw new Error(`HTTP ${resp.status} ${resp.statusText} fetching: ${url}`);
+  }
+  const html = await resp.text();
+  return stripHtml(html);
 }
 
 function stripHtml(html: string): string {
-  // Strip script and style blocks with whitespace-tolerant end-tag patterns
-  // Uses a two-step approach: remove opening-tag-to-end-tag blocks, then strip remaining tags
   let text = html;
 
-  // Step 1: remove script/style blocks. The end-tag regex allows optional whitespace
-  // between the tag name and ">", e.g. </script > or </SCRIPT>
-  text = text.replace(/<script\b[\s\S]*?<\/script\s*>/gi, "");
-  text = text.replace(/<style\b[\s\S]*?<\/style\s*>/gi, "");
+  // Step 1: remove script/style blocks.
+  // Use [^>]* after the tag name to match any attributes or whitespace before ">",
+  // covering edge cases like </script >, </script\n>, </script type="text/javascript">.
+  text = text.replace(/<script\b[^>]*>[\s\S]*?<\/script[^>]*>/gi, "");
+  text = text.replace(/<style\b[^>]*>[\s\S]*?<\/style[^>]*>/gi, "");
 
-  // Step 2: remove HTML comments (strip <!-- ... --> sequences)
-  // Repeated to handle nested or back-to-back comment markers
+  // Step 2: remove HTML comments — loop handles back-to-back comment markers
   let prev = "";
   while (prev !== text) {
     prev = text;
     text = text.replace(/<!--[\s\S]*?-->/g, "");
   }
 
-  // Step 3: strip remaining tags
+  // Step 3: strip all remaining tags
   text = text.replace(/<[^>]*>/g, " ");
 
-  // Step 4: decode a safe subset of HTML entities in a single pass to avoid double-unescaping.
-  // We decode &amp; LAST so that entities like &amp;lt; are not decoded to < in two passes.
+  // Step 4: safety pass — neutralize any residual script/style substrings that
+  // could not be matched by the block patterns above (e.g. malformed HTML).
+  // We only need to neutralize the opening tag form since content was already stripped.
+  text = text.replace(/<script/gi, "");
+  text = text.replace(/<style/gi, "");
+
+  // Step 5: decode a minimal, safe set of HTML entities in dependency order.
+  // &amp; is decoded LAST so that pre-escaped entities like &amp;lt; don't
+  // collapse into < across two decode passes.
   text = text
     .replace(/&nbsp;/gi, " ")
-    .replace(/&lt;/gi, "\u003C")   // U+003C <
-    .replace(/&gt;/gi, "\u003E")   // U+003E >
-    .replace(/&quot;/gi, "\u0022") // U+0022 "
-    .replace(/&#39;/gi, "\u0027")  // U+0027 '
-    .replace(/&amp;/gi, "\u0026"); // U+0026 & — decoded last to prevent double-unescaping
+    .replace(/&lt;/gi, "\u003C")    // U+003C <
+    .replace(/&gt;/gi, "\u003E")    // U+003E >
+    .replace(/&quot;/gi, "\u0022")  // U+0022 "
+    .replace(/&#39;/gi, "\u0027")   // U+0027 '
+    .replace(/&amp;/gi, "\u0026");  // U+0026 & — must be last
 
-  text = text.replace(/\s{3,}/g, "\n\n").trim();
-
-  // Limit to first 5000 chars for efficiency
-  return text.slice(0, 5000);
+  return text.replace(/\s{3,}/g, "\n\n").trim().slice(0, 5000);
 }
 
 function segmentIdeas(text: string): string {

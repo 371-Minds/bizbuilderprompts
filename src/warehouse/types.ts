@@ -1,4 +1,5 @@
 import type { CsuiteRole } from "../agents/types.js";
+import type { CommerceConfig } from "../commerce/types.js";
 
 export type WarehouseItemType =
   | "prompt"
@@ -25,6 +26,28 @@ export interface WarehouseItem {
   variables: string[];
   filePath: string;
   category?: string;
+
+  // ── Commerce / Customer-Facing Fields ──────────────────────────────────
+  /** Unique product identifier (SKU). Auto-generated if not set. */
+  productId?: string;
+  /**
+   * Manufacturer's Suggested Retail Price in USD cents.
+   * Examples: 99 = $0.99, 2900 = $29.00, 0 = free.
+   * Undefined = not for sale / internal use only.
+   */
+  msrp?: number;
+  /**
+   * Search keywords for customer-facing discovery.
+   * Distinct from `tags` — keywords are broader SEO/search terms;
+   * tags are internal categorization labels.
+   */
+  keywords?: string[];
+  /**
+   * Payment and commerce configuration.
+   * Supports x402 (HTTP 402 micropayments), Creem (fiat checkout),
+   * Polar (OSS monetization), and Mercury Bank (treasury).
+   */
+  commerce?: CommerceConfig;
 }
 
 export interface Bundle {
@@ -35,6 +58,16 @@ export interface Bundle {
   targetRoles: CsuiteRole[];
   itemIds: string[];
   createdAt: string;
+
+  // ── Commerce / Customer-Facing Fields ──────────────────────────────────
+  /** Unique product identifier for the bundle as a whole. */
+  productId?: string;
+  /** Bundle MSRP in USD cents (may differ from sum of individual item prices). */
+  msrp?: number;
+  /** Keywords for bundle discovery. */
+  keywords?: string[];
+  /** Commerce config for the bundle as a unit (e.g. one-click bundle purchase). */
+  commerce?: CommerceConfig;
 }
 
 export interface WarehouseCatalog {
@@ -43,3 +76,4 @@ export interface WarehouseCatalog {
   lastUpdated: string;
   totalCount: number;
 }
+
