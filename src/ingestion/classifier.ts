@@ -202,7 +202,7 @@ function isWorkflowContent(content: string, filename?: string): boolean {
 
   const hasStepSequence =
     /step\s+\d+\.\d+/i.test(content) ||
-    (/step\s+1/i.test(content) && /step\s+2/i.test(content));
+    (/step\s+1\b/i.test(content) && /step\s+2\b/i.test(content));
 
   const hasMasterPrompt =
     lower.includes("master prompt") || name.includes("master");

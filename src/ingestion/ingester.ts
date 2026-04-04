@@ -1,5 +1,6 @@
-import { writeFileSync, mkdirSync, existsSync, readdirSync, renameSync, readFileSync } from "fs";
+import { writeFileSync, mkdirSync, existsSync, readdirSync, renameSync, readFileSync, unlinkSync } from "fs";
 import { join, extname, basename, resolve } from "path";
+import { fileURLToPath } from "url";
 import { classify, CATEGORY_DEFINITIONS } from "./classifier.js";
 import type {
   IngestionInput,
@@ -8,7 +9,7 @@ import type {
   IngestOptions,
 } from "./types.js";
 
-const REPO_ROOT = resolve(new URL("../../", import.meta.url).pathname);
+const REPO_ROOT = resolve(fileURLToPath(new URL("../../", import.meta.url)));
 
 // Map category names to their directory paths relative to the repo root
 const CATEGORY_DIR_MAP: Record<string, string> = {
@@ -154,15 +155,30 @@ async function runCli(): Promise<void> {
     );
 
     if (result.saved && result.path) {
-      // Mark the original file as processed so it isn't re-ingested
+      // Mark the original file as processed so it isn't re-ingested.
+      // Choose a unique *.processed path to avoid collision on repeat runs.
+      let processedPath = `${srcPath}.processed`;
+      let suffix = 1;
+      while (existsSync(processedPath)) {
+        processedPath = `${srcPath}.${suffix}.processed`;
+        suffix++;
+      }
+      let markedAsProcessed = false;
       try {
-        renameSync(srcPath, `${srcPath}.processed`);
+        renameSync(srcPath, processedPath);
+        markedAsProcessed = true;
       } catch {
-        // Non-fatal: file was already classified and saved
+        // rename failed (e.g. cross-device) — try delete so the file isn't re-processed
+        try {
+          unlinkSync(srcPath);
+          markedAsProcessed = true;
+        } catch {
+          console.warn(`  ⚠ Could not mark ${file} as processed — it may be re-ingested next run`);
+        }
       }
       const pct = (result.confidence * 100).toFixed(0);
       console.log(`  ✓ ${file} → ${result.category}/ (confidence: ${pct}%)`);
-      console.log(`    Saved to: ${result.path}`);
+      console.log(`    Saved to: ${result.path}${markedAsProcessed ? "" : " [WARNING: source not marked]"}`);
       if (result.confidence < 0.5) {
         console.log(`    ⚠ Low confidence — please verify category manually`);
       }

@@ -1,16 +1,22 @@
 name: Manage and Classify Prompts
 
-# This workflow triggers when files are pushed to the 'incoming_prompts/' directory
+# This workflow triggers when files are pushed to the 'incoming_prompts/' directory.
+# It is skipped for bot-pushed commits (e.g. after the agent renames *.processed files)
+# and for *.processed files to avoid infinite retriggers.
 on:
   push:
     branches: [ "main" ]
     paths:
       - 'incoming_prompts/**'
+    paths-ignore:
+      - 'incoming_prompts/**/*.processed'
   workflow_dispatch:
 
 jobs:
   classify_and_organize:
     runs-on: ubuntu-latest
+    # Skip runs triggered by the bot's own push (e.g. renaming *.processed back)
+    if: github.actor != 'github-actions[bot]'
     permissions:
       # Give the workflow permission to commit and push changes back to the repo
       contents: write
