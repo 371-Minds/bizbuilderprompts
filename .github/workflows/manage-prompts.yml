@@ -22,25 +22,21 @@ jobs:
         # We need to fetch the full history to be able to push back
         fetch-depth: 0
 
-    - name: Checkout os repo scripts
-      uses: actions/checkout@v4
+    - name: Set up Bun
+      uses: oven-sh/setup-bun@v2
       with:
-        repository: 371-Minds/os
-        path: ./os-repo
-        sparse-checkout: |
-          371-os/scripts/
+        bun-version: latest
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.11'
+    - name: Install dependencies
+      run: bun install
+
+    - name: Build TypeScript
+      run: bun run build
 
     - name: Debug - List repository contents
       run: |
         echo "=== Repository root contents ==="
         ls -la
-        echo "=== OS repo contents ==="
-        find ./os-repo -name "*.py" -type f
         echo "=== Incoming prompts directory ==="
         if [ -d "incoming_prompts" ]; then
           ls -la incoming_prompts/
@@ -48,36 +44,17 @@ jobs:
           echo "incoming_prompts directory not found!"
         fi
 
-    - name: Copy and modify classifier script
+    - name: Run Prompt Ingestion Agent
       run: |
-        # Copy the classifier script to the root
-        cp ./os-repo/371-os/scripts/prompt_classifier.py ./prompt_classifier.py
-        
-        # Modify the script to use the correct directory name
-        sed -i 's/INCOMING_DIR = "incoming"/INCOMING_DIR = "incoming_prompts"/' prompt_classifier.py
-        
-        # Make it executable
-        chmod +x ./prompt_classifier.py
-        
-        echo "=== Modified classifier script ==="
-        head -20 prompt_classifier.py
-
-    - name: Run Prompt Classifier
-      run: |
-        echo "Running prompt classifier..."
-        python prompt_classifier.py
+        echo "Running TypeScript ingestion agent..."
+        bun run ingest
 
     - name: Debug - Check results
       run: |
-        echo "=== Repository contents after classification ==="
-        ls -la
-        echo "=== Category directories created ==="
-        for dir in sales marketing product customer_success business_strategy general; do
+        echo "=== Category directories after ingestion ==="
+        for dir in sales marketing video_prompts image_prompts projects promotion_prompts_examples business_strategy customer_success general; do
           if [ -d "$dir" ]; then
             echo "✅ $dir/ exists with $(ls -1 $dir | wc -l) files"
-            ls -la $dir/
-          else
-            echo "❌ $dir/ not found"
           fi
         done
 
@@ -101,14 +78,14 @@ jobs:
         echo "" >> $GITHUB_STEP_SUMMARY
         echo "### Processing completed for incoming prompts" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
-        
+
         # Count files in each category
-        for dir in sales marketing product customer_success business_strategy general; do
+        for dir in sales marketing video_prompts image_prompts projects promotion_prompts_examples business_strategy customer_success general; do
           if [ -d "$dir" ]; then
             count=$(ls -1 $dir 2>/dev/null | wc -l)
             echo "- **$dir**: $count files" >> $GITHUB_STEP_SUMMARY
           fi
         done
-        
+
         echo "" >> $GITHUB_STEP_SUMMARY
         echo "Check the repository for newly organized prompts in category folders." >> $GITHUB_STEP_SUMMARY

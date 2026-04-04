@@ -9,8 +9,10 @@
   },
   "scripts": {
     "build": "tsc",
-    "start": "node dist/index.js",
-    "typecheck": "tsc --noEmit"
+    "start": "bun dist/index.js",
+    "dev": "bun --watch src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "ingest": "bun src/ingestion/ingester.ts"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",
@@ -23,7 +25,8 @@
     "typescript": "^5.8.3"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=18",
+    "bun": ">=1.0"
   },
   "keywords": ["mcp", "ai", "prompts", "business", "claude"],
   "license": "MIT"

@@ -20,9 +20,11 @@ A curated library of **158+ business AI prompts, workflows, and templates** — 
 ### 1. Install & Build
 
 ```bash
-npm install
-npm run build
+bun install
+bun run build
 ```
+
+> **Requires:** [Bun](https://bun.sh) ≥ 1.0 (`curl -fsSL https://bun.sh/install | bash`). Node.js ≥ 18 is also supported for running the compiled output.
 
 ### 2. Connect to Claude Desktop
 
@@ -32,7 +34,7 @@ Add to your `claude_desktop_config.json`:
 {
   "mcpServers": {
     "bizbuilderprompts": {
-      "command": "node",
+      "command": "bun",
       "args": ["/absolute/path/to/bizbuilderprompts/dist/index.js"]
     }
   }
@@ -49,7 +51,7 @@ Use the same stdio transport. Point to `dist/index.js` as the command.
 
 ---
 
-## MCP Tools (10 tools)
+## MCP Tools (13 tools)
 
 | Tool | Description |
 |------|-------------|
@@ -63,6 +65,9 @@ Use the same stdio transport. Point to `dist/index.js` as the command.
 | `fill_template` | Fill `{{Variable}}` placeholders with your values |
 | `suggest_prompts` | Get prompt suggestions for a goal or task description |
 | `get_prompt_metadata` | Get metadata without full content |
+| `list_ingestion_categories` | Show the full taxonomy of ingestible categories |
+| `classify_prompt` | Dry-run: classify content without saving |
+| `ingest_prompt` | Classify and optionally save a prompt to the right category |
 
 ## MCP Prompts (6 named prompts)
 
@@ -135,12 +140,35 @@ project://bizbuilderprompts/{id}
 
 ---
 
+## Ingestion Agent
+
+Drop new prompts into `incoming_prompts/` and run:
+
+```bash
+bun run ingest
+```
+
+The agent will:
+1. Scan `incoming_prompts/` for `.md`, `.txt`, and `.json` files
+2. Classify each file using keyword scoring and framework detection
+3. Write it to the correct category directory
+4. Rename the source file to `*.processed` to prevent re-processing
+5. Warn when confidence is low so you can verify the category manually
+
+You can also classify without saving via the MCP tool `classify_prompt`, or save via `ingest_prompt` directly from any MCP client.
+
+**Detected framework patterns:** DSF (Discover/Space/Flow), RCRC, Kaizen, Alchemist, SYSTEM+USER, template variables (`{{Variable}}`), structured JSON.
+
+---
+
 ## Development
 
 ```bash
-npm run build      # Compile TypeScript → dist/
-npm run typecheck  # Type-check without emitting
-npm start          # Run the server (stdio transport)
+bun run build      # Compile TypeScript → dist/
+bun run typecheck  # Type-check without emitting
+bun start          # Run the compiled server (stdio transport)
+bun run dev        # Run directly from source with live-reload (no build needed)
+bun run ingest     # Run the ingestion agent on incoming_prompts/
 ```
 
 ## Architecture
@@ -151,9 +179,13 @@ src/
   server.ts         # McpServer setup
   manifest.ts       # File scanner + in-memory prompt index
   resources.ts      # MCP Resource handlers (URI-addressable files)
-  tools.ts          # MCP Tool handlers (10 callable functions)
+  tools.ts          # MCP Tool handlers (13 callable functions)
   prompts.ts        # MCP Prompt handlers (6 named templates)
   types.ts          # TypeScript interfaces
+  ingestion/
+    types.ts        # Ingestion type definitions
+    classifier.ts   # Keyword + framework classifier
+    ingester.ts     # Ingestion logic + CLI entry point
   utils/
     template.ts     # {{Variable}} extraction and substitution
     search.ts       # Fuse.js fuzzy search + keyword suggestion

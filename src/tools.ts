@@ -4,6 +4,7 @@ import type { Manifest, PromptEntry, WorkflowEntry } from "./types.js";
 import { getPromptContent } from "./manifest.js";
 import { searchPrompts, suggestPrompts } from "./utils/search.js";
 import { fillTemplate } from "./utils/template.js";
+import { classifyOnly, ingestPrompt, listIngestionCategories } from "./ingestion/ingester.js";
 
 export function registerTools(server: McpServer, manifest: Manifest): void {
   // ── Tool 1: list_categories ──────────────────────────────────────────────
@@ -499,6 +500,116 @@ export function registerTools(server: McpServer, manifest: Manifest): void {
           {
             type: "text" as const,
             text: JSON.stringify(summarizeEntry(entry), null, 2),
+          },
+        ],
+      };
+    }
+  );
+
+  // ── Tool 11: list_ingestion_categories ────────────────────────────────────
+  server.registerTool(
+    "list_ingestion_categories",
+    {
+      title: "List Ingestion Categories",
+      description:
+        "Returns the full category taxonomy with descriptions and example keywords. Use this to understand which category to target before calling classify_prompt or ingest_prompt.",
+    },
+    async () => {
+      const categories = listIngestionCategories();
+      return {
+        content: [
+          {
+            type: "text" as const,
+            text: JSON.stringify({ categories }, null, 2),
+          },
+        ],
+      };
+    }
+  );
+
+  // ── Tool 12: classify_prompt ──────────────────────────────────────────────
+  server.registerTool(
+    "classify_prompt",
+    {
+      title: "Classify Prompt",
+      description:
+        "Dry-run classification of prompt or framework content. Returns the suggested category, confidence score, detected framework pattern, template variables, and reasoning. No files are written.",
+      inputSchema: {
+        content: z.string().describe("The prompt or framework content to classify"),
+        filename: z
+          .string()
+          .optional()
+          .describe("Optional filename hint (e.g. 'my_sales_prompt.md')"),
+        title: z
+          .string()
+          .optional()
+          .describe("Optional title hint to improve classification accuracy"),
+        type: z
+          .enum(["prompt", "framework", "workflow"])
+          .optional()
+          .describe(
+            "Content type: 'prompt' for single prompts, 'framework' for reusable templates, 'workflow' for multi-step processes"
+          ),
+      },
+    },
+    async ({ content, filename, title, type }) => {
+      const result = classifyOnly({ content, filename, title, type });
+      return {
+        content: [
+          {
+            type: "text" as const,
+            text: JSON.stringify(result, null, 2),
+          },
+        ],
+      };
+    }
+  );
+
+  // ── Tool 13: ingest_prompt ────────────────────────────────────────────────
+  server.registerTool(
+    "ingest_prompt",
+    {
+      title: "Ingest Prompt",
+      description:
+        "Classifies and optionally saves a prompt or framework to the appropriate category directory. When save=true, the file is written to disk and will be available after the next server restart. Use classify_prompt first for a dry run.",
+      inputSchema: {
+        content: z.string().describe("The prompt or framework content to ingest"),
+        filename: z
+          .string()
+          .optional()
+          .describe("Desired filename (e.g. 'my_prompt.md'). Auto-generated if omitted."),
+        title: z
+          .string()
+          .optional()
+          .describe("Optional title to improve classification and filename generation"),
+        type: z
+          .enum(["prompt", "framework", "workflow"])
+          .optional()
+          .describe("Content type hint"),
+        save: z
+          .boolean()
+          .optional()
+          .describe(
+            "Whether to write the file to disk (default: false). Set true to persist."
+          ),
+        overwrite: z
+          .boolean()
+          .optional()
+          .describe(
+            "Whether to overwrite an existing file with the same name (default: false). When false, a numeric suffix is appended."
+          ),
+      },
+    },
+    async ({ content, filename, title, type, save, overwrite }) => {
+      const result = await ingestPrompt(
+        { content, filename, title, type },
+        { save: save ?? false, overwrite: overwrite ?? false }
+      );
+      return {
+        content: [
+          {
+            type: "text" as const,
+            text: JSON.stringify(result, null, 2),
           },
         ],
       };
