@@ -109,7 +109,7 @@ function extractKeyEntities(text: string): string[] {
 async function fetchUrl(url: string): Promise<string> {
   try {
     const resp = await fetch(url, {
-      headers: { "User-Agent": "BizBuilderPrompts/1.0 (+content-extractor)" },
+      headers: { "User-Agent": "BizBuilderPrompts/2.0 (+content-extractor)" },
       signal: AbortSignal.timeout(10000),
     });
     if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
@@ -121,20 +121,37 @@ async function fetchUrl(url: string): Promise<string> {
 }
 
 function stripHtml(html: string): string {
-  // Remove scripts, styles, and comments
-  let text = html
-    .replace(/<script[\s\S]*?<\/script>/gi, "")
-    .replace(/<style[\s\S]*?<\/style>/gi, "")
-    .replace(/<!--[\s\S]*?-->/g, "")
-    .replace(/<[^>]+>/g, " ")
-    .replace(/&nbsp;/g, " ")
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/\s{3,}/g, "\n\n")
-    .trim();
+  // Strip script and style blocks with whitespace-tolerant end-tag patterns
+  // Uses a two-step approach: remove opening-tag-to-end-tag blocks, then strip remaining tags
+  let text = html;
+
+  // Step 1: remove script/style blocks. The end-tag regex allows optional whitespace
+  // between the tag name and ">", e.g. </script > or </SCRIPT>
+  text = text.replace(/<script\b[\s\S]*?<\/script\s*>/gi, "");
+  text = text.replace(/<style\b[\s\S]*?<\/style\s*>/gi, "");
+
+  // Step 2: remove HTML comments (strip <!-- ... --> sequences)
+  // Repeated to handle nested or back-to-back comment markers
+  let prev = "";
+  while (prev !== text) {
+    prev = text;
+    text = text.replace(/<!--[\s\S]*?-->/g, "");
+  }
+
+  // Step 3: strip remaining tags
+  text = text.replace(/<[^>]*>/g, " ");
+
+  // Step 4: decode a safe subset of HTML entities in a single pass to avoid double-unescaping.
+  // We decode &amp; LAST so that entities like &amp;lt; are not decoded to < in two passes.
+  text = text
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&lt;/gi, "\u003C")   // U+003C <
+    .replace(/&gt;/gi, "\u003E")   // U+003E >
+    .replace(/&quot;/gi, "\u0022") // U+0022 "
+    .replace(/&#39;/gi, "\u0027")  // U+0027 '
+    .replace(/&amp;/gi, "\u0026"); // U+0026 & — decoded last to prevent double-unescaping
+
+  text = text.replace(/\s{3,}/g, "\n\n").trim();
 
   // Limit to first 5000 chars for efficiency
   return text.slice(0, 5000);
