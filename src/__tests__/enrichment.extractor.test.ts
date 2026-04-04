@@ -188,15 +188,16 @@ describe("enrichInput — transcript type", () => {
   });
 });
 
-// ── URL type (mocked to avoid real network) ───────────────────────────────────
+// ── URL type (no real network — verify error is thrown for unreachable host) ──
 
 describe("enrichInput — url type", () => {
-  it("throws an error for an unreachable URL", async () => {
+  it("throws a meaningful error for an unreachable URL", async () => {
+    // Use a local port that is almost certainly not listening to avoid real network
     await expect(
       enrichInput({
         type: "url",
-        payload: "http://localhost:19999/nonexistent",
+        payload: "http://localhost:19999/nonexistent-path",
       })
-    ).rejects.toThrow();
+    ).rejects.toThrow(Error);
   });
 });

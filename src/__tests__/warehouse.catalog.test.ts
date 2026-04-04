@@ -1,4 +1,7 @@
-import { describe, it, expect, beforeEach } from "vitest";
+import { describe, it, expect, beforeEach, beforeAll, afterAll } from "vitest";
+import { readFileSync, writeFileSync, existsSync } from "fs";
+import { join } from "path";
+import { fileURLToPath } from "url";
 import {
   generateProductId,
   searchWarehouse,
@@ -8,8 +11,36 @@ import {
   addBundle,
   getBundle,
   listBundles,
+  WAREHOUSE_DIR,
 } from "../warehouse/catalog.js";
 import type { WarehouseItem, Bundle } from "../warehouse/types.js";
+
+// ── Catalog isolation: save and restore warehouse/index.json around all tests ─
+
+const CATALOG_PATH = join(WAREHOUSE_DIR, "index.json");
+
+let originalCatalogContent: string | null = null;
+
+beforeAll(() => {
+  originalCatalogContent = existsSync(CATALOG_PATH)
+    ? readFileSync(CATALOG_PATH, "utf-8")
+    : null;
+});
+
+afterAll(() => {
+  if (originalCatalogContent !== null) {
+    writeFileSync(CATALOG_PATH, originalCatalogContent, "utf-8");
+  } else if (existsSync(CATALOG_PATH)) {
+    // Restore to empty catalog if it didn't exist before
+    writeFileSync(
+      CATALOG_PATH,
+      JSON.stringify({ items: [], bundles: [], lastUpdated: new Date().toISOString(), totalCount: 0 }, null, 2),
+      "utf-8"
+    );
+  }
+  // Force the in-memory cache to reload from restored file on next access
+  buildWarehouseCatalog();
+});
 
 // ── generateProductId ─────────────────────────────────────────────────────────
 
