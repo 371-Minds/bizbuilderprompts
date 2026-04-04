@@ -5,8 +5,37 @@ import { getPromptContent } from "./manifest.js";
 import { searchPrompts, suggestPrompts } from "./utils/search.js";
 import { fillTemplate } from "./utils/template.js";
 import { classifyOnly, ingestPrompt, listIngestionCategories } from "./ingestion/ingester.js";
+import type { WarehouseCatalog } from "./warehouse/types.js";
+import type { AgentRegistry } from "./agents/types.js";
+import {
+  searchWarehouse,
+  getWarehouseItemById,
+  getWarehouseItemContent,
+  getBundle,
+  listBundles,
+  buildWarehouseCatalog,
+  updateWarehouseItem,
+  generateProductId,
+} from "./warehouse/catalog.js";
+import { listAgents, getAgentPersona, registerAgent } from "./agents/registry.js";
+import { dispatch } from "./factory/generator.js";
+import { createBundle } from "./factory/bundle_creator.js";
+import { enrichInput } from "./enrichment/extractor.js";
+import { fulfillOrder } from "./orders/fulfiller.js";
+import { getOrder, listOrders } from "./orders/manager.js";
+import {
+  buildStorefrontCard,
+  formatMsrp,
+  formatX402Price,
+  validateCommerceConfig,
+} from "./commerce/config.js";
 
-export function registerTools(server: McpServer, manifest: Manifest): void {
+export function registerTools(
+  server: McpServer,
+  manifest: Manifest,
+  catalog: WarehouseCatalog,
+  registry: AgentRegistry
+): void {
   // ── Tool 1: list_categories ──────────────────────────────────────────────
   server.registerTool(
     "list_categories",
@@ -610,6 +639,926 @@ export function registerTools(server: McpServer, manifest: Manifest): void {
           {
             type: "text" as const,
             text: JSON.stringify(result, null, 2),
+          },
+        ],
+      };
+    }
+  );
+
+  // ── Tool 14: browse_warehouse ─────────────────────────────────────────────
+  server.registerTool(
+    "browse_warehouse",
+    {
+      title: "Browse Warehouse",
+      description:
+        "Browse the asset warehouse. Filter by role, category, or status to find relevant assets. The warehouse contains commissioned prompts, workflows, image specs, agent configs, and bundles.",
+      inputSchema: {
+        role: z
+          .enum(["ceo", "cmo", "cfo", "cto", "vp_sales", "vp_product", "legal_counsel", "head_of_ops"])
+          .optional()
+          .describe("Filter assets relevant to a specific C-Suite role"),
+        category: z
+          .string()
+          .optional()
+          .describe("Filter by category or asset type (prompt, workflow, image-spec, agent-config, bundle)"),
+        status: z
+          .enum(["draft", "ready", "featured"])
+          .optional()
+          .describe("Filter by asset status (default: all statuses)"),
+        query: z
+          .string()
+          .optional()
+          .describe("Optional text search query"),
+      },
+    },
+    async ({ role, category, status, query }) => {
+      // Refresh catalog to pick up any new items
+      const freshCatalog = buildWarehouseCatalog(manifest);
+      const items = searchWarehouse(query, role, category, status);
+      const bundles = freshCatalog.bundles.filter((b) => {
+        if (role && !b.targetRoles.includes(role)) return false;
+        return true;
+      });
+      return {
+        content: [
+          {
+            type: "text" as const,
+            text: JSON.stringify(
+              {
+                totalItems: items.length,
+                totalBundles: bundles.length,
+                items: items.map((i) => ({
+                  id: i.id,
+                  type: i.type,
+                  title: i.title,
+                  description: i.description,
+                  targetRoles: i.targetRoles,
+                  useCase: i.useCase,
+                  status: i.status,
+                  tags: i.tags,
+                  keywords: i.keywords ?? [],
+                  variables: i.variables,
+                  category: i.category,
+                  commissionedAt: i.commissionedAt,
+                  productId: i.productId ?? null,
+                  msrp: i.msrp ?? null,
+                  msrpDisplay: i.msrp !== undefined ? formatMsrp(i.msrp) : null,
+                  isForSale: !!(i.commerce?.x402?.enabled || i.commerce?.creem || i.commerce?.polar),
+                })),
+                bundles: bundles.map((b) => ({
+                  id: b.id,
+                  title: b.title,
+                  description: b.description,
+                  theme: b.theme,
+                  targetRoles: b.targetRoles,
+                  itemCount: b.itemIds.length,
+                  createdAt: b.createdAt,
+                })),
+              },
+              null,
+              2
+            ),
+          },
+        ],
+      };
+    }
+  );
+
+  // ── Tool 15: get_warehouse_item ───────────────────────────────────────────
+  server.registerTool(
+    "get_warehouse_item",
+    {
+      title: "Get Warehouse Item",
+      description:
+        "Retrieves the full content of a specific warehouse asset by its ID. Use browse_warehouse to find IDs.",
+      inputSchema: {
+        id: z.string().describe("The warehouse item ID"),
+      },
+    },
+    async ({ id }) => {
+      const item = getWarehouseItemById(id);
+      if (!item) {
+        return {
+          content: [{ type: "text" as const, text: `Warehouse item not found: "${id}". Use browse_warehouse to find valid IDs.` }],
+          isError: true,
+        };
+      }
+      const content = getWarehouseItemContent(item);
+      return {
+        content: [
+          {
+            type: "text" as const,
+            text: JSON.stringify({ metadata: item, content }, null, 2),
+          },
+        ],
+      };
+    }
+  );
+
+  // ── Tool 16: get_bundle ───────────────────────────────────────────────────
+  server.registerTool(
+    "get_bundle",
+    {
+      title: "Get Bundle",
+      description:
+        "Returns all assets in a named warehouse bundle, including both warehouse items and library prompts.",
+      inputSchema: {
+        id: z.string().describe("The bundle ID (from browse_warehouse or commission_bundle)"),
+      },
+    },
+    async ({ id }) => {
+      const bundle = getBundle(id);
+      if (!bundle) {
+        const allBundles = listBundles();
+        return {
+          content: [
+            {
+              type: "text" as const,
+              text: `Bundle not found: "${id}". Available bundles: ${allBundles.map((b) => b.id).join(", ") || "none yet"}`,
+            },
+          ],
+          isError: true,
+        };
+      }
+
+      const warehouseItems = bundle.itemIds
+        .map((itemId) => getWarehouseItemById(itemId))
+        .filter(Boolean);
+
+      const manifestItems = bundle.itemIds
+        .map((itemId) => manifest.prompts.find((p) => p.id === itemId))
+        .filter(Boolean);
+
+      return {
+        content: [
+          {
+            type: "text" as const,
+            text: JSON.stringify(
+              {
+                bundle,
+                warehouseItems: warehouseItems.map((i) => ({
+                  id: i!.id,
+                  type: i!.type,
+                  title: i!.title,
+                  description: i!.description,
+                  filePath: i!.filePath,
+                })),
+                libraryItems: manifestItems.map((p) => summarizeEntry(p!)),
+              },
+              null,
+              2
+            ),
+          },
+        ],
+      };
+    }
+  );
+
+  // ── Tool 17: list_agents ──────────────────────────────────────────────────
+  server.registerTool(
+    "list_agents",
+    {
+      title: "List C-Suite Agents",
+      description:
+        "Lists all registered C-Suite agent personas with their roles, preferences, and default workflows.",
+    },
+    async () => {
+      const agents = listAgents();
+      return {
+        content: [
+          {
+            type: "text" as const,
+            text: JSON.stringify(
+              {
+                count: agents.length,
+                agents: agents.map((a) => ({
+                  role: a.role,
+                  displayName: a.displayName,
+                  description: a.description,
+                  preferredCategories: a.preferredCategories,
+                  defaultWorkflows: a.defaultWorkflows,
+                  toolPermissions: a.toolPermissions,
+                  orderingPatternCount: a.orderingPatterns.length,
+                  exampleOrders: a.orderingPatterns.slice(0, 2),
+                })),
+              },
+              null,
+              2
+            ),
+          },
+        ],
+      };
+    }
+  );
+
+  // ── Tool 18: get_agent ────────────────────────────────────────────────────
+  server.registerTool(
+    "get_agent",
+    {
+      title: "Get Agent Persona",
+      description:
+        "Returns the full persona definition for a C-Suite agent role, including system prompt and ordering patterns.",
+      inputSchema: {
+        role: z
+          .enum(["ceo", "cmo", "cfo", "cto", "vp_sales", "vp_product", "legal_counsel", "head_of_ops"])
+          .describe("The agent role to retrieve"),
+      },
+    },
+    async ({ role }) => {
+      const persona = getAgentPersona(role);
+      if (!persona) {
+        return {
+          content: [{ type: "text" as const, text: `Agent not found: "${role}". Use list_agents to see available roles.` }],
+          isError: true,
+        };
+      }
+      return {
+        content: [
+          {
+            type: "text" as const,
+            text: JSON.stringify(persona, null, 2),
+          },
+        ],
+      };
+    }
+  );
+
+  // ── Tool 19: register_agent ───────────────────────────────────────────────
+  server.registerTool(
+    "register_agent",
+    {
+      title: "Register Custom Agent",
+      description:
+        "Creates a new custom agent persona file in the agents/ directory. Use this to define specialized sub-agents beyond the default C-Suite roles.",
+      inputSchema: {
+        role: z.string().describe("Unique role identifier (e.g. 'growth_hacker', 'data_scientist')"),
+        displayName: z.string().describe("Human-readable name (e.g. 'Growth Hacker')"),
+        description: z.string().describe("One-line description of the agent's mandate"),
+        systemPrompt: z.string().describe("The agent's system prompt — their operating instructions"),
+        preferredCategories: z
+          .array(z.string())
+          .optional()
+          .describe("Categories this agent prefers (marketing, sales, workflow, etc.)"),
+        defaultWorkflows: z
+          .array(z.string())
+          .optional()
+          .describe("Workflow IDs this agent uses by default"),
+        orderingPatterns: z
+          .array(z.string())
+          .optional()
+          .describe("Example natural-language order patterns for this agent"),
+      },
+    },
+    async ({ role, displayName, description, systemPrompt, preferredCategories, defaultWorkflows, orderingPatterns }) => {
+      const filePath = registerAgent({
+        role: role as import("./agents/types.js").CsuiteRole,
+        displayName,
+        description,
+        systemPrompt,
+        preferredCategories: preferredCategories ?? [],
+        defaultWorkflows: defaultWorkflows ?? [],
+        toolPermissions: [],
+        orderingPatterns: orderingPatterns ?? [],
+      });
+      return {
+        content: [
+          {
+            type: "text" as const,
+            text: JSON.stringify({ success: true, role, filePath, message: `Agent "${displayName}" registered at ${filePath}` }, null, 2),
+          },
+        ],
+      };
+    }
+  );
+
+  // ── Tool 20: commission_prompt ────────────────────────────────────────────
+  server.registerTool(
+    "commission_prompt",
+    {
+      title: "Commission Prompt",
+      description:
+        "Generates a new structured prompt asset using the Asset Factory. Produces a polished prompt with {{Variables}}, output format, and role-specific framing. Optionally saves to the warehouse.",
+      inputSchema: {
+        topic: z.string().describe("The prompt topic or title (e.g. 'B2B Sales Outreach Strategy')"),
+        goal: z.string().describe("What the prompt should help achieve (e.g. 'Generate personalized cold email sequences')"),
+        audience: z
+          .string()
+          .optional()
+          .describe("Who will use this prompt (e.g. 'VP of Sales', 'startup founders')"),
+        style: z
+          .string()
+          .optional()
+          .describe("Tone and style (e.g. 'concise and direct', 'conversational and friendly')"),
+        framework: z
+          .enum(["dsf", "rcrc", "kaizen", "alchemist", "custom"])
+          .optional()
+          .describe("Optional framework to apply to structure the prompt"),
+        context: z
+          .string()
+          .optional()
+          .describe("Additional context or constraints for the prompt"),
+        requested_by: z
+          .enum(["ceo", "cmo", "cfo", "cto", "vp_sales", "vp_product", "legal_counsel", "head_of_ops"])
+          .optional()
+          .describe("The C-Suite role commissioning this prompt"),
+        save: z
+          .boolean()
+          .optional()
+          .describe("Whether to save the prompt to the warehouse (default: false)"),
+        product_id: z
+          .string()
+          .optional()
+          .describe("Optional product SKU — auto-generated if omitted"),
+        msrp: z
+          .number()
+          .optional()
+          .describe("Optional retail price in USD cents (e.g. 99 = $0.99). Set to 0 for free."),
+        keywords: z
+          .array(z.string())
+          .optional()
+          .describe("Optional customer-facing search keywords"),
+      },
+    },
+    async ({ topic, goal, audience, style, framework, context, requested_by, save, product_id, msrp, keywords }) => {
+      const result = await dispatch({
+        requestedBy: requested_by,
+        assetSpec: { type: "prompt", topic, goal, audience, style, framework, context },
+        save: save ?? false,
+      });
+
+      // Apply commerce fields to the saved item if provided
+      if (result.saved && result.warehouseId && (product_id !== undefined || msrp !== undefined || keywords !== undefined)) {
+        const resolvedProductId = product_id ?? generateProductId("prompt", topic);
+        updateWarehouseItem(result.warehouseId, {
+          productId: resolvedProductId,
+          ...(msrp !== undefined ? { msrp } : {}),
+          ...(keywords !== undefined ? { keywords } : {}),
+        });
+      }
+
+      return {
+        content: [
+          {
+            type: "text" as const,
+            text: JSON.stringify(
+              {
+                topic,
+                goal,
+                saved: result.saved,
+                warehouseId: result.warehouseId,
+                filePath: result.filePath,
+                estimatedQuality: result.draft.estimatedQuality,
+                variables: result.draft.variables,
+                suggestedFilename: result.draft.suggestedFilename,
+                content: result.draft.content,
+                ...(msrp !== undefined ? { msrp, msrpDisplay: formatMsrp(msrp) } : {}),
+              },
+              null,
+              2
+            ),
+          },
+        ],
+      };
+    }
+  );
+
+  // ── Tool 21: commission_workflow ──────────────────────────────────────────
+  server.registerTool(
+    "commission_workflow",
+    {
+      title: "Commission Workflow",
+      description:
+        "Generates a complete multi-step workflow using the Asset Factory. Creates a master prompt and all step files using the chosen framework (DSF, RCRC, Kaizen, Alchemist). Optionally saves to the warehouse.",
+      inputSchema: {
+        topic: z.string().describe("The workflow topic (e.g. 'Enterprise SaaS Sales Process')"),
+        goal: z.string().describe("What the workflow achieves (e.g. 'Take a prospect from cold contact to signed contract')"),
+        framework: z
+          .enum(["dsf", "rcrc", "kaizen", "alchemist", "custom"])
+          .optional()
+          .describe("Framework to use (auto-detected from goal if not specified)"),
+        steps: z
+          .array(z.string())
+          .optional()
+          .describe("Custom step titles (auto-generated from framework if not provided)"),
+        audience: z
+          .string()
+          .optional()
+          .describe("Who will run this workflow"),
+        context: z
+          .string()
+          .optional()
+          .describe("Business context or constraints"),
+        requested_by: z
+          .enum(["ceo", "cmo", "cfo", "cto", "vp_sales", "vp_product", "legal_counsel", "head_of_ops"])
+          .optional()
+          .describe("The C-Suite role commissioning this workflow"),
+        save: z
+          .boolean()
+          .optional()
+          .describe("Whether to save the workflow to the warehouse (default: false)"),
+        product_id: z
+          .string()
+          .optional()
+          .describe("Optional product SKU — auto-generated if omitted"),
+        msrp: z
+          .number()
+          .optional()
+          .describe("Optional retail price in USD cents (e.g. 2900 = $29.00). Set to 0 for free."),
+        keywords: z
+          .array(z.string())
+          .optional()
+          .describe("Optional customer-facing search keywords"),
+      },
+    },
+    async ({ topic, goal, framework, steps, audience, context, requested_by, save, product_id, msrp, keywords }) => {
+      const result = await dispatch({
+        requestedBy: requested_by,
+        assetSpec: { type: "workflow", topic, goal, audience, framework, steps, context },
+        save: save ?? false,
+      });
+
+      // Apply commerce fields to the saved item if provided
+      if (result.saved && result.warehouseId && (product_id !== undefined || msrp !== undefined || keywords !== undefined)) {
+        const resolvedProductId = product_id ?? generateProductId("workflow", topic);
+        updateWarehouseItem(result.warehouseId, {
+          productId: resolvedProductId,
+          ...(msrp !== undefined ? { msrp } : {}),
+          ...(keywords !== undefined ? { keywords } : {}),
+        });
+      }
+
+      return {
+        content: [
+          {
+            type: "text" as const,
+            text: JSON.stringify(
+              {
+                topic,
+                goal,
+                saved: result.saved,
+                warehouseId: result.warehouseId,
+                filePath: result.filePath,
+                stepCount: result.additionalFiles ? result.additionalFiles.length + 1 : result.draft.variables.length,
+                estimatedQuality: result.draft.estimatedQuality,
+                content: result.draft.content.slice(0, 2000) + (result.draft.content.length > 2000 ? "\n\n...[truncated — use get_warehouse_item to see full content]" : ""),
+                ...(msrp !== undefined ? { msrp, msrpDisplay: formatMsrp(msrp) } : {}),
+              },
+              null,
+              2
+            ),
+          },
+        ],
+      };
+    }
+  );
+
+  // ── Tool 22: commission_bundle ────────────────────────────────────────────
+  server.registerTool(
+    "commission_bundle",
+    {
+      title: "Commission Bundle",
+      description:
+        "Creates a coordinated asset bundle for a theme and set of C-Suite roles. Searches existing warehouse + library for relevant assets, identifies gaps, and packages everything into a named bundle.",
+      inputSchema: {
+        theme: z.string().describe("The bundle theme (e.g. 'SaaS Product Launch', 'Enterprise Sales Playbook')"),
+        goal: z.string().describe("What this bundle helps achieve"),
+        roles: z
+          .array(z.enum(["ceo", "cmo", "cfo", "cto", "vp_sales", "vp_product", "legal_counsel", "head_of_ops"]))
+          .describe("Which C-Suite roles this bundle serves"),
+        context: z
+          .string()
+          .optional()
+          .describe("Additional context about the business or situation"),
+      },
+    },
+    async ({ theme, goal, roles, context }) => {
+      const result = createBundle({ theme, goal, roles, context }, manifest);
+      return {
+        content: [
+          {
+            type: "text" as const,
+            text: JSON.stringify(
+              {
+                bundleId: result.bundle.id,
+                title: result.bundle.title,
+                theme,
+                goal,
+                targetRoles: roles,
+                totalAssets: result.bundle.itemIds.length,
+                warehouseItemsFound: result.foundItems.length,
+                libraryAssetsFound: result.manifestMatches.length,
+                gaps: result.gaps,
+                nextSteps:
+                  result.gaps.length > 0
+                    ? result.gaps.map((g) => `Use commission_prompt or commission_workflow to create: ${g}`)
+                    : ["Bundle is fully covered — use get_bundle to access all assets"],
+                bundleManifest: result.draft.content,
+              },
+              null,
+              2
+            ),
+          },
+        ],
+      };
+    }
+  );
+
+  // ── Tool 23: enrich_input ─────────────────────────────────────────────────
+  server.registerTool(
+    "enrich_input",
+    {
+      title: "Enrich Input",
+      description:
+        "Accepts raw input of any type (URL, text, transcript, or file content) and extracts structured information: title, topics, key entities, and suggested asset types to generate.",
+      inputSchema: {
+        type: z
+          .enum(["url", "file", "text", "transcript"])
+          .describe("Type of input being provided"),
+        payload: z
+          .string()
+          .describe("The raw content — URL string, plain text, transcript, or file content"),
+        context: z
+          .string()
+          .optional()
+          .describe("Optional additional context about what you want to do with this input"),
+      },
+    },
+    async ({ type, payload, context }) => {
+      const result = await enrichInput({ type, payload, context });
+      return {
+        content: [
+          {
+            type: "text" as const,
+            text: JSON.stringify(result, null, 2),
+          },
+        ],
+      };
+    }
+  );
+
+  // ── Tool 24: create_order ─────────────────────────────────────────────────
+  server.registerTool(
+    "create_order",
+    {
+      title: "Create Order",
+      description:
+        "C-Suite agents use this to order assets from the warehouse. Provide your role, intent, and urgency. The system searches existing assets and identifies gaps that need to be commissioned.",
+      inputSchema: {
+        role: z
+          .enum(["ceo", "cmo", "cfo", "cto", "vp_sales", "vp_product", "legal_counsel", "head_of_ops"])
+          .describe("Your C-Suite role"),
+        intent: z
+          .string()
+          .describe("What you need — describe your goal or request in natural language (e.g. 'I need a complete go-to-market launch bundle for a SaaS product targeting enterprise')"),
+        urgency: z
+          .enum(["low", "normal", "high"])
+          .optional()
+          .describe("Order urgency (default: normal)"),
+      },
+    },
+    async ({ role, intent, urgency }) => {
+      const fulfillment = await fulfillOrder(role, intent, manifest, urgency);
+      return {
+        content: [
+          {
+            type: "text" as const,
+            text: JSON.stringify(fulfillment, null, 2),
+          },
+        ],
+      };
+    }
+  );
+
+  // ── Tool 25: get_order ────────────────────────────────────────────────────
+  server.registerTool(
+    "get_order",
+    {
+      title: "Get Order",
+      description:
+        "Retrieve the status and details of a specific order by its ID.",
+      inputSchema: {
+        order_id: z.string().describe("The order ID returned from create_order"),
+      },
+    },
+    async ({ order_id }) => {
+      const order = getOrder(order_id);
+      if (!order) {
+        return {
+          content: [{ type: "text" as const, text: `Order not found: "${order_id}". Use list_orders to see your orders.` }],
+          isError: true,
+        };
+      }
+      return {
+        content: [{ type: "text" as const, text: JSON.stringify(order, null, 2) }],
+      };
+    }
+  );
+
+  // ── Tool 26: list_orders ──────────────────────────────────────────────────
+  server.registerTool(
+    "list_orders",
+    {
+      title: "List Orders",
+      description:
+        "Lists all orders, optionally filtered by C-Suite role.",
+      inputSchema: {
+        role: z
+          .enum(["ceo", "cmo", "cfo", "cto", "vp_sales", "vp_product", "legal_counsel", "head_of_ops"])
+          .optional()
+          .describe("Filter orders by role"),
+      },
+    },
+    async ({ role }) => {
+      const orders = listOrders(role);
+      return {
+        content: [
+          {
+            type: "text" as const,
+            text: JSON.stringify({ count: orders.length, orders }, null, 2),
+          },
+        ],
+      };
+    }
+  );
+
+  // ── Tool 27: set_item_pricing ─────────────────────────────────────────────
+  server.registerTool(
+    "set_item_pricing",
+    {
+      title: "Set Item Pricing & Commerce Config",
+      description:
+        "Configure pricing, product ID, keywords, and payment options (x402, Creem, Polar, Mercury) for any warehouse item. Makes the item customer-facing.",
+      inputSchema: {
+        id: z.string().describe("The warehouse item ID to configure"),
+        product_id: z
+          .string()
+          .optional()
+          .describe("Unique product SKU (auto-generated if omitted)"),
+        msrp: z
+          .number()
+          .optional()
+          .describe("MSRP in USD cents (e.g. 99 = $0.99, 2900 = $29.00, 0 = free)"),
+        keywords: z
+          .array(z.string())
+          .optional()
+          .describe("Search keywords for customer-facing discovery (broader than tags)"),
+        x402: z
+          .object({
+            enabled: z.boolean().describe("Whether to gate this item behind an x402 paywall"),
+            price: z.number().describe("Price in smallest token units (e.g. 1000000 = 1 USDC)"),
+            asset: z.string().describe("Payment asset symbol or contract address (e.g. 'USDC', 'ETH')"),
+            network: z
+              .enum(["base", "base-sepolia", "ethereum", "polygon", "solana", "optimism", "arbitrum"])
+              .describe("Blockchain network for settlement"),
+            pay_to: z.string().describe("Wallet address to receive payment"),
+            payment_type: z
+              .enum(["per-access", "per-request", "one-time", "subscription"])
+              .optional()
+              .describe("Payment model (default: per-access)"),
+            facilitator_url: z
+              .string()
+              .optional()
+              .describe("Optional facilitator URL (defaults to Coinbase x402 facilitator)"),
+            payment_description: z
+              .string()
+              .optional()
+              .describe("Human-readable description shown in the 402 response"),
+          })
+          .optional()
+          .describe("x402 HTTP payment protocol configuration for agentic/API access"),
+        creem: z
+          .object({
+            product_id: z.string().describe("Creem product ID from the Creem dashboard"),
+            price_usd_cents: z.number().describe("Price in USD cents"),
+            checkout_url: z.string().optional().describe("Creem checkout URL"),
+            checkout_type: z
+              .enum(["one_time", "recurring", "usage_based"])
+              .optional()
+              .describe("Checkout type (default: one_time)"),
+            webhook_path: z.string().optional().describe("Webhook path for purchase notifications"),
+            auto_fulfill: z.boolean().optional().describe("Auto-deliver on purchase webhook"),
+          })
+          .optional()
+          .describe("Creem.io fiat checkout configuration"),
+        polar: z
+          .object({
+            organization_slug: z.string().describe("Polar organization slug (e.g. '371-minds')"),
+            product_id: z.string().describe("Polar product ID"),
+            price_usd_cents: z.number().optional().describe("Price in USD cents (omit if free)"),
+            is_free: z.boolean().optional().describe("Whether this is a free/open-access tier"),
+            checkout_url: z.string().optional().describe("Polar checkout URL"),
+            benefit_type: z
+              .enum(["file_download", "license_keys", "custom", "discord_roles"])
+              .optional()
+              .describe("Type of benefit the buyer receives (default: file_download)"),
+            webhook_path: z.string().optional().describe("Webhook path for purchase notifications"),
+          })
+          .optional()
+          .describe("Polar.sh OSS monetization configuration"),
+        mercury: z
+          .object({
+            api_key_env_var: z
+              .string()
+              .describe("Name of the environment variable holding the Mercury API key (e.g. 'MERCURY_API_KEY')"),
+            account_id: z.string().optional().describe("Mercury account ID"),
+            account_label: z.string().optional().describe("Human-readable account label"),
+          })
+          .optional()
+          .describe("Mercury Bank treasury routing configuration"),
+      },
+    },
+    async ({ id, product_id, msrp, keywords, x402, creem, polar, mercury }) => {
+      const item = getWarehouseItemById(id);
+      if (!item) {
+        return {
+          content: [{ type: "text" as const, text: `Warehouse item not found: "${id}". Use browse_warehouse to find valid IDs.` }],
+          isError: true,
+        };
+      }
+
+      // Build commerce config from inputs
+      const commerce: import("./warehouse/types.js").WarehouseItem["commerce"] = { ...item.commerce };
+
+      if (x402) {
+        commerce.x402 = {
+          enabled: x402.enabled,
+          price: x402.price,
+          asset: x402.asset,
+          network: x402.network,
+          payTo: x402.pay_to,
+          paymentType: x402.payment_type ?? "per-access",
+          facilitatorUrl: x402.facilitator_url,
+          paymentDescription: x402.payment_description,
+        };
+      }
+
+      if (creem) {
+        commerce.creem = {
+          apiKeyEnvVar: "CREEM_API_KEY",
+          productId: creem.product_id,
+          priceUsdCents: creem.price_usd_cents,
+          checkoutUrl: creem.checkout_url,
+          checkoutType: creem.checkout_type ?? "one_time",
+          webhookPath: creem.webhook_path,
+          autoFulfill: creem.auto_fulfill,
+        };
+      }
+
+      if (polar) {
+        commerce.polar = {
+          apiKeyEnvVar: "POLAR_API_KEY",
+          organizationSlug: polar.organization_slug,
+          productId: polar.product_id,
+          priceUsdCents: polar.price_usd_cents ?? 0,
+          isFree: polar.is_free,
+          checkoutUrl: polar.checkout_url,
+          benefitType: polar.benefit_type ?? "file_download",
+          webhookPath: polar.webhook_path,
+        };
+      }
+
+      if (mercury) {
+        commerce.mercury = {
+          apiKeyEnvVar: mercury.api_key_env_var,
+          accountId: mercury.account_id,
+          accountLabel: mercury.account_label,
+        };
+      }
+
+      // Validate commerce config
+      const errors = validateCommerceConfig(commerce);
+      if (errors.length > 0) {
+        return {
+          content: [{ type: "text" as const, text: JSON.stringify({ success: false, errors }, null, 2) }],
+          isError: true,
+        };
+      }
+
+      // Generate product ID if not provided
+      const resolvedProductId =
+        product_id ?? item.productId ?? generateProductId(item.type, item.title);
+
+      const updates: Partial<import("./warehouse/types.js").WarehouseItem> = {
+        productId: resolvedProductId,
+        commerce: Object.keys(commerce).length > 0 ? commerce : undefined,
+      };
+      if (msrp !== undefined) updates.msrp = msrp;
+      if (keywords !== undefined) updates.keywords = keywords;
+
+      const updated = updateWarehouseItem(id, updates);
+
+      if (!updated) {
+        return {
+          content: [{ type: "text" as const, text: `Failed to update item "${id}".` }],
+          isError: true,
+        };
+      }
+
+      const freshItem = getWarehouseItemById(id)!;
+      const storefrontCard = buildStorefrontCard({
+        ...freshItem,
+        productId: freshItem.productId,
+        msrp: freshItem.msrp,
+        keywords: freshItem.keywords,
+        commerce: freshItem.commerce,
+      });
+
+      return {
+        content: [
+          {
+            type: "text" as const,
+            text: JSON.stringify(
+              {
+                success: true,
+                id,
+                productId: resolvedProductId,
+                msrp: freshItem.msrp,
+                msrpDisplay: freshItem.msrp !== undefined ? formatMsrp(freshItem.msrp) : null,
+                keywords: freshItem.keywords ?? [],
+                commerceEnabled: storefrontCard["commerceEnabled"],
+                paymentOptions: storefrontCard["paymentOptions"],
+                storefrontCard,
+              },
+              null,
+              2
+            ),
+          },
+        ],
+      };
+    }
+  );
+
+  // ── Tool 28: get_item_pricing ─────────────────────────────────────────────
+  server.registerTool(
+    "get_item_pricing",
+    {
+      title: "Get Item Pricing & Commerce Config",
+      description:
+        "Retrieve the full pricing, product ID, keywords, and payment configuration for a warehouse item. Also returns a ready-to-use storefront card.",
+      inputSchema: {
+        id: z.string().describe("The warehouse item ID"),
+      },
+    },
+    async ({ id }) => {
+      const item = getWarehouseItemById(id);
+      if (!item) {
+        return {
+          content: [{ type: "text" as const, text: `Warehouse item not found: "${id}". Use browse_warehouse to find valid IDs.` }],
+          isError: true,
+        };
+      }
+
+      const storefrontCard = buildStorefrontCard({
+        id: item.id,
+        title: item.title,
+        description: item.description,
+        productId: item.productId,
+        msrp: item.msrp,
+        keywords: item.keywords,
+        tags: item.tags,
+        type: item.type,
+        commerce: item.commerce,
+      });
+
+      // Build x402 payment-required header preview if configured
+      let x402HeaderPreview: string | null = null;
+      if (item.commerce?.x402?.enabled) {
+        const { buildX402PaymentRequiredHeader } = await import("./commerce/config.js");
+        x402HeaderPreview = buildX402PaymentRequiredHeader(item.commerce.x402);
+      }
+
+      return {
+        content: [
+          {
+            type: "text" as const,
+            text: JSON.stringify(
+              {
+                id: item.id,
+                productId: item.productId ?? null,
+                msrp: item.msrp ?? null,
+                msrpDisplay: item.msrp !== undefined ? formatMsrp(item.msrp) : null,
+                keywords: item.keywords ?? [],
+                commerce: item.commerce ?? null,
+                storefrontCard,
+                x402HeaderPreview,
+                integrationNotes: {
+                  x402: item.commerce?.x402?.enabled
+                    ? `Set HTTP header X-PAYMENT-REQUIRED: ${x402HeaderPreview?.slice(0, 40)}... on 402 responses. Facilitator: ${item.commerce.x402.facilitatorUrl ?? "https://x402.org/facilitator"}`
+                    : "Not configured — use set_item_pricing to enable",
+                  creem: item.commerce?.creem
+                    ? `Checkout URL: ${item.commerce.creem.checkoutUrl ?? "not set"}. Requires CREEM_API_KEY env var.`
+                    : "Not configured",
+                  polar: item.commerce?.polar
+                    ? `Product: ${item.commerce.polar.organizationSlug}/${item.commerce.polar.productId}. Requires POLAR_API_KEY env var.`
+                    : "Not configured",
+                  mercury: item.commerce?.mercury
+                    ? `Treasury: ${item.commerce.mercury.accountLabel ?? item.commerce.mercury.accountId ?? "configured"}. Requires ${item.commerce.mercury.apiKeyEnvVar} env var.`
+                    : "Not configured",
+                },
+              },
+              null,
+              2
+            ),
           },
         ],
       };
