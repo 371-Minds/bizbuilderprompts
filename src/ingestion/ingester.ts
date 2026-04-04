@@ -1,5 +1,5 @@
 import { writeFileSync, mkdirSync, existsSync, readdirSync, renameSync, readFileSync } from "fs";
-import { join, extname, basename } from "path";
+import { join, extname, basename, resolve } from "path";
 import { classify, CATEGORY_DEFINITIONS } from "./classifier.js";
 import type {
   IngestionInput,
@@ -8,7 +8,7 @@ import type {
   IngestOptions,
 } from "./types.js";
 
-const REPO_ROOT = new URL("../../", import.meta.url).pathname.replace(/\/$/, "");
+const REPO_ROOT = resolve(new URL("../../", import.meta.url).pathname);
 
 // Map category names to their directory paths relative to the repo root
 const CATEGORY_DIR_MAP: Record<string, string> = {

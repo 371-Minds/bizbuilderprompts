@@ -116,6 +116,10 @@ export const CATEGORY_DEFINITIONS: CategoryInfo[] = [
   },
 ];
 
+// ── Scoring constants ─────────────────────────────────────────────────────────
+const FIRST_PARAGRAPH_CHARS = 300;
+const MAX_BODY_CHARS = 2000;
+
 // ── Scoring helpers ───────────────────────────────────────────────────────────
 
 function escapeRegex(s: string): string {
@@ -255,8 +259,8 @@ export function classify(input: IngestionInput): ClassificationResult {
   const { content, filename, title, type } = input;
 
   const titleText = [filename ?? "", title ?? ""].join(" ");
-  const firstParagraph = content.slice(0, 300);
-  const bodyText = content.slice(300, 2000);
+  const firstParagraph = content.slice(0, FIRST_PARAGRAPH_CHARS);
+  const bodyText = content.slice(FIRST_PARAGRAPH_CHARS, MAX_BODY_CHARS);
   const detectedVariables = extractVariables(content);
   const frameworkType = detectFramework(content);
 
