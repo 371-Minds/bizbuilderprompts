@@ -12,7 +12,9 @@
     "start": "bun dist/index.js",
     "dev": "bun --watch src/index.ts",
     "typecheck": "tsc --noEmit",
-    "ingest": "bun src/ingestion/ingester.ts"
+    "ingest": "bun src/ingestion/ingester.ts",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",
@@ -22,12 +24,19 @@
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vitest": "^4.1.2"
   },
   "engines": {
     "node": ">=18",
     "bun": ">=1.0"
   },
-  "keywords": ["mcp", "ai", "prompts", "business", "claude"],
+  "keywords": [
+    "mcp",
+    "ai",
+    "prompts",
+    "business",
+    "claude"
+  ],
   "license": "MIT"
 }

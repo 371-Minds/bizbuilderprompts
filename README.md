@@ -169,6 +169,54 @@ bun run typecheck  # Type-check without emitting
 bun start          # Run the compiled server (stdio transport)
 bun run dev        # Run directly from source with live-reload (no build needed)
 bun run ingest     # Run the ingestion agent on incoming_prompts/
+npm test           # Run the full test suite (vitest)
+npm run test:watch # Run tests in watch mode during development
+```
+
+## Testing
+
+The project uses [Vitest](https://vitest.dev) for unit testing. Tests live in `src/__tests__/` alongside the source modules they cover.
+
+### Running Tests
+
+```bash
+npm test           # Run all tests once
+npm run test:watch # Watch mode for development
+```
+
+> **Requires:** Node.js ≥ 18 (or Bun ≥ 1.0). Vitest is installed as a dev dependency.
+
+### Test Coverage
+
+| Module | Test File | What's Covered |
+|--------|-----------|----------------|
+| `src/utils/template.ts` | `utils.template.test.ts` | `extractVariables`, `fillTemplate` — placeholder parsing, deduplication, underscore fallback, unfilled tracking |
+| `src/utils/search.ts` | `utils.search.test.ts` | `buildSearchIndex`, `searchPrompts`, `suggestPrompts` — fuzzy search, scoring, excerpts, keyword ranking |
+| `src/ingestion/classifier.ts` | `ingestion.classifier.test.ts` | `classify` — all category types, framework detection (DSF/RCRC/Kaizen/Alchemist/template/structured), variable extraction, filename suggestions |
+| `src/agents/registry.ts` | `agents.registry.test.ts` | `loadAgentRegistry`, `getAgentPersona`, `listAgents`, `registerAgent` — YAML parsing, round-trip registration, cache behavior |
+| `src/commerce/config.ts` | `commerce.config.test.ts` | `formatMsrp`, `formatX402Price`, `buildX402PaymentRequiredHeader`, `decodeX402Header`, `buildStorefrontCard`, `validateCommerceConfig` — all payment providers, address resolution, error accumulation |
+| `src/enrichment/extractor.ts` | `enrichment.extractor.test.ts` | `enrichInput` — text/file/transcript types, topic detection, entity extraction, language detection, filler word removal |
+| `src/factory/prompt_crafter.ts` | `factory.prompt_crafter.test.ts` | `craftPrompt` — role assignment, category inference, framework labels, output sections, audience/style/context handling |
+| `src/warehouse/catalog.ts` | `warehouse.catalog.test.ts` | `generateProductId`, `searchWarehouse`, `addToWarehouse`, `getWarehouseItemById`, `addBundle`, `getBundle`, `listBundles` — CRUD, filtering by role/category/status/query, deduplication |
+
+### Writing New Tests
+
+Follow the pattern established in `src/__tests__/`. Each test file:
+- Imports from the source module using relative paths with `.js` extension (required for ESM)
+- Uses `describe` / `it` / `expect` from `vitest`
+- Uses `beforeEach` / `afterEach` when tests mutate shared state (e.g., file system, module cache)
+
+Example:
+
+```typescript
+import { describe, it, expect } from "vitest";
+import { myFunction } from "../myModule.js";
+
+describe("myFunction", () => {
+  it("does the expected thing", () => {
+    expect(myFunction("input")).toBe("expected output");
+  });
+});
 ```
 
 ## Architecture
@@ -179,16 +227,48 @@ src/
   server.ts         # McpServer setup
   manifest.ts       # File scanner + in-memory prompt index
   resources.ts      # MCP Resource handlers (URI-addressable files)
-  tools.ts          # MCP Tool handlers (13 callable functions)
-  prompts.ts        # MCP Prompt handlers (6 named templates)
+  tools.ts          # MCP Tool handlers (26 callable functions)
+  prompts.ts        # MCP Prompt handlers (8 named templates)
   types.ts          # TypeScript interfaces
+  agents/
+    registry.ts     # C-Suite persona loader + YAML parser
+    types.ts        # Agent type definitions
+  commerce/
+    config.ts       # x402 / Creem / Polar / Mercury payment helpers
+    types.ts        # Commerce type definitions
+  enrichment/
+    extractor.ts    # Raw input enrichment (URL/text/file/transcript)
+    types.ts        # Enrichment type definitions
+  factory/
+    generator.ts    # Asset factory dispatcher
+    prompt_crafter.ts  # Structured prompt generation
+    workflow_architect.ts  # Multi-step workflow generation
+    image_spec_builder.ts  # Veo image spec generation
+    bundle_creator.ts  # Bundle composition
+    types.ts        # Factory type definitions
   ingestion/
     types.ts        # Ingestion type definitions
     classifier.ts   # Keyword + framework classifier
     ingester.ts     # Ingestion logic + CLI entry point
+  orders/
+    fulfiller.ts    # Order fulfillment logic
+    manager.ts      # Order state management
+    types.ts        # Order type definitions
   utils/
     template.ts     # {{Variable}} extraction and substitution
     search.ts       # Fuse.js fuzzy search + keyword suggestion
+  warehouse/
+    catalog.ts      # Warehouse catalog CRUD + search
+    types.ts        # Warehouse type definitions
+  __tests__/
+    utils.template.test.ts
+    utils.search.test.ts
+    ingestion.classifier.test.ts
+    agents.registry.test.ts
+    commerce.config.test.ts
+    enrichment.extractor.test.ts
+    factory.prompt_crafter.test.ts
+    warehouse.catalog.test.ts
 ```
 
 ## License
