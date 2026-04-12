@@ -1,0 +1,81 @@
+# Akash Network SDL — BizBuilderPrompts MCP Server
+#
+# Deploy this MCP server on Akash Network (https://akash.network).
+# The server runs as an HTTP/SSE service so AI clients can connect
+# remotely instead of over stdio.
+#
+# Prerequisites:
+#   1. Build the Docker image:
+#        docker build -t bizbuilderprompts-mcp:latest .
+#   2. Push to a public registry (Docker Hub, GHCR, etc.):
+#        docker push yourdockerhub/bizbuilderprompts-mcp:latest
+#   3. Replace `image` below with your registry path.
+#   4. Deploy:
+#        provider-services tx deployment create deploy.yaml --from <wallet>
+#
+# The service listens on port 3000 (HTTP/SSE MCP transport).
+# Point your MCP client to: http://<akash-lease-uri>:3000
+
+---
+version: "2.0"
+
+services:
+  bizbuilderprompts:
+    image: yourdockerhub/bizbuilderprompts-mcp:latest
+    # Override the default stdio entrypoint with the HTTP/SSE transport.
+    # If your image bundles an SSE wrapper, adjust the args accordingly.
+    args:
+      - "--transport=sse"
+      - "--port=3000"
+    env:
+      # Optional: commerce provider API keys (omit if not using commerce layer)
+      - CREEM_API_KEY=             # Creem payment provider
+      - POLAR_API_KEY=             # Polar payment provider
+      - MERCURY_API_KEY=           # Mercury treasury
+      # Node environment
+      - NODE_ENV=production
+    expose:
+      - port: 3000
+        as: 80
+        to:
+          - global: true
+    # Persist the warehouse catalog between restarts so commissioned assets
+    # survive container replacements.
+    params:
+      storage:
+        warehouse:
+          mount: /app/warehouse
+          readOnly: false
+
+profiles:
+  compute:
+    bizbuilderprompts:
+      resources:
+        cpu:
+          units: 0.5        # 0.5 vCPU — comfortable for a Node.js MCP server
+        memory:
+          size: 512Mi       # 512 MiB RAM
+        storage:
+          - size: 1Gi       # Root filesystem (built image + dist/)
+          - name: warehouse
+            size: 2Gi       # Persistent warehouse catalog storage
+            attributes:
+              persistent: true
+              class: beta3  # Use beta3 (NVMe) for fast catalog I/O
+
+  placement:
+    akash:
+      # Only accept providers that have signed the Akash Terms of Service
+      signedBy:
+        anyOf:
+          - "akash1365yvmc4s7awdyj3n2sav7xfx76adc6dnmlx63"  # Akash mainnet certificate
+      pricing:
+        bizbuilderprompts:
+          denom: uakt
+          amount: 100       # Maximum bid price in uAKT per block (~$0.002 USD/hr at typical rates)
+
+deployment:
+  bizbuilderprompts:
+    akash:
+      profile: bizbuilderprompts
+      count: 1              # Single instance; increase for HA deployments
