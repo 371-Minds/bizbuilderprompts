@@ -29,7 +29,7 @@ Each agent file (`agents/<role>.md`) contains:
    - `role` — unique identifier used in tool calls
    - `displayName` — human-readable title
    - `description` — one-line mandate
-   - `preferredCategories` — asset categories the agent prioritises
+   - `preferredCategories` — asset categories the agent prioritizes
    - `defaultWorkflows` — workflow IDs the agent uses most often
    - `toolPermissions` — MCP tools the agent is allowed to call
    - `orderingPatterns` — example natural-language requests the agent makes

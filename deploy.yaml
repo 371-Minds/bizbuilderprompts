@@ -24,15 +24,22 @@ services:
     image: yourdockerhub/bizbuilderprompts-mcp:latest
     # Override the default stdio entrypoint with the HTTP/SSE transport.
     # If your image bundles an SSE wrapper, adjust the args accordingly.
+    # Override the default stdio entry point with the HTTP/SSE transport.
+    # The image must be built to support this flag — add an SSE server wrapper
+    # (e.g. using @modelcontextprotocol/sdk StreamableHTTPServerTransport or
+    # a thin Express/Hono shim that relays to src/server.ts).
+    # See: https://modelcontextprotocol.io/docs/concepts/transports
     args:
       - "--transport=sse"
       - "--port=3000"
     env:
-      # Optional: commerce provider API keys (omit if not using commerce layer)
-      - CREEM_API_KEY=             # Creem payment provider
-      - POLAR_API_KEY=             # Polar payment provider
-      - MERCURY_API_KEY=           # Mercury treasury
-      # Node environment
+      # Optional: commerce provider API keys — set these to non-empty values
+      # before deploying if you want the commerce layer to function.
+      # Example: CREEM_API_KEY=creem_live_xxxxxxxxxxxx
+      # Leave commented out or remove lines for providers you are not using.
+      # - CREEM_API_KEY=<your-creem-api-key>
+      # - POLAR_API_KEY=<your-polar-api-key>
+      # - MERCURY_API_KEY=<your-mercury-api-key>
       - NODE_ENV=production
     expose:
       - port: 3000

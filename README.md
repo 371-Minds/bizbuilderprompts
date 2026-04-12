@@ -228,7 +228,7 @@ provider-services tx deployment create deploy.yaml --from <your-wallet>
 
 See **[deploy.yaml](./deploy.yaml)** for the full SDL spec.
 
-
+## Example Agent Interactions
 
 ```
 "Find me prompts for sales conversion"
