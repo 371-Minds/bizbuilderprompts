@@ -1,6 +1,6 @@
 # BizBuilderPrompts MCP Server
 
-A curated library of **158+ business AI prompts, workflows, and templates** — exposed as a fully-featured [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server. Connect it to Claude Desktop, Cursor, Continue.dev, or any MCP-compatible AI client.
+A curated library of **158+ business AI prompts, workflows, and templates** — exposed as a fully-featured [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server with **28 tools**, **8 prompts**, a **Warehouse** asset catalog, an **Asset Factory**, a **Commerce layer**, and **8 C-Suite agent personas**. Connect it to Claude Desktop, Cursor, Continue.dev, or any MCP-compatible AI client.
 
 ## What's Inside
 
@@ -51,7 +51,9 @@ Use the same stdio transport. Point to `dist/index.js` as the command.
 
 ---
 
-## MCP Tools (13 tools)
+## MCP Tools (28 tools)
+
+### Prompt Library
 
 | Tool | Description |
 |------|-------------|
@@ -65,11 +67,56 @@ Use the same stdio transport. Point to `dist/index.js` as the command.
 | `fill_template` | Fill `{{Variable}}` placeholders with your values |
 | `suggest_prompts` | Get prompt suggestions for a goal or task description |
 | `get_prompt_metadata` | Get metadata without full content |
+
+### Ingestion
+
+| Tool | Description |
+|------|-------------|
 | `list_ingestion_categories` | Show the full taxonomy of ingestible categories |
 | `classify_prompt` | Dry-run: classify content without saving |
 | `ingest_prompt` | Classify and optionally save a prompt to the right category |
 
-## MCP Prompts (6 named prompts)
+### Warehouse
+
+| Tool | Description |
+|------|-------------|
+| `browse_warehouse` | Browse the asset warehouse; filter by role, category, or status |
+| `get_warehouse_item` | Retrieve the full content of a warehouse asset by ID |
+| `get_bundle` | Return all assets in a named warehouse bundle |
+
+### Agents
+
+| Tool | Description |
+|------|-------------|
+| `list_agents` | List all registered C-Suite agent personas |
+| `get_agent` | Get the full persona definition for a C-Suite role |
+| `register_agent` | Create a custom agent persona and save it to `agents/` |
+
+### Asset Factory
+
+| Tool | Description |
+|------|-------------|
+| `commission_prompt` | Generate a new structured prompt asset (optionally save to warehouse) |
+| `commission_workflow` | Generate a new multi-step workflow asset (DSF/RCRC/Kaizen/Alchemist) |
+| `commission_bundle` | Package multiple assets into a named bundle |
+| `enrich_input` | Enrich raw text/URL/file/transcript before commissioning |
+
+### Orders
+
+| Tool | Description |
+|------|-------------|
+| `create_order` | C-Suite agent submits an asset order; fulfillment searches existing assets and flags gaps |
+| `get_order` | Retrieve the status and details of an order by ID |
+| `list_orders` | List all orders, optionally filtered by role |
+
+### Commerce
+
+| Tool | Description |
+|------|-------------|
+| `set_item_pricing` | Configure pricing and payment options (x402/Creem/Polar/Mercury) for a warehouse item |
+| `get_item_pricing` | Retrieve pricing, product ID, keywords, and storefront card for a warehouse item |
+
+## MCP Prompts (8 named prompts)
 
 | Prompt | Description |
 |--------|-------------|
@@ -79,6 +126,8 @@ Use the same stdio transport. Point to `dist/index.js` as the command.
 | `legal_compliance` | Legal & compliance framework for your business |
 | `generate_image_prompt` | Create structured product image/video generation specs |
 | `business_strategy` | Apply business strategy frameworks to your situation |
+| `assume_role` | Activate a C-Suite agent persona for the session |
+| `order_from_warehouse` | Guided ordering experience — describe what you need and get a fulfillment plan |
 
 ## MCP Resources
 
@@ -93,6 +142,91 @@ project://bizbuilderprompts/{id}
 ```
 
 ---
+
+## C-Suite Agent Personas
+
+Eight built-in agent personas live in `agents/*.md`. Each defines a role, system prompt, preferred asset categories, default workflows, and example ordering patterns. Activate them with the `assume_role` prompt or query them with `get_agent`.
+
+| Role | Display Name | Focus |
+|------|-------------|-------|
+| `ceo` | Chief Executive Officer | Strategy, venture evaluation, growth initiatives |
+| `cmo` | Chief Marketing Officer | Campaigns, brand, content, go-to-market |
+| `cfo` | Chief Financial Officer | Financial modeling, tax strategy, due diligence |
+| `cto` | Chief Technology Officer | Architecture, AI/automation, engineering leadership |
+| `vp_sales` | VP of Sales | Prospecting, pipeline, closing, revenue growth |
+| `vp_product` | VP of Product | Roadmap, user research, feature prioritization |
+| `legal_counsel` | Legal Counsel | Compliance, contracts, IP, regulatory strategy |
+| `head_of_ops` | Head of Operations | SOPs, onboarding, process optimization |
+
+See **[AGENTS.md](./AGENTS.md)** for full persona specs, tool permissions, and ordering patterns.
+
+---
+
+## Warehouse
+
+The `warehouse/` directory is an in-server asset catalog populated by the Asset Factory. Items are categorized as `prompt`, `workflow`, `image-spec`, `agent-config`, or `bundle` and can carry commerce metadata (pricing, payment provider config).
+
+```
+warehouse/
+  prompts/          # Commissioned prompt assets
+  workflows/        # Commissioned workflow assets
+  bundles/          # Named asset collections
+  agent-configs/    # Custom agent definitions
+  image-specs/      # Veo-compatible image/video specs
+  index.json        # Catalog index (auto-managed)
+```
+
+Use `browse_warehouse` to search, `get_warehouse_item` to fetch, and `commission_*` tools to create new assets.
+
+---
+
+## Asset Factory
+
+The factory (`src/factory/`) generates structured assets server-side — no LLM calls required:
+
+| Generator | Tool | Output |
+|-----------|------|--------|
+| `craftPrompt()` | `commission_prompt` | Structured prompt with `{{Variables}}`, output sections, role framing |
+| `designWorkflow()` | `commission_workflow` | Multi-step workflow (DSF / RCRC / Kaizen / Alchemist) |
+| `buildImageSpec()` | (internal) | Veo-compatible JSON image/video spec |
+| `createBundle()` | `commission_bundle` | Named bundle of related assets |
+
+Enrich raw input first with `enrich_input` to get better topic detection, entity extraction, and language detection before commissioning.
+
+---
+
+## Commerce Layer
+
+Each warehouse item can carry a `commerce` block with one or more payment providers:
+
+| Provider | Description |
+|----------|-------------|
+| **x402** | HTTP 402 micropayments — `X-PAYMENT-REQUIRED` header, Base blockchain |
+| **Creem** | Checkout URL + `CREEM_API_KEY` env var |
+| **Polar** | Organization slug + product ID + `POLAR_API_KEY` env var |
+| **Mercury** | Treasury account + configurable API key env var |
+
+Use `set_item_pricing` to configure and `get_item_pricing` to retrieve pricing details and a ready-made storefront card.
+
+---
+
+## Akash Deployment
+
+Deploy the server on [Akash Network](https://akash.network) (decentralized cloud) using the included SDL:
+
+```bash
+# Build the Docker image first
+docker build -t bizbuilderprompts-mcp:latest .
+
+# Push to a registry (e.g. Docker Hub)
+docker tag bizbuilderprompts-mcp:latest yourdockerhub/bizbuilderprompts-mcp:latest
+docker push yourdockerhub/bizbuilderprompts-mcp:latest
+
+# Deploy via Akash CLI
+provider-services tx deployment create deploy.yaml --from <your-wallet>
+```
+
+See **[deploy.yaml](./deploy.yaml)** for the full SDL spec.
 
 ## Example Agent Interactions
 
@@ -227,7 +361,7 @@ src/
   server.ts         # McpServer setup
   manifest.ts       # File scanner + in-memory prompt index
   resources.ts      # MCP Resource handlers (URI-addressable files)
-  tools.ts          # MCP Tool handlers (26 callable functions)
+  tools.ts          # MCP Tool handlers (28 callable functions)
   prompts.ts        # MCP Prompt handlers (8 named templates)
   types.ts          # TypeScript interfaces
   agents/
