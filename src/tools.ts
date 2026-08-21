@@ -1740,14 +1740,11 @@ export function registerTools(
           provenance: item.provenance,
         });
 
-        if (review.verdict === "APPROVE") {
-          updateWarehouseItem(warehouse_id, { status: "ready" });
-        }
-
         // Persist reviewer rationale: metadata on the item + full transcript to
         // warehouse/reviews/ (format follows revise_transcripts.ts).
         const reviewedAt = new Date().toISOString();
         updateWarehouseItem(warehouse_id, {
+          ...(review.verdict === "APPROVE" ? { status: "ready" as const } : {}),
           review: {
             verdict: review.verdict,
             reviewedAt,
