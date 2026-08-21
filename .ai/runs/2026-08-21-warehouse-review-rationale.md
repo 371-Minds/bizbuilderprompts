@@ -38,10 +38,10 @@ Productionize reviewer-rationale capture in the warehouse review gate: `review_d
 
 ### Phase 1: Types + review_draft capture
 
-- [ ] 1.1 Add optional review metadata field to WarehouseItem
-- [ ] 1.2 Persist review metadata + transcript in review_draft handler
+- [x] 1.1 Add optional review metadata field to WarehouseItem — e1ad5fc
+- [x] 1.2 Persist review metadata + transcript in review_draft handler — e1ad5fc
 
 ### Phase 2: Test + gate
 
-- [ ] 2.1 Add unit test for the metadata write
-- [ ] 2.2 Run validation gate (bun test)
+- [x] 2.1 Add unit test for the metadata write — 38ce729
+- [x] 2.2 Run validation gate (bun test) — 38ce729
