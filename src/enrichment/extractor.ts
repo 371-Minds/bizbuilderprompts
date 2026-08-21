@@ -1,4 +1,5 @@
 import type { RawInput, EnrichedInput } from "./types.js";
+import { assertPublicUrl, SsrfBlockedError } from "../utils/url-guard.js";
 
 const BUSINESS_TOPICS = [
   "sales", "marketing", "revenue", "growth", "brand", "campaign", "conversion",
@@ -107,11 +108,22 @@ function extractKeyEntities(text: string): string[] {
 }
 
 async function fetchUrl(url: string): Promise<string> {
+  // SSRF guard — block private/loopback/link-local targets before any fetch.
+  // Closes BLOCK-2 from the C-Suite review (this is the only outbound fetch
+  // in the repo; an attacker-controlled URL reached internal services).
+  try {
+    await assertPublicUrl(url);
+  } catch (err) {
+    if (err instanceof SsrfBlockedError) throw err;
+    throw new Error(`URL validation failed: ${String(err)}`);
+  }
+
   let resp: Response;
   try {
     resp = await fetch(url, {
       headers: { "User-Agent": "BizBuilderPrompts/2.0 (+content-extractor)" },
       signal: AbortSignal.timeout(10000),
+      redirect: "follow",
     });
   } catch (err) {
     const msg = String(err);

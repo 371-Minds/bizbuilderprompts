@@ -1,6 +1,6 @@
 # BizBuilderPrompts MCP Server
 
-A curated library of **158+ business AI prompts, workflows, and templates** — exposed as a fully-featured [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server with **28 tools**, **8 prompts**, a **Warehouse** asset catalog, an **Asset Factory**, a **Commerce layer**, and **8 C-Suite agent personas**. Connect it to Claude Desktop, Cursor, Continue.dev, or any MCP-compatible AI client.
+A curated library of **158+ business AI prompts, workflows, and templates** — exposed as a fully-featured [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server with **30 tools**, **8 prompts**, a **Warehouse** asset catalog, an **Asset Factory**, a **Methodology Extraction pipeline**, a **Commerce layer**, and **8 C-Suite agent personas** (plus runtime-registerable specialist personas). Connect it to Claude Desktop, Cursor, Continue.dev, or any MCP-compatible AI client.
 
 ## What's Inside
 
@@ -51,7 +51,7 @@ Use the same stdio transport. Point to `dist/index.js` as the command.
 
 ---
 
-## MCP Tools (28 tools)
+## MCP Tools (30 tools)
 
 ### Prompt Library
 
@@ -88,9 +88,16 @@ Use the same stdio transport. Point to `dist/index.js` as the command.
 
 | Tool | Description |
 |------|-------------|
-| `list_agents` | List all registered C-Suite agent personas |
-| `get_agent` | Get the full persona definition for a C-Suite role |
-| `register_agent` | Create a custom agent persona and save it to `agents/` |
+| `list_agents` | List all registered agent personas (8 C-Suite + any specialists) |
+| `get_agent` | Get the full persona definition for a role |
+| `register_agent` | Create a custom agent persona and save it to `agents/` — works for both C-Suite roles and specialist personas (e.g. `growth_hacker`, `grant_writer`) |
+
+### Methodology Extraction
+
+| Tool | Description |
+|------|-------------|
+| `extract_methodology` | Extract reusable methodologies & decision frameworks from source text via the 371 Router. Saves assets to the warehouse as drafts with provenance (source hash + verification quote) and a fidelity pre-score. |
+| `review_draft` | Submit a draft asset to the C-Suite Board Meeting API (mindsclip3 :7372). Rune checks fidelity, Alex checks license/IP. On APPROVE the draft is promoted to ready. |
 
 ### Asset Factory
 
@@ -147,6 +154,8 @@ project://bizbuilderprompts/{id}
 
 Eight built-in agent personas live in `agents/*.md`. Each defines a role, system prompt, preferred asset categories, default workflows, and example ordering patterns. Activate them with the `assume_role` prompt or query them with `get_agent`.
 
+Personas are defined entirely by their `.md` frontmatter + body — no external soul files are loaded. The 8 C-Suite roles can be extended at runtime with **specialist personas** (e.g. `growth_hacker`, `grant_writer`, `housing_sme`) via `register_agent`; these load through the same registry and appear in `list_agents` alongside the C-Suite roles.
+
 | Role | Display Name | Focus |
 |------|-------------|-------|
 | `ceo` | Chief Executive Officer | Strategy, venture evaluation, growth initiatives |
@@ -178,6 +187,8 @@ warehouse/
 
 Use `browse_warehouse` to search, `get_warehouse_item` to fetch, and `commission_*` tools to create new assets.
 
+**Item status lifecycle:** `draft` → `ready` → `featured`. Commissioned and extracted assets land as `draft`; `review_draft` promotes them to `ready` after C-Suite sign-off. Extracted assets additionally carry a `provenance` block (`sourceLabel`, `sourceHash`, `extractedAt`, `model`) so any claim in the asset body can be verified against the original source.
+
 ---
 
 ## Asset Factory
@@ -192,6 +203,34 @@ The factory (`src/factory/`) generates structured assets server-side — no LLM 
 | `createBundle()` | `commission_bundle` | Named bundle of related assets |
 
 Enrich raw input first with `enrich_input` to get better topic detection, entity extraction, and language detection before commissioning.
+
+---
+
+## Methodology Extraction Pipeline
+
+The pipeline (`src/pipeline/`) turns source text (PLR, research docs, CORTEX convos, existing prompts) into concrete warehouse assets via the **371 Router** (:3000) — sovereign, no external LLM. Every extracted asset carries provenance so any claim can be verified against its source.
+
+```
+source text (or local file path)
+  │
+  ▼  extract_methodology
+371 Router → structured methodologies (concrete content, no {{placeholders}})
+  │   each item: { topic, goal, content, framework, tags, sourceQuote, confidence }
+  ▼
+batched pre-score (Rune's fidelity rubric) → flag low-confidence items
+  ▼
+write to warehouse/ as status:"draft" + provenance{ sourceLabel, sourceHash, model }
+  ▼
+review_draft → mindsclip3 Board Meeting (Rune + Alex) → draft:"ready"
+```
+
+**Key properties:**
+- **Sovereign:** all inference through `localhost:3000` (DeepSeek/Z.AI), cost attributed to `bizbuilder-mgr`. Automatic fallback to the local fast model (:8081, LFM2.5-1.2B) if the router is down — fallback output is marked so reviewers know it's degraded.
+- **Concrete, not templated:** extracted content is ready-to-use — never `{{variable}}` scaffolds (the factory's crafters already do that job).
+- **Verifiable:** every asset stores a SHA-256 of its source + a verbatim `sourceQuote` showing where the methodology came from.
+- **Gated:** assets land as `draft`; the pre-score flags low-fidelity items for mandatory review; `review_draft` promotes to `ready` only on C-Suite APPROVE.
+
+The pipeline is the repo's first and only LLM client — see `src/pipeline/router-client.ts`. SSRF-guarded URL fetching (`src/utils/url-guard.ts`) protects the `enrich_input` path.
 
 ---
 
@@ -332,6 +371,7 @@ npm run test:watch # Watch mode for development
 | `src/enrichment/extractor.ts` | `enrichment.extractor.test.ts` | `enrichInput` — text/file/transcript types, topic detection, entity extraction, language detection, filler word removal |
 | `src/factory/prompt_crafter.ts` | `factory.prompt_crafter.test.ts` | `craftPrompt` — role assignment, category inference, framework labels, output sections, audience/style/context handling |
 | `src/warehouse/catalog.ts` | `warehouse.catalog.test.ts` | `generateProductId`, `searchWarehouse`, `addToWarehouse`, `getWarehouseItemById`, `addBundle`, `getBundle`, `listBundles` — CRUD, filtering by role/category/status/query, deduplication |
+| `src/pipeline/extractor.ts` + `src/utils/url-guard.ts` | `pipeline.extractor.test.ts` | Extraction contract (concrete content, mandatory sourceQuote, no `{{}}`), JSON parsing robustness (fences/bare arrays/malformed items dropped), pre-score parsing, SSRF guard (private IP ranges, loopback, link-local, CGNAT/Tailscale) |
 
 ### Writing New Tests
 
@@ -361,20 +401,20 @@ src/
   server.ts         # McpServer setup
   manifest.ts       # File scanner + in-memory prompt index
   resources.ts      # MCP Resource handlers (URI-addressable files)
-  tools.ts          # MCP Tool handlers (28 callable functions)
+  tools.ts          # MCP Tool handlers (30 callable functions)
   prompts.ts        # MCP Prompt handlers (8 named templates)
   types.ts          # TypeScript interfaces
   agents/
-    registry.ts     # C-Suite persona loader + YAML parser
-    types.ts        # Agent type definitions
+    registry.ts     # Persona loader + YAML parser (C-Suite + specialists)
+    types.ts        # Agent type definitions (CsuiteRole union kept for ordering surface)
   commerce/
     config.ts       # x402 / Creem / Polar / Mercury payment helpers
     types.ts        # Commerce type definitions
   enrichment/
-    extractor.ts    # Raw input enrichment (URL/text/file/transcript)
+    extractor.ts    # Raw input enrichment (URL/text/file/transcript) — SSRF-guarded
     types.ts        # Enrichment type definitions
   factory/
-    generator.ts    # Asset factory dispatcher
+    generator.ts    # Asset factory dispatcher (writes status:"draft")
     prompt_crafter.ts  # Structured prompt generation
     workflow_architect.ts  # Multi-step workflow generation
     image_spec_builder.ts  # Veo image spec generation
@@ -388,12 +428,19 @@ src/
     fulfiller.ts    # Order fulfillment logic
     manager.ts      # Order state management
     types.ts        # Order type definitions
+  pipeline/         # Methodology extraction pipeline (sovereign, via 371 Router)
+    router-client.ts   # The repo's only LLM client → :3000, fallback :8081
+    extractor.ts       # Extraction prompt + robust JSON parsing + pre-score
+    index.ts           # extractAndSave orchestration → warehouse drafts
+    review.ts          # C-Suite review gate (mindsclip3 Board Meeting API)
+    types.ts           # Provenance, ExtractedAsset, ExtractionResult
   utils/
     template.ts     # {{Variable}} extraction and substitution
     search.ts       # Fuse.js fuzzy search + keyword suggestion
+    url-guard.ts    # SSRF guard — blocks private/loopback/link-local fetches
   warehouse/
     catalog.ts      # Warehouse catalog CRUD + search
-    types.ts        # Warehouse type definitions
+    types.ts        # Warehouse type definitions (incl. provenance field)
   __tests__/
     utils.template.test.ts
     utils.search.test.ts
@@ -402,6 +449,7 @@ src/
     commerce.config.test.ts
     enrichment.extractor.test.ts
     factory.prompt_crafter.test.ts
+    pipeline.extractor.test.ts
     warehouse.catalog.test.ts
 ```
 

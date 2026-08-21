@@ -29,6 +29,8 @@ import {
   formatX402Price,
   validateCommerceConfig,
 } from "./commerce/config.js";
+import { extractAndSave, resolveSourceText } from "./pipeline/index.js";
+import { requestReview } from "./pipeline/review.js";
 
 export function registerTools(
   server: McpServer,
@@ -1562,6 +1564,218 @@ export function registerTools(
           },
         ],
       };
+    }
+  );
+
+  // ── Tool 29: extract_methodology ──────────────────────────────────────────
+  // The methodology-extraction pipeline. Reads text (or a local file path),
+  // sends it through the 371 Router (:3000) for structured methodology extraction,
+  // and persists each extracted asset to the warehouse as a DRAFT with provenance.
+  // Sovereign: routes through our own router, attributed to bizbuilder-mgr.
+  // Fast: ~5-15s, returns immediately — C-Suite review is a separate tool (review_draft).
+  server.registerTool(
+    "extract_methodology",
+    {
+      title: "Extract Methodologies",
+      description:
+        "Extract reusable methodologies, decision frameworks, and working processes from source text via the 371 Router. " +
+        "Assets are saved to the warehouse as DRAFTS with provenance (source hash + verification quote). " +
+        "Each asset carries a fidelity pre-score; low-confidence items are flagged for mandatory review. " +
+        "Use review_draft to have C-Suite agents approve a draft before it goes live.",
+      inputSchema: {
+        source: z
+          .string()
+          .describe(
+            "Source text to extract from. If this is an absolute path to a readable file, the file is read; otherwise the string is treated as the source text directly."
+          ),
+        source_label: z
+          .string()
+          .describe(
+            'Human-readable label for the source, used in provenance (e.g. "CORTEX housing convo", "PLR sales playbook")'
+          ),
+        model: z
+          .enum(["deepseek-v4-flash", "deepseek-v4-pro"])
+          .optional()
+          .describe(
+            "Router model for extraction (default: deepseek-v4-flash, ~$0.003/run). Use deepseek-v4-pro for dense technical sources."
+          ),
+        max_items: z
+          .number()
+          .int()
+          .min(1)
+          .max(20)
+          .optional()
+          .describe("Maximum items to extract (default: 8)"),
+        save: z
+          .boolean()
+          .optional()
+          .describe(
+            "Save extracted assets to the warehouse as drafts (default: true). If false, returns the drafts for preview without persisting."
+          ),
+      },
+    },
+    async ({ source, source_label, model, max_items, save }) => {
+      const { text, fromFile } = resolveSourceText(source);
+      if (!text.trim()) {
+        return {
+          content: [
+            { type: "text" as const, text: "Source text is empty — nothing to extract." },
+          ],
+          isError: true,
+        };
+      }
+
+      try {
+        const result = await extractAndSave(text, source_label, {
+          model,
+          maxItems: max_items,
+          save,
+        });
+
+        return {
+          content: [
+            {
+              type: "text" as const,
+              text: JSON.stringify(
+                {
+                  sourceNote: fromFile
+                    ? `Read from file: ${source}`
+                    : "Treated as inline source text",
+                  provenance: result.provenance,
+                  count: result.count,
+                  saved: result.saved,
+                  reviewQueue: result.reviewQueue,
+                  nextStep: result.count
+                    ? result.reviewQueue.length
+                      ? `${result.reviewQueue.length} draft(s) flagged for review. Use review_draft with each warehouseId to have Rune + Alex approve before activation.`
+                      : "All drafts passed the pre-score. Use review_draft to get C-Suite sign-off, or browse_warehouse to inspect them."
+                    : "No methodologies found in source. Try a different source or a denser one.",
+                },
+                null,
+                2
+              ),
+            },
+          ],
+        };
+      } catch (err) {
+        const msg = String(err);
+        const isRouterDown = msg.includes("Router unreachable") || msg.includes("ECONNREFUSED");
+        return {
+          content: [
+            {
+              type: "text" as const,
+              text: isRouterDown
+                ? `Extraction failed: 371 Router (:3000) unreachable. Ensure the router is running (systemctl status 371-router.service). Details: ${msg}`
+                : `Extraction failed: ${msg}`,
+            },
+          ],
+          isError: true,
+        };
+      }
+    }
+  );
+
+  // ── Tool 30: review_draft ─────────────────────────────────────────────────
+  // The C-Suite review gate. Reads a draft asset's content, calls the mindsclip3
+  // Board Meeting API (:7372) for an in-character review by Rune (pattern fidelity)
+  // + Alex (legal/license). On APPROVE, flips the warehouse item draft -> ready.
+  // Sovereign: reviewers route through the 371 Router via mindsclip3.
+  server.registerTool(
+    "review_draft",
+    {
+      title: "Review Draft (C-Suite Gate)",
+      description:
+        "Submit a draft warehouse asset to the C-Suite Board Meeting API (mindsclip3 :7372) for review. " +
+        "Rune (Pattern Archaeologist) checks fidelity to the source; Alex (CLO) checks for license/IP issues. " +
+        "On APPROVE, the draft is promoted to ready and becomes available to all agents. " +
+        "Use this to gate extracted (or commissioned) assets before they go live.",
+      inputSchema: {
+        warehouse_id: z
+          .string()
+          .describe("The warehouse ID of the draft to review (from extract_methodology or commission_*)"),
+        reviewers: z
+          .array(z.enum(["rune-pattern", "alex-clo", "mimi-ceo"]))
+          .optional()
+          .describe(
+            "Reviewer agent IDs (default: ['rune-pattern', 'alex-clo']). Mimi (CEO) can be added for strategic overrides."
+          ),
+      },
+    },
+    async ({ warehouse_id, reviewers }) => {
+      const item = getWarehouseItemById(warehouse_id);
+      if (!item) {
+        return {
+          content: [
+            {
+              type: "text" as const,
+              text: `Draft not found: ${warehouse_id}. Use browse_warehouse with status:"draft" to list drafts.`,
+            },
+          ],
+          isError: true,
+        };
+      }
+      if (item.status === "ready" || item.status === "featured") {
+        return {
+          content: [
+            {
+              type: "text" as const,
+              text: `${item.title} is already ${item.status} — no review needed.`,
+            },
+          ],
+        };
+      }
+
+      const content = getWarehouseItemContent(item);
+      const chosenReviewers = reviewers ?? ["rune-pattern", "alex-clo"];
+
+      try {
+        const review = await requestReview({
+          title: item.title,
+          content,
+          reviewers: chosenReviewers,
+          provenance: item.provenance,
+        });
+
+        if (review.verdict === "APPROVE") {
+          updateWarehouseItem(warehouse_id, { status: "ready" });
+        }
+
+        return {
+          content: [
+            {
+              type: "text" as const,
+              text: JSON.stringify(
+                {
+                  warehouseId: warehouse_id,
+                  title: item.title,
+                  reviewers: chosenReviewers,
+                  verdict: review.verdict,
+                  notes: review.notes,
+                  newStatus: review.verdict === "APPROVE" ? "ready" : item.status,
+                  transcriptPreview: review.transcript.slice(0, 1500),
+                  transcriptTruncated: review.transcript.length > 1500,
+                },
+                null,
+                2
+              ),
+            },
+          ],
+        };
+      } catch (err) {
+        const msg = String(err);
+        const isDown = msg.includes("7372") || msg.includes("ECONNREFUSED") || msg.includes("unreachable");
+        return {
+          content: [
+            {
+              type: "text" as const,
+              text: isDown
+                ? `mindsclip3 (:7372) is unreachable — agents cannot review right now. The draft is safe in the warehouse; retry when the Board Meeting API is back (systemctl status mindsclip3.service). Details: ${msg}`
+                : `Review failed: ${msg}`,
+            },
+          ],
+          isError: true,
+        };
+      }
     }
   );
 }

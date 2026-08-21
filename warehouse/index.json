@@ -1,6 +1,1160 @@
 {
-  "items": [],
+  "items": [
+    {
+      "id": "warehouse-extracted-from-script-to-cinema-the-4-step-pipeline-mrmz1d9e",
+      "type": "workflow",
+      "title": "From Script to Cinema: The 4-Step Pipeline",
+      "description": "Transform a long-form script into a high-fidelity cinematic video through autonomous orchestration.",
+      "targetRoles": [],
+      "useCase": "Transform a long-form script into a high-fidelity cinematic video through autonomous orchestration.",
+      "status": "draft",
+      "commissionedAt": "2026-07-16T03:49:38.545Z",
+      "linkedItems": [],
+      "tags": [
+        "video-production",
+        "modular-rendering",
+        "workflow",
+        "synthesis",
+        "extracted",
+        "workflow",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/from-script-to-cinema-the-4-step-pipeline.md",
+      "category": "workflow",
+      "provenance": {
+        "sourceLabel": "Sovereign Engine — Architecting Cinematic Intelligence",
+        "sourceHash": "fc2f8757e728f36fcf269db1ac29b3ddb8c1c0d0771c4293f61b6b2ba4abe10c",
+        "extractedAt": "2026-07-16T03:49:38.545Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-surgical-update-rule-mrmz1d9g",
+      "type": "prompt",
+      "title": "Surgical Update Rule",
+      "description": "Efficiently revise a modular video project without re-rendering the entire sequence.",
+      "targetRoles": [],
+      "useCase": "Efficiently revise a modular video project without re-rendering the entire sequence.",
+      "status": "draft",
+      "commissionedAt": "2026-07-16T03:49:38.545Z",
+      "linkedItems": [],
+      "tags": [
+        "iterative-rendering",
+        "modular-workflows",
+        "efficiency",
+        "extracted",
+        "prompt",
+        "kaizen"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/prompts/surgical-update-rule.md",
+      "category": "general",
+      "provenance": {
+        "sourceLabel": "Sovereign Engine — Architecting Cinematic Intelligence",
+        "sourceHash": "fc2f8757e728f36fcf269db1ac29b3ddb8c1c0d0771c4293f61b6b2ba4abe10c",
+        "extractedAt": "2026-07-16T03:49:38.545Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-horizontal-scaling-with-chunks-mrmz1d9g",
+      "type": "prompt",
+      "title": "Horizontal Scaling with Chunks",
+      "description": "Scale rendering by distributing independent work units across multiple nodes.",
+      "targetRoles": [],
+      "useCase": "Scale rendering by distributing independent work units across multiple nodes.",
+      "status": "draft",
+      "commissionedAt": "2026-07-16T03:49:38.545Z",
+      "linkedItems": [],
+      "tags": [
+        "distributed-computing",
+        "horizontal-scaling",
+        "parallel-processing",
+        "extracted",
+        "prompt",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/prompts/horizontal-scaling-with-chunks.md",
+      "category": "general",
+      "provenance": {
+        "sourceLabel": "Sovereign Engine — Architecting Cinematic Intelligence",
+        "sourceHash": "fc2f8757e728f36fcf269db1ac29b3ddb8c1c0d0771c4293f61b6b2ba4abe10c",
+        "extractedAt": "2026-07-16T03:49:38.545Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-critics-narrative-audit-mrmz1d9g",
+      "type": "workflow",
+      "title": "Critic's Narrative Audit",
+      "description": "Ensure narrative pacing and alignment before rendering.",
+      "targetRoles": [],
+      "useCase": "Ensure narrative pacing and alignment before rendering.",
+      "status": "draft",
+      "commissionedAt": "2026-07-16T03:49:38.545Z",
+      "linkedItems": [],
+      "tags": [
+        "quality-control",
+        "narrative-audit",
+        "vibe-check",
+        "mythology-injection",
+        "extracted",
+        "workflow",
+        "rcrc"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/critics-narrative-audit.md",
+      "category": "workflow",
+      "provenance": {
+        "sourceLabel": "Sovereign Engine — Architecting Cinematic Intelligence",
+        "sourceHash": "fc2f8757e728f36fcf269db1ac29b3ddb8c1c0d0771c4293f61b6b2ba4abe10c",
+        "extractedAt": "2026-07-16T03:49:38.545Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-lossless-video-concatenation-with-ffmpeg-mrmz1d9g",
+      "type": "prompt",
+      "title": "Lossless Video Concatenation with ffmpeg",
+      "description": "Join video chunks without quality loss.",
+      "targetRoles": [],
+      "useCase": "Join video chunks without quality loss.",
+      "status": "draft",
+      "commissionedAt": "2026-07-16T03:49:38.545Z",
+      "linkedItems": [],
+      "tags": [
+        "ffmpeg",
+        "lossless",
+        "video-concatenation",
+        "production",
+        "extracted",
+        "prompt",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/prompts/lossless-video-concatenation-with-ffmpeg.md",
+      "category": "general",
+      "provenance": {
+        "sourceLabel": "Sovereign Engine — Architecting Cinematic Intelligence",
+        "sourceHash": "fc2f8757e728f36fcf269db1ac29b3ddb8c1c0d0771c4293f61b6b2ba4abe10c",
+        "extractedAt": "2026-07-16T03:49:38.545Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-multimedia-junkie-brand-color-rule-mrmz1d9g",
+      "type": "prompt",
+      "title": "Multimedia Junkie Brand Color Rule",
+      "description": "Ensure consistent hero branding.",
+      "targetRoles": [],
+      "useCase": "Ensure consistent hero branding.",
+      "status": "draft",
+      "commissionedAt": "2026-07-16T03:49:38.545Z",
+      "linkedItems": [],
+      "tags": [
+        "branding",
+        "color-palette",
+        "design-system",
+        "hero",
+        "extracted",
+        "prompt",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/prompts/multimedia-junkie-brand-color-rule.md",
+      "category": "general",
+      "provenance": {
+        "sourceLabel": "Sovereign Engine — Architecting Cinematic Intelligence",
+        "sourceHash": "fc2f8757e728f36fcf269db1ac29b3ddb8c1c0d0771c4293f61b6b2ba4abe10c",
+        "extractedAt": "2026-07-16T03:49:38.545Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-start-with-one-reader-problem-mt38e0w2",
+      "type": "workflow",
+      "title": "Start with one reader problem",
+      "description": "Write a piece that feels made for one person by anchoring it to a single painful problem.",
+      "targetRoles": [],
+      "useCase": "Write a piece that feels made for one person by anchoring it to a single painful problem.",
+      "status": "draft",
+      "commissionedAt": "2026-08-21T17:34:35.972Z",
+      "linkedItems": [],
+      "tags": [
+        "content-strategy",
+        "audience",
+        "copywriting",
+        "focus",
+        "extracted",
+        "workflow",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/start-with-one-reader-problem.md",
+      "category": "workflow",
+      "provenance": {
+        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
+        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
+        "extractedAt": "2026-08-21T17:34:35.972Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-one-sentence-audience-definition-mt38e0w2",
+      "type": "workflow",
+      "title": "One-sentence audience definition",
+      "description": "Target every content decision by defining who you write for in one sentence.",
+      "targetRoles": [],
+      "useCase": "Target every content decision by defining who you write for in one sentence.",
+      "status": "draft",
+      "commissionedAt": "2026-08-21T17:34:35.972Z",
+      "linkedItems": [],
+      "tags": [
+        "audience",
+        "positioning",
+        "content-strategy",
+        "extracted",
+        "workflow",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/one-sentence-audience-definition.md",
+      "category": "workflow",
+      "provenance": {
+        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
+        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
+        "extractedAt": "2026-08-21T17:34:35.972Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-one-main-takeaway-per-piece-mt38e0w3",
+      "type": "workflow",
+      "title": "One main takeaway per piece",
+      "description": "Make content memorable by reducing every draft to a single promise and cutting anything that doesn't support it.",
+      "targetRoles": [],
+      "useCase": "Make content memorable by reducing every draft to a single promise and cutting anything that doesn't support it.",
+      "status": "ready",
+      "commissionedAt": "2026-08-21T17:34:35.972Z",
+      "linkedItems": [],
+      "tags": [
+        "focus",
+        "content-strategy",
+        "editing",
+        "extracted",
+        "workflow",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/one-main-takeaway-per-piece.md",
+      "category": "workflow",
+      "provenance": {
+        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
+        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
+        "extractedAt": "2026-08-21T17:34:35.972Z",
+        "model": "deepseek-v4-flash"
+      },
+      "commerce": {
+        "msrpUsdCents": 300,
+        "productId": "WOR-one-main-takeaway-per-piece-3B5P",
+        "keywords": [
+          "content strategy",
+          "writing focus",
+          "editing",
+          "ai writing"
+        ],
+        "x402": {
+          "enabled": true,
+          "price": 3000000,
+          "asset": "USDC",
+          "network": "base",
+          "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
+          "paymentType": "one-time",
+          "paymentDescription": "371 Minds content doctrine: \"One main takeaway per piece\" — single-purchase access"
+        }
+      }
+    },
+    {
+      "id": "warehouse-extracted-promise-driven-opening-mt38e0w3",
+      "type": "workflow",
+      "title": "Promise-driven opening",
+      "description": "Write openings that commit readers by leading with the exact outcome, named reader, and a hint of method.",
+      "targetRoles": [],
+      "useCase": "Write openings that commit readers by leading with the exact outcome, named reader, and a hint of method.",
+      "status": "draft",
+      "commissionedAt": "2026-08-21T17:34:35.972Z",
+      "linkedItems": [],
+      "tags": [
+        "copywriting",
+        "opening",
+        "conversion",
+        "extracted",
+        "workflow",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/promise-driven-opening.md",
+      "category": "workflow",
+      "provenance": {
+        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
+        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
+        "extractedAt": "2026-08-21T17:34:35.972Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-guardrail-outline-before-drafting-mt38e0w3",
+      "type": "workflow",
+      "title": "Guardrail outline before drafting",
+      "description": "Prevent rambling drafts by deciding the point of each section in a simple outline first.",
+      "targetRoles": [],
+      "useCase": "Prevent rambling drafts by deciding the point of each section in a simple outline first.",
+      "status": "draft",
+      "commissionedAt": "2026-08-21T17:34:35.972Z",
+      "linkedItems": [],
+      "tags": [
+        "outlining",
+        "writing-process",
+        "clarity",
+        "extracted",
+        "workflow",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/guardrail-outline-before-drafting.md",
+      "category": "workflow",
+      "provenance": {
+        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
+        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
+        "extractedAt": "2026-08-21T17:34:35.972Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-ruthless-fluff-cut-mt38e0w3",
+      "type": "workflow",
+      "title": "Ruthless fluff cut",
+      "description": "Make every line earn its place by deleting greetings, repeats, and vague claims in the first pass.",
+      "targetRoles": [],
+      "useCase": "Make every line earn its place by deleting greetings, repeats, and vague claims in the first pass.",
+      "status": "draft",
+      "commissionedAt": "2026-08-21T17:34:35.972Z",
+      "linkedItems": [],
+      "tags": [
+        "editing",
+        "concision",
+        "writing",
+        "extracted",
+        "workflow",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/ruthless-fluff-cut.md",
+      "category": "workflow",
+      "provenance": {
+        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
+        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
+        "extractedAt": "2026-08-21T17:34:35.972Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-concrete-specifics-replace-vague-claims-mt38e0w3",
+      "type": "workflow",
+      "title": "Concrete specifics replace vague claims",
+      "description": "Build trust by turning safe-sounding claims into specific, verifiable facts with numbers and limits.",
+      "targetRoles": [],
+      "useCase": "Build trust by turning safe-sounding claims into specific, verifiable facts with numbers and limits.",
+      "status": "ready",
+      "commissionedAt": "2026-08-21T17:34:35.972Z",
+      "linkedItems": [],
+      "tags": [
+        "specificity",
+        "copywriting",
+        "trust",
+        "extracted",
+        "workflow",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/concrete-specifics-replace-vague-claims.md",
+      "category": "workflow",
+      "provenance": {
+        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
+        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
+        "extractedAt": "2026-08-21T17:34:35.972Z",
+        "model": "deepseek-v4-flash"
+      },
+      "commerce": {
+        "msrpUsdCents": 300,
+        "productId": "WOR-concrete-specifics-replace-vag-3B5P",
+        "keywords": [
+          "ai slop",
+          "copywriting",
+          "specificity",
+          "editing"
+        ],
+        "x402": {
+          "enabled": true,
+          "price": 3000000,
+          "asset": "USDC",
+          "network": "base",
+          "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
+          "paymentType": "one-time",
+          "paymentDescription": "371 Minds content doctrine: \"Concrete specifics replace vague claims\" — single-purchase access"
+        }
+      }
+    },
+    {
+      "id": "warehouse-extracted-story-first-proof-mt38e0w4",
+      "type": "workflow",
+      "title": "Story-first proof",
+      "description": "Use a real story that contains the proof, then state the lesson, to make advice feel lived-in.",
+      "targetRoles": [],
+      "useCase": "Use a real story that contains the proof, then state the lesson, to make advice feel lived-in.",
+      "status": "ready",
+      "commissionedAt": "2026-08-21T17:34:35.972Z",
+      "linkedItems": [],
+      "tags": [
+        "storytelling",
+        "proof",
+        "content",
+        "extracted",
+        "workflow",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/story-first-proof.md",
+      "category": "workflow",
+      "provenance": {
+        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
+        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
+        "extractedAt": "2026-08-21T17:34:35.972Z",
+        "model": "deepseek-v4-flash"
+      },
+      "commerce": {
+        "msrpUsdCents": 300,
+        "productId": "WOR-storyfirst-proof-3B5P",
+        "keywords": [
+          "storytelling",
+          "content writing",
+          "persuasion"
+        ],
+        "x402": {
+          "enabled": true,
+          "price": 3000000,
+          "asset": "USDC",
+          "network": "base",
+          "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
+          "paymentType": "one-time",
+          "paymentDescription": "371 Minds content doctrine: \"Story-first proof\" — single-purchase access"
+        }
+      }
+    },
+    {
+      "id": "warehouse-extracted-specifics-forcing-ai-prompt-mt38e0w4",
+      "type": "prompt",
+      "title": "Specifics-forcing AI prompt",
+      "description": "Get useful AI drafts instead of generic slop by demanding audience, goal, format, constraints, and proof.",
+      "targetRoles": [],
+      "useCase": "Get useful AI drafts instead of generic slop by demanding audience, goal, format, constraints, and proof.",
+      "status": "draft",
+      "commissionedAt": "2026-08-21T17:34:35.972Z",
+      "linkedItems": [],
+      "tags": [
+        "ai-prompts",
+        "copywriting",
+        "specificity",
+        "extracted",
+        "prompt",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/prompts/specifics-forcing-ai-prompt.md",
+      "category": "general",
+      "provenance": {
+        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
+        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
+        "extractedAt": "2026-08-21T17:34:35.972Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-give-ai-audience-context-upfront-mt38e0w4",
+      "type": "prompt",
+      "title": "Give AI audience context upfront",
+      "description": "Make AI output match real intent by defining the reader, their goal, level, and situation before requesting content.",
+      "targetRoles": [],
+      "useCase": "Make AI output match real intent by defining the reader, their goal, level, and situation before requesting content.",
+      "status": "draft",
+      "commissionedAt": "2026-08-21T17:34:35.972Z",
+      "linkedItems": [],
+      "tags": [
+        "ai-prompts",
+        "audience",
+        "context",
+        "extracted",
+        "prompt",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/prompts/give-ai-audience-context-upfront.md",
+      "category": "general",
+      "provenance": {
+        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
+        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
+        "extractedAt": "2026-08-21T17:34:35.972Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-ai-as-structure-generator-mt38e0w5",
+      "type": "workflow",
+      "title": "AI as structure generator",
+      "description": "Keep your personal voice by using AI to produce outlines, sections, and bullet points, then rewriting in your own words.",
+      "targetRoles": [],
+      "useCase": "Keep your personal voice by using AI to produce outlines, sections, and bullet points, then rewriting in your own words.",
+      "status": "ready",
+      "commissionedAt": "2026-08-21T17:34:35.972Z",
+      "linkedItems": [],
+      "tags": [
+        "ai-workflow",
+        "voice",
+        "writing",
+        "extracted",
+        "workflow",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/ai-as-structure-generator.md",
+      "category": "workflow",
+      "provenance": {
+        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
+        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
+        "extractedAt": "2026-08-21T17:34:35.972Z",
+        "model": "deepseek-v4-flash"
+      },
+      "commerce": {
+        "msrpUsdCents": 300,
+        "productId": "WOR-ai-as-structure-generator-3B5P",
+        "keywords": [
+          "ai writing",
+          "prompting",
+          "outlining",
+          "workflow"
+        ],
+        "x402": {
+          "enabled": true,
+          "price": 3000000,
+          "asset": "USDC",
+          "network": "base",
+          "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
+          "paymentType": "one-time",
+          "paymentDescription": "371 Minds content doctrine: \"AI as structure generator\" — single-purchase access"
+        }
+      }
+    },
+    {
+      "id": "warehouse-extracted-skeptic-proofing-with-ai-mt38e0w5",
+      "type": "workflow",
+      "title": "Skeptic-proofing with AI",
+      "description": "Find weak claims and missing proof by asking AI to argue against your draft before publishing.",
+      "targetRoles": [],
+      "useCase": "Find weak claims and missing proof by asking AI to argue against your draft before publishing.",
+      "status": "ready",
+      "commissionedAt": "2026-08-21T17:34:35.972Z",
+      "linkedItems": [],
+      "tags": [
+        "ai-prompts",
+        "objections",
+        "editing",
+        "extracted",
+        "workflow",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/skeptic-proofing-with-ai.md",
+      "category": "workflow",
+      "provenance": {
+        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
+        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
+        "extractedAt": "2026-08-21T17:34:35.972Z",
+        "model": "deepseek-v4-flash"
+      },
+      "commerce": {
+        "msrpUsdCents": 300,
+        "productId": "WOR-skepticproofing-with-ai-C8VF",
+        "keywords": [
+          "content doctrine",
+          "ai writing"
+        ],
+        "x402": {
+          "enabled": true,
+          "price": 3000000,
+          "asset": "USDC",
+          "network": "base",
+          "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
+          "paymentType": "one-time",
+          "paymentDescription": "371 Minds content doctrine: \"Skeptic-proofing with AI\" — single-purchase access"
+        }
+      }
+    },
+    {
+      "id": "warehouse-extracted-headline-and-subhead-generation-mt38e0w5",
+      "type": "prompt",
+      "title": "Headline and subhead generation",
+      "description": "Generate specific, human-sounding headlines and subheads that promise a clear benefit.",
+      "targetRoles": [],
+      "useCase": "Generate specific, human-sounding headlines and subheads that promise a clear benefit.",
+      "status": "draft",
+      "commissionedAt": "2026-08-21T17:34:35.972Z",
+      "linkedItems": [],
+      "tags": [
+        "ai-prompts",
+        "headlines",
+        "copywriting",
+        "extracted",
+        "prompt",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/prompts/headline-and-subhead-generation.md",
+      "category": "general",
+      "provenance": {
+        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
+        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
+        "extractedAt": "2026-08-21T17:34:35.972Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-picky-editor-gap-check-mt38e0w5",
+      "type": "prompt",
+      "title": "Picky editor gap check",
+      "description": "Identify missing steps, hidden assumptions, and confusing transitions before publishing.",
+      "targetRoles": [],
+      "useCase": "Identify missing steps, hidden assumptions, and confusing transitions before publishing.",
+      "status": "ready",
+      "commissionedAt": "2026-08-21T17:34:35.972Z",
+      "linkedItems": [],
+      "tags": [
+        "ai-prompts",
+        "editing",
+        "completeness",
+        "extracted",
+        "prompt",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/prompts/picky-editor-gap-check.md",
+      "category": "general",
+      "provenance": {
+        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
+        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
+        "extractedAt": "2026-08-21T17:34:35.972Z",
+        "model": "deepseek-v4-flash"
+      },
+      "commerce": {
+        "msrpUsdCents": 300,
+        "productId": "PRO-picky-editor-gap-check-C8VF",
+        "keywords": [
+          "content doctrine",
+          "ai writing"
+        ],
+        "x402": {
+          "enabled": true,
+          "price": 3000000,
+          "asset": "USDC",
+          "network": "base",
+          "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
+          "paymentType": "one-time",
+          "paymentDescription": "371 Minds content doctrine: \"Picky editor gap check\" — single-purchase access"
+        }
+      }
+    },
+    {
+      "id": "warehouse-extracted-real-reader-confusion-test-mt38e0w5",
+      "type": "workflow",
+      "title": "Real reader confusion test",
+      "description": "Catch confusing spots by testing drafts with real readers and tracking where they hesitate.",
+      "targetRoles": [],
+      "useCase": "Catch confusing spots by testing drafts with real readers and tracking where they hesitate.",
+      "status": "draft",
+      "commissionedAt": "2026-08-21T17:34:35.972Z",
+      "linkedItems": [],
+      "tags": [
+        "testing",
+        "feedback",
+        "clarity",
+        "iteration",
+        "extracted",
+        "workflow",
+        "kaizen"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/real-reader-confusion-test.md",
+      "category": "workflow",
+      "provenance": {
+        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
+        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
+        "extractedAt": "2026-08-21T17:34:35.972Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-the-wake-up-call-framework-mt38f49p",
+      "type": "workflow",
+      "title": "The Wake-Up Call Framework",
+      "description": "Break through emotional numbness and reignite the urgency to reclaim your life.",
+      "targetRoles": [],
+      "useCase": "Break through emotional numbness and reignite the urgency to reclaim your life.",
+      "status": "draft",
+      "commissionedAt": "2026-08-21T17:36:27.654Z",
+      "linkedItems": [],
+      "tags": [
+        "awakening",
+        "emotional-numbness",
+        "clarity",
+        "urgency",
+        "self-reclamation",
+        "extracted",
+        "workflow",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-wake-up-call-framework.md",
+      "category": "workflow",
+      "provenance": {
+        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
+        "extractedAt": "2026-08-21T17:36:27.654Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-the-inner-mirror-framework-mt38f49q",
+      "type": "workflow",
+      "title": "The Inner Mirror Framework",
+      "description": "Conduct a brutally honest self-assessment and define the identity you must embody now.",
+      "targetRoles": [],
+      "useCase": "Conduct a brutally honest self-assessment and define the identity you must embody now.",
+      "status": "draft",
+      "commissionedAt": "2026-08-21T17:36:27.654Z",
+      "linkedItems": [],
+      "tags": [
+        "self-assessment",
+        "identity",
+        "honesty",
+        "gap-analysis",
+        "transformation",
+        "extracted",
+        "workflow",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-inner-mirror-framework.md",
+      "category": "workflow",
+      "provenance": {
+        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
+        "extractedAt": "2026-08-21T17:36:27.654Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-the-survivors-code-framework-mt38f49q",
+      "type": "workflow",
+      "title": "The Survivor's Code Framework",
+      "description": "Turn every scar and survival story into a daily personal creed that builds pride.",
+      "targetRoles": [],
+      "useCase": "Turn every scar and survival story into a daily personal creed that builds pride.",
+      "status": "draft",
+      "commissionedAt": "2026-08-21T17:36:27.654Z",
+      "linkedItems": [],
+      "tags": [
+        "survivor-story",
+        "strength",
+        "creed",
+        "reframing",
+        "healing",
+        "extracted",
+        "workflow",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-survivors-code-framework.md",
+      "category": "workflow",
+      "provenance": {
+        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
+        "extractedAt": "2026-08-21T17:36:27.654Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-the-30-second-identity-reset-framework-mt38f49q",
+      "type": "workflow",
+      "title": "The 30-Second Identity Reset Framework",
+      "description": "Instantly shift your self-talk, posture, and energy by replacing toxic labels with power identity statements.",
+      "targetRoles": [],
+      "useCase": "Instantly shift your self-talk, posture, and energy by replacing toxic labels with power identity statements.",
+      "status": "draft",
+      "commissionedAt": "2026-08-21T17:36:27.654Z",
+      "linkedItems": [],
+      "tags": [
+        "identity-reset",
+        "self-talk",
+        "embodiment",
+        "power-script",
+        "state-change",
+        "extracted",
+        "workflow",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-30-second-identity-reset-framework.md",
+      "category": "workflow",
+      "provenance": {
+        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
+        "extractedAt": "2026-08-21T17:36:27.654Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-the-no-more-waiting-framework-mt38f49q",
+      "type": "workflow",
+      "title": "The No More Waiting Framework",
+      "description": "Break the habit of delaying your own healing by exposing readiness lies and taking a micro-action.",
+      "targetRoles": [],
+      "useCase": "Break the habit of delaying your own healing by exposing readiness lies and taking a micro-action.",
+      "status": "draft",
+      "commissionedAt": "2026-08-21T17:36:27.654Z",
+      "linkedItems": [],
+      "tags": [
+        "procrastination",
+        "readiness",
+        "micro-action",
+        "narrative-shift",
+        "decision",
+        "extracted",
+        "workflow",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-no-more-waiting-framework.md",
+      "category": "workflow",
+      "provenance": {
+        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
+        "extractedAt": "2026-08-21T17:36:27.654Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-the-emotional-gps-framework-mt38f49r",
+      "type": "workflow",
+      "title": "The Emotional GPS Framework",
+      "description": "Use avoided emotions as directional signals that guide rather than paralyze you.",
+      "targetRoles": [],
+      "useCase": "Use avoided emotions as directional signals that guide rather than paralyze you.",
+      "status": "draft",
+      "commissionedAt": "2026-08-21T17:36:27.654Z",
+      "linkedItems": [],
+      "tags": [
+        "emotions",
+        "guidance",
+        "avoidance",
+        "courage",
+        "self-awareness",
+        "extracted",
+        "workflow",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-emotional-gps-framework.md",
+      "category": "workflow",
+      "provenance": {
+        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
+        "extractedAt": "2026-08-21T17:36:27.654Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-the-fear-to-fuel-framework-mt38f49r",
+      "type": "workflow",
+      "title": "The Fear to Fuel Framework",
+      "description": "Turn anxiety and fear into relentless forward motion through truth flips and actions.",
+      "targetRoles": [],
+      "useCase": "Turn anxiety and fear into relentless forward motion through truth flips and actions.",
+      "status": "draft",
+      "commissionedAt": "2026-08-21T17:36:27.654Z",
+      "linkedItems": [],
+      "tags": [
+        "fear",
+        "anxiety",
+        "truth-flip",
+        "ritual",
+        "action",
+        "extracted",
+        "workflow",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-fear-to-fuel-framework.md",
+      "category": "workflow",
+      "provenance": {
+        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
+        "extractedAt": "2026-08-21T17:36:27.654Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-the-savage-reset-framework-mt38f49r",
+      "type": "workflow",
+      "title": "The Savage Reset Framework",
+      "description": "Rebuild one area of your life through a bold decision and a 24-hour action plan.",
+      "targetRoles": [],
+      "useCase": "Rebuild one area of your life through a bold decision and a 24-hour action plan.",
+      "status": "draft",
+      "commissionedAt": "2026-08-21T17:36:27.654Z",
+      "linkedItems": [],
+      "tags": [
+        "life-reset",
+        "beliefs",
+        "planning",
+        "bold-decision",
+        "transformation",
+        "extracted",
+        "workflow",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-savage-reset-framework.md",
+      "category": "workflow",
+      "provenance": {
+        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
+        "extractedAt": "2026-08-21T17:36:27.654Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-the-1-year-deathbed-framework-mt38f49r",
+      "type": "workflow",
+      "title": "The 1-Year Deathbed Framework",
+      "description": "Make choices with the urgency of a one-year timeline and create a priority list that matters now.",
+      "targetRoles": [],
+      "useCase": "Make choices with the urgency of a one-year timeline and create a priority list that matters now.",
+      "status": "draft",
+      "commissionedAt": "2026-08-21T17:36:27.654Z",
+      "linkedItems": [],
+      "tags": [
+        "deathbed",
+        "prioritization",
+        "urgency",
+        "purpose",
+        "decision-making",
+        "extracted",
+        "workflow",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-1-year-deathbed-framework.md",
+      "category": "workflow",
+      "provenance": {
+        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
+        "extractedAt": "2026-08-21T17:36:27.654Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-the-invisible-fence-framework-mt38f49s",
+      "type": "workflow",
+      "title": "The Invisible Fence Framework",
+      "description": "Identify and replace the subconscious rules controlling your behavior.",
+      "targetRoles": [],
+      "useCase": "Identify and replace the subconscious rules controlling your behavior.",
+      "status": "draft",
+      "commissionedAt": "2026-08-21T17:36:27.654Z",
+      "linkedItems": [],
+      "tags": [
+        "subconscious-rules",
+        "limiting-beliefs",
+        "freedom",
+        "reframing",
+        "self-awareness",
+        "extracted",
+        "workflow",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-invisible-fence-framework.md",
+      "category": "workflow",
+      "provenance": {
+        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
+        "extractedAt": "2026-08-21T17:36:27.654Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-the-power-recall-framework-mt38f49s",
+      "type": "workflow",
+      "title": "The Power Recall Framework",
+      "description": "Take back emotional power you gave to others, events, or systems and reclaim daily control.",
+      "targetRoles": [],
+      "useCase": "Take back emotional power you gave to others, events, or systems and reclaim daily control.",
+      "status": "draft",
+      "commissionedAt": "2026-08-21T17:36:27.654Z",
+      "linkedItems": [],
+      "tags": [
+        "emotional-power",
+        "reclaiming",
+        "morning-ritual",
+        "control",
+        "detachment",
+        "extracted",
+        "workflow",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-power-recall-framework.md",
+      "category": "workflow",
+      "provenance": {
+        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
+        "extractedAt": "2026-08-21T17:36:27.654Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-the-energy-audit-framework-mt38f49s",
+      "type": "workflow",
+      "title": "The Energy Audit Framework",
+      "description": "Discover what feeds or drains your energy and make three immediate upgrades.",
+      "targetRoles": [],
+      "useCase": "Discover what feeds or drains your energy and make three immediate upgrades.",
+      "status": "draft",
+      "commissionedAt": "2026-08-21T17:36:27.654Z",
+      "linkedItems": [],
+      "tags": [
+        "energy-audit",
+        "feed-drain",
+        "environment",
+        "habits",
+        "optimization",
+        "extracted",
+        "workflow",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-energy-audit-framework.md",
+      "category": "workflow",
+      "provenance": {
+        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
+        "extractedAt": "2026-08-21T17:36:27.654Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-the-hell-no-hell-yes-framework-mt38f49s",
+      "type": "workflow",
+      "title": "The Hell No / Hell Yes Framework",
+      "description": "Cut through confusion and make decisions with clarity by using your gut response as a filter.",
+      "targetRoles": [],
+      "useCase": "Cut through confusion and make decisions with clarity by using your gut response as a filter.",
+      "status": "draft",
+      "commissionedAt": "2026-08-21T17:36:27.654Z",
+      "linkedItems": [],
+      "tags": [
+        "decision-filter",
+        "gut-instinct",
+        "clarity",
+        "boldness",
+        "hell-yes",
+        "extracted",
+        "workflow",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-hell-no-hell-yes-framework.md",
+      "category": "workflow",
+      "provenance": {
+        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
+        "extractedAt": "2026-08-21T17:36:27.654Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-the-inner-critic-interrogation-framework-mt38f49s",
+      "type": "workflow",
+      "title": "The Inner Critic Interrogation Framework",
+      "description": "Put your self-attacking voice on trial and build a rebuttal that defends your truth and value.",
+      "targetRoles": [],
+      "useCase": "Put your self-attacking voice on trial and build a rebuttal that defends your truth and value.",
+      "status": "draft",
+      "commissionedAt": "2026-08-21T17:36:27.654Z",
+      "linkedItems": [],
+      "tags": [
+        "inner-critic",
+        "rebuttal",
+        "self-worth",
+        "limiting-beliefs",
+        "questioning",
+        "extracted",
+        "workflow",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-inner-critic-interrogation-framework.md",
+      "category": "workflow",
+      "provenance": {
+        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
+        "extractedAt": "2026-08-21T17:36:27.654Z",
+        "model": "deepseek-v4-flash"
+      }
+    },
+    {
+      "id": "warehouse-extracted-the-burn-the-backup-plan-framework-mt38f49t",
+      "type": "workflow",
+      "title": "The Burn the Backup Plan Framework",
+      "description": "Commit fully to your primary path by identifying and releasing the escape hatches that weaken you.",
+      "targetRoles": [],
+      "useCase": "Commit fully to your primary path by identifying and releasing the escape hatches that weaken you.",
+      "status": "draft",
+      "commissionedAt": "2026-08-21T17:36:27.654Z",
+      "linkedItems": [],
+      "tags": [
+        "commitment",
+        "backup-plans",
+        "focus",
+        "decisiveness",
+        "ownership",
+        "extracted",
+        "workflow",
+        "custom"
+      ],
+      "variables": [],
+      "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-burn-the-backup-plan-framework.md",
+      "category": "workflow",
+      "provenance": {
+        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
+        "extractedAt": "2026-08-21T17:36:27.654Z",
+        "model": "deepseek-v4-flash"
+      }
+    }
+  ],
   "bundles": [],
-  "lastUpdated": "2026-04-04T04:46:41.094Z",
-  "totalCount": 0
+  "lastUpdated": "2026-08-21T20:23:02.379Z",
+  "totalCount": 36
 }

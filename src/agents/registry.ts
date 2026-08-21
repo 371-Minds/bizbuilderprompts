@@ -1,15 +1,20 @@
 import { readFileSync, readdirSync, writeFileSync, existsSync, mkdirSync } from "fs";
 import { join, basename } from "path";
 import { fileURLToPath } from "url";
-import type { AgentPersona, AgentRegistry, CsuiteRole } from "./types.js";
+import type { AgentPersona, AgentRegistry } from "./types.js";
 
 const REPO_ROOT = fileURLToPath(new URL("../../", import.meta.url));
 const AGENTS_DIR = join(REPO_ROOT, "agents");
 
-const VALID_ROLES = new Set<string>([
-  "ceo", "cmo", "cfo", "cto",
-  "vp_sales", "vp_product", "legal_counsel", "head_of_ops",
-]);
+/**
+ * Accept any non-empty lowercase role id. The 8 C-Suite roles (ceo, cmo, ...)
+ * ship as .md files in agents/; specialist personas (growth_hacker, grant_writer,
+ * housing_sme, etc.) can be registered at runtime via register_agent. Both
+ * load through the same registry — the role just has to be a valid identifier.
+ */
+function isValidRole(role: string): boolean {
+  return /^[a-z][a-z0-9_]{1,48}$/.test(role);
+}
 
 function parseYamlFrontmatter(content: string): Record<string, unknown> {
   const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
@@ -79,7 +84,7 @@ function parseAgentFile(filePath: string): AgentPersona | null {
 
   const fm = parseYamlFrontmatter(content);
   const role = String(fm["role"] ?? "");
-  if (!VALID_ROLES.has(role)) return null;
+  if (!isValidRole(role)) return null;
 
   const body = stripFrontmatter(content);
   const systemPrompt = extractSystemPrompt(body);
@@ -91,7 +96,7 @@ function parseAgentFile(filePath: string): AgentPersona | null {
   };
 
   return {
-    role: role as CsuiteRole,
+    role,
     displayName: String(fm["displayName"] ?? role),
     description: String(fm["description"] ?? ""),
     systemPrompt,

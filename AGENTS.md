@@ -4,6 +4,8 @@ This document describes the eight built-in C-Suite agent personas that ship with
 
 Personas are activated via the `assume_role` MCP prompt or queried individually with the `get_agent` / `list_agents` tools.
 
+> **Identity model:** personas are defined entirely by their `.md` frontmatter + body — no external soul files are loaded. The eight C-Suite roles below ship built-in; **specialist personas** (e.g. `growth_hacker`, `grant_writer`, `housing_sme`) can be registered at runtime via `register_agent` and load through the same registry, appearing in `list_agents` alongside the C-Suite roles.
+
 ---
 
 ## Table of Contents
@@ -241,6 +243,8 @@ Call `register_agent` from any MCP client:
 
 The file is saved to `agents/<role>.md` and immediately available via `get_agent`.
 
+> The `role` must match `/^[a-z][a-z0-9_]{1,48}$/` — lowercase identifier, 2–49 chars. Both C-Suite roles (`ceo`, `cmo`, …) and specialist roles (`growth_hacker`, `grant_writer`, `housing_sme`) are accepted. The C-Suite ordering/commissioning tools (`create_order`, `commission_*`, `assume_role`) remain constrained to the 8 C-Suite roles; specialist personas are lenses for `get_agent` / `list_agents` discovery, not order-placers.
+
 ### Option 2 — Manual file
 
 Create `agents/<role>.md` with the following frontmatter template:
@@ -289,3 +293,5 @@ You are a ...
 ```
 
 The registry is reloaded on each `loadAgentRegistry()` call, so the agent is available immediately after the file is created (no server restart required when calling through `register_agent`).
+
+> **Role validation:** any role matching `/^[a-z][a-z0-9_]{1,48}$/` loads successfully. The eight C-Suite roles ship built-in; any other valid role id is treated as a specialist persona. Files whose `role:` frontmatter is missing or malformed are skipped.

@@ -48,6 +48,19 @@ export interface WarehouseItem {
    * Polar (OSS monetization), and Mercury Bank (treasury).
    */
   commerce?: CommerceConfig;
+
+  /**
+   * Provenance for extracted assets. Set by the methodology-extraction pipeline
+   * so any claim in the asset body can be verified against the original source
+   * via `sourceHash` + the `sourceQuote` embedded in the asset content.
+   * Absent on commissioned/manually-created assets.
+   */
+  provenance?: {
+    sourceLabel: string;
+    sourceHash: string;
+    extractedAt: string;
+    model: string;
+  };
 }
 
 export interface Bundle {

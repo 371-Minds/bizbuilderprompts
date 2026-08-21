@@ -100,12 +100,11 @@ describe("listAgents", () => {
   });
 
   it("each agent has a valid role string", () => {
-    const validRoles = new Set([
-      "ceo", "cmo", "cfo", "cto",
-      "vp_sales", "vp_product", "legal_counsel", "head_of_ops",
-    ]);
+    // Role must be a valid identifier (lowercase, alphanumeric + underscore).
+    // The 8 C-Suite roles ship as .md files; specialist personas registered
+    // via register_agent (growth_hacker, grant_writer, ...) must also pass.
     for (const agent of listAgents()) {
-      expect(validRoles.has(agent.role)).toBe(true);
+      expect(agent.role).toMatch(/^[a-z][a-z0-9_]{1,48}$/);
     }
   });
 });
@@ -169,5 +168,69 @@ describe("registerAgent", () => {
     const retrieved = getAgentPersona("ceo");
     expect(retrieved).toBeDefined();
     expect(retrieved!.role).toBe("ceo");
+  });
+});
+
+// ── Specialist (non-C-Suite) personas — the register_agent latent-bug fix ────
+
+describe("registerAgent — specialist (non-C-Suite) persona", () => {
+  const AGENTS_DIR = join(
+    new URL("../../", import.meta.url).pathname.replace(/\/$/, ""),
+    "agents"
+  );
+  const specialistPath = join(AGENTS_DIR, "growth_hacker.md");
+  let existedBefore = false;
+  let originalContent: string | null = null;
+
+  beforeEach(() => {
+    existedBefore = existsSync(specialistPath);
+    originalContent = existedBefore ? readFileSync(specialistPath, "utf-8") : null;
+  });
+
+  afterEach(() => {
+    // Restore or remove — never leave the specialist file behind.
+    if (existedBefore && originalContent !== null) {
+      writeFileSync(specialistPath, originalContent, "utf-8");
+    } else if (existsSync(specialistPath)) {
+      rmSync(specialistPath);
+    }
+    loadAgentRegistry(true);
+  });
+
+  it("accepts and persists a non-C-Suite role (growth_hacker)", () => {
+    const persona: AgentPersona = {
+      role: "growth_hacker",
+      displayName: "Growth Hacker",
+      description: "Rapid experimentation, viral loops, user acquisition",
+      systemPrompt: "## System Prompt\n\nYou are an aggressive growth hacker focused on viral loops.",
+      preferredCategories: ["marketing", "promotion", "sales"],
+      defaultWorkflows: ["viral-freeshare"],
+      toolPermissions: ["search_prompts", "browse_warehouse"],
+      orderingPatterns: ["Find me a viral loop for {{Product}}"],
+    };
+
+    const path = registerAgent(persona);
+    expect(existsSync(path)).toBe(true);
+    expect(path).toContain("growth_hacker.md");
+  });
+
+  it("round-trip: specialist persona is retrievable via getAgentPersona", () => {
+    const persona: AgentPersona = {
+      role: "growth_hacker",
+      displayName: "Growth Hacker",
+      description: "Rapid experimentation",
+      systemPrompt: "## System Prompt\n\nYou are a growth hacker.",
+      preferredCategories: ["marketing"],
+      defaultWorkflows: [],
+      toolPermissions: [],
+      orderingPatterns: [],
+    };
+
+    registerAgent(persona);
+    const retrieved = getAgentPersona("growth_hacker");
+    expect(retrieved).toBeDefined();
+    expect(retrieved!.role).toBe("growth_hacker");
+    expect(retrieved!.displayName).toBe("Growth Hacker");
+    expect(retrieved!.preferredCategories).toContain("marketing");
   });
 });
