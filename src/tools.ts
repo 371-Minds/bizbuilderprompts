@@ -1,6 +1,9 @@
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 import type { Manifest, PromptEntry, WorkflowEntry } from "./types.js";
+import { mkdirSync, writeFileSync } from "fs";
+import { join } from "path";
+import { fileURLToPath } from "url";
 import { getPromptContent } from "./manifest.js";
 import { searchPrompts, suggestPrompts } from "./utils/search.js";
 import { fillTemplate } from "./utils/template.js";
@@ -1688,6 +1691,7 @@ export function registerTools(
         "Submit a draft warehouse asset to the C-Suite Board Meeting API (mindsclip3 :7372) for review. " +
         "Rune (Pattern Archaeologist) checks fidelity to the source; Alex (CLO) checks for license/IP issues. " +
         "On APPROVE, the draft is promoted to ready and becomes available to all agents. " +
+          "Review metadata is saved on the warehouse item and the full board transcript is persisted to warehouse/reviews/. " +
         "Use this to gate extracted (or commissioned) assets before they go live.",
       inputSchema: {
         warehouse_id: z
@@ -1740,6 +1744,38 @@ export function registerTools(
           updateWarehouseItem(warehouse_id, { status: "ready" });
         }
 
+        // Persist reviewer rationale: metadata on the item + full transcript to
+        // warehouse/reviews/ (format follows revise_transcripts.ts).
+        const reviewedAt = new Date().toISOString();
+        updateWarehouseItem(warehouse_id, {
+          review: {
+            verdict: review.verdict,
+            reviewedAt,
+            reviewers: chosenReviewers,
+            notes: review.notes,
+            transcriptExcerpt: review.transcript.slice(0, 1500),
+          },
+        });
+
+        let transcriptPath: string | undefined;
+        try {
+          const reviewsDir = fileURLToPath(new URL("../warehouse/reviews", import.meta.url));
+          mkdirSync(reviewsDir, { recursive: true });
+          const slug = item.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").slice(0, 60);
+          transcriptPath = join(reviewsDir, `${slug}.md`);
+          writeFileSync(
+            transcriptPath,
+            `# Board Review — ${item.title}\n\n` +
+              `- **Warehouse ID:** ${item.id}\n` +
+              `- **Verdict:** ${review.verdict}\n` +
+              `- **Reviewers:** ${chosenReviewers.join(", ")}\n` +
+              `- **Reviewed:** ${reviewedAt}\n\n` +
+              `## Notes\n\n${review.notes}\n\n---\n\n## Transcript\n\n${review.transcript}\n`
+          );
+        } catch {
+          transcriptPath = undefined;
+        }
+
         return {
           content: [
             {
@@ -1752,6 +1788,8 @@ export function registerTools(
                   verdict: review.verdict,
                   notes: review.notes,
                   newStatus: review.verdict === "APPROVE" ? "ready" : item.status,
+                  reviewMetadataSaved: true,
+                  transcriptPath,
                   transcriptPreview: review.transcript.slice(0, 1500),
                   transcriptTruncated: review.transcript.length > 1500,
                 },

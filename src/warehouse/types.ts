@@ -61,6 +61,23 @@ export interface WarehouseItem {
     extractedAt: string;
     model: string;
   };
+
+  /**
+   * Review-gate metadata captured by the review_draft tool. Written after each
+   * successful board review so the verdict and reviewer rationale are queryable
+   * without opening the full transcript in warehouse/reviews/.
+   */
+  review?: {
+    verdict: "APPROVE" | "REVISE" | "REJECT";
+    /** ISO timestamp of the review. */
+    reviewedAt: string;
+    /** Reviewer agent IDs that sat on the board. */
+    reviewers: string[];
+    /** Board notes (parsed verdict rationale). */
+    notes: string;
+    /** Leading excerpt of the full transcript (full text lives in warehouse/reviews/). */
+    transcriptExcerpt: string;
+  };
 }
 
 export interface Bundle {
