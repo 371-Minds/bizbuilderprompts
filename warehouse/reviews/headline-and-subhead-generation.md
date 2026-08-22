@@ -3,7 +3,7 @@
 - **Warehouse ID:** warehouse-extracted-headline-and-subhead-generation-mt38e0w5
 - **Verdict:** REVISE
 - **Reviewers:** Rune (fidelity), Alex (license)
-- **Reviewed:** 2026-08-21T20:20:43.766Z
+- **Reviewed:** 2026-08-22T23:33:23.973Z
 
 ## Notes
 
@@ -13,36 +13,35 @@ VERDICT: REVISE
 
 ## Transcript
 
-Rune: [SCAN: MEMORIA] — no prior precedent found for this asset review.
+Rune: [SCAN: MEMORIA] — no precedent conflicts for this asset class (PLR extraction, marked extensions).
 
-**Pattern Archaeologist:**
-- The core methodology ("25 headlines, clear outcome, hint of tension, avoid vague words like 'better'") is a faithful match to the sourceQuote. ✓
-- However, the subhead guidance is thin and partially unsupported: the sourceQuote says nothing about subheads. The example "The 5 Minute Proof Test" appears nowhere in the anchor quote — it may be invented or drawn from an unquoted section of the source. If the source genuinely covers subheads, a second sourceQuote must be added as a verification anchor; if not, this is over-extraction.
-- Fidelity pre-score of 0.70 is consistent with this partial-support issue.
+**Pattern Archaeologist:** Step 1 is a verbatim, faithful extraction of the sourceQuote — the anchor fully supports it. Steps 2–3 and the illustrative example are NOT in the source quote, but they are explicitly tagged `[extension]` and the fidelity pre-score (0.70) reflects this honestly. The extensions are plausible copywriting practice and don't over-generalize the source claim. Acceptable as long as extension labeling is preserved on promotion.
+
+**CLO:** Source is PLR (SuperSalesMachine grant) — derivation and redistribution permitted. Attribution retained via provenance block with source hash. No verbatim reproduction beyond the single prompt sentence, which is the licensed source itself. Clean.
+
+**CEO:** Useful, reusable prompt pattern for all agents producing copy. Low blast radius, high reuse value. Worth warehousing.
+
+[THINK: SAFE] — no substrate impact; asset is content-only.
+
+VERDICT: APPROVE
+
+Alex Washington: **Pattern Archaeologist:**
+- Step 1 is a verbatim, faithful match to the sourceQuote — supported.
+- Steps 2 and 3, plus the example, are not in the quote. However, they are correctly flagged `[extension]` and the fidelity pre-score (0.70) reflects this. Extensions are plausible downstream workflow, not invented claims attributed to the source. Acceptable with the flags intact.
+- Minor: "Framework: custom" is fine; tags are accurate.
 
 **CLO:**
-- Source is PLR (Private Label Rights) material, so reproduction rights are likely granted, but the asset must retain the SuperSalesMachine attribution it currently carries. ✓
-- The quoted prompt is short and functional (a method, not creative expression) — low IP risk.
-- No compliance flags, provided attribution stays intact on promotion.
+- [DIAG_ROOT]: License audit flags PLR as not auto-compatible — medium risk, requires manual legal review before warehouse-wide activation.
+- PLR grants vary by issuer; the draft asserts "redistribution and derivation permitted under the SuperSalesMachine PLR grant" without citing the grant's specific terms. The quoted prompt itself is a single short instructional sentence — low copyright risk, but the PLR claim needs verification before promotion.
+- Attribution is retained via provenance block. Good.
 
-**CEO (not present) — strategic note:**
-- Headline/subhead generation is a high-reuse capability; worth warehousing once fidelity is fixed.
-
-**Required revisions:**
-1. Add a sourceQuote covering the subhead guidance, or strike the subhead sentence and the "5 Minute Proof Test" example.
-2. Re-run fidelity scoring after the fix; 0.70 should improve.
-
-VERDICT: REVISE
-
-Alex Washington: License audit: low risk, PLR permits internal redistribution. No verbatim copyrighted reproduction beyond a short prompt phrase — acceptable.
-
-**CEO:** Strategically useful — headline generation is a high-frequency agent task. Worth warehousing once the subhead gap is fixed.
+**CEO:**
+- Strategically useful: a compact, reusable headline-generation prompt. Worth adding once license is cleared.
 
 **Required revisions:**
-1. Remove or source-verify the subhead example ("The 5 Minute Proof Test") — currently unsupported by the anchor quote.
-2. Add explicit PLR attribution/license note to the asset body.
+1. CLO/Operator must manually verify the SuperSalesMachine PLR grant terms (or strip the asset down to the single quoted sentence with generic attribution) before activation.
+2. Keep `[extension]` markers — do not silently promote extensions to sourced content.
 
-[DIAG_ROOT]: Fidelity gap caused by extraction model (deepseek-v4-flash) enriching beyond source — trim to quoted scope.
-[ACTION_VECTOR]: Re-extract with subhead claim removed or anchored; resubmit for review.
+[WARN: HITL_REQUIRED] PLR compatibility unresolved pending manual legal review.
 
 VERDICT: REVISE

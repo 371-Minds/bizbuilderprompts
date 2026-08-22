@@ -1,0 +1,25 @@
+{
+  "tally": {
+    "APPROVE": 2,
+    "REVISE": 1,
+    "REJECT": 0,
+    "ERROR": 0
+  },
+  "outcomes": [
+    {
+      "id": "warehouse-extracted-start-with-one-reader-problem-mt38e0w2",
+      "title": "Start with one reader problem",
+      "verdict": "APPROVE"
+    },
+    {
+      "id": "warehouse-extracted-specifics-forcing-ai-prompt-mt38e0w4",
+      "title": "Specifics-forcing AI prompt",
+      "verdict": "APPROVE"
+    },
+    {
+      "id": "warehouse-extracted-headline-and-subhead-generation-mt38e0w5",
+      "title": "Headline and subhead generation",
+      "verdict": "REVISE"
+    }
+  ]
+}
