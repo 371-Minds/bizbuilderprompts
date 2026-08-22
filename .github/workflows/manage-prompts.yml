@@ -8,8 +8,7 @@ on:
     branches: [ "main" ]
     paths:
       - 'incoming_prompts/**'
-    paths-ignore:
-      - 'incoming_prompts/**/*.processed'
+      - '!incoming_prompts/**/*.processed'
   workflow_dispatch:
 
 jobs:
