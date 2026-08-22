@@ -46,24 +46,26 @@ Revise the 9 held "50 Ways to Avoid Lazy AI Slop" warehouse drafts per their boa
 
 ## Progress
 
+PR: #8
+
 > Convention: `- [ ]` pending, `- [x]` done. Append ` — <commit sha>` when a step lands. Do not rename step titles.
 
 ### Phase 1: Setup
 
-- [ ] 1.1 Worktree + branch + draft PR
+- [x] 1.1 Worktree + branch + draft PR — 816cac9^
 
 ### Phase 2: Revise the 9 drafts
 
-- [ ] 2.1 Revise 9 asset files
+- [x] 2.1 Revise 9 asset files — 816cac9
 
 ### Phase 3: Re-review loop
 
-- [ ] 3.1 Re-review script + run
+- [x] 3.1 Re-review script + run — 49a43ad
 
 ### Phase 4: Pricing
 
-- [ ] 4.1 Price newly-approved items
+- [x] 4.1 Price newly-approved items — 49a43ad
 
 ### Phase 5: Gate + PR
 
-- [ ] 5.1 Gate, summary, ready flip, cleanup
+- [x] 5.1 Gate, summary, ready flip, cleanup
