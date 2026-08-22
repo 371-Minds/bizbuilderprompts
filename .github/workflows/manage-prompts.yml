@@ -35,9 +35,6 @@ jobs:
     - name: Install dependencies
       run: bun install
 
-    - name: Build TypeScript
-      run: bun run build
-
     - name: Debug - List repository contents
       run: |
         echo "=== Repository root contents ==="
