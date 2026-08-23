@@ -8,7 +8,10 @@
 
 ## Methodology
 
-1. Pick 3 to 5 main ideas for the piece. 2. Add one supporting note under each idea. 3. Check that every bullet earns its spot. 4. Use the outline as a guardrail while drafting. 5. Reuse it for offers, emails, and sales calls to keep your message easy to follow.
+1. Pick 3 to 5 bullets for the main ideas.
+2. Add one supporting note under each.
+3. [extension] Check that every bullet earns its spot, and use the outline as a guardrail while drafting.
+4. [extension] Reuse the outline for offers, emails, and sales calls to keep the message easy to follow.
 
 ---
 
@@ -17,7 +20,7 @@
 - **Source:** PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1
 - **Source hash:** `569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e`
 - **Extracted:** 2026-08-21T17:34:35.972Z via deepseek-v4-flash
-- **Fidelity pre-score:** 0.70
+- **Fidelity pre-score:** 0.70 (steps 3–4 marked `[extension]` in the 2026-08-22 revise pass)
 
 ### Source quote (verification anchor)
 

@@ -1,52 +1,45 @@
 # Board Review — Promise-driven opening
 
 - **Warehouse ID:** warehouse-extracted-promise-driven-opening-mt38e0w3
-- **Verdict:** REVISE
+- **Verdict:** APPROVE
 - **Reviewers:** Rune (fidelity), Alex (license)
-- **Reviewed:** 2026-08-21T20:18:42.039Z
+- **Reviewed:** 2026-08-22T23:30:20.063Z
 
 ## Notes
 
-VERDICT: REVISE
+VERDICT: APPROVE
 
 ---
 
 ## Transcript
 
-Rune: [SCAN: MEMORIA] — no prior precedent for this asset; proceeding on embedded verification anchor.
+Rune: [SCAN: MEMORIA] — no precedent conflict for this asset class.
+
+**Pattern Archaeologist:** The sourceQuote ("Your opening needs a promise that tells readers exactly what they'll get and why it's worth their time") fully supports step 1. Steps 2–3 and the example are labeled `[extension]`, so no invented content is being passed off as sourced. The example is generic copywriting, not lifted verbatim. Faithful extraction with honest fidelity marking (0.60 with disclosure). Acceptable.
+
+**CLO:** Source is PLR (Private Label Rights) material — redistribution and derivation permitted under PLR terms. Attribution block present with source hash. The single quoted sentence is short and used as a verification anchor, not reproduction of substantial copyrighted content. No IP issues.
+
+**CEO:** Useful, generalizable copywriting primitive; low blast radius; extensions add practical value without misrepresenting the source. Worth warehouse activation.
+
+[THINK: SAFE] — no substrate impact; asset-level only.
+
+VERDICT: APPROVE
+
+Alex Washington: [SCAN: MEMORIA] — no precedent override for this draft; proceeding with role review.
 
 **Pattern Archaeologist:**
-The sourceQuote supports only step 1 ("Lead with the specific outcome"). Steps 2–5 (naming the reader, method hint, time bound, promise-as-standard) and the example subject-line copy are not anchored in the quote. This reads as over-generalized extrapolation — plausible copywriting practice, but not a faithful extraction. Fidelity pre-score of 0.60 corroborates this. The example ("3 subject lines that doubled replies") is invented specificity not present in the source.
+- Step 1 is a faithful extraction — the sourceQuote directly supports it ("a promise that tells readers exactly what they'll get and why it's worth their time").
+- Steps 2–3 and the example are not in the source quote, but they are explicitly marked `[extension]` with a fidelity pre-score of 0.60 and a documented revise pass (2026-08-22). Extensions are plausible elaborations of the promise principle, not contradictions. Acceptable as long as the `[extension]` markers stay.
+- Minor flag: "Framework: custom" is accurate; no invented attribution to the source for extensions.
 
 **CLO:**
-Source is PLR (Private Label Rights) — redistribution/derivation is generally permitted under PLR terms. No verbatim copyrighted reproduction beyond the short quoted anchor, which is properly attributed with hash. No compliance blocker, but the invented example should either be flagged as illustrative or removed.
-
-**CEO (not present):** skipped.
-
-[DIAG_ROOT]: Extraction model (deepseek-v4-flash) expanded a one-sentence quote into a five-step methodology without source support.
-
-[ACTION_VECTOR]: Re-extract against the full source passage; either expand the sourceQuote to cover steps 2–5 or trim the methodology to what the anchor supports; mark the example as illustrative.
-
-VERDICT: REVISE
-
-Alex Washington: [SCAN: MEMORIA] — no precedent asset for "promise-driven opening"; proceeding with role review.
-
-**Pattern Archaeologist:**
-The sourceQuote supports only the core claim: an opening should promise what readers get and why it's worth their time. The draft's steps 1 and 3 are faithful extensions. However:
-- Step 2 ("Name the reader in the promise") — not supported by the quote.
-- Step 4 (time bounds, "In the next 5 minutes...") — not in the quote; the example sentence appears invented by the extractor, not sourced.
-- Step 5 ("use that promise as the standard for every section") — an over-generalized claim with no anchor in the quote.
-Fidelity pre-score of 0.60 is consistent with this: roughly half the methodology is unsupported. Flag: invented example and over-generalized step 5.
-
-**CLO:**
-Source is PLR (private label rights) material, which typically grants redistribution rights — no verbatim copyrighted reproduction detected beyond a single short quoted sentence with attribution and hash intact. Attribution and provenance block are present and correct. No license audit issues. [THINK: SAFE]
+- Source is PLR (Private Label Rights) material — redistribution and derivation are permitted under the license by design.
+- The single quoted sentence is short and used as a verification anchor with full attribution and source hash. No verbatim reproduction of copyrighted material beyond that.
+- Provenance block is complete (source, hash, extraction timestamp, model). No compliance issues.
 
 **CEO:**
-Strategically useful — opening-promise copywriting is a high-reuse pattern. Worth adding once trimmed to what the source supports.
+- Strategically useful: a compact, reusable copywriting primitive applicable across agent-generated content. Low maintenance cost, clear tags, self-contained. Worth warehouse activation.
 
-**Required revisions:**
-1. Remove or re-anchor steps 2, 4, and 5 to the source quote, or mark them clearly as extrapolation.
-2. Replace the invented example with one derived from the source, or label it as illustrative, not sourced.
-3. Re-score fidelity after trim (expect ~0.85+).
+[THINK: SAFE] — No substrate impact; asset-level review only.
 
-VERDICT: REVISE
+VERDICT: APPROVE
