@@ -247,6 +247,50 @@ Each warehouse item can carry a `commerce` block with one or more payment provid
 
 Use `set_item_pricing` to configure and `get_item_pricing` to retrieve pricing details and a ready-made storefront card.
 
+### x402 Purchase Endpoints (REST API, :8003)
+
+The REST server exposes the x402 purchase flow for any warehouse item that is `ready`/`featured` and carries an enabled x402 config:
+
+**`GET /warehouse/buy/:id` — purchase offer**
+
+Returns `402 Payment Required` with the machine-readable `X-PAYMENT-REQUIRED` header (base64-encoded payment requirements, per the [x402 protocol](https://x402.org)) plus a JSON body:
+
+```json
+{
+  "error": "X402 Payment Required",
+  "storefrontCard": { "id": "...", "title": "...", "msrpDisplay": "$29.00", "isForSale": true },
+  "payment": {
+    "priceDisplay": "$3.00 USDC",
+    "asset": "USDC",
+    "network": "base",
+    "paymentType": "one-time",
+    "payTo": "0x...",
+    "howToPay": "Pay $3.00 USDC to unlock this asset. ..."
+  }
+}
+```
+
+Errors: `404` unknown item, `409` item not for sale via x402 or not ready.
+
+**`POST /warehouse/buy/:id` — settlement**
+
+The client pays per the header (exact scheme, USDC on Base) and retries with the base64 payment payload in the `X-PAYMENT` header. The server verifies it against an allowlisted x402 facilitator (`POST /verify`, x402 v1 contract). On success it returns the full asset markdown and records the sale:
+
+```json
+{
+  "itemId": "...",
+  "title": "...",
+  "sale": { "ts": "...", "itemId": "...", "amount": 3000000, "asset": "USDC", "txHash": "0x...", "network": "base" },
+  "content": "# Full asset markdown ..."
+}
+```
+
+Every verified sale is appended to `warehouse/sales.jsonl` (`{ts, itemId, title, amount, asset, txHash, network}`) and a `warehouse.sale` event is fired to Interbeing (`127.0.0.1:3710/api/events`, source `bizbuilderprompts`) fire-and-forget.
+
+Failures return `402` with a clear reason: missing/invalid `X-PAYMENT` header, facilitator rejection, or facilitator unreachable.
+
+The facilitator is fetch-guarded: the base URL is resolved once at boot from a constant allowlist (`https://api.cdp.coinbase.com/platform/v1/x402`, `https://x402.org`); `X402_FACILITATOR_URL` may override it only if the host is allowlisted, http/https only — request input can never steer the outbound fetch.
+
 ---
 
 ## Akash Deployment

@@ -17,6 +17,7 @@ import { loadAgentRegistry, getAgentPersona, registerAgent, listAgents } from ".
 import { classify } from "../src/ingestion/classifier.ts";
 import { listIngestionCategories } from "../src/ingestion/categories.ts";
 import { createOrder, getOrder, listOrders } from "../src/orders/manager.ts";
+import { resolvePurchaseOffer, settlePurchase } from "../src/commerce/purchase.ts";
 import { readFileSync } from "fs";
 
 
@@ -86,6 +87,8 @@ const server = Bun.serve({
           "POST /suggest": "Suggest by goal {goal, limit}",
           "GET  /warehouse": "Browse warehouse (?role=&category=&status=&q=)",
           "GET  /warehouse/:id": "Get warehouse item",
+          "GET  /warehouse/buy/:id": "x402 purchase offer (402 + X-PAYMENT-REQUIRED)",
+          "POST /warehouse/buy/:id": "x402 settlement (X-PAYMENT header) → full asset",
           "GET  /agents": "List C-Suite agents",
           "GET  /agents/:role": "Get agent persona",
           "POST /order": "Create order {role, intent, urgency}",
@@ -204,6 +207,71 @@ const server = Bun.serve({
           id: b.id, title: b.title, itemCount: b.itemIds.length, targetRoles: b.targetRoles,
         })),
       }, { headers: corsHeaders });
+    }
+
+    // ── x402 Purchase ──
+    const buyMatch = url.pathname.match(/^\/warehouse\/buy\/(.+)$/);
+    if (buyMatch) {
+      const id = buyMatch[1];
+
+      if (req.method === "GET") {
+        const offer = resolvePurchaseOffer(id);
+        if (offer.kind === "not-found") {
+          return Response.json({ error: "Not found", itemId: id }, { status: 404, headers: corsHeaders });
+        }
+        if (offer.kind === "conflict") {
+          return Response.json({ error: offer.reason, itemId: id, status: offer.status }, { status: 409, headers: corsHeaders });
+        }
+        return Response.json(
+          {
+            error: "X402 Payment Required",
+            storefrontCard: offer.storefrontCard,
+            payment: offer.instructions,
+          },
+          {
+            status: 402,
+            headers: {
+              ...corsHeaders,
+              "X-PAYMENT-REQUIRED": offer.header,
+              "Access-Control-Expose-Headers": "X-PAYMENT-REQUIRED",
+            },
+          },
+        );
+      }
+
+      if (req.method === "POST") {
+        const xPayment = req.headers.get("x-payment");
+        const result = await settlePurchase(id, xPayment);
+        if (result.kind === "not-found") {
+          return Response.json({ error: "Not found", itemId: id }, { status: 404, headers: corsHeaders });
+        }
+        if (result.kind === "conflict") {
+          return Response.json({ error: result.reason, itemId: id }, { status: 409, headers: corsHeaders });
+        }
+        if (result.kind === "payment-required") {
+          const offer = resolvePurchaseOffer(id);
+          const header = offer.kind === "offer" ? offer.header : undefined;
+          return Response.json(
+            { error: result.reason, hint: "Pay per the X-PAYMENT-REQUIRED header, then retry with the X-PAYMENT header" },
+            {
+              status: 402,
+              headers: { ...corsHeaders, ...(header ? { "X-PAYMENT-REQUIRED": header } : {}) },
+            },
+          );
+        }
+        if (result.kind === "invalid-payment" || result.kind === "facilitator-error") {
+          return Response.json({ error: result.reason }, { status: 402, headers: corsHeaders });
+        }
+        return Response.json(
+          {
+            itemId: result.item!.id,
+            title: result.item!.title,
+            sale: result.sale,
+            content: result.content,
+          },
+          { headers: corsHeaders },
+        );
+      }
     }
 
     // ── Get Warehouse Item ──
