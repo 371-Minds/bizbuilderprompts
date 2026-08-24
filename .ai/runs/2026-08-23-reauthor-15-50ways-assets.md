@@ -28,7 +28,7 @@ Replace the 15 "50 Ways"-derived warehouse assets with wholly original 371 conte
 
 ### Phase 1: Setup
 
-- [ ] 1.1 Commit this plan; push branch; open bare draft PR
+- [x] 1.1 Commit this plan; push branch; open bare draft PR
 
 ### Phase 2: Re-author assets
 
