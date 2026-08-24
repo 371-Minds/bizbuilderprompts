@@ -822,6 +822,25 @@
         ],
         "notes": "VERDICT: APPROVE\n\nAlex Washington:",
         "transcriptExcerpt": "Rune: As Pattern Archaeologist, I read this as an original methodology rather than an extraction, so the absence of a sourceQuote is not a red flag in itself. The workflow is internally coherent and matches established practice in high-volume creative curation: criteria-first constraints, batch generation within pattern families, job-tagging variants, honest re-scoping via subheads, audience validation, and preserving losers as raw material. That is a faithful representation of how working copywriters actually produce headline fields — the selection skill is the bottleneck, generation is cheap.\n\nI find no invented or over-generalized claims here. The steps are concrete and testable. One minor observation: \"Framework: custom\" is a weak label, and step 5's audience check could be made more operational (e.g., \"one-sentence guess\" is already there, but adding a sample size or noting it can be done informally would tighten it). Neither issue undermines the methodology's usefulness or fidelity to practice. This is a clean, actionable asset for the warehouse.\n\nVERDICT: APPROVE\n\nAlex Washington: "
+      },
+      "commerce": {
+        "msrpUsdCents": 300,
+        "productId": "PRO-headline-and-subhead-generatio-YROP",
+        "keywords": [
+          "headlines",
+          "copywriting",
+          "subheads",
+          "ai writing"
+        ],
+        "x402": {
+          "enabled": true,
+          "price": 3000000,
+          "asset": "USDC",
+          "network": "base",
+          "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
+          "paymentType": "one-time",
+          "paymentDescription": "371 Minds content doctrine: \"Headline and subhead generation\" — single-purchase access"
+        }
       }
     },
     {
@@ -1619,6 +1638,6 @@
       "filePath": "/tmp/overwrite-test.md"
     }
   ],
-  "lastUpdated": "2026-08-24T21:04:05.995Z",
+  "lastUpdated": "2026-08-24T21:55:32.905Z",
   "totalCount": 53
 }

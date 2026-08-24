@@ -21,7 +21,7 @@
       }
     }
   },
-  "model": "router371/zai-coding/glm-5.1",
+  "model": "router371/zai-coding/glm-5.2",
   "permission": {
     "edit": "allow",
     "bash": "allow",
