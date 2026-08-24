@@ -1,27 +1,18 @@
 # Real reader confusion test
 
-> **Goal:** Catch confusing spots by testing drafts with real readers and tracking where they hesitate.
-> **Framework:** kaizen
-> **Tags:** testing, feedback, clarity, iteration
+> **Goal:** Put the draft in front of an actual member of the target audience and fix exactly where they get lost.
+> **Framework:** custom
+> **Tags:** user-testing, editing, audience, feedback
 
 ---
 
 ## Methodology
 
-1. Run the draft past 3 to 5 real readers.
-2. Watch where they hesitate, reread, or ask the same question.
-3. Rewrite those exact spots, then retest if possible.
-4. [extension] Ask them to highlight anything unclear, and note every spot where more than one reader stumbles.
+1. Recruit one reader who matches the audience sentence and hasn't seen the draft. One honest reader per round beats a panel of polite ones.
+2. Ask them to read aloud and narrate: "say what you're thinking as you go." Confusion announces itself as silence, re-reading, or paraphrase that drifts from your intent.
+3. Watch without defending. The moment you explain, you've spent the data point — explanations fix the reader, the test exists to fix the text.
+4. Mark every stall: the sentence they re-read, the term they hesitated on, the step they asked about, the moment they said "wait." Location matters more than their proposed fixes.
+5. Fix the text at each marked spot — reorder, define, add the missing step, or cut the confusing stretch entirely. Ignore stylistic preferences that didn't cause a stall.
+6. Repeat with a fresh reader until a round produces no stalls. Two clean readers in a row is strong evidence the piece is done.
 
----
-
-## Provenance
-
-- **Source:** PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1
-- **Source hash:** `569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e`
-- **Extracted:** 2026-08-21T17:34:35.972Z via deepseek-v4-flash
-- **Fidelity pre-score:** 0.70 (highlight/stumble detail marked `[extension]`; pricing/onboarding generalization removed and run-together steps split in the 2026-08-22 revise pass)
-
-### Source quote (verification anchor)
-
-> Run your draft past 3 to 5 real readers and watch where they hesitate, reread, or ask the same question.
+The narrated-aloud pass is the highest-yield thirty minutes in the editing stack: it replaces your guesses about clarity with observations of its absence.

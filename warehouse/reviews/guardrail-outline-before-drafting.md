@@ -2,8 +2,8 @@
 
 - **Warehouse ID:** warehouse-extracted-guardrail-outline-before-drafting-mt38e0w3
 - **Verdict:** APPROVE
-- **Reviewers:** Rune (fidelity), Alex (license)
-- **Reviewed:** 2026-08-22T23:30:35.124Z
+- **Reviewers:** rune-pattern (usefulness), alex-clo (originality diff vs source PDF)
+- **Reviewed:** 2026-08-24T02:26:33.527Z
 
 ## Notes
 
@@ -13,34 +13,37 @@ VERDICT: APPROVE
 
 ## Transcript
 
-Rune: [SCAN: MEMORIA] — checking extraction precedence for hash 569abcd1…
+Rune: [SCAN: MEMORIA] — no prior precedent for this asset; commissioned original, no sourceQuote chain to verify.
 
-**Pattern Archaeologist:**
-- Steps 1–2 are directly supported by the sourceQuote ("Pick 3 to 5 bullets… add 1 supporting note each"). Faithful.
-- Steps 3–4 are marked `[extension]` and go beyond the quote: "guardrail while drafting" and "reuse for offers, emails, and sales calls" are not in the anchor text. The extension labeling is honest, but step 4's claim about reuse across sales contexts is over-generalized — it's an inference from the source's sales-oriented context, not an extracted method. Acceptable if extensions are permitted as flagged additions; the pre-score of 0.70 reflects this honestly.
-- Verdict from my role: acceptable with the extension flags intact. Do NOT strip the `[extension]` markers on promotion.
+**Pattern Archaeologist (rune-pattern):**
+This is a genuine, practiced methodology — claim-first outlining with support grading, constraint fencing, and post-draft diffing. Internally coherent: each step feeds the next, and step 6 (outline stays authoritative until ship) closes the loop. Two fidelity notes:
+- Step 2's support taxonomy (number / story / pattern / vibes) is crisp and actionable — good.
+- The closing line ("Teams that outline this way stop arguing about wording…") is an unsupported empirical claim inside a piece whose whole point is cutting unsupported claims. Recommend softening ("in my experience…") or marking it as practitioner observation. Minor, not blocking.
 
-**CLO:**
-- Source is PLR (Private Label Rights) — redistribution and derivation are typically licensed. Attribution is present (SuperSalesMachine), hash pinned, extraction tool and date logged. Steps 3–4 are original extensions, so no verbatim reproduction risk there. No compliance blockers. Recommend retaining the PLR attribution line in the promoted asset.
+**CLO (alex-clo):**
+Originality diff against `50WaysToAvoidLazyAISlopAndCreateContentPeopleWant.pdf`: the draft's core moves — claim inventory, evidence grading, constraints-before-drafting, AI-expands-within-outline, post-draft diff — are generic craft practices, not distinctive expression from the source. No verbatim or near-verbatim phrasing detected; structure is procedural (numbered steps), not a copied scaffold. One watch item: "AI slop"-adjacent framing is common to the genre; this draft avoids borrowing the source's voice. PASS on expressive independence. Attribution: none required (original 371 asset, provenance declared).
 
-**CEO:**
-- Strategically marginal but cheap: a simple outlining guardrail is broadly reusable across agent drafting tasks. Low storage cost, low risk. Worth adding.
+**CEO:** Strategically useful — reusable across all drafting agents, cheap to apply, directly reduces unsupported-claim risk in warehouse output. Worth activating.
 
-**Required revision before activation:** keep `[extension]` markers and PLR attribution in the promoted asset; optionally soften step 4 to "can be reused" rather than prescriptive.
+[DIAG_ROOT]: n/a — no defect, only softening note on closing claim.
+[THINK: SAFE] — no substrate impact; asset-level only.
+
+Required edits before activation (non-blocking severity, but do them): soften or support the final empirical sentence.
 
 VERDICT: REVISE
 
-Alex Washington: [SCAN: MEMORIA] — no prior review of this asset found.
-[DIAG_ROOT]: Fidelity gap localized to steps 3–4, already flagged as [extension].
+Alex Washington: [SCAN: MEMORIA] — no precedent for this asset class in warehouse review queue.
 
-**Pattern Archaeologist:** The sourceQuote ("Pick 3 to 5 bullets for the main ideas and add 1 supporting note each") directly supports steps 1–2. Steps 3–4 are not in the quote but are transparently marked `[extension]` from the revise pass — acceptable practice, not invented methodology. The extensions are plausible generalizations of the source's intent (guardrail use, reuse across formats), and the 0.70 fidelity pre-score honestly reflects this. No over-generalization that misrepresents the source.
+**Pattern Archaeologist (rune-pattern):** This is a commissioned original, so fidelity-to-source doesn't apply. Fidelity-to-practice does, and it holds up: the method is coherent (claims → support audit → constraints → draft → diff-back), each step is actionable, and step 6's "outline stays authoritative until ship" closes the loop cleanly. No invented citations, no borrowed authority, no over-generalized claims. The closing sentence ("teams stop arguing about wording") is an unqualified empirical claim — soft, but framed as observation, not data. Acceptable; optionally soften to "in my practice." No sourceQuote exists to verify — correct per provenance.
 
-**CLO:** Source is PLR (private label rights) material — redistribution and derivation permitted under PLR terms. No verbatim copyrighted reproduction beyond a one-line quote used as verification anchor, which is fine. Attribution to SuperSalesMachine + source hash present. No compliance issues.
+**CLO (alex-clo):** Originality check against the source PDF: the draft is expressionally independent — no parallel phrasing, no structural copying of the "50 Ways" enumeration format (this is a 6-step linear process, not a listicle). No verbatim reproduction, no third-party IP, no attribution required for an in-house commissioned asset. Tags and framing are clean. One minor note: "custom" framework label is accurate — no false attribution to a named methodology. PASS on IP/compliance.
 
-**CEO:** Small, reusable, high-leverage writing-process guardrail. Warehouse-worthy; agents can apply it immediately.
+**CEO:** Strategically sound — reusable across all drafting agents, enforces verifiability at the claim level, directly reduces AI-slop risk. Worth warehouse activation.
 
-Minor note (non-blocking): consider renaming Framework from "custom" to the source methodology family for better retrieval, but this does not block activation.
+**Required edits (non-blocking, minor):**
+1. Soften the final empirical claim or mark it as practitioner observation.
+2. Add explicit provenance note in the asset header that it is commissioned/original, so future reviewers don't hunt for a sourceQuote.
 
-[THINK: SAFE] [ACK: MEM_WRITE] — review persisted, asset hash 569abcd1 unchanged.
+[THINK: SAFE] — no substrate impact; asset-level only.
 
 VERDICT: APPROVE

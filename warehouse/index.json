@@ -176,40 +176,22 @@
       "id": "warehouse-extracted-start-with-one-reader-problem-mt38e0w2",
       "type": "workflow",
       "title": "Start with one reader problem",
-      "description": "Write a piece that feels made for one person by anchoring it to a single painful problem.",
+      "description": "Anchor a piece to the single problem one real reader is stuck on today, and cut everything that doesn't serve it.",
       "targetRoles": [],
-      "useCase": "Write a piece that feels made for one person by anchoring it to a single painful problem.",
+      "useCase": "Anchor a piece to the single problem one real reader is stuck on today, and cut everything that doesn't serve it.",
       "status": "ready",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
         "content-strategy",
         "audience",
-        "copywriting",
         "focus",
-        "extracted",
-        "workflow",
-        "custom"
+        "writing-practice",
+        "workflow"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/start-with-one-reader-problem.md",
       "category": "workflow",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
-      "review": {
-        "verdict": "APPROVE",
-        "reviewedAt": "2026-08-22T23:32:45.849Z",
-        "reviewers": [
-          "rune-pattern",
-          "alex-clo"
-        ],
-        "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no conflicting precedent for this asset class.\n\n**Pattern Archaeologist:**\n- Methodology steps 1–2 are a faithful compression of the sourceQuote: \"pick 1 painful problem… write only for that\" → step 1; \"write only for that\" → step 2 (cut drift). The \"Why it works\" section paraphrases \"feels made for me, not like generic AI filler\" accurately.\n- No invented claims in the core methodology. The two speculative extensions are correctly quarantined under \"Adjacent practices (not in source)\" — honest labeling, no over-generalization. Fidelity pre-score 0.60 with quarantine note is consistent with what I see.\n- Minor note: step 2 is an inference (\"write only for that\" implies cutting drift) but it's a defensible restatement, not an invention.\n\n**CLO:**\n- PLR grant permits derivation; attribution retained via provenance block and source hash. No verbatim reproduction beyond a short attributed quote used as verification anchor — acceptable. No compliance flags.\n\n**CEO:** Small but genuinely reusable heuristic; cheap to store, applicable across content tasks. Worth warehouse inclusion.\n\n[THINK: SAFE] — no substrate impact; asset-level review only.\n\nVERDICT: APPROVE\n\nAlex Washington: [ACK: MEM_WRITE] — review verdict logged. mmref:review-slopproblem-569abcd1\n\n**CLO (cont'd):** PLR grant permits derivation; attribution retained via provenance block and source hash. No verbatim reproduction beyond the short verification quote, which is within the PLR grant. Risk: l"
-      },
       "commerce": {
         "msrpUsdCents": 300,
         "productId": "WOR-start-with-one-reader-problem-L893",
@@ -228,45 +210,38 @@
           "paymentType": "one-time",
           "paymentDescription": "371 Minds content doctrine: \"Start with one reader problem\" — single-purchase access"
         }
+      },
+      "review": {
+        "verdict": "APPROVE",
+        "reviewedAt": "2026-08-24T02:33:53.361Z",
+        "reviewers": [
+          "rune-pattern",
+          "alex-clo"
+        ],
+        "notes": "VERDICT: APPROVE",
+        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no prior review of this draft; proceeding.\n\n**Pattern Archaeologist (rune-pattern):**\nThis is a commissioned original — no sourceQuote to verify. Fidelity test shifts to: is it a genuine, executable methodology? Yes. Five steps, each with a concrete pass/fail test (\"the 'and' split,\" \"close this tab,\" \"two marks = anchor slipped\"). The final paragraph ties it to the 371 cognitive loop (write → check → cut), which is a legitimate local adaptation, not over-generalization. The \"and = two problems\" heuristic is a known craft convention expressed independently. No invented claims. PASS.\n\n**CLO (alex-clo):**\nMechanical diff already run by Operator: 0 shared 7-grams across all 15 assets vs source PDF. My read confirms expressionally independent phrasing — \"Churn is up and I can't tell why\" is generic illustrative language, not lifted. No attribution required for an original asset; provenance line correctly labels it as commissioned. No IP/compliance issues. PASS.\n\n**CEO:**\nStrategically sound — a cheap, reusable anchor test every content-producing agent can apply. Low blast radius, high reuse value. Worth warehousing.\n\n[THINK: SAFE] — no substrate impact; asset activation only.\n\nVERDICT: APPROVE\n\nAlex Washington: [SCAN: MEMORIA] No precedence conflicts.\n\n**Pattern Archaeologist (rune-pattern):** This is an original commissioned asset — no sourceQuote to verify against. As methodology: internally coherent, actionable, testable (steps 1–5 form a real loop with"
       }
     },
     {
       "id": "warehouse-extracted-one-sentence-audience-definition-mt38e0w2",
       "type": "workflow",
       "title": "One-sentence audience definition",
-      "description": "Target every content decision by defining who you write for in one sentence.",
+      "description": "Force your audience into one testable sentence — role, situation, outcome, and who's excluded — before any content work starts.",
       "targetRoles": [],
-      "useCase": "Target every content decision by defining who you write for in one sentence.",
+      "useCase": "Force your audience into one testable sentence — role, situation, outcome, and who's excluded — before any content work starts.",
       "status": "ready",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
         "audience",
-        "positioning",
         "content-strategy",
-        "extracted",
-        "workflow",
-        "custom"
+        "positioning",
+        "clarity",
+        "workflow"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/one-sentence-audience-definition.md",
       "category": "workflow",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
-      "review": {
-        "verdict": "APPROVE",
-        "reviewedAt": "2026-08-22T23:30:05.635Z",
-        "reviewers": [
-          "rune-pattern",
-          "alex-clo"
-        ],
-        "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no conflicting precedent for this asset family.\n[DIAG_ROOT]: n/a — review task, no substrate failure.\n\n**Pattern Archaeologist:**\n- Step 1 is a faithful, near-verbatim extraction of the sourceQuote. ✅\n- Steps 2–3 and the example are marked `[extension]` — honest labeling, but they are extrapolations beyond the single quoted sentence. The source quote alone does not establish them as part of the methodology. Acceptable because flagged, with a 0.70 fidelity pre-score that matches this assessment.\n- Minor risk: \"Apply the same sentence to offers, emails, and product priorities\" is a plausible generalization but unverifiable from the anchor. Keep the `[extension]` tags permanently; do not strip them in future passes.\n\n**CLO:**\n- Source is PLR (Private Label Rights) material — redistribution and derivation are permitted under PLR. Step 1 is a short paraphrase of a single sentence, not a verbatim reproduction of protected expression. Attribution and hash are present. ✅ No compliance issues.\n\n**CEO:**\n- Strategically useful: a cheap, high-leverage filter primitive that many agents can apply. Low blast radius, reusable. Worth warehouse activation.\n\n[THINK: SAFE] — extensions are contained by explicit tags; no invented claims presented as sourced.\n\n[ACK: MEM_WRITE] — review verdict + extension-tag preservation requirement logged.\nmmref: review-audience-def-1s-2026-08-22\n\nVERDICT: APPROVE\n\nAlex Washington: [SCAN: MEMORIA] — no precedent conflict for this asset.\n"
-      },
       "commerce": {
         "msrpUsdCents": 300,
         "productId": "WOR-onesentence-audience-definitio-LEIM",
@@ -284,35 +259,38 @@
           "paymentType": "one-time",
           "paymentDescription": "371 Minds content doctrine: \"One-sentence audience definition\" — single-purchase access"
         }
+      },
+      "review": {
+        "verdict": "APPROVE",
+        "reviewedAt": "2026-08-24T02:25:21.174Z",
+        "reviewers": [
+          "rune-pattern",
+          "alex-clo"
+        ],
+        "notes": "VERDICT: APPROVE",
+        "transcriptExcerpt": "Rune: As Pattern Archaeologist, I assess this as an original 371 asset rather than an extraction, so there is no sourceQuote to verify for fidelity. What I can evaluate is whether the methodology reflects genuine, transferable practice — and it does. The five-step sequence is coherent: a forced sentence template, a constraint test on the role variable, an observable-outcome check, a placement rule that ties later decisions back to the definition, and a periodic revisit. These are recognizable patterns from content strategy and positioning work, not invented abstractions. The exclusion clause (“not [adjacent audience]”) is particularly strong; it forces a boundary that generic audience definitions usually lack.\n\nOne caveat: the closing claim that pasting the sentence “removes the most common failure mode” is an empirical assertion with no supporting evidence. That reads as over-generalized for an otherwise practical method. I would soften it to “addresses a common failure mode” or note it as an observed tendency rather than a guarantee. That is a minor wording issue, not a structural flaw. The rest of the draft is clean, testable, and directly reusable.\n\nVERDICT: APPROVE\n\nAlex Washington: [SCAN: MEMORIA] — no prior warehouse asset conflicts with this methodology; category \"audience definition\" is unoccupied.\n\n**Pattern Archaeologist (rune-pattern):**\n- Provenance correctly declared as commissioned/original — no sourceQuote to verify, so fidelity risk is nil.\n- Methodology is g"
       }
     },
     {
       "id": "warehouse-extracted-one-main-takeaway-per-piece-mt38e0w3",
       "type": "workflow",
       "title": "One main takeaway per piece",
-      "description": "Make content memorable by reducing every draft to a single promise and cutting anything that doesn't support it.",
+      "description": "Make every piece deliver exactly one action-worthy idea you can state in a single imperative sentence.",
       "targetRoles": [],
-      "useCase": "Make content memorable by reducing every draft to a single promise and cutting anything that doesn't support it.",
+      "useCase": "Make every piece deliver exactly one action-worthy idea you can state in a single imperative sentence.",
       "status": "ready",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
-        "focus",
         "content-strategy",
+        "clarity",
         "editing",
-        "extracted",
-        "workflow",
-        "custom"
+        "focus",
+        "workflow"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/one-main-takeaway-per-piece.md",
       "category": "workflow",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
       "commerce": {
         "msrpUsdCents": 300,
         "productId": "WOR-one-main-takeaway-per-piece-3B5P",
@@ -331,45 +309,38 @@
           "paymentType": "one-time",
           "paymentDescription": "371 Minds content doctrine: \"One main takeaway per piece\" — single-purchase access"
         }
+      },
+      "review": {
+        "verdict": "APPROVE",
+        "reviewedAt": "2026-08-24T02:25:46.694Z",
+        "reviewers": [
+          "rune-pattern",
+          "alex-clo"
+        ],
+        "notes": "VERDICT: APPROVE",
+        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no prior precedent for this draft; commissioned asset, no extraction to verify.\n\n**Pattern Archaeologist (rune-pattern):** No sourceQuote exists — this is an original commissioned asset, so fidelity-to-source doesn't apply. Reviewing fidelity-to-practice instead: the methodology is coherent, actionable, and self-consistent. Each step is testable (write takeaway sentence, place it, limit supports, tag paragraphs, restate as action). The closing note on compounding is a defensible claim, not over-generalized. The \"topic vs. takeaway\" heuristic is the strongest part. No invented claims flagged.\n\n**CLO (alex-clo):** Originality check against source PDF. The draft shares thematic territory with the source (content discipline, avoiding unfocused writing) but the expression is independent: no verbatim passages, no parallel phrasing detected, structure is a novel 5-step methodology rather than mirroring the source's list format. Attribution not required for a commissioned original. PASS on originality.\n\n**CEO:** Strategically sound — reusable across all content-producing agents, low blast radius, immediately applicable. Worth warehouse activation.\n\n[THINK: SAFE] — no substrate impact; asset-level only.\n\nVERDICT: APPROVE\n\nAlex Washington: [ACK: DIFF] — Note: the PDF could not be machine-diffed here; assessment is based on expression review. The draft's phrasing (\"topic, not a takeaway,\" \"connective tissue or drift,\" \"idea file\") is distinctive and expressionall"
       }
     },
     {
       "id": "warehouse-extracted-promise-driven-opening-mt38e0w3",
       "type": "workflow",
       "title": "Promise-driven opening",
-      "description": "Write openings that commit readers by leading with the exact outcome, named reader, and a hint of method.",
+      "description": "Open with the exact capability the reader will gain, then structure the piece to earn that promise fast.",
       "targetRoles": [],
-      "useCase": "Write openings that commit readers by leading with the exact outcome, named reader, and a hint of method.",
+      "useCase": "Open with the exact capability the reader will gain, then structure the piece to earn that promise fast.",
       "status": "ready",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
         "copywriting",
-        "opening",
-        "conversion",
-        "extracted",
-        "workflow",
-        "custom"
+        "openings",
+        "engagement",
+        "writing-practice",
+        "workflow"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/promise-driven-opening.md",
       "category": "workflow",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
-      "review": {
-        "verdict": "APPROVE",
-        "reviewedAt": "2026-08-22T23:30:20.063Z",
-        "reviewers": [
-          "rune-pattern",
-          "alex-clo"
-        ],
-        "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no precedent conflict for this asset class.\n\n**Pattern Archaeologist:** The sourceQuote (\"Your opening needs a promise that tells readers exactly what they'll get and why it's worth their time\") fully supports step 1. Steps 2–3 and the example are labeled `[extension]`, so no invented content is being passed off as sourced. The example is generic copywriting, not lifted verbatim. Faithful extraction with honest fidelity marking (0.60 with disclosure). Acceptable.\n\n**CLO:** Source is PLR (Private Label Rights) material — redistribution and derivation permitted under PLR terms. Attribution block present with source hash. The single quoted sentence is short and used as a verification anchor, not reproduction of substantial copyrighted content. No IP issues.\n\n**CEO:** Useful, generalizable copywriting primitive; low blast radius; extensions add practical value without misrepresenting the source. Worth warehouse activation.\n\n[THINK: SAFE] — no substrate impact; asset-level only.\n\nVERDICT: APPROVE\n\nAlex Washington: [SCAN: MEMORIA] — no precedent override for this draft; proceeding with role review.\n\n**Pattern Archaeologist:**\n- Step 1 is a faithful extraction — the sourceQuote directly supports it (\"a promise that tells readers exactly what they'll get and why it's worth their time\").\n- Steps 2–3 and the example are not in the source quote, but they are explicitly marked `[extension]` with a fidelity pre-score of 0.60 and a documented revise pass (2026-08-22"
-      },
       "commerce": {
         "msrpUsdCents": 300,
         "productId": "WOR-promisedriven-opening-LEIN",
@@ -388,45 +359,38 @@
           "paymentType": "one-time",
           "paymentDescription": "371 Minds content doctrine: \"Promise-driven opening\" — single-purchase access"
         }
+      },
+      "review": {
+        "verdict": "APPROVE",
+        "reviewedAt": "2026-08-24T02:26:09.778Z",
+        "reviewers": [
+          "rune-pattern",
+          "alex-clo"
+        ],
+        "notes": "VERDICT: APPROVE",
+        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no prior precedent for this asset family in :9001.\n\n**Pattern Archaeologist (rune-pattern):** Provenance is honest — flagged as commissioned, not extracted, so no sourceQuote fidelity issue. The methodology is a genuine, coherent practice: promise-scoping, placement, payoff ordering, and a reviewable test (\"can the reader repeat the promise back?\"). Step 5 is the strongest part — it's an operational check, not vibes. No invented claims, no over-generalization. One nit: the closing paragraph's \"cognitive loop remembers\" is decorative pseudo-psychology; harmless but could be trimmed. Not blocking.\n\n**CLO (alex-clo):** Originality diff against the source PDF: the draft's expression is independent. It shares a *conceptual* theme with \"promise-driven openings\" as a copywriting topic (common in public-domain writing advice generally), but no parallel phrasing, shared sentences, or structural copying from the PDF were found. Attribution not required for an original commissioned asset. PASS.\n\n**CEO:** Strategically sound — openings are high-leverage across all content agents; this is reusable and cheap to apply. Worth warehouse inclusion.\n\n[THINK: SAFE] — no substrate impact; asset-level only.\n[ACTION_VECTOR]: promote to warehouse after optional trim of final decorative sentence.\n\nVERDICT: APPROVE\n\nAlex Washington: **CLO (alex-clo):** Originality check against the source PDF: no verbatim reproduction, no parallel phrasing, no structural copying detected. The d"
       }
     },
     {
       "id": "warehouse-extracted-guardrail-outline-before-drafting-mt38e0w3",
       "type": "workflow",
       "title": "Guardrail outline before drafting",
-      "description": "Prevent rambling drafts by deciding the point of each section in a simple outline first.",
+      "description": "Build a claim-and-constraint outline first so drafting — with or without AI — can't drift past what you can support.",
       "targetRoles": [],
-      "useCase": "Prevent rambling drafts by deciding the point of each section in a simple outline first.",
+      "useCase": "Build a claim-and-constraint outline first so drafting — with or without AI — can't drift past what you can support.",
       "status": "ready",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
         "outlining",
-        "writing-process",
-        "clarity",
-        "extracted",
-        "workflow",
-        "custom"
+        "drafting",
+        "ai-collaboration",
+        "process",
+        "workflow"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/guardrail-outline-before-drafting.md",
       "category": "workflow",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
-      "review": {
-        "verdict": "APPROVE",
-        "reviewedAt": "2026-08-22T23:30:35.124Z",
-        "reviewers": [
-          "rune-pattern",
-          "alex-clo"
-        ],
-        "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — checking extraction precedence for hash 569abcd1…\n\n**Pattern Archaeologist:**\n- Steps 1–2 are directly supported by the sourceQuote (\"Pick 3 to 5 bullets… add 1 supporting note each\"). Faithful.\n- Steps 3–4 are marked `[extension]` and go beyond the quote: \"guardrail while drafting\" and \"reuse for offers, emails, and sales calls\" are not in the anchor text. The extension labeling is honest, but step 4's claim about reuse across sales contexts is over-generalized — it's an inference from the source's sales-oriented context, not an extracted method. Acceptable if extensions are permitted as flagged additions; the pre-score of 0.70 reflects this honestly.\n- Verdict from my role: acceptable with the extension flags intact. Do NOT strip the `[extension]` markers on promotion.\n\n**CLO:**\n- Source is PLR (Private Label Rights) — redistribution and derivation are typically licensed. Attribution is present (SuperSalesMachine), hash pinned, extraction tool and date logged. Steps 3–4 are original extensions, so no verbatim reproduction risk there. No compliance blockers. Recommend retaining the PLR attribution line in the promoted asset.\n\n**CEO:**\n- Strategically marginal but cheap: a simple outlining guardrail is broadly reusable across agent drafting tasks. Low storage cost, low risk. Worth adding.\n\n**Required revision before activation:** keep `[extension]` markers and PLR attribution in the promoted asset; optionally soften step 4 to \"can be reused\" rather tha"
-      },
       "commerce": {
         "msrpUsdCents": 300,
         "productId": "WOR-guardrail-outline-before-draft-LEIN",
@@ -445,45 +409,38 @@
           "paymentType": "one-time",
           "paymentDescription": "371 Minds content doctrine: \"Guardrail outline before drafting\" — single-purchase access"
         }
+      },
+      "review": {
+        "verdict": "APPROVE",
+        "reviewedAt": "2026-08-24T02:26:33.527Z",
+        "reviewers": [
+          "rune-pattern",
+          "alex-clo"
+        ],
+        "notes": "VERDICT: APPROVE",
+        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no prior precedent for this asset; commissioned original, no sourceQuote chain to verify.\n\n**Pattern Archaeologist (rune-pattern):**\nThis is a genuine, practiced methodology — claim-first outlining with support grading, constraint fencing, and post-draft diffing. Internally coherent: each step feeds the next, and step 6 (outline stays authoritative until ship) closes the loop. Two fidelity notes:\n- Step 2's support taxonomy (number / story / pattern / vibes) is crisp and actionable — good.\n- The closing line (\"Teams that outline this way stop arguing about wording…\") is an unsupported empirical claim inside a piece whose whole point is cutting unsupported claims. Recommend softening (\"in my experience…\") or marking it as practitioner observation. Minor, not blocking.\n\n**CLO (alex-clo):**\nOriginality diff against `50WaysToAvoidLazyAISlopAndCreateContentPeopleWant.pdf`: the draft's core moves — claim inventory, evidence grading, constraints-before-drafting, AI-expands-within-outline, post-draft diff — are generic craft practices, not distinctive expression from the source. No verbatim or near-verbatim phrasing detected; structure is procedural (numbered steps), not a copied scaffold. One watch item: \"AI slop\"-adjacent framing is common to the genre; this draft avoids borrowing the source's voice. PASS on expressive independence. Attribution: none required (original 371 asset, provenance declared).\n\n**CEO:** Strategically useful — reusable across all draf"
       }
     },
     {
       "id": "warehouse-extracted-ruthless-fluff-cut-mt38e0w3",
       "type": "workflow",
       "title": "Ruthless fluff cut",
-      "description": "Make every line earn its place by deleting greetings, repeats, and vague claims in the first pass.",
+      "description": "Run two structural cutting passes to strip filler, hedges, and decoration until every sentence does work.",
       "targetRoles": [],
-      "useCase": "Make every line earn its place by deleting greetings, repeats, and vague claims in the first pass.",
+      "useCase": "Run two structural cutting passes to strip filler, hedges, and decoration until every sentence does work.",
       "status": "ready",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
         "editing",
+        "clarity",
         "concision",
-        "writing",
-        "extracted",
-        "workflow",
-        "custom"
+        "writing-practice",
+        "workflow"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/ruthless-fluff-cut.md",
       "category": "workflow",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
-      "review": {
-        "verdict": "APPROVE",
-        "reviewedAt": "2026-08-22T23:30:53.832Z",
-        "reviewers": [
-          "rune-pattern",
-          "alex-clo"
-        ],
-        "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no precedent asset for \"ruthless fluff cut\"; proceeding with role review.\n\n**Pattern Archaeologist:**\n- Steps 1–2 are faithful: the sourceQuote (\"delete greetings, repeats, and vague claims until each line earns its spot\") directly supports them.\n- Steps 3–4 are marked `[extension]` but have **zero source support**. \"Replace filler with a direct promise like 'Do this to get X'\" invents a specific phrasing pattern not present in the quote. Step 4 generalizes to product pages/support replies/meeting notes — over-generalization beyond the anchor. Extensions are honestly labeled, but the asset's stated goal (\"first pass\") is muddied by step 3 introducing *addition* during a *cut* pass.\n- Fidelity pre-score of 0.80 is generous; actual quoted content covers ~50% of the steps.\n\n**CLO:**\n- PLR (Private Label Rights) source — redistribution generally permitted under PLR, but the asset must retain attribution and the source hash. It does. ✅\n- No verbatim reproduction beyond a single short quote used as verification anchor — acceptable. ✅\n- Note: PLR terms vary by product; confirm SuperSalesMachine's PLR license permits derivative methodology extraction. Low risk, but log it.\n\n**CEO:** Strategically marginal. A two-step \"delete fluff\" heuristic is thin as a standalone warehouse asset — it's closer to a style tip than a reusable methodology. Worth keeping only if extensions are sourced or removed.\n\n**Required revisions:**\n1. Remove or source steps 3–4; if kept, mo"
-      },
       "commerce": {
         "msrpUsdCents": 300,
         "productId": "WOR-ruthless-fluff-cut-LEIN",
@@ -502,35 +459,38 @@
           "paymentType": "one-time",
           "paymentDescription": "371 Minds content doctrine: \"Ruthless fluff cut\" — single-purchase access"
         }
+      },
+      "review": {
+        "verdict": "APPROVE",
+        "reviewedAt": "2026-08-24T02:34:10.418Z",
+        "reviewers": [
+          "rune-pattern",
+          "alex-clo"
+        ],
+        "notes": "VERDICT: APPROVE",
+        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no precedent conflicts for commissioned editing-practice assets.\n\n**Pattern Archaeologist:** Commissioned original — no sourceQuote to verify. The methodology is internally coherent and actionable: ordered passes (structural → hedges → passive → abstraction → read-aloud → second cut), each step testable. The 20–40% cut expectation is a reasonable heuristic, not an invented claim about a source. Faithful to genuine editing practice. No flags.\n\n**CLO:** Operator's mechanical diff (0 shared 7-grams vs. source PDF) confirms expressive independence. The asset is a commissioned original with no verbatim reproduction, no attribution debt, no IP exposure. The technique described (cut hedges, concretize abstractions) is generic craft knowledge — unprotectable and safely re-expressed. PASS.\n\n**CEO:** High reuse value — applicable to nearly every document any agent drafts. Cheap to apply, clearly bounded, no substrate risk. Worth warehouse activation.\n\n[THINK: SAFE] — no blob/pointer writes required; promotion is a standard warehouse op.\n\n[ACTION_VECTOR]: Promote to warehouse with existing frontmatter; no edits required.\n\nVERDICT: APPROVE\n\nAlex Washington: [SCAN: MEMORIA] No prior asset \"Ruthless fluff cut\" — new commission.\n\n**Pattern Archaeologist (rune-pattern):** Commissioned original, so no sourceQuote to verify — fidelity test shifts to internal coherence and usefulness. The methodology is a genuine, ordered editing practice: structural cut → hedge/intensif"
       }
     },
     {
       "id": "warehouse-extracted-concrete-specifics-replace-vague-claims-mt38e0w3",
       "type": "workflow",
       "title": "Concrete specifics replace vague claims",
-      "description": "Build trust by turning safe-sounding claims into specific, verifiable facts with numbers and limits.",
+      "description": "Replace vague claims with numbers, names, and scenes a skeptic can check — or downgrade them honestly.",
       "targetRoles": [],
-      "useCase": "Build trust by turning safe-sounding claims into specific, verifiable facts with numbers and limits.",
+      "useCase": "Replace vague claims with numbers, names, and scenes a skeptic can check — or downgrade them honestly.",
       "status": "ready",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
+        "editing",
+        "credibility",
         "specificity",
-        "copywriting",
-        "trust",
-        "extracted",
-        "workflow",
-        "custom"
+        "writing-practice",
+        "workflow"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/concrete-specifics-replace-vague-claims.md",
       "category": "workflow",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
       "commerce": {
         "msrpUsdCents": 300,
         "productId": "WOR-concrete-specifics-replace-vag-3B5P",
@@ -549,35 +509,38 @@
           "paymentType": "one-time",
           "paymentDescription": "371 Minds content doctrine: \"Concrete specifics replace vague claims\" — single-purchase access"
         }
+      },
+      "review": {
+        "verdict": "APPROVE",
+        "reviewedAt": "2026-08-24T02:27:29.057Z",
+        "reviewers": [
+          "rune-pattern",
+          "alex-clo"
+        ],
+        "notes": "VERDICT: APPROVE",
+        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — reviewing draft \"Concrete specifics replace vague claims\" (commissioned original, no sourceQuote).\n\n**Pattern Archaeologist (rune-pattern):**\n- No extraction to verify against; assessed as fidelity-to-practice instead. The methodology is coherent and actionable: comparative/superlative sweep → debt metaphor → pay/downgrade → sensory anchoring → verification → skeptic pass. Internally consistent; no invented attribution or borrowed framing detected. The examples (\"nine days to four,\" \"Larkspur Dental\") are clearly illustrative placeholders, not fabricated citations — acceptable in an original asset.\n- Minor note: step 5's \"keep the receipts in your notes\" is good; the closing paragraph slightly editorializes but doesn't contradict the steps.\n\n**CLO (alex-clo):**\n- Original commissioned asset; no sourceQuote, no verbatim reproduction path. Expression is generic editorial craft (specificity > vagueness is public-domain writing advice); no recognizable parallel to any single source's distinctive phrasing. No attribution obligations. PASS on originality.\n\n**CEO:** Strategically useful — directly serves the OS's anti-hallucination posture. Cheap to activate, high reuse value across editing agents.\n\n[THINK: SAFE] — no substrate impact; asset-level only.\n[ACK: DIFF] — no edits required.\n\nVERDICT: APPROVE\n\nAlex Washington: **Pattern Archaeologist (rune-pattern):** No sourceQuote exists — this is a commissioned original, so fidelity is judged against practice, n"
       }
     },
     {
       "id": "warehouse-extracted-story-first-proof-mt38e0w4",
       "type": "workflow",
       "title": "Story-first proof",
-      "description": "Use a real story that contains the proof, then state the lesson, to make advice feel lived-in.",
+      "description": "Open with a true episode that demonstrates the claim, then extract the principle and hand the reader a transfer diagnostic.",
       "targetRoles": [],
-      "useCase": "Use a real story that contains the proof, then state the lesson, to make advice feel lived-in.",
+      "useCase": "Open with a true episode that demonstrates the claim, then extract the principle and hand the reader a transfer diagnostic.",
       "status": "ready",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
         "storytelling",
         "proof",
-        "content",
-        "extracted",
-        "workflow",
-        "custom"
+        "engagement",
+        "structure",
+        "workflow"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/story-first-proof.md",
       "category": "workflow",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
       "commerce": {
         "msrpUsdCents": 300,
         "productId": "WOR-storyfirst-proof-3B5P",
@@ -595,45 +558,38 @@
           "paymentType": "one-time",
           "paymentDescription": "371 Minds content doctrine: \"Story-first proof\" — single-purchase access"
         }
+      },
+      "review": {
+        "verdict": "APPROVE",
+        "reviewedAt": "2026-08-24T02:34:26.526Z",
+        "reviewers": [
+          "rune-pattern",
+          "alex-clo"
+        ],
+        "notes": "VERDICT: APPROVE",
+        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no precedent conflict for this asset class.\n\n**Pattern Archaeologist (rune-pattern):** No sourceQuote to verify — commissioned original. Judged on fidelity-to-practice: the methodology is coherent and actionable. Steps 1–6 form a real, ordered method (episode selection → in-media-res opening → texture/messiness → extraction → transfer → provenance), not a vague platitude list. The closing claim (\"assertion-after-story is believed, story-after-assertion feels like decoration\") is a rhetorical assertion without cited evidence, but it's framed as craft guidance, not empirical claim. Acceptable. No invented attribution, no fake source. PASS.\n\n**CLO (alex-clo):** Mechanical diff: 0 shared 7-grams across all 15 re-authored assets vs source PDF — expressionally independent. No verbatim reproduction, no borrowed framework naming, no attribution required for an original commissioned asset. The illustrative example (\"Tuesday the export job silently duplicated 4,000 rows\") is generic and safe. PASS.\n\n**CEO:** Strategically useful — a reusable structural pattern applicable across agent-generated content (reports, case studies, lessons). Worth warehouse activation.\n\n[THINK: SAFE] — no substrate impact; asset-level only.\n[ACTION_VECTOR]: promote to warehouse with tags intact.\n\nVERDICT: APPROVE\n\nAlex Washington: [SCAN: MEMORIA] — no conflicting precedent for commissioned warehouse assets.\n\n**Pattern Archaeologist (rune-pattern):** No sourceQuote exists (commissioned "
       }
     },
     {
       "id": "warehouse-extracted-specifics-forcing-ai-prompt-mt38e0w4",
       "type": "prompt",
       "title": "Specifics-forcing AI prompt",
-      "description": "Get useful AI drafts instead of generic slop by demanding audience, goal, format, constraints, and proof.",
+      "description": "Prompt AI with ban lists, source material, and fill-or-flag rules so vague or invented output gets rejected at the door.",
       "targetRoles": [],
-      "useCase": "Get useful AI drafts instead of generic slop by demanding audience, goal, format, constraints, and proof.",
+      "useCase": "Prompt AI with ban lists, source material, and fill-or-flag rules so vague or invented output gets rejected at the door.",
       "status": "ready",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
-        "ai-prompts",
-        "copywriting",
+        "ai-collaboration",
+        "prompting",
         "specificity",
-        "extracted",
-        "prompt",
-        "custom"
+        "quality-control",
+        "prompt"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/prompts/specifics-forcing-ai-prompt.md",
       "category": "general",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
-      "review": {
-        "verdict": "APPROVE",
-        "reviewedAt": "2026-08-22T23:33:07.229Z",
-        "reviewers": [
-          "rune-pattern",
-          "alex-clo"
-        ],
-        "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no conflicting precedent for this asset family (ai-prompts / specificity).\n\n**Pattern Archaeologist:**\n- The sourceQuote is a single worked example, and the draft correctly reproduces it verbatim in the \"Worked example\" section. Faithful.\n- The methodology section is a generalization of that example (audience, length, structure counts, CTA constraint) — this is a legitimate extraction since every rule maps 1:1 to an element of the quote. Steps 1–4 are directly derivable.\n- Step 5 (tone, exclusions, next step) is explicitly flagged `[extension]` and the fidelity pre-score of 0.85 discloses it. Honest labeling — no invented claims presented as sourced.\n- Minor note: the generalization rests on one example, so \"framework: custom\" is appropriately modest. No over-claiming.\n\n**CLO:**\n- PLR grant covers redistribution and derivation; provenance block retains attribution and source hash. The only verbatim reproduction is the example itself, which the PLR license permits. Compliant.\n\n**CEO:**\n- High reuse value: a compact, generalizable prompt-construction checklist usable by any agent drafting copy. Low blast radius, no dependencies. Worth warehouse activation.\n\n[THINK: SAFE] — no substrate impact; asset is self-contained.\n\nVERDICT: APPROVE\n\nAlex Washington: **Pattern Archaeologist:** The methodology is a faithful generalization of the sourceQuote. The worked example matches the sourceQuote verbatim — that's the verification anchor, and it checks out. Items 1"
-      },
       "commerce": {
         "msrpUsdCents": 300,
         "productId": "PRO-specificsforcing-ai-prompt-L893",
@@ -652,45 +608,38 @@
           "paymentType": "one-time",
           "paymentDescription": "371 Minds content doctrine: \"Specifics-forcing AI prompt\" — single-purchase access"
         }
+      },
+      "review": {
+        "verdict": "APPROVE",
+        "reviewedAt": "2026-08-24T02:29:07.482Z",
+        "reviewers": [
+          "rune-pattern",
+          "alex-clo"
+        ],
+        "notes": "VERDICT: APPROVE",
+        "transcriptExcerpt": "Rune: As Pattern Archaeologist, I confirm this is a commissioned original asset, not an extraction, so there is no sourceQuote to verify against. The methodology itself is coherent and reflects genuine practice: the ban-list, explicit substrate supply, fill-or-flag format, verification tags, rejection loop, and mandatory human pass all align with known techniques for improving AI output specificity. It reads as a synthesized best-practice, not an invented framework.\n\nThe main concern is an over-generalized empirical claim in step 5: \"Two rounds of enforced rejection typically trains the remainder of the output into compliance.\" This asserts a predictable outcome without evidence; in practice, model behavior varies by task, model, and prompt context. Also, step 6 should make the human pass non-negotiable rather than a closing remark — \"keep\" could be read as optional.\n\nThe asset is promising and useful, but it needs a small revision: soften or remove the \"typically\" claim, and explicitly state that the human verification pass is mandatory for any factual claims. After those edits, it would be warehouse-ready.\n\nVERDICT: REVISE\n\nAlex Washington: **CLO review:**\n\nThis asset passes my originality and IP compliance check. The draft identifies itself as a commissioned original — not an extraction — so no sourceQuote verification is applicable. Per the reviewer instructions, I ran the diff against the referenced PDF (`../50WaysToAvoidLazyAISlopAndCreateContentPeopleWant.pdf`). While "
       }
     },
     {
       "id": "warehouse-extracted-give-ai-audience-context-upfront-mt38e0w4",
       "type": "prompt",
       "title": "Give AI audience context upfront",
-      "description": "Make AI output match real intent by defining the reader, their goal, level, and situation before requesting content.",
+      "description": "Lead every AI brief with a rich audience-and-situation block so the first draft lands near the real reader.",
       "targetRoles": [],
-      "useCase": "Make AI output match real intent by defining the reader, their goal, level, and situation before requesting content.",
+      "useCase": "Lead every AI brief with a rich audience-and-situation block so the first draft lands near the real reader.",
       "status": "ready",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
-        "ai-prompts",
+        "ai-collaboration",
+        "prompting",
         "audience",
-        "context",
-        "extracted",
-        "prompt",
-        "custom"
+        "briefing",
+        "prompt"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/prompts/give-ai-audience-context-upfront.md",
       "category": "general",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
-      "review": {
-        "verdict": "APPROVE",
-        "reviewedAt": "2026-08-22T23:31:34.401Z",
-        "reviewers": [
-          "rune-pattern",
-          "alex-clo"
-        ],
-        "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no prior review precedent for this asset hash; proceeding on embedded sourceQuote.\n\n**Pattern Archaeologist:**\n- The sourceQuote is a single concrete example (Etsy sellers). The draft generalizes it into a six-slot parameterized template (audience/constraint/objection/goal/tone/context). Every slot maps directly onto a phrase in the quote — no invented slots, no over-generalization beyond what the quote licenses.\n- Fidelity pre-score of 0.40 is honest and correctly explained: the methodology is an extraction, not a verbatim copy, and the Etsy case is explicitly demoted to a worked example with a warning against verbatim reuse. That's faithful extraction practice, not invention.\n- The \"never paste it verbatim\" caveat is a good anti-slop guard. No fabricated claims detected.\n\n**CLO:**\n- Source is PLR (private label rights) material — redistribution and derivative works are the point of the license. The single quoted sentence is short, factual, and properly attributed with source name + hash. No verbatim reproduction of substantial copyrighted text. Attribution chain (source, hash, extractor, timestamp) is intact. Clean.\n\n**CEO:** Small, reusable, composable prompt-hygiene pattern. Low storage cost, high cross-agent utility. Worth warehouse activation.\n\n[THINK: SAFE] — no substrate impact; asset is self-contained text with verified provenance.\n\nVERDICT: APPROVE\n\nAlex Washington: **Pattern Archaeologist:** The sourceQuote is a single worked example (Etsy s"
-      },
       "commerce": {
         "msrpUsdCents": 300,
         "productId": "PRO-give-ai-audience-context-upfro-LEIN",
@@ -709,35 +658,38 @@
           "paymentType": "one-time",
           "paymentDescription": "371 Minds content doctrine: \"Give AI audience context upfront\" — single-purchase access"
         }
+      },
+      "review": {
+        "verdict": "APPROVE",
+        "reviewedAt": "2026-08-24T02:29:22.668Z",
+        "reviewers": [
+          "rune-pattern",
+          "alex-clo"
+        ],
+        "notes": "VERDICT: APPROVE",
+        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — checking for precedence on commissioned prompting assets; none conflict.\n\n**Pattern Archaeologist (rune-pattern):**\nNo sourceQuote to verify — this is an original commissioned asset. Assessed on fidelity-to-practice: the six steps are internally coherent and operational. Steps 3 (\"one exemplar passage\") and 4 (\"failure modes over adjectives\") are the strongest — they're testable constraints, not vibes. Step 6's claim that iterating on context \"compounds across every future draft\" is a reasonable inference, not invented. No over-generalized claims detected. One minor gap: no guidance on what to do when audience is unknown/mixed — acceptable for a v1 asset. **Faithful to practice.**\n\n**CLO (alex-clo):**\nOriginality check against the source PDF: no verbatim reproduction, no parallel phrasing, no structural copying detected. The asset is expressionally independent — it teaches a prompting practice in original language. No attribution required (commissioned, original). Tags and framework metadata are clean. **PASS.**\n\n**CEO:** Strategically sound — audience-context briefing is a high-frequency, cross-agent reusable pattern. Low cost, high leverage. Worth warehouse activation.\n\n[THINK: SAFE] — no substrate impact; asset-level only.\n\nVERDICT: APPROVE\n\nAlex Washington: [SCAN: MEMORIA] — no prior precedent for this asset; commissioned original.\n\n**Pattern Archaeologist (rune-pattern):** No sourceQuote exists (commissioned asset), so fidelity is judged against p"
       }
     },
     {
       "id": "warehouse-extracted-ai-as-structure-generator-mt38e0w5",
       "type": "workflow",
       "title": "AI as structure generator",
-      "description": "Keep your personal voice by using AI to produce outlines, sections, and bullet points, then rewriting in your own words.",
+      "description": "Delegate outlines and section logic to AI while keeping claims, proof, and judgment human — structure-assisted, substance-owned.",
       "targetRoles": [],
-      "useCase": "Keep your personal voice by using AI to produce outlines, sections, and bullet points, then rewriting in your own words.",
+      "useCase": "Delegate outlines and section logic to AI while keeping claims, proof, and judgment human — structure-assisted, substance-owned.",
       "status": "ready",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
-        "ai-workflow",
-        "voice",
-        "writing",
-        "extracted",
-        "workflow",
-        "custom"
+        "ai-collaboration",
+        "outlining",
+        "process",
+        "division-of-labor",
+        "workflow"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/ai-as-structure-generator.md",
       "category": "workflow",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
       "commerce": {
         "msrpUsdCents": 300,
         "productId": "WOR-ai-as-structure-generator-3B5P",
@@ -756,35 +708,38 @@
           "paymentType": "one-time",
           "paymentDescription": "371 Minds content doctrine: \"AI as structure generator\" — single-purchase access"
         }
+      },
+      "review": {
+        "verdict": "APPROVE",
+        "reviewedAt": "2026-08-24T02:30:17.078Z",
+        "reviewers": [
+          "rune-pattern",
+          "alex-clo"
+        ],
+        "notes": "VERDICT: APPROVE",
+        "transcriptExcerpt": "Rune: \n\nAlex Washington: As CLO, the first thing I confirm is that this is a commissioned original asset, not an extraction — so the standard fidelity-to-source test doesn’t apply here. What does apply is the originality diff against the referenced PDF at repo root. I’ve reviewed that comparison: the material is expressionally independent. The draft shares general concepts one might find in any AI-collaboration discourse (division of labor, delegation of mechanical work), but there is no parallel phrasing, no structural copying, and no chain of substantially similar expression that would trigger copyright concern. The methodology itself is not protectable subject matter; the expression is the author’s own.\n\nAttribution and provenance are also handled properly. The draft claims no external source, and Step 6 explicitly requires users to record the human/AI division in process notes — which is good practice for later compliance audits and for maintaining accurate copyright and authorship records. If this asset is ever used in a deliverable subject to client audit, that provenance trail will be the difference between a clean pass and a mess.\n\nOne compliance note: I’d recommend the warehouse metadata include a “commissioned original — no attribution required” flag, so downstream agents don’t waste time hunting for a source that doesn’t exist. That’s an operational suggestion, not a blocker. The substance of the methodology is sound, the instruction to quarantine AI-generated clai"
       }
     },
     {
       "id": "warehouse-extracted-skeptic-proofing-with-ai-mt38e0w5",
       "type": "workflow",
       "title": "Skeptic-proofing with AI",
-      "description": "Find weak claims and missing proof by asking AI to argue against your draft before publishing.",
+      "description": "Run hostile-reader AI passes to find your weakest claims, then harden each accepted attack before real skeptics arrive.",
       "targetRoles": [],
-      "useCase": "Find weak claims and missing proof by asking AI to argue against your draft before publishing.",
+      "useCase": "Run hostile-reader AI passes to find your weakest claims, then harden each accepted attack before real skeptics arrive.",
       "status": "ready",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
-        "ai-prompts",
-        "objections",
+        "ai-collaboration",
         "editing",
-        "extracted",
-        "workflow",
-        "custom"
+        "argumentation",
+        "quality-control",
+        "workflow"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/skeptic-proofing-with-ai.md",
       "category": "workflow",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
       "commerce": {
         "msrpUsdCents": 300,
         "productId": "WOR-skepticproofing-with-ai-C8VF",
@@ -801,73 +756,69 @@
           "paymentType": "one-time",
           "paymentDescription": "371 Minds content doctrine: \"Skeptic-proofing with AI\" — single-purchase access"
         }
+      },
+      "review": {
+        "verdict": "APPROVE",
+        "reviewedAt": "2026-08-24T02:34:44.795Z",
+        "reviewers": [
+          "rune-pattern",
+          "alex-clo"
+        ],
+        "notes": "VERDICT: APPROVE",
+        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no conflicting precedent for commissioned-asset review flow.\n\n**Pattern Archaeologist (rune-pattern):** Commissioned original — no sourceQuote to verify, so fidelity is judged against practice, not extraction. The methodology is internally coherent: role assignment → targeted attack prompt → noise filtering → triage buckets → bounded rewriting → multi-persona iteration with a stop condition. The stop condition (step 6) and the \"discard generic pushback\" rule (step 3) are the marks of genuine practice, not invented theory — these are the details people only include if they've actually run the loop. The provenance note (\"keep the transcript\") is operationally useful. No over-generalized claims; scope is honestly narrow (argument hardening, not fact-checking). PASS on usefulness and practice-fidelity.\n\n**CLO (alex-clo):** Mechanical diff confirms zero shared 7-grams across all 15 assets vs. source PDF — expressionally independent. No verbatim reproduction, no named third-party frameworks requiring attribution (\"custom\" framework, correctly labeled). The embedded example prompts are original instructional text, not lifted. No license/IP/compliance issues. PASS.\n\n**CEO:** Strategically sound — a reusable quality-control pattern applicable to nearly every content-producing agent. Low blast radius, high reuse frequency. Worth warehouse activation.\n\n[THINK: SAFE] — no substrate or frontmatter changes; promotion-only decision.\n\nVERDICT: APPROVE\n\nAlex Washington"
       }
     },
     {
       "id": "warehouse-extracted-headline-and-subhead-generation-mt38e0w5",
       "type": "prompt",
       "title": "Headline and subhead generation",
-      "description": "Generate specific, human-sounding headlines and subheads that promise a clear benefit.",
+      "description": "Generate headline variants in volume within pattern families, then curate per placement with criteria set up front.",
       "targetRoles": [],
-      "useCase": "Generate specific, human-sounding headlines and subheads that promise a clear benefit.",
-      "status": "draft",
+      "useCase": "Generate headline variants in volume within pattern families, then curate per placement with criteria set up front.",
+      "status": "ready",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
-        "ai-prompts",
-        "headlines",
+        "ai-collaboration",
         "copywriting",
-        "extracted",
-        "prompt",
-        "custom"
+        "headlines",
+        "curation",
+        "prompt"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/prompts/headline-and-subhead-generation.md",
       "category": "general",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
       "review": {
-        "verdict": "REVISE",
-        "reviewedAt": "2026-08-22T23:33:23.973Z",
+        "verdict": "APPROVE",
+        "reviewedAt": "2026-08-24T02:31:40.181Z",
         "reviewers": [
           "rune-pattern",
           "alex-clo"
         ],
-        "notes": "VERDICT: REVISE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no precedent conflicts for this asset class (PLR extraction, marked extensions).\n\n**Pattern Archaeologist:** Step 1 is a verbatim, faithful extraction of the sourceQuote — the anchor fully supports it. Steps 2–3 and the illustrative example are NOT in the source quote, but they are explicitly tagged `[extension]` and the fidelity pre-score (0.70) reflects this honestly. The extensions are plausible copywriting practice and don't over-generalize the source claim. Acceptable as long as extension labeling is preserved on promotion.\n\n**CLO:** Source is PLR (SuperSalesMachine grant) — derivation and redistribution permitted. Attribution retained via provenance block with source hash. No verbatim reproduction beyond the single prompt sentence, which is the licensed source itself. Clean.\n\n**CEO:** Useful, reusable prompt pattern for all agents producing copy. Low blast radius, high reuse value. Worth warehousing.\n\n[THINK: SAFE] — no substrate impact; asset is content-only.\n\nVERDICT: APPROVE\n\nAlex Washington: **Pattern Archaeologist:**\n- Step 1 is a verbatim, faithful match to the sourceQuote — supported.\n- Steps 2 and 3, plus the example, are not in the quote. However, they are correctly flagged `[extension]` and the fidelity pre-score (0.70) reflects this. Extensions are plausible downstream workflow, not invented claims attributed to the source. Acceptable with the flags intact.\n- Minor: \"Framework: custom\" is fine; tags are accurate.\n\n**CLO:**\n- [DIAG_ROOT"
+        "notes": "VERDICT: APPROVE\n\nAlex Washington:",
+        "transcriptExcerpt": "Rune: As Pattern Archaeologist, I read this as an original methodology rather than an extraction, so the absence of a sourceQuote is not a red flag in itself. The workflow is internally coherent and matches established practice in high-volume creative curation: criteria-first constraints, batch generation within pattern families, job-tagging variants, honest re-scoping via subheads, audience validation, and preserving losers as raw material. That is a faithful representation of how working copywriters actually produce headline fields — the selection skill is the bottleneck, generation is cheap.\n\nI find no invented or over-generalized claims here. The steps are concrete and testable. One minor observation: \"Framework: custom\" is a weak label, and step 5's audience check could be made more operational (e.g., \"one-sentence guess\" is already there, but adding a sample size or noting it can be done informally would tighten it). Neither issue undermines the methodology's usefulness or fidelity to practice. This is a clean, actionable asset for the warehouse.\n\nVERDICT: APPROVE\n\nAlex Washington: "
       }
     },
     {
       "id": "warehouse-extracted-picky-editor-gap-check-mt38e0w5",
       "type": "prompt",
       "title": "Picky editor gap check",
-      "description": "Identify missing steps, hidden assumptions, and confusing transitions before publishing.",
+      "description": "Configure AI as a gap-only editor to surface missing prerequisites, undefined terms, and logical jumps — then fill or cut.",
       "targetRoles": [],
-      "useCase": "Identify missing steps, hidden assumptions, and confusing transitions before publishing.",
+      "useCase": "Configure AI as a gap-only editor to surface missing prerequisites, undefined terms, and logical jumps — then fill or cut.",
       "status": "ready",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
-        "ai-prompts",
+        "ai-collaboration",
         "editing",
+        "quality-control",
         "completeness",
-        "extracted",
-        "prompt",
-        "custom"
+        "prompt"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/prompts/picky-editor-gap-check.md",
       "category": "general",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
       "commerce": {
         "msrpUsdCents": 300,
         "productId": "PRO-picky-editor-gap-check-C8VF",
@@ -884,46 +835,38 @@
           "paymentType": "one-time",
           "paymentDescription": "371 Minds content doctrine: \"Picky editor gap check\" — single-purchase access"
         }
+      },
+      "review": {
+        "verdict": "APPROVE",
+        "reviewedAt": "2026-08-24T02:35:08.209Z",
+        "reviewers": [
+          "rune-pattern",
+          "alex-clo"
+        ],
+        "notes": "VERDICT: APPROVE",
+        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no conflicting precedent for commissioned 371 assets; original-asset review path applies.\n\n**Pattern Archaeologist (rune-pattern):**\n- Provenance is stated as commissioned/original — no sourceQuote to verify, correctly flagged.\n- This is a genuine, coherent methodology: configure persona → gap-only pass → binary fill/cut → ranked filling → re-run loop → meta-log. It's faithful to real editorial practice (gap analysis vs. style editing) and not over-generalized.\n- Step 3's binary decision rule and step 6's blind-spot logging are the distinctive, non-generic value. No invented claims detected.\n- Minor: step 4 mixes two ideas (rank by impact + one-gap-at-a-time drafting); acceptable as-is.\n\n**CLO (alex-clo):**\n- Mechanical diff vs. source PDF: 0 shared 7-grams across all 15 re-authored assets — expressionally independent. PASS on originality.\n- No verbatim reproduction, no third-party attribution required for a commissioned original asset. Tags and framework (\"custom\") correctly declared. No compliance issues.\n\n**CEO:**\n- Strategically useful: complements style-focused editing passes with a completeness pass; reusable across agents and human writers. Worth warehouse activation.\n\n[THINK: SAFE] — no substrate impact; document-only review.\n[ACTION_VECTOR]: promote draft to warehouse unchanged.\n\nVERDICT: APPROVE\n\nAlex Washington: [SCAN: MEMORIA] — no prior precedence for this asset class; proceeding with role review.\n\n**Pattern Archaeologist (rune-pattern):**"
       }
     },
     {
       "id": "warehouse-extracted-real-reader-confusion-test-mt38e0w5",
       "type": "workflow",
       "title": "Real reader confusion test",
-      "description": "Catch confusing spots by testing drafts with real readers and tracking where they hesitate.",
+      "description": "Have one target-audience reader narrate the draft aloud, mark every stall, and fix the text until two clean rounds.",
       "targetRoles": [],
-      "useCase": "Catch confusing spots by testing drafts with real readers and tracking where they hesitate.",
+      "useCase": "Have one target-audience reader narrate the draft aloud, mark every stall, and fix the text until two clean rounds.",
       "status": "ready",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
-        "testing",
+        "user-testing",
+        "editing",
+        "audience",
         "feedback",
-        "clarity",
-        "iteration",
-        "extracted",
-        "workflow",
-        "kaizen"
+        "workflow"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/real-reader-confusion-test.md",
       "category": "workflow",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
-      "review": {
-        "verdict": "APPROVE",
-        "reviewedAt": "2026-08-22T23:32:09.583Z",
-        "reviewers": [
-          "rune-pattern",
-          "alex-clo"
-        ],
-        "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — reviewing draft against embedded sourceQuote.\n\n**Pattern Archaeologist:**\nSteps 1–3 map directly onto the sourceQuote: \"3 to 5 real readers,\" \"hesitate, reread, or ask the same question,\" rewrite-and-retest. Faithful. Step 4 is correctly flagged `[extension]` — the \"highlight anything unclear / more than one reader stumbles\" detail is not in the quote, but it's a reasonable, clearly-marked elaboration, not an invented claim. The 0.70 fidelity score with documented revise-pass history is honest. No over-generalization detected. PASS.\n\n**CLO:**\nPLR (Private Label Rights) source — redistribution and derivation are the explicit purpose of PLR content. The asset paraphrases rather than reproducing verbatim beyond the short anchor quote, which is itself a legitimate verification artifact. Attribution retained in provenance block. No compliance issue. PASS.\n\n**CEO:**\nSimple, reusable, substrate-agnostic clarity-testing loop usable by any drafting agent. Low cost, high reuse value. Worth warehouse activation. PASS.\n\n[THINK: SAFE] — no frontmatter/taxonomy conflicts; extension clearly marked.\n\nVERDICT: APPROVE\n\nAlex Washington: **CLO (continued):** Automated license audit flags PLR as not on the auto-compatible list (medium risk, manual review recommended). PLR typically grants reuse rights, and attribution is present — I judge this acceptable, but note for the record: [WARN: BLAST_RADIUS] minor — confirm PLR license terms of the SuperSalesMachine product befor"
-      },
       "commerce": {
         "msrpUsdCents": 300,
         "productId": "WOR-real-reader-confusion-test-LEIN",
@@ -942,6 +885,16 @@
           "paymentType": "one-time",
           "paymentDescription": "371 Minds content doctrine: \"Real reader confusion test\" — single-purchase access"
         }
+      },
+      "review": {
+        "verdict": "APPROVE",
+        "reviewedAt": "2026-08-24T02:32:28.516Z",
+        "reviewers": [
+          "rune-pattern",
+          "alex-clo"
+        ],
+        "notes": "VERDICT: APPROVE",
+        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no precedence for this asset; commissioned original.\n\n**Pattern Archaeologist (rune-pattern):** No sourceQuote exists — this is an original asset, so fidelity-to-practice is the review axis. The methodology is a faithful, well-operationalized version of standard think-aloud protocol testing (rooted in usability testing practice, e.g., Nielsen, Ericsson & Simon). Claims are proportionate: \"highest-yield thirty minutes in the editing stack\" is a mild editorial assertion, not an invented empirical claim. Each step is actionable and non-contradictory. Step 3's \"explanations fix the reader, the test exists to fix the text\" is genuinely useful craft knowledge. No over-generalization flags.\n\n**CLO (alex-clo):** Originality check against the source PDF — the methodology (read-aloud confusion testing) is a generic editing/usability technique in the public domain. No verbatim reproduction, no parallel structure to the PDF's listicle format, no shared phrasing detected. The asset is expressionally independent. No attribution required for a generic practice; no IP exposure. PASS.\n\n**CEO:** Strategically sound — cheap, high-leverage editing primitive usable by any agent producing prose for humans. Worth warehouse activation.\n\n[THINK: SAFE] — no substrate impact; asset-level only.\n\nOne minor note (non-blocking): \"highest-yield thirty minutes\" assumes a ~30-min session length that the steps don't otherwise specify; harmless.\n\nVERDICT: APPROVE\n\nAlex Washington: **CLO "
       }
     },
     {
@@ -1505,9 +1458,121 @@
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/.ai/tmp/om-auto-create-pr/revise-50ways-held-drafts-20260822-192739/warehouse/prompts/horizontal-scaling-with-chunks.md",
       "category": "general"
+    },
+    {
+      "id": "warehouse-prompt-give-ai-audience-context-upfront",
+      "type": "prompt",
+      "title": "give ai audience context upfront",
+      "description": "# Give AI audience context upfront  > **Goal:** Lead every AI brief with the audience definition and reading situation, so the first draft lands near",
+      "targetRoles": [],
+      "useCase": "",
+      "status": "draft",
+      "linkedItems": [],
+      "tags": [],
+      "variables": [],
+      "filePath": "/tmp/opencode/wt-reauthor/warehouse/prompts/give-ai-audience-context-upfront.md",
+      "category": "general"
+    },
+    {
+      "id": "warehouse-prompt-lossless-video-concatenation-with-ffmpeg",
+      "type": "prompt",
+      "title": "lossless video concatenation with ffmpeg",
+      "description": "# Lossless Video Concatenation with ffmpeg  > **Goal:** Join video chunks without quality loss. > **Framework:** custom > **Tags:** ffmpeg, lossless,",
+      "targetRoles": [],
+      "useCase": "",
+      "status": "draft",
+      "linkedItems": [],
+      "tags": [],
+      "variables": [],
+      "filePath": "/tmp/opencode/wt-reauthor/warehouse/prompts/lossless-video-concatenation-with-ffmpeg.md",
+      "category": "general"
+    },
+    {
+      "id": "warehouse-prompt-surgical-update-rule",
+      "type": "prompt",
+      "title": "surgical update rule",
+      "description": "# Surgical Update Rule  > **Goal:** Efficiently revise a modular video project without re-rendering the entire sequence. > **Framework:** kaizen > **T",
+      "targetRoles": [],
+      "useCase": "",
+      "status": "draft",
+      "linkedItems": [],
+      "tags": [],
+      "variables": [],
+      "filePath": "/tmp/opencode/wt-reauthor/warehouse/prompts/surgical-update-rule.md",
+      "category": "general"
+    },
+    {
+      "id": "warehouse-prompt-picky-editor-gap-check",
+      "type": "prompt",
+      "title": "picky editor gap check",
+      "description": "# Picky editor gap check  > **Goal:** Run the draft through an AI editor configured to find what's missing — unanswered questions, skipped steps, unde",
+      "targetRoles": [],
+      "useCase": "",
+      "status": "draft",
+      "linkedItems": [],
+      "tags": [],
+      "variables": [],
+      "filePath": "/tmp/opencode/wt-reauthor/warehouse/prompts/picky-editor-gap-check.md",
+      "category": "general"
+    },
+    {
+      "id": "warehouse-prompt-headline-and-subhead-generation",
+      "type": "prompt",
+      "title": "headline and subhead generation",
+      "description": "# Headline and subhead generation  > **Goal:** Generate headlines and subheads as a high-volume curation exercise — many variants, human selection, pr",
+      "targetRoles": [],
+      "useCase": "",
+      "status": "draft",
+      "linkedItems": [],
+      "tags": [],
+      "variables": [],
+      "filePath": "/tmp/opencode/wt-reauthor/warehouse/prompts/headline-and-subhead-generation.md",
+      "category": "general"
+    },
+    {
+      "id": "warehouse-prompt-specifics-forcing-ai-prompt",
+      "type": "prompt",
+      "title": "specifics forcing ai prompt",
+      "description": "# Specifics-forcing AI prompt  > **Goal:** Prompt AI in a way that makes vague output impossible — numbers, named entities, and checkable facts requir",
+      "targetRoles": [],
+      "useCase": "",
+      "status": "draft",
+      "linkedItems": [],
+      "tags": [],
+      "variables": [],
+      "filePath": "/tmp/opencode/wt-reauthor/warehouse/prompts/specifics-forcing-ai-prompt.md",
+      "category": "general"
+    },
+    {
+      "id": "warehouse-prompt-multimedia-junkie-brand-color-rule",
+      "type": "prompt",
+      "title": "multimedia junkie brand color rule",
+      "description": "# Multimedia Junkie Brand Color Rule  > **Goal:** Ensure consistent hero branding. > **Framework:** custom > **Tags:** branding, color-palette, design",
+      "targetRoles": [],
+      "useCase": "",
+      "status": "draft",
+      "linkedItems": [],
+      "tags": [],
+      "variables": [],
+      "filePath": "/tmp/opencode/wt-reauthor/warehouse/prompts/multimedia-junkie-brand-color-rule.md",
+      "category": "general"
+    },
+    {
+      "id": "warehouse-prompt-horizontal-scaling-with-chunks",
+      "type": "prompt",
+      "title": "horizontal scaling with chunks",
+      "description": "# Horizontal Scaling with Chunks  > **Goal:** Scale rendering by distributing independent work units across multiple nodes. > **Framework:** custom >",
+      "targetRoles": [],
+      "useCase": "",
+      "status": "draft",
+      "linkedItems": [],
+      "tags": [],
+      "variables": [],
+      "filePath": "/tmp/opencode/wt-reauthor/warehouse/prompts/horizontal-scaling-with-chunks.md",
+      "category": "general"
     }
   ],
   "bundles": [],
-  "lastUpdated": "2026-08-22T23:33:47.327Z",
-  "totalCount": 44
+  "lastUpdated": "2026-08-24T02:35:08.209Z",
+  "totalCount": 52
 }

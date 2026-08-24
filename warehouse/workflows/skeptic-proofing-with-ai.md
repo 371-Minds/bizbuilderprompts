@@ -1,24 +1,18 @@
 # Skeptic-proofing with AI
 
-> **Goal:** Find weak claims and missing proof by asking AI to argue against your draft before publishing.
+> **Goal:** Use AI as a hostile reader to find the weakest claims in a draft before real skeptics do.
 > **Framework:** custom
-> **Tags:** ai-prompts, objections, editing
+> **Tags:** ai-collaboration, editing, argumentation, quality-control
 
 ---
 
 ## Methodology
 
-1. Paste the full draft into AI. 2. Prompt: 'What would a skeptical reader say about this being too basic, too time consuming, or unrealistic, and what evidence would they demand?' 3. Ask for the strongest opposing case. 4. Add a short FAQ or 'Who this is for' section that answers the objections. 5. Strengthen results language only where evidence exists.
+1. Prompt the model into an assigned role: "You are a skeptical ops lead who has seen every productivity claim fail. You think this piece is content marketing." A named, motivated skeptic beats a generic "critique this."
+2. Give it the draft plus the audience sentence, and demand attacks, not feedback: "List the five claims you'd challenge first, the exact wording you'd push back on, and what evidence would change your mind."
+3. Discard generic pushback first — attacks that could apply to any piece (“too long,” “needs more data” with no target) are noise, not signal. Then triage the real attacks into three buckets — fair (fix the claim or add the support), fixable framing (the support exists but isn't on the page), and out of scope (the skeptic wanting a different piece entirely).
+4. Rewrite against the fair bucket only: qualify the over-claim, add the number, cite the case. Each accepted attack should visibly harden one sentence.
+5. Run a second round with a different skeptic persona — a budget owner, a domain expert, a tired reader skimming on a phone. Different skeptics find different soft spots.
+6. Stop when new rounds stop producing fair attacks. The goal is a draft that survives its first hostile reading, not one that pleases every conceivable objector.
 
----
-
-## Provenance
-
-- **Source:** PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1
-- **Source hash:** `569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e`
-- **Extracted:** 2026-08-21T17:34:35.972Z via deepseek-v4-flash
-- **Fidelity pre-score:** 0.80
-
-### Source quote (verification anchor)
-
-> What would a skeptical reader say about this being too basic, too time consuming, or unrealistic, and what evidence would they demand?
+The transcript of attacks-and-fixes is worth keeping: it's the provenance of why each claim now reads as it does.
