@@ -41,7 +41,7 @@ Add `GET /warehouse/buy/:id` (HTTP 402 + `X-PAYMENT-REQUIRED` for ready+priced x
 
 ### Phase 2: REST endpoints
 
-- [ ] 2.1 Wire GET/POST /warehouse/buy/:id routes in src/api-server.ts ahead of the generic warehouse/:id matcher; update root endpoint listing
+- [x] 2.1 Wire GET/POST /warehouse/buy/:id routes in src/api-server.ts ahead of the generic warehouse/:id matcher; update root endpoint listing
 
 ### Phase 3: docs & verification
 
