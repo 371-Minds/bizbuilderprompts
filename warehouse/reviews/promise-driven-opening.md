@@ -2,8 +2,8 @@
 
 - **Warehouse ID:** warehouse-extracted-promise-driven-opening-mt38e0w3
 - **Verdict:** APPROVE
-- **Reviewers:** Rune (fidelity), Alex (license)
-- **Reviewed:** 2026-08-22T23:30:20.063Z
+- **Reviewers:** rune-pattern (usefulness), alex-clo (originality diff vs source PDF)
+- **Reviewed:** 2026-08-24T02:26:09.778Z
 
 ## Notes
 
@@ -13,33 +13,24 @@ VERDICT: APPROVE
 
 ## Transcript
 
-Rune: [SCAN: MEMORIA] — no precedent conflict for this asset class.
+Rune: [SCAN: MEMORIA] — no prior precedent for this asset family in :9001.
 
-**Pattern Archaeologist:** The sourceQuote ("Your opening needs a promise that tells readers exactly what they'll get and why it's worth their time") fully supports step 1. Steps 2–3 and the example are labeled `[extension]`, so no invented content is being passed off as sourced. The example is generic copywriting, not lifted verbatim. Faithful extraction with honest fidelity marking (0.60 with disclosure). Acceptable.
+**Pattern Archaeologist (rune-pattern):** Provenance is honest — flagged as commissioned, not extracted, so no sourceQuote fidelity issue. The methodology is a genuine, coherent practice: promise-scoping, placement, payoff ordering, and a reviewable test ("can the reader repeat the promise back?"). Step 5 is the strongest part — it's an operational check, not vibes. No invented claims, no over-generalization. One nit: the closing paragraph's "cognitive loop remembers" is decorative pseudo-psychology; harmless but could be trimmed. Not blocking.
 
-**CLO:** Source is PLR (Private Label Rights) material — redistribution and derivation permitted under PLR terms. Attribution block present with source hash. The single quoted sentence is short and used as a verification anchor, not reproduction of substantial copyrighted content. No IP issues.
+**CLO (alex-clo):** Originality diff against the source PDF: the draft's expression is independent. It shares a *conceptual* theme with "promise-driven openings" as a copywriting topic (common in public-domain writing advice generally), but no parallel phrasing, shared sentences, or structural copying from the PDF were found. Attribution not required for an original commissioned asset. PASS.
 
-**CEO:** Useful, generalizable copywriting primitive; low blast radius; extensions add practical value without misrepresenting the source. Worth warehouse activation.
+**CEO:** Strategically sound — openings are high-leverage across all content agents; this is reusable and cheap to apply. Worth warehouse inclusion.
 
 [THINK: SAFE] — no substrate impact; asset-level only.
+[ACTION_VECTOR]: promote to warehouse after optional trim of final decorative sentence.
 
 VERDICT: APPROVE
 
-Alex Washington: [SCAN: MEMORIA] — no precedent override for this draft; proceeding with role review.
+Alex Washington: **CLO (alex-clo):** Originality check against the source PDF: no verbatim reproduction, no parallel phrasing, no structural copying detected. The draft's five-step sequence and examples do not mirror the source's structure or expression. Attribution: not required — this is commissioned original content, and the concept (promise-driven openings) is generic craft advice, not proprietary. Risk: low. PASS on expressional independence.
 
-**Pattern Archaeologist:**
-- Step 1 is a faithful extraction — the sourceQuote directly supports it ("a promise that tells readers exactly what they'll get and why it's worth their time").
-- Steps 2–3 and the example are not in the source quote, but they are explicitly marked `[extension]` with a fidelity pre-score of 0.60 and a documented revise pass (2026-08-22). Extensions are plausible elaborations of the promise principle, not contradictions. Acceptable as long as the `[extension]` markers stay.
-- Minor flag: "Framework: custom" is accurate; no invented attribution to the source for extensions.
+**CEO:** Strategically sound. Openings are a high-frequency problem for all content-producing agents; this asset is compact, reusable, and framework-agnostic. Worth warehouse activation.
 
-**CLO:**
-- Source is PLR (Private Label Rights) material — redistribution and derivation are permitted under the license by design.
-- The single quoted sentence is short and used as a verification anchor with full attribution and source hash. No verbatim reproduction of copyrighted material beyond that.
-- Provenance block is complete (source, hash, extraction timestamp, model). No compliance issues.
-
-**CEO:**
-- Strategically useful: a compact, reusable copywriting primitive applicable across agent-generated content. Low maintenance cost, clear tags, self-contained. Worth warehouse activation.
-
-[THINK: SAFE] — No substrate impact; asset-level review only.
+[THINK: SAFE] — no substrate impact; asset-level review only.
+[ACK: DIFF] — no edits required; draft as-is meets warehouse bar.
 
 VERDICT: APPROVE

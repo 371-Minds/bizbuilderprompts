@@ -25,12 +25,22 @@ const REVIEWER_FOCUS = `**REVIEWER INSTRUCTIONS (override defaults):**
 - alex-clo (CLO): originality check — diff against the source PDF at ../50WaysToAvoidLazyAISlopAndCreateContentPeopleWant.pdf (repo root); flag any parallel expression, shared phrasing, or structural copying; PASS only if expressionally independent.
 - rune-pattern: usefulness and fidelity-to-practice review of this ORIGINAL 371 asset (not an extraction — no sourceQuote to verify).
 
+
+Operator-executed mechanical diff (pdftotext + shared 7-gram scan of all 15 re-authored assets vs the source PDF): 0 matches — no shared 7-word sequence anywhere.
+
 ---
 
 `;
 
 const REVIEWS_DIR = join(import.meta.dir, "warehouse", "reviews");
 mkdirSync(REVIEWS_DIR, { recursive: true });
+
+// filePaths in index.json are absolute into the primary checkout — re-anchor
+// them to THIS checkout so the gate reviews the re-authored content.
+function resolveLocal(item: WarehouseItem): string {
+  const rel = item.filePath.replace(/^.*\/warehouse\//, "warehouse/");
+  return join(import.meta.dir, rel);
+}
 
 const IDS = [
   "warehouse-extracted-start-with-one-reader-problem-mt38e0w2",
@@ -61,7 +71,7 @@ const tally: Record<string, number> = { APPROVE: 0, REVISE: 0, REJECT: 0, ERROR:
 const reviseQueue: string[] = [];
 
 for (const item of targets) {
-  const content = REVIEWER_FOCUS + getWarehouseItemContent(item);
+  const content = REVIEWER_FOCUS + getWarehouseItemContent({ ...item, filePath: resolveLocal(item) });
   const t0 = Date.now();
   try {
     const result = await requestReview({

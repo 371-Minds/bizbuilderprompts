@@ -14,4 +14,4 @@
 4. Draft the piece so every section pays down that one problem. When a tangent appears — and it will — cut it into a notes file for a future piece rather than letting it dilute this one.
 5. Before publishing, re-read the draft as that one human. Every time you think "interesting, but not my problem," mark it. Two or more marks means the anchor slipped; tighten and repeat the pass.
 
-Practitioners who run this loop report the same shift: the cognitive loop of write→check→cut gets faster each time because the single problem is a cheap test to apply.
+The single problem doubles as a cheap test inside your cognitive loop: write, check against it, cut. Because the test is one sentence long, the loop stays fast even on long drafts.

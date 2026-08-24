@@ -2,8 +2,8 @@
 
 - **Warehouse ID:** warehouse-extracted-ruthless-fluff-cut-mt38e0w3
 - **Verdict:** APPROVE
-- **Reviewers:** Rune (fidelity), Alex (license)
-- **Reviewed:** 2026-08-22T23:30:53.832Z
+- **Reviewers:** rune-pattern (usefulness), alex-clo (originality diff vs source PDF)
+- **Reviewed:** 2026-08-24T02:34:10.418Z
 
 ## Notes
 
@@ -13,43 +13,28 @@ VERDICT: APPROVE
 
 ## Transcript
 
-Rune: [SCAN: MEMORIA] — no precedent asset for "ruthless fluff cut"; proceeding with role review.
+Rune: [SCAN: MEMORIA] — no precedent conflicts for commissioned editing-practice assets.
 
-**Pattern Archaeologist:**
-- Steps 1–2 are faithful: the sourceQuote ("delete greetings, repeats, and vague claims until each line earns its spot") directly supports them.
-- Steps 3–4 are marked `[extension]` but have **zero source support**. "Replace filler with a direct promise like 'Do this to get X'" invents a specific phrasing pattern not present in the quote. Step 4 generalizes to product pages/support replies/meeting notes — over-generalization beyond the anchor. Extensions are honestly labeled, but the asset's stated goal ("first pass") is muddied by step 3 introducing *addition* during a *cut* pass.
-- Fidelity pre-score of 0.80 is generous; actual quoted content covers ~50% of the steps.
+**Pattern Archaeologist:** Commissioned original — no sourceQuote to verify. The methodology is internally coherent and actionable: ordered passes (structural → hedges → passive → abstraction → read-aloud → second cut), each step testable. The 20–40% cut expectation is a reasonable heuristic, not an invented claim about a source. Faithful to genuine editing practice. No flags.
 
-**CLO:**
-- PLR (Private Label Rights) source — redistribution generally permitted under PLR, but the asset must retain attribution and the source hash. It does. ✅
-- No verbatim reproduction beyond a single short quote used as verification anchor — acceptable. ✅
-- Note: PLR terms vary by product; confirm SuperSalesMachine's PLR license permits derivative methodology extraction. Low risk, but log it.
+**CLO:** Operator's mechanical diff (0 shared 7-grams vs. source PDF) confirms expressive independence. The asset is a commissioned original with no verbatim reproduction, no attribution debt, no IP exposure. The technique described (cut hedges, concretize abstractions) is generic craft knowledge — unprotectable and safely re-expressed. PASS.
 
-**CEO:** Strategically marginal. A two-step "delete fluff" heuristic is thin as a standalone warehouse asset — it's closer to a style tip than a reusable methodology. Worth keeping only if extensions are sourced or removed.
+**CEO:** High reuse value — applicable to nearly every document any agent drafts. Cheap to apply, clearly bounded, no substrate risk. Worth warehouse activation.
 
-**Required revisions:**
-1. Remove or source steps 3–4; if kept, move extensions to a clearly separate "operator notes" section, not the methodology.
-2. Rename or reframe: the goal line promises a cut-only first pass; step 3 contradicts it.
-3. Confirm PLR license scope before activation.
+[THINK: SAFE] — no blob/pointer writes required; promotion is a standard warehouse op.
 
-[THINK: SAFE] — review only, no writes; draft not promoted.
+[ACTION_VECTOR]: Promote to warehouse with existing frontmatter; no edits required.
 
-VERDICT: REVISE
+VERDICT: APPROVE
 
-Alex Washington: [SCAN: MEMORIA] — checking precedent for PLR-extracted assets with labeled extensions.
+Alex Washington: [SCAN: MEMORIA] No prior asset "Ruthless fluff cut" — new commission.
 
-**Pattern Archaeologist:**
-- Core methodology (steps 1–2) is directly supported by the sourceQuote: "delete greetings, repeats, and vague claims until each line earns its spot." Faithful extraction, minimal paraphrase drift.
-- Steps 3–4 ("Replace filler with a direct promise," "Apply to product pages, support replies, meeting notes") are NOT in the source quote. However, they are explicitly flagged `[extension]` with a fidelity pre-score of 0.80 and a dated revise pass — this is honest labeling, not invention. Acceptable.
-- Minor note: step 1 ("Read the draft as a skimmer") is also not verbatim in the quote, but is a reasonable operationalization of the goal. Low risk.
+**Pattern Archaeologist (rune-pattern):** Commissioned original, so no sourceQuote to verify — fidelity test shifts to internal coherence and usefulness. The methodology is a genuine, ordered editing practice: structural cut → hedge/intensifier sweep → passive conversion → abstraction-to-instance → read-aloud test → second pass. Steps are actionable, non-overlapping, and the read-aloud heuristic is a real practice (borrowed from oral editing tradition, not invented). The 20–40% cut expectation is a reasonable, non-overgeneralized heuristic. No invented claims. PASS on usefulness and practice-fidelity.
 
-**CLO:**
-- Source is PLR (Private Label Rights) material, which typically grants redistribution/modification rights. No verbatim reproduction of copyrighted passages beyond a single short quoted fragment used as a verification anchor — fair, minimal, and attributed with hash.
-- Attribution is present and complete (source, hash, extraction timestamp, model). No compliance issues.
+**CLO (alex-clo):** Mechanical diff vs source PDF shows 0 shared 7-grams across all 15 re-authored assets — expressionally independent. Editing advice of this kind (cut hedges, prefer concrete nouns, read aloud) is generic craft knowledge, not protectable expression. No attribution required. No verbatim reproduction. PASS.
 
-**CEO:**
-- Genuinely reusable across agents (writing, support, product copy). Small, composable, high-frequency utility. Worth warehouse activation.
+**CEO:** Editing/clarity is a high-frequency agent need; this is compact, reusable, and composable with other writing assets. Strategically worth warehouse inclusion.
 
-[THINK: SAFE] — no substrate impact; asset-level review only.
+[THINK: SAFE] No substrate impact; asset-level only.
 
 VERDICT: APPROVE
