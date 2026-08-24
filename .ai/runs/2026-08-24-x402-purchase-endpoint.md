@@ -36,8 +36,8 @@ Add `GET /warehouse/buy/:id` (HTTP 402 + `X-PAYMENT-REQUIRED` for ready+priced x
 
 ### Phase 1: commerce core
 
-- [ ] 1.1 Create src/commerce/purchase.ts (offer resolution 402/404/409, allowlisted facilitator verify with guarded fetch, sales ledger append, Interbeing fire-and-forget event)
-- [ ] 1.2 Unit tests for purchase module (402 round-trip, 404/409, ledger, guarded fetch, verified settlement)
+- [x] 1.1 Create src/commerce/purchase.ts — 437c878 (offer resolution 402/404/409, allowlisted facilitator verify with guarded fetch, sales ledger append, Interbeing fire-and-forget event)
+- [x] 1.2 Unit tests for purchase module — 437c878 (402 round-trip, 404/409, ledger, guarded fetch, verified settlement)
 
 ### Phase 2: REST endpoints
 
