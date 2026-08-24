@@ -1,29 +1,4 @@
 {
-  "bundles": [
-    {
-      "id": "test-bundle-1787605445994",
-      "title": "Test Bundle",
-      "description": "A test bundle for unit testing",
-      "theme": "testing",
-      "targetRoles": [
-        "ceo"
-      ],
-      "itemIds": [
-        "item-1",
-        "item-2"
-      ],
-      "createdAt": "2026-08-24T21:04:05.994Z"
-    },
-    {
-      "id": "test-list-bundle-1787605445995",
-      "title": "List Test Bundle",
-      "description": "Bundle to test listing",
-      "theme": "test",
-      "targetRoles": [],
-      "itemIds": [],
-      "createdAt": "2026-08-24T21:04:05.995Z"
-    }
-  ],
   "items": [
     {
       "id": "warehouse-extracted-from-script-to-cinema-the-4-step-pipeline-mrmz1d9e",
@@ -48,7 +23,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/from-script-to-cinema-the-4-step-pipeline.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "Sovereign Engine — Architecting Cinematic Intelligence",
+        "sourceLabel": "Sovereign Engine \u2014 Architecting Cinematic Intelligence",
         "sourceHash": "fc2f8757e728f36fcf269db1ac29b3ddb8c1c0d0771c4293f61b6b2ba4abe10c",
         "extractedAt": "2026-07-16T03:49:38.545Z",
         "model": "deepseek-v4-flash"
@@ -76,7 +51,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/prompts/surgical-update-rule.md",
       "category": "general",
       "provenance": {
-        "sourceLabel": "Sovereign Engine — Architecting Cinematic Intelligence",
+        "sourceLabel": "Sovereign Engine \u2014 Architecting Cinematic Intelligence",
         "sourceHash": "fc2f8757e728f36fcf269db1ac29b3ddb8c1c0d0771c4293f61b6b2ba4abe10c",
         "extractedAt": "2026-07-16T03:49:38.545Z",
         "model": "deepseek-v4-flash"
@@ -104,7 +79,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/prompts/horizontal-scaling-with-chunks.md",
       "category": "general",
       "provenance": {
-        "sourceLabel": "Sovereign Engine — Architecting Cinematic Intelligence",
+        "sourceLabel": "Sovereign Engine \u2014 Architecting Cinematic Intelligence",
         "sourceHash": "fc2f8757e728f36fcf269db1ac29b3ddb8c1c0d0771c4293f61b6b2ba4abe10c",
         "extractedAt": "2026-07-16T03:49:38.545Z",
         "model": "deepseek-v4-flash"
@@ -133,7 +108,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/critics-narrative-audit.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "Sovereign Engine — Architecting Cinematic Intelligence",
+        "sourceLabel": "Sovereign Engine \u2014 Architecting Cinematic Intelligence",
         "sourceHash": "fc2f8757e728f36fcf269db1ac29b3ddb8c1c0d0771c4293f61b6b2ba4abe10c",
         "extractedAt": "2026-07-16T03:49:38.545Z",
         "model": "deepseek-v4-flash"
@@ -162,7 +137,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/prompts/lossless-video-concatenation-with-ffmpeg.md",
       "category": "general",
       "provenance": {
-        "sourceLabel": "Sovereign Engine — Architecting Cinematic Intelligence",
+        "sourceLabel": "Sovereign Engine \u2014 Architecting Cinematic Intelligence",
         "sourceHash": "fc2f8757e728f36fcf269db1ac29b3ddb8c1c0d0771c4293f61b6b2ba4abe10c",
         "extractedAt": "2026-07-16T03:49:38.545Z",
         "model": "deepseek-v4-flash"
@@ -191,7 +166,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/prompts/multimedia-junkie-brand-color-rule.md",
       "category": "general",
       "provenance": {
-        "sourceLabel": "Sovereign Engine — Architecting Cinematic Intelligence",
+        "sourceLabel": "Sovereign Engine \u2014 Architecting Cinematic Intelligence",
         "sourceHash": "fc2f8757e728f36fcf269db1ac29b3ddb8c1c0d0771c4293f61b6b2ba4abe10c",
         "extractedAt": "2026-07-16T03:49:38.545Z",
         "model": "deepseek-v4-flash"
@@ -233,7 +208,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"Start with one reader problem\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"Start with one reader problem\" \u2014 single-purchase access"
         }
       },
       "review": {
@@ -244,16 +219,16 @@
           "alex-clo"
         ],
         "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no prior review of this draft; proceeding.\n\n**Pattern Archaeologist (rune-pattern):**\nThis is a commissioned original — no sourceQuote to verify. Fidelity test shifts to: is it a genuine, executable methodology? Yes. Five steps, each with a concrete pass/fail test (\"the 'and' split,\" \"close this tab,\" \"two marks = anchor slipped\"). The final paragraph ties it to the 371 cognitive loop (write → check → cut), which is a legitimate local adaptation, not over-generalization. The \"and = two problems\" heuristic is a known craft convention expressed independently. No invented claims. PASS.\n\n**CLO (alex-clo):**\nMechanical diff already run by Operator: 0 shared 7-grams across all 15 assets vs source PDF. My read confirms expressionally independent phrasing — \"Churn is up and I can't tell why\" is generic illustrative language, not lifted. No attribution required for an original asset; provenance line correctly labels it as commissioned. No IP/compliance issues. PASS.\n\n**CEO:**\nStrategically sound — a cheap, reusable anchor test every content-producing agent can apply. Low blast radius, high reuse value. Worth warehousing.\n\n[THINK: SAFE] — no substrate impact; asset activation only.\n\nVERDICT: APPROVE\n\nAlex Washington: [SCAN: MEMORIA] No precedence conflicts.\n\n**Pattern Archaeologist (rune-pattern):** This is an original commissioned asset — no sourceQuote to verify against. As methodology: internally coherent, actionable, testable (steps 1–5 form a real loop with"
+        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] \u2014 no prior review of this draft; proceeding.\n\n**Pattern Archaeologist (rune-pattern):**\nThis is a commissioned original \u2014 no sourceQuote to verify. Fidelity test shifts to: is it a genuine, executable methodology? Yes. Five steps, each with a concrete pass/fail test (\"the 'and' split,\" \"close this tab,\" \"two marks = anchor slipped\"). The final paragraph ties it to the 371 cognitive loop (write \u2192 check \u2192 cut), which is a legitimate local adaptation, not over-generalization. The \"and = two problems\" heuristic is a known craft convention expressed independently. No invented claims. PASS.\n\n**CLO (alex-clo):**\nMechanical diff already run by Operator: 0 shared 7-grams across all 15 assets vs source PDF. My read confirms expressionally independent phrasing \u2014 \"Churn is up and I can't tell why\" is generic illustrative language, not lifted. No attribution required for an original asset; provenance line correctly labels it as commissioned. No IP/compliance issues. PASS.\n\n**CEO:**\nStrategically sound \u2014 a cheap, reusable anchor test every content-producing agent can apply. Low blast radius, high reuse value. Worth warehousing.\n\n[THINK: SAFE] \u2014 no substrate impact; asset activation only.\n\nVERDICT: APPROVE\n\nAlex Washington: [SCAN: MEMORIA] No precedence conflicts.\n\n**Pattern Archaeologist (rune-pattern):** This is an original commissioned asset \u2014 no sourceQuote to verify against. As methodology: internally coherent, actionable, testable (steps 1\u20135 form a real loop with"
       }
     },
     {
       "id": "warehouse-extracted-one-sentence-audience-definition-mt38e0w2",
       "type": "workflow",
       "title": "One-sentence audience definition",
-      "description": "Force your audience into one testable sentence — role, situation, outcome, and who's excluded — before any content work starts.",
+      "description": "Force your audience into one testable sentence \u2014 role, situation, outcome, and who's excluded \u2014 before any content work starts.",
       "targetRoles": [],
-      "useCase": "Force your audience into one testable sentence — role, situation, outcome, and who's excluded — before any content work starts.",
+      "useCase": "Force your audience into one testable sentence \u2014 role, situation, outcome, and who's excluded \u2014 before any content work starts.",
       "status": "ready",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
@@ -282,7 +257,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"One-sentence audience definition\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"One-sentence audience definition\" \u2014 single-purchase access"
         }
       },
       "review": {
@@ -293,7 +268,7 @@
           "alex-clo"
         ],
         "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: As Pattern Archaeologist, I assess this as an original 371 asset rather than an extraction, so there is no sourceQuote to verify for fidelity. What I can evaluate is whether the methodology reflects genuine, transferable practice — and it does. The five-step sequence is coherent: a forced sentence template, a constraint test on the role variable, an observable-outcome check, a placement rule that ties later decisions back to the definition, and a periodic revisit. These are recognizable patterns from content strategy and positioning work, not invented abstractions. The exclusion clause (“not [adjacent audience]”) is particularly strong; it forces a boundary that generic audience definitions usually lack.\n\nOne caveat: the closing claim that pasting the sentence “removes the most common failure mode” is an empirical assertion with no supporting evidence. That reads as over-generalized for an otherwise practical method. I would soften it to “addresses a common failure mode” or note it as an observed tendency rather than a guarantee. That is a minor wording issue, not a structural flaw. The rest of the draft is clean, testable, and directly reusable.\n\nVERDICT: APPROVE\n\nAlex Washington: [SCAN: MEMORIA] — no prior warehouse asset conflicts with this methodology; category \"audience definition\" is unoccupied.\n\n**Pattern Archaeologist (rune-pattern):**\n- Provenance correctly declared as commissioned/original — no sourceQuote to verify, so fidelity risk is nil.\n- Methodology is g"
+        "transcriptExcerpt": "Rune: As Pattern Archaeologist, I assess this as an original 371 asset rather than an extraction, so there is no sourceQuote to verify for fidelity. What I can evaluate is whether the methodology reflects genuine, transferable practice \u2014 and it does. The five-step sequence is coherent: a forced sentence template, a constraint test on the role variable, an observable-outcome check, a placement rule that ties later decisions back to the definition, and a periodic revisit. These are recognizable patterns from content strategy and positioning work, not invented abstractions. The exclusion clause (\u201cnot [adjacent audience]\u201d) is particularly strong; it forces a boundary that generic audience definitions usually lack.\n\nOne caveat: the closing claim that pasting the sentence \u201cremoves the most common failure mode\u201d is an empirical assertion with no supporting evidence. That reads as over-generalized for an otherwise practical method. I would soften it to \u201caddresses a common failure mode\u201d or note it as an observed tendency rather than a guarantee. That is a minor wording issue, not a structural flaw. The rest of the draft is clean, testable, and directly reusable.\n\nVERDICT: APPROVE\n\nAlex Washington: [SCAN: MEMORIA] \u2014 no prior warehouse asset conflicts with this methodology; category \"audience definition\" is unoccupied.\n\n**Pattern Archaeologist (rune-pattern):**\n- Provenance correctly declared as commissioned/original \u2014 no sourceQuote to verify, so fidelity risk is nil.\n- Methodology is g"
       }
     },
     {
@@ -332,7 +307,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"One main takeaway per piece\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"One main takeaway per piece\" \u2014 single-purchase access"
         }
       },
       "review": {
@@ -343,7 +318,7 @@
           "alex-clo"
         ],
         "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no prior precedent for this draft; commissioned asset, no extraction to verify.\n\n**Pattern Archaeologist (rune-pattern):** No sourceQuote exists — this is an original commissioned asset, so fidelity-to-source doesn't apply. Reviewing fidelity-to-practice instead: the methodology is coherent, actionable, and self-consistent. Each step is testable (write takeaway sentence, place it, limit supports, tag paragraphs, restate as action). The closing note on compounding is a defensible claim, not over-generalized. The \"topic vs. takeaway\" heuristic is the strongest part. No invented claims flagged.\n\n**CLO (alex-clo):** Originality check against source PDF. The draft shares thematic territory with the source (content discipline, avoiding unfocused writing) but the expression is independent: no verbatim passages, no parallel phrasing detected, structure is a novel 5-step methodology rather than mirroring the source's list format. Attribution not required for a commissioned original. PASS on originality.\n\n**CEO:** Strategically sound — reusable across all content-producing agents, low blast radius, immediately applicable. Worth warehouse activation.\n\n[THINK: SAFE] — no substrate impact; asset-level only.\n\nVERDICT: APPROVE\n\nAlex Washington: [ACK: DIFF] — Note: the PDF could not be machine-diffed here; assessment is based on expression review. The draft's phrasing (\"topic, not a takeaway,\" \"connective tissue or drift,\" \"idea file\") is distinctive and expressionall"
+        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] \u2014 no prior precedent for this draft; commissioned asset, no extraction to verify.\n\n**Pattern Archaeologist (rune-pattern):** No sourceQuote exists \u2014 this is an original commissioned asset, so fidelity-to-source doesn't apply. Reviewing fidelity-to-practice instead: the methodology is coherent, actionable, and self-consistent. Each step is testable (write takeaway sentence, place it, limit supports, tag paragraphs, restate as action). The closing note on compounding is a defensible claim, not over-generalized. The \"topic vs. takeaway\" heuristic is the strongest part. No invented claims flagged.\n\n**CLO (alex-clo):** Originality check against source PDF. The draft shares thematic territory with the source (content discipline, avoiding unfocused writing) but the expression is independent: no verbatim passages, no parallel phrasing detected, structure is a novel 5-step methodology rather than mirroring the source's list format. Attribution not required for a commissioned original. PASS on originality.\n\n**CEO:** Strategically sound \u2014 reusable across all content-producing agents, low blast radius, immediately applicable. Worth warehouse activation.\n\n[THINK: SAFE] \u2014 no substrate impact; asset-level only.\n\nVERDICT: APPROVE\n\nAlex Washington: [ACK: DIFF] \u2014 Note: the PDF could not be machine-diffed here; assessment is based on expression review. The draft's phrasing (\"topic, not a takeaway,\" \"connective tissue or drift,\" \"idea file\") is distinctive and expressionall"
       }
     },
     {
@@ -382,7 +357,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"Promise-driven opening\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"Promise-driven opening\" \u2014 single-purchase access"
         }
       },
       "review": {
@@ -393,16 +368,16 @@
           "alex-clo"
         ],
         "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no prior precedent for this asset family in :9001.\n\n**Pattern Archaeologist (rune-pattern):** Provenance is honest — flagged as commissioned, not extracted, so no sourceQuote fidelity issue. The methodology is a genuine, coherent practice: promise-scoping, placement, payoff ordering, and a reviewable test (\"can the reader repeat the promise back?\"). Step 5 is the strongest part — it's an operational check, not vibes. No invented claims, no over-generalization. One nit: the closing paragraph's \"cognitive loop remembers\" is decorative pseudo-psychology; harmless but could be trimmed. Not blocking.\n\n**CLO (alex-clo):** Originality diff against the source PDF: the draft's expression is independent. It shares a *conceptual* theme with \"promise-driven openings\" as a copywriting topic (common in public-domain writing advice generally), but no parallel phrasing, shared sentences, or structural copying from the PDF were found. Attribution not required for an original commissioned asset. PASS.\n\n**CEO:** Strategically sound — openings are high-leverage across all content agents; this is reusable and cheap to apply. Worth warehouse inclusion.\n\n[THINK: SAFE] — no substrate impact; asset-level only.\n[ACTION_VECTOR]: promote to warehouse after optional trim of final decorative sentence.\n\nVERDICT: APPROVE\n\nAlex Washington: **CLO (alex-clo):** Originality check against the source PDF: no verbatim reproduction, no parallel phrasing, no structural copying detected. The d"
+        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] \u2014 no prior precedent for this asset family in :9001.\n\n**Pattern Archaeologist (rune-pattern):** Provenance is honest \u2014 flagged as commissioned, not extracted, so no sourceQuote fidelity issue. The methodology is a genuine, coherent practice: promise-scoping, placement, payoff ordering, and a reviewable test (\"can the reader repeat the promise back?\"). Step 5 is the strongest part \u2014 it's an operational check, not vibes. No invented claims, no over-generalization. One nit: the closing paragraph's \"cognitive loop remembers\" is decorative pseudo-psychology; harmless but could be trimmed. Not blocking.\n\n**CLO (alex-clo):** Originality diff against the source PDF: the draft's expression is independent. It shares a *conceptual* theme with \"promise-driven openings\" as a copywriting topic (common in public-domain writing advice generally), but no parallel phrasing, shared sentences, or structural copying from the PDF were found. Attribution not required for an original commissioned asset. PASS.\n\n**CEO:** Strategically sound \u2014 openings are high-leverage across all content agents; this is reusable and cheap to apply. Worth warehouse inclusion.\n\n[THINK: SAFE] \u2014 no substrate impact; asset-level only.\n[ACTION_VECTOR]: promote to warehouse after optional trim of final decorative sentence.\n\nVERDICT: APPROVE\n\nAlex Washington: **CLO (alex-clo):** Originality check against the source PDF: no verbatim reproduction, no parallel phrasing, no structural copying detected. The d"
       }
     },
     {
       "id": "warehouse-extracted-guardrail-outline-before-drafting-mt38e0w3",
       "type": "workflow",
       "title": "Guardrail outline before drafting",
-      "description": "Build a claim-and-constraint outline first so drafting — with or without AI — can't drift past what you can support.",
+      "description": "Build a claim-and-constraint outline first so drafting \u2014 with or without AI \u2014 can't drift past what you can support.",
       "targetRoles": [],
-      "useCase": "Build a claim-and-constraint outline first so drafting — with or without AI — can't drift past what you can support.",
+      "useCase": "Build a claim-and-constraint outline first so drafting \u2014 with or without AI \u2014 can't drift past what you can support.",
       "status": "ready",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
@@ -432,7 +407,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"Guardrail outline before drafting\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"Guardrail outline before drafting\" \u2014 single-purchase access"
         }
       },
       "review": {
@@ -443,7 +418,7 @@
           "alex-clo"
         ],
         "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no prior precedent for this asset; commissioned original, no sourceQuote chain to verify.\n\n**Pattern Archaeologist (rune-pattern):**\nThis is a genuine, practiced methodology — claim-first outlining with support grading, constraint fencing, and post-draft diffing. Internally coherent: each step feeds the next, and step 6 (outline stays authoritative until ship) closes the loop. Two fidelity notes:\n- Step 2's support taxonomy (number / story / pattern / vibes) is crisp and actionable — good.\n- The closing line (\"Teams that outline this way stop arguing about wording…\") is an unsupported empirical claim inside a piece whose whole point is cutting unsupported claims. Recommend softening (\"in my experience…\") or marking it as practitioner observation. Minor, not blocking.\n\n**CLO (alex-clo):**\nOriginality diff against `50WaysToAvoidLazyAISlopAndCreateContentPeopleWant.pdf`: the draft's core moves — claim inventory, evidence grading, constraints-before-drafting, AI-expands-within-outline, post-draft diff — are generic craft practices, not distinctive expression from the source. No verbatim or near-verbatim phrasing detected; structure is procedural (numbered steps), not a copied scaffold. One watch item: \"AI slop\"-adjacent framing is common to the genre; this draft avoids borrowing the source's voice. PASS on expressive independence. Attribution: none required (original 371 asset, provenance declared).\n\n**CEO:** Strategically useful — reusable across all draf"
+        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] \u2014 no prior precedent for this asset; commissioned original, no sourceQuote chain to verify.\n\n**Pattern Archaeologist (rune-pattern):**\nThis is a genuine, practiced methodology \u2014 claim-first outlining with support grading, constraint fencing, and post-draft diffing. Internally coherent: each step feeds the next, and step 6 (outline stays authoritative until ship) closes the loop. Two fidelity notes:\n- Step 2's support taxonomy (number / story / pattern / vibes) is crisp and actionable \u2014 good.\n- The closing line (\"Teams that outline this way stop arguing about wording\u2026\") is an unsupported empirical claim inside a piece whose whole point is cutting unsupported claims. Recommend softening (\"in my experience\u2026\") or marking it as practitioner observation. Minor, not blocking.\n\n**CLO (alex-clo):**\nOriginality diff against `50WaysToAvoidLazyAISlopAndCreateContentPeopleWant.pdf`: the draft's core moves \u2014 claim inventory, evidence grading, constraints-before-drafting, AI-expands-within-outline, post-draft diff \u2014 are generic craft practices, not distinctive expression from the source. No verbatim or near-verbatim phrasing detected; structure is procedural (numbered steps), not a copied scaffold. One watch item: \"AI slop\"-adjacent framing is common to the genre; this draft avoids borrowing the source's voice. PASS on expressive independence. Attribution: none required (original 371 asset, provenance declared).\n\n**CEO:** Strategically useful \u2014 reusable across all draf"
       }
     },
     {
@@ -482,7 +457,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"Ruthless fluff cut\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"Ruthless fluff cut\" \u2014 single-purchase access"
         }
       },
       "review": {
@@ -493,16 +468,16 @@
           "alex-clo"
         ],
         "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no precedent conflicts for commissioned editing-practice assets.\n\n**Pattern Archaeologist:** Commissioned original — no sourceQuote to verify. The methodology is internally coherent and actionable: ordered passes (structural → hedges → passive → abstraction → read-aloud → second cut), each step testable. The 20–40% cut expectation is a reasonable heuristic, not an invented claim about a source. Faithful to genuine editing practice. No flags.\n\n**CLO:** Operator's mechanical diff (0 shared 7-grams vs. source PDF) confirms expressive independence. The asset is a commissioned original with no verbatim reproduction, no attribution debt, no IP exposure. The technique described (cut hedges, concretize abstractions) is generic craft knowledge — unprotectable and safely re-expressed. PASS.\n\n**CEO:** High reuse value — applicable to nearly every document any agent drafts. Cheap to apply, clearly bounded, no substrate risk. Worth warehouse activation.\n\n[THINK: SAFE] — no blob/pointer writes required; promotion is a standard warehouse op.\n\n[ACTION_VECTOR]: Promote to warehouse with existing frontmatter; no edits required.\n\nVERDICT: APPROVE\n\nAlex Washington: [SCAN: MEMORIA] No prior asset \"Ruthless fluff cut\" — new commission.\n\n**Pattern Archaeologist (rune-pattern):** Commissioned original, so no sourceQuote to verify — fidelity test shifts to internal coherence and usefulness. The methodology is a genuine, ordered editing practice: structural cut → hedge/intensif"
+        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] \u2014 no precedent conflicts for commissioned editing-practice assets.\n\n**Pattern Archaeologist:** Commissioned original \u2014 no sourceQuote to verify. The methodology is internally coherent and actionable: ordered passes (structural \u2192 hedges \u2192 passive \u2192 abstraction \u2192 read-aloud \u2192 second cut), each step testable. The 20\u201340% cut expectation is a reasonable heuristic, not an invented claim about a source. Faithful to genuine editing practice. No flags.\n\n**CLO:** Operator's mechanical diff (0 shared 7-grams vs. source PDF) confirms expressive independence. The asset is a commissioned original with no verbatim reproduction, no attribution debt, no IP exposure. The technique described (cut hedges, concretize abstractions) is generic craft knowledge \u2014 unprotectable and safely re-expressed. PASS.\n\n**CEO:** High reuse value \u2014 applicable to nearly every document any agent drafts. Cheap to apply, clearly bounded, no substrate risk. Worth warehouse activation.\n\n[THINK: SAFE] \u2014 no blob/pointer writes required; promotion is a standard warehouse op.\n\n[ACTION_VECTOR]: Promote to warehouse with existing frontmatter; no edits required.\n\nVERDICT: APPROVE\n\nAlex Washington: [SCAN: MEMORIA] No prior asset \"Ruthless fluff cut\" \u2014 new commission.\n\n**Pattern Archaeologist (rune-pattern):** Commissioned original, so no sourceQuote to verify \u2014 fidelity test shifts to internal coherence and usefulness. The methodology is a genuine, ordered editing practice: structural cut \u2192 hedge/intensif"
       }
     },
     {
       "id": "warehouse-extracted-concrete-specifics-replace-vague-claims-mt38e0w3",
       "type": "workflow",
       "title": "Concrete specifics replace vague claims",
-      "description": "Replace vague claims with numbers, names, and scenes a skeptic can check — or downgrade them honestly.",
+      "description": "Replace vague claims with numbers, names, and scenes a skeptic can check \u2014 or downgrade them honestly.",
       "targetRoles": [],
-      "useCase": "Replace vague claims with numbers, names, and scenes a skeptic can check — or downgrade them honestly.",
+      "useCase": "Replace vague claims with numbers, names, and scenes a skeptic can check \u2014 or downgrade them honestly.",
       "status": "ready",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
@@ -532,7 +507,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"Concrete specifics replace vague claims\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"Concrete specifics replace vague claims\" \u2014 single-purchase access"
         }
       },
       "review": {
@@ -543,7 +518,7 @@
           "alex-clo"
         ],
         "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — reviewing draft \"Concrete specifics replace vague claims\" (commissioned original, no sourceQuote).\n\n**Pattern Archaeologist (rune-pattern):**\n- No extraction to verify against; assessed as fidelity-to-practice instead. The methodology is coherent and actionable: comparative/superlative sweep → debt metaphor → pay/downgrade → sensory anchoring → verification → skeptic pass. Internally consistent; no invented attribution or borrowed framing detected. The examples (\"nine days to four,\" \"Larkspur Dental\") are clearly illustrative placeholders, not fabricated citations — acceptable in an original asset.\n- Minor note: step 5's \"keep the receipts in your notes\" is good; the closing paragraph slightly editorializes but doesn't contradict the steps.\n\n**CLO (alex-clo):**\n- Original commissioned asset; no sourceQuote, no verbatim reproduction path. Expression is generic editorial craft (specificity > vagueness is public-domain writing advice); no recognizable parallel to any single source's distinctive phrasing. No attribution obligations. PASS on originality.\n\n**CEO:** Strategically useful — directly serves the OS's anti-hallucination posture. Cheap to activate, high reuse value across editing agents.\n\n[THINK: SAFE] — no substrate impact; asset-level only.\n[ACK: DIFF] — no edits required.\n\nVERDICT: APPROVE\n\nAlex Washington: **Pattern Archaeologist (rune-pattern):** No sourceQuote exists — this is a commissioned original, so fidelity is judged against practice, n"
+        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] \u2014 reviewing draft \"Concrete specifics replace vague claims\" (commissioned original, no sourceQuote).\n\n**Pattern Archaeologist (rune-pattern):**\n- No extraction to verify against; assessed as fidelity-to-practice instead. The methodology is coherent and actionable: comparative/superlative sweep \u2192 debt metaphor \u2192 pay/downgrade \u2192 sensory anchoring \u2192 verification \u2192 skeptic pass. Internally consistent; no invented attribution or borrowed framing detected. The examples (\"nine days to four,\" \"Larkspur Dental\") are clearly illustrative placeholders, not fabricated citations \u2014 acceptable in an original asset.\n- Minor note: step 5's \"keep the receipts in your notes\" is good; the closing paragraph slightly editorializes but doesn't contradict the steps.\n\n**CLO (alex-clo):**\n- Original commissioned asset; no sourceQuote, no verbatim reproduction path. Expression is generic editorial craft (specificity > vagueness is public-domain writing advice); no recognizable parallel to any single source's distinctive phrasing. No attribution obligations. PASS on originality.\n\n**CEO:** Strategically useful \u2014 directly serves the OS's anti-hallucination posture. Cheap to activate, high reuse value across editing agents.\n\n[THINK: SAFE] \u2014 no substrate impact; asset-level only.\n[ACK: DIFF] \u2014 no edits required.\n\nVERDICT: APPROVE\n\nAlex Washington: **Pattern Archaeologist (rune-pattern):** No sourceQuote exists \u2014 this is a commissioned original, so fidelity is judged against practice, n"
       }
     },
     {
@@ -581,7 +556,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"Story-first proof\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"Story-first proof\" \u2014 single-purchase access"
         }
       },
       "review": {
@@ -592,7 +567,7 @@
           "alex-clo"
         ],
         "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no precedent conflict for this asset class.\n\n**Pattern Archaeologist (rune-pattern):** No sourceQuote to verify — commissioned original. Judged on fidelity-to-practice: the methodology is coherent and actionable. Steps 1–6 form a real, ordered method (episode selection → in-media-res opening → texture/messiness → extraction → transfer → provenance), not a vague platitude list. The closing claim (\"assertion-after-story is believed, story-after-assertion feels like decoration\") is a rhetorical assertion without cited evidence, but it's framed as craft guidance, not empirical claim. Acceptable. No invented attribution, no fake source. PASS.\n\n**CLO (alex-clo):** Mechanical diff: 0 shared 7-grams across all 15 re-authored assets vs source PDF — expressionally independent. No verbatim reproduction, no borrowed framework naming, no attribution required for an original commissioned asset. The illustrative example (\"Tuesday the export job silently duplicated 4,000 rows\") is generic and safe. PASS.\n\n**CEO:** Strategically useful — a reusable structural pattern applicable across agent-generated content (reports, case studies, lessons). Worth warehouse activation.\n\n[THINK: SAFE] — no substrate impact; asset-level only.\n[ACTION_VECTOR]: promote to warehouse with tags intact.\n\nVERDICT: APPROVE\n\nAlex Washington: [SCAN: MEMORIA] — no conflicting precedent for commissioned warehouse assets.\n\n**Pattern Archaeologist (rune-pattern):** No sourceQuote exists (commissioned "
+        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] \u2014 no precedent conflict for this asset class.\n\n**Pattern Archaeologist (rune-pattern):** No sourceQuote to verify \u2014 commissioned original. Judged on fidelity-to-practice: the methodology is coherent and actionable. Steps 1\u20136 form a real, ordered method (episode selection \u2192 in-media-res opening \u2192 texture/messiness \u2192 extraction \u2192 transfer \u2192 provenance), not a vague platitude list. The closing claim (\"assertion-after-story is believed, story-after-assertion feels like decoration\") is a rhetorical assertion without cited evidence, but it's framed as craft guidance, not empirical claim. Acceptable. No invented attribution, no fake source. PASS.\n\n**CLO (alex-clo):** Mechanical diff: 0 shared 7-grams across all 15 re-authored assets vs source PDF \u2014 expressionally independent. No verbatim reproduction, no borrowed framework naming, no attribution required for an original commissioned asset. The illustrative example (\"Tuesday the export job silently duplicated 4,000 rows\") is generic and safe. PASS.\n\n**CEO:** Strategically useful \u2014 a reusable structural pattern applicable across agent-generated content (reports, case studies, lessons). Worth warehouse activation.\n\n[THINK: SAFE] \u2014 no substrate impact; asset-level only.\n[ACTION_VECTOR]: promote to warehouse with tags intact.\n\nVERDICT: APPROVE\n\nAlex Washington: [SCAN: MEMORIA] \u2014 no conflicting precedent for commissioned warehouse assets.\n\n**Pattern Archaeologist (rune-pattern):** No sourceQuote exists (commissioned "
       }
     },
     {
@@ -631,7 +606,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"Specifics-forcing AI prompt\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"Specifics-forcing AI prompt\" \u2014 single-purchase access"
         }
       },
       "review": {
@@ -642,7 +617,7 @@
           "alex-clo"
         ],
         "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: As Pattern Archaeologist, I confirm this is a commissioned original asset, not an extraction, so there is no sourceQuote to verify against. The methodology itself is coherent and reflects genuine practice: the ban-list, explicit substrate supply, fill-or-flag format, verification tags, rejection loop, and mandatory human pass all align with known techniques for improving AI output specificity. It reads as a synthesized best-practice, not an invented framework.\n\nThe main concern is an over-generalized empirical claim in step 5: \"Two rounds of enforced rejection typically trains the remainder of the output into compliance.\" This asserts a predictable outcome without evidence; in practice, model behavior varies by task, model, and prompt context. Also, step 6 should make the human pass non-negotiable rather than a closing remark — \"keep\" could be read as optional.\n\nThe asset is promising and useful, but it needs a small revision: soften or remove the \"typically\" claim, and explicitly state that the human verification pass is mandatory for any factual claims. After those edits, it would be warehouse-ready.\n\nVERDICT: REVISE\n\nAlex Washington: **CLO review:**\n\nThis asset passes my originality and IP compliance check. The draft identifies itself as a commissioned original — not an extraction — so no sourceQuote verification is applicable. Per the reviewer instructions, I ran the diff against the referenced PDF (`../50WaysToAvoidLazyAISlopAndCreateContentPeopleWant.pdf`). While "
+        "transcriptExcerpt": "Rune: As Pattern Archaeologist, I confirm this is a commissioned original asset, not an extraction, so there is no sourceQuote to verify against. The methodology itself is coherent and reflects genuine practice: the ban-list, explicit substrate supply, fill-or-flag format, verification tags, rejection loop, and mandatory human pass all align with known techniques for improving AI output specificity. It reads as a synthesized best-practice, not an invented framework.\n\nThe main concern is an over-generalized empirical claim in step 5: \"Two rounds of enforced rejection typically trains the remainder of the output into compliance.\" This asserts a predictable outcome without evidence; in practice, model behavior varies by task, model, and prompt context. Also, step 6 should make the human pass non-negotiable rather than a closing remark \u2014 \"keep\" could be read as optional.\n\nThe asset is promising and useful, but it needs a small revision: soften or remove the \"typically\" claim, and explicitly state that the human verification pass is mandatory for any factual claims. After those edits, it would be warehouse-ready.\n\nVERDICT: REVISE\n\nAlex Washington: **CLO review:**\n\nThis asset passes my originality and IP compliance check. The draft identifies itself as a commissioned original \u2014 not an extraction \u2014 so no sourceQuote verification is applicable. Per the reviewer instructions, I ran the diff against the referenced PDF (`../50WaysToAvoidLazyAISlopAndCreateContentPeopleWant.pdf`). While "
       }
     },
     {
@@ -681,7 +656,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"Give AI audience context upfront\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"Give AI audience context upfront\" \u2014 single-purchase access"
         }
       },
       "review": {
@@ -692,16 +667,16 @@
           "alex-clo"
         ],
         "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — checking for precedence on commissioned prompting assets; none conflict.\n\n**Pattern Archaeologist (rune-pattern):**\nNo sourceQuote to verify — this is an original commissioned asset. Assessed on fidelity-to-practice: the six steps are internally coherent and operational. Steps 3 (\"one exemplar passage\") and 4 (\"failure modes over adjectives\") are the strongest — they're testable constraints, not vibes. Step 6's claim that iterating on context \"compounds across every future draft\" is a reasonable inference, not invented. No over-generalized claims detected. One minor gap: no guidance on what to do when audience is unknown/mixed — acceptable for a v1 asset. **Faithful to practice.**\n\n**CLO (alex-clo):**\nOriginality check against the source PDF: no verbatim reproduction, no parallel phrasing, no structural copying detected. The asset is expressionally independent — it teaches a prompting practice in original language. No attribution required (commissioned, original). Tags and framework metadata are clean. **PASS.**\n\n**CEO:** Strategically sound — audience-context briefing is a high-frequency, cross-agent reusable pattern. Low cost, high leverage. Worth warehouse activation.\n\n[THINK: SAFE] — no substrate impact; asset-level only.\n\nVERDICT: APPROVE\n\nAlex Washington: [SCAN: MEMORIA] — no prior precedent for this asset; commissioned original.\n\n**Pattern Archaeologist (rune-pattern):** No sourceQuote exists (commissioned asset), so fidelity is judged against p"
+        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] \u2014 checking for precedence on commissioned prompting assets; none conflict.\n\n**Pattern Archaeologist (rune-pattern):**\nNo sourceQuote to verify \u2014 this is an original commissioned asset. Assessed on fidelity-to-practice: the six steps are internally coherent and operational. Steps 3 (\"one exemplar passage\") and 4 (\"failure modes over adjectives\") are the strongest \u2014 they're testable constraints, not vibes. Step 6's claim that iterating on context \"compounds across every future draft\" is a reasonable inference, not invented. No over-generalized claims detected. One minor gap: no guidance on what to do when audience is unknown/mixed \u2014 acceptable for a v1 asset. **Faithful to practice.**\n\n**CLO (alex-clo):**\nOriginality check against the source PDF: no verbatim reproduction, no parallel phrasing, no structural copying detected. The asset is expressionally independent \u2014 it teaches a prompting practice in original language. No attribution required (commissioned, original). Tags and framework metadata are clean. **PASS.**\n\n**CEO:** Strategically sound \u2014 audience-context briefing is a high-frequency, cross-agent reusable pattern. Low cost, high leverage. Worth warehouse activation.\n\n[THINK: SAFE] \u2014 no substrate impact; asset-level only.\n\nVERDICT: APPROVE\n\nAlex Washington: [SCAN: MEMORIA] \u2014 no prior precedent for this asset; commissioned original.\n\n**Pattern Archaeologist (rune-pattern):** No sourceQuote exists (commissioned asset), so fidelity is judged against p"
       }
     },
     {
       "id": "warehouse-extracted-ai-as-structure-generator-mt38e0w5",
       "type": "workflow",
       "title": "AI as structure generator",
-      "description": "Delegate outlines and section logic to AI while keeping claims, proof, and judgment human — structure-assisted, substance-owned.",
+      "description": "Delegate outlines and section logic to AI while keeping claims, proof, and judgment human \u2014 structure-assisted, substance-owned.",
       "targetRoles": [],
-      "useCase": "Delegate outlines and section logic to AI while keeping claims, proof, and judgment human — structure-assisted, substance-owned.",
+      "useCase": "Delegate outlines and section logic to AI while keeping claims, proof, and judgment human \u2014 structure-assisted, substance-owned.",
       "status": "ready",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
@@ -731,7 +706,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"AI as structure generator\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"AI as structure generator\" \u2014 single-purchase access"
         }
       },
       "review": {
@@ -742,7 +717,7 @@
           "alex-clo"
         ],
         "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: \n\nAlex Washington: As CLO, the first thing I confirm is that this is a commissioned original asset, not an extraction — so the standard fidelity-to-source test doesn’t apply here. What does apply is the originality diff against the referenced PDF at repo root. I’ve reviewed that comparison: the material is expressionally independent. The draft shares general concepts one might find in any AI-collaboration discourse (division of labor, delegation of mechanical work), but there is no parallel phrasing, no structural copying, and no chain of substantially similar expression that would trigger copyright concern. The methodology itself is not protectable subject matter; the expression is the author’s own.\n\nAttribution and provenance are also handled properly. The draft claims no external source, and Step 6 explicitly requires users to record the human/AI division in process notes — which is good practice for later compliance audits and for maintaining accurate copyright and authorship records. If this asset is ever used in a deliverable subject to client audit, that provenance trail will be the difference between a clean pass and a mess.\n\nOne compliance note: I’d recommend the warehouse metadata include a “commissioned original — no attribution required” flag, so downstream agents don’t waste time hunting for a source that doesn’t exist. That’s an operational suggestion, not a blocker. The substance of the methodology is sound, the instruction to quarantine AI-generated clai"
+        "transcriptExcerpt": "Rune: \n\nAlex Washington: As CLO, the first thing I confirm is that this is a commissioned original asset, not an extraction \u2014 so the standard fidelity-to-source test doesn\u2019t apply here. What does apply is the originality diff against the referenced PDF at repo root. I\u2019ve reviewed that comparison: the material is expressionally independent. The draft shares general concepts one might find in any AI-collaboration discourse (division of labor, delegation of mechanical work), but there is no parallel phrasing, no structural copying, and no chain of substantially similar expression that would trigger copyright concern. The methodology itself is not protectable subject matter; the expression is the author\u2019s own.\n\nAttribution and provenance are also handled properly. The draft claims no external source, and Step 6 explicitly requires users to record the human/AI division in process notes \u2014 which is good practice for later compliance audits and for maintaining accurate copyright and authorship records. If this asset is ever used in a deliverable subject to client audit, that provenance trail will be the difference between a clean pass and a mess.\n\nOne compliance note: I\u2019d recommend the warehouse metadata include a \u201ccommissioned original \u2014 no attribution required\u201d flag, so downstream agents don\u2019t waste time hunting for a source that doesn\u2019t exist. That\u2019s an operational suggestion, not a blocker. The substance of the methodology is sound, the instruction to quarantine AI-generated clai"
       }
     },
     {
@@ -779,7 +754,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"Skeptic-proofing with AI\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"Skeptic-proofing with AI\" \u2014 single-purchase access"
         }
       },
       "review": {
@@ -790,7 +765,7 @@
           "alex-clo"
         ],
         "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no conflicting precedent for commissioned-asset review flow.\n\n**Pattern Archaeologist (rune-pattern):** Commissioned original — no sourceQuote to verify, so fidelity is judged against practice, not extraction. The methodology is internally coherent: role assignment → targeted attack prompt → noise filtering → triage buckets → bounded rewriting → multi-persona iteration with a stop condition. The stop condition (step 6) and the \"discard generic pushback\" rule (step 3) are the marks of genuine practice, not invented theory — these are the details people only include if they've actually run the loop. The provenance note (\"keep the transcript\") is operationally useful. No over-generalized claims; scope is honestly narrow (argument hardening, not fact-checking). PASS on usefulness and practice-fidelity.\n\n**CLO (alex-clo):** Mechanical diff confirms zero shared 7-grams across all 15 assets vs. source PDF — expressionally independent. No verbatim reproduction, no named third-party frameworks requiring attribution (\"custom\" framework, correctly labeled). The embedded example prompts are original instructional text, not lifted. No license/IP/compliance issues. PASS.\n\n**CEO:** Strategically sound — a reusable quality-control pattern applicable to nearly every content-producing agent. Low blast radius, high reuse frequency. Worth warehouse activation.\n\n[THINK: SAFE] — no substrate or frontmatter changes; promotion-only decision.\n\nVERDICT: APPROVE\n\nAlex Washington"
+        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] \u2014 no conflicting precedent for commissioned-asset review flow.\n\n**Pattern Archaeologist (rune-pattern):** Commissioned original \u2014 no sourceQuote to verify, so fidelity is judged against practice, not extraction. The methodology is internally coherent: role assignment \u2192 targeted attack prompt \u2192 noise filtering \u2192 triage buckets \u2192 bounded rewriting \u2192 multi-persona iteration with a stop condition. The stop condition (step 6) and the \"discard generic pushback\" rule (step 3) are the marks of genuine practice, not invented theory \u2014 these are the details people only include if they've actually run the loop. The provenance note (\"keep the transcript\") is operationally useful. No over-generalized claims; scope is honestly narrow (argument hardening, not fact-checking). PASS on usefulness and practice-fidelity.\n\n**CLO (alex-clo):** Mechanical diff confirms zero shared 7-grams across all 15 assets vs. source PDF \u2014 expressionally independent. No verbatim reproduction, no named third-party frameworks requiring attribution (\"custom\" framework, correctly labeled). The embedded example prompts are original instructional text, not lifted. No license/IP/compliance issues. PASS.\n\n**CEO:** Strategically sound \u2014 a reusable quality-control pattern applicable to nearly every content-producing agent. Low blast radius, high reuse frequency. Worth warehouse activation.\n\n[THINK: SAFE] \u2014 no substrate or frontmatter changes; promotion-only decision.\n\nVERDICT: APPROVE\n\nAlex Washington"
       }
     },
     {
@@ -821,7 +796,7 @@
           "alex-clo"
         ],
         "notes": "VERDICT: APPROVE\n\nAlex Washington:",
-        "transcriptExcerpt": "Rune: As Pattern Archaeologist, I read this as an original methodology rather than an extraction, so the absence of a sourceQuote is not a red flag in itself. The workflow is internally coherent and matches established practice in high-volume creative curation: criteria-first constraints, batch generation within pattern families, job-tagging variants, honest re-scoping via subheads, audience validation, and preserving losers as raw material. That is a faithful representation of how working copywriters actually produce headline fields — the selection skill is the bottleneck, generation is cheap.\n\nI find no invented or over-generalized claims here. The steps are concrete and testable. One minor observation: \"Framework: custom\" is a weak label, and step 5's audience check could be made more operational (e.g., \"one-sentence guess\" is already there, but adding a sample size or noting it can be done informally would tighten it). Neither issue undermines the methodology's usefulness or fidelity to practice. This is a clean, actionable asset for the warehouse.\n\nVERDICT: APPROVE\n\nAlex Washington: "
+        "transcriptExcerpt": "Rune: As Pattern Archaeologist, I read this as an original methodology rather than an extraction, so the absence of a sourceQuote is not a red flag in itself. The workflow is internally coherent and matches established practice in high-volume creative curation: criteria-first constraints, batch generation within pattern families, job-tagging variants, honest re-scoping via subheads, audience validation, and preserving losers as raw material. That is a faithful representation of how working copywriters actually produce headline fields \u2014 the selection skill is the bottleneck, generation is cheap.\n\nI find no invented or over-generalized claims here. The steps are concrete and testable. One minor observation: \"Framework: custom\" is a weak label, and step 5's audience check could be made more operational (e.g., \"one-sentence guess\" is already there, but adding a sample size or noting it can be done informally would tighten it). Neither issue undermines the methodology's usefulness or fidelity to practice. This is a clean, actionable asset for the warehouse.\n\nVERDICT: APPROVE\n\nAlex Washington: "
       },
       "commerce": {
         "msrpUsdCents": 300,
@@ -839,7 +814,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"Headline and subhead generation\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"Headline and subhead generation\" \u2014 single-purchase access"
         }
       }
     },
@@ -847,9 +822,9 @@
       "id": "warehouse-extracted-picky-editor-gap-check-mt38e0w5",
       "type": "prompt",
       "title": "Picky editor gap check",
-      "description": "Configure AI as a gap-only editor to surface missing prerequisites, undefined terms, and logical jumps — then fill or cut.",
+      "description": "Configure AI as a gap-only editor to surface missing prerequisites, undefined terms, and logical jumps \u2014 then fill or cut.",
       "targetRoles": [],
-      "useCase": "Configure AI as a gap-only editor to surface missing prerequisites, undefined terms, and logical jumps — then fill or cut.",
+      "useCase": "Configure AI as a gap-only editor to surface missing prerequisites, undefined terms, and logical jumps \u2014 then fill or cut.",
       "status": "ready",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
@@ -877,7 +852,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"Picky editor gap check\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"Picky editor gap check\" \u2014 single-purchase access"
         }
       },
       "review": {
@@ -888,7 +863,7 @@
           "alex-clo"
         ],
         "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no conflicting precedent for commissioned 371 assets; original-asset review path applies.\n\n**Pattern Archaeologist (rune-pattern):**\n- Provenance is stated as commissioned/original — no sourceQuote to verify, correctly flagged.\n- This is a genuine, coherent methodology: configure persona → gap-only pass → binary fill/cut → ranked filling → re-run loop → meta-log. It's faithful to real editorial practice (gap analysis vs. style editing) and not over-generalized.\n- Step 3's binary decision rule and step 6's blind-spot logging are the distinctive, non-generic value. No invented claims detected.\n- Minor: step 4 mixes two ideas (rank by impact + one-gap-at-a-time drafting); acceptable as-is.\n\n**CLO (alex-clo):**\n- Mechanical diff vs. source PDF: 0 shared 7-grams across all 15 re-authored assets — expressionally independent. PASS on originality.\n- No verbatim reproduction, no third-party attribution required for a commissioned original asset. Tags and framework (\"custom\") correctly declared. No compliance issues.\n\n**CEO:**\n- Strategically useful: complements style-focused editing passes with a completeness pass; reusable across agents and human writers. Worth warehouse activation.\n\n[THINK: SAFE] — no substrate impact; document-only review.\n[ACTION_VECTOR]: promote draft to warehouse unchanged.\n\nVERDICT: APPROVE\n\nAlex Washington: [SCAN: MEMORIA] — no prior precedence for this asset class; proceeding with role review.\n\n**Pattern Archaeologist (rune-pattern):**"
+        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] \u2014 no conflicting precedent for commissioned 371 assets; original-asset review path applies.\n\n**Pattern Archaeologist (rune-pattern):**\n- Provenance is stated as commissioned/original \u2014 no sourceQuote to verify, correctly flagged.\n- This is a genuine, coherent methodology: configure persona \u2192 gap-only pass \u2192 binary fill/cut \u2192 ranked filling \u2192 re-run loop \u2192 meta-log. It's faithful to real editorial practice (gap analysis vs. style editing) and not over-generalized.\n- Step 3's binary decision rule and step 6's blind-spot logging are the distinctive, non-generic value. No invented claims detected.\n- Minor: step 4 mixes two ideas (rank by impact + one-gap-at-a-time drafting); acceptable as-is.\n\n**CLO (alex-clo):**\n- Mechanical diff vs. source PDF: 0 shared 7-grams across all 15 re-authored assets \u2014 expressionally independent. PASS on originality.\n- No verbatim reproduction, no third-party attribution required for a commissioned original asset. Tags and framework (\"custom\") correctly declared. No compliance issues.\n\n**CEO:**\n- Strategically useful: complements style-focused editing passes with a completeness pass; reusable across agents and human writers. Worth warehouse activation.\n\n[THINK: SAFE] \u2014 no substrate impact; document-only review.\n[ACTION_VECTOR]: promote draft to warehouse unchanged.\n\nVERDICT: APPROVE\n\nAlex Washington: [SCAN: MEMORIA] \u2014 no prior precedence for this asset class; proceeding with role review.\n\n**Pattern Archaeologist (rune-pattern):**"
       }
     },
     {
@@ -927,7 +902,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"Real reader confusion test\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"Real reader confusion test\" \u2014 single-purchase access"
         }
       },
       "review": {
@@ -938,7 +913,7 @@
           "alex-clo"
         ],
         "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no precedence for this asset; commissioned original.\n\n**Pattern Archaeologist (rune-pattern):** No sourceQuote exists — this is an original asset, so fidelity-to-practice is the review axis. The methodology is a faithful, well-operationalized version of standard think-aloud protocol testing (rooted in usability testing practice, e.g., Nielsen, Ericsson & Simon). Claims are proportionate: \"highest-yield thirty minutes in the editing stack\" is a mild editorial assertion, not an invented empirical claim. Each step is actionable and non-contradictory. Step 3's \"explanations fix the reader, the test exists to fix the text\" is genuinely useful craft knowledge. No over-generalization flags.\n\n**CLO (alex-clo):** Originality check against the source PDF — the methodology (read-aloud confusion testing) is a generic editing/usability technique in the public domain. No verbatim reproduction, no parallel structure to the PDF's listicle format, no shared phrasing detected. The asset is expressionally independent. No attribution required for a generic practice; no IP exposure. PASS.\n\n**CEO:** Strategically sound — cheap, high-leverage editing primitive usable by any agent producing prose for humans. Worth warehouse activation.\n\n[THINK: SAFE] — no substrate impact; asset-level only.\n\nOne minor note (non-blocking): \"highest-yield thirty minutes\" assumes a ~30-min session length that the steps don't otherwise specify; harmless.\n\nVERDICT: APPROVE\n\nAlex Washington: **CLO "
+        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] \u2014 no precedence for this asset; commissioned original.\n\n**Pattern Archaeologist (rune-pattern):** No sourceQuote exists \u2014 this is an original asset, so fidelity-to-practice is the review axis. The methodology is a faithful, well-operationalized version of standard think-aloud protocol testing (rooted in usability testing practice, e.g., Nielsen, Ericsson & Simon). Claims are proportionate: \"highest-yield thirty minutes in the editing stack\" is a mild editorial assertion, not an invented empirical claim. Each step is actionable and non-contradictory. Step 3's \"explanations fix the reader, the test exists to fix the text\" is genuinely useful craft knowledge. No over-generalization flags.\n\n**CLO (alex-clo):** Originality check against the source PDF \u2014 the methodology (read-aloud confusion testing) is a generic editing/usability technique in the public domain. No verbatim reproduction, no parallel structure to the PDF's listicle format, no shared phrasing detected. The asset is expressionally independent. No attribution required for a generic practice; no IP exposure. PASS.\n\n**CEO:** Strategically sound \u2014 cheap, high-leverage editing primitive usable by any agent producing prose for humans. Worth warehouse activation.\n\n[THINK: SAFE] \u2014 no substrate impact; asset-level only.\n\nOne minor note (non-blocking): \"highest-yield thirty minutes\" assumes a ~30-min session length that the steps don't otherwise specify; harmless.\n\nVERDICT: APPROVE\n\nAlex Washington: **CLO "
       }
     },
     {
@@ -965,7 +940,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-wake-up-call-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -995,7 +970,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-inner-mirror-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -1025,7 +1000,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-survivors-code-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -1055,7 +1030,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-30-second-identity-reset-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -1085,7 +1060,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-no-more-waiting-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -1115,7 +1090,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-emotional-gps-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -1145,7 +1120,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-fear-to-fuel-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -1175,7 +1150,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-savage-reset-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -1205,7 +1180,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-1-year-deathbed-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -1235,7 +1210,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-invisible-fence-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -1265,7 +1240,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-power-recall-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -1295,7 +1270,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-energy-audit-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -1325,7 +1300,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-hell-no-hell-yes-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -1355,7 +1330,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-inner-critic-interrogation-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -1385,7 +1360,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-burn-the-backup-plan-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -1423,7 +1398,7 @@
       "id": "warehouse-prompt-headline-and-subhead-generation",
       "type": "prompt",
       "title": "headline and subhead generation",
-      "description": "# Headline and subhead generation  > **Goal:** Generate headlines and subheads as a high-volume curation exercise — many variants, human selection, pr",
+      "description": "# Headline and subhead generation  > **Goal:** Generate headlines and subheads as a high-volume curation exercise \u2014 many variants, human selection, pr",
       "targetRoles": [],
       "useCase": "",
       "status": "draft",
@@ -1479,7 +1454,7 @@
       "id": "warehouse-prompt-picky-editor-gap-check",
       "type": "prompt",
       "title": "picky editor gap check",
-      "description": "# Picky editor gap check  > **Goal:** Run the draft through an AI editor configured to find what's missing — unanswered questions, skipped steps, unde",
+      "description": "# Picky editor gap check  > **Goal:** Run the draft through an AI editor configured to find what's missing \u2014 unanswered questions, skipped steps, unde",
       "targetRoles": [],
       "useCase": "",
       "status": "draft",
@@ -1493,7 +1468,7 @@
       "id": "warehouse-prompt-specifics-forcing-ai-prompt",
       "type": "prompt",
       "title": "specifics forcing ai prompt",
-      "description": "# Specifics-forcing AI prompt  > **Goal:** Prompt AI in a way that makes vague output impossible — numbers, named entities, and checkable facts requir",
+      "description": "# Specifics-forcing AI prompt  > **Goal:** Prompt AI in a way that makes vague output impossible \u2014 numbers, named entities, and checkable facts requir",
       "targetRoles": [],
       "useCase": "",
       "status": "draft",
@@ -1516,126 +1491,31 @@
       "variables": [],
       "filePath": "/tmp/opencode/wt/x402/warehouse/prompts/surgical-update-rule.md",
       "category": "general"
-    },
+    }
+  ],
+  "bundles": [
     {
-      "id": "test-search-item-1787605445983",
-      "type": "prompt",
-      "title": "Unique Searchable Item XYZ987",
-      "description": "This is a uniquely searchable item for test purposes",
-      "targetRoles": [],
-      "useCase": "Testing search functionality",
-      "status": "ready",
-      "linkedItems": [],
-      "tags": [
-        "test",
-        "unique"
-      ],
-      "variables": [],
-      "filePath": "/tmp/test-search-item.md"
-    },
-    {
-      "id": "test-status-item-1787605445985",
-      "type": "prompt",
-      "title": "Draft Status Test Item",
-      "description": "A draft item for testing",
-      "targetRoles": [],
-      "useCase": "Status filter test",
-      "status": "draft",
-      "linkedItems": [],
-      "tags": [],
-      "variables": [],
-      "filePath": "/tmp/draft-test.md"
-    },
-    {
-      "id": "test-category-item-1787605445987",
-      "type": "prompt",
-      "title": "Category Filter Test Item",
-      "description": "A category-specific item for testing",
-      "targetRoles": [],
-      "useCase": "Category filter test",
-      "status": "ready",
-      "linkedItems": [],
-      "tags": [],
-      "variables": [],
-      "filePath": "/tmp/category-test.md",
-      "category": "test-category-unique-xyz"
-    },
-    {
-      "id": "test-role-affinity-1787605445988",
-      "type": "prompt",
-      "title": "CMO Marketing Item",
-      "description": "Marketing item for CMO role",
-      "targetRoles": [],
-      "useCase": "CMO marketing campaigns",
-      "status": "ready",
-      "linkedItems": [],
-      "tags": [
-        "marketing"
-      ],
-      "variables": [],
-      "filePath": "/tmp/cmo-test.md",
-      "category": "marketing"
-    },
-    {
-      "id": "test-targeted-role-1787605445990",
-      "type": "prompt",
-      "title": "CEO Specific Item",
-      "description": "Only for CEO",
+      "id": "test-bundle-1787605445994",
+      "title": "Test Bundle",
+      "description": "A test bundle for unit testing",
+      "theme": "testing",
       "targetRoles": [
         "ceo"
       ],
-      "useCase": "CEO strategy",
-      "status": "ready",
-      "linkedItems": [],
-      "tags": [],
-      "variables": [],
-      "filePath": "/tmp/ceo-specific.md",
-      "category": "other-category"
+      "itemIds": [
+        "item-1",
+        "item-2"
+      ],
+      "createdAt": "2026-08-24T21:04:05.994Z"
     },
     {
-      "id": "test-tag-search-1787605445991",
-      "type": "prompt",
-      "title": "Tag Search Test Item",
-      "description": "Item with a unique test tag",
+      "id": "test-list-bundle-1787605445995",
+      "title": "List Test Bundle",
+      "description": "Bundle to test listing",
+      "theme": "test",
       "targetRoles": [],
-      "useCase": "Tag search testing",
-      "status": "ready",
-      "linkedItems": [],
-      "tags": [
-        "unique-tag-xyz987abc"
-      ],
-      "variables": [],
-      "filePath": "/tmp/tag-test.md"
-    },
-    {
-      "id": "test-add-item-1787605445992",
-      "type": "prompt",
-      "title": "Retrieve By ID Test",
-      "description": "Test item for ID retrieval",
-      "targetRoles": [],
-      "useCase": "Testing ID lookup",
-      "status": "ready",
-      "linkedItems": [],
-      "tags": [
-        "test"
-      ],
-      "variables": [
-        "Topic"
-      ],
-      "filePath": "/tmp/retrieve-test.md"
-    },
-    {
-      "id": "test-overwrite-1787605445993",
-      "type": "prompt",
-      "title": "Updated Title",
-      "description": "Original description",
-      "targetRoles": [],
-      "useCase": "Original use case",
-      "status": "ready",
-      "linkedItems": [],
-      "tags": [],
-      "variables": [],
-      "filePath": "/tmp/overwrite-test.md"
+      "itemIds": [],
+      "createdAt": "2026-08-24T21:04:05.995Z"
     }
   ],
   "lastUpdated": "2026-08-24T21:55:32.905Z",
