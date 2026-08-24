@@ -59,7 +59,7 @@ PR: #9 (link: https://github.com/371-Minds/bizbuilderprompts/pull/9)
 
 > Convention: `- [ ]` pending, `- [x]` done. Append ` — <commit sha>` when a step lands. Do not rename step titles.
 
-- [ ] 1.1 Commit this plan; push branch; open bare draft PR
+- [x] 1.1 Commit this plan; push branch; open bare draft PR
 - [x] 2.1 Write 15 fresh content files (warehouse/workflows/, in place) — 30c3179
 - [x] 2.2 Update index.json: remove provenance, status draft, fresh descriptions/tags; verify commerce untouched — 30c3179
 - [x] 3.1 Write gate script (revise_transcripts pattern + Alex originality focus, transcript persistence) — 3a9bab7
