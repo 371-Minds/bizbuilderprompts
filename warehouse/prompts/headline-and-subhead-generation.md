@@ -1,29 +1,18 @@
 # Headline and subhead generation
 
-> **Goal:** Generate specific, human-sounding headlines that promise a clear outcome with a hint of tension.
+> **Goal:** Generate headlines and subheads as a high-volume curation exercise — many variants, human selection, promise kept.
 > **Framework:** custom
-> **Tags:** ai-prompts, headlines, copywriting
+> **Tags:** ai-collaboration, copywriting, headlines, curation
 
 ---
 
 ## Methodology
 
-1. Ask: "Write 25 headlines for this article, each with a clear outcome and a hint of tension, and avoid vague words like 'better'."
-2. [extension] Pick the most specific, human-sounding headline from the batch.
-3. [extension] Ask for subheads that each promise a benefit.
+1. Write the selection criteria before generating anything: the promise the headline must make, the audience sentence, and the banned patterns (curiosity-bait, "ultimate guide," anything the piece can't cash). Criteria first keeps curation fast.
+2. Generate in batches of ten or more per pattern family — question, how-to, number, contrarian, outcome-first, direct address. Volume within a family is what makes the best-in-family visible.
+3. Tag each variant with what job it does: search-intent, feed-scroll-stop, or email-open. A headline that wins one job often loses another; pick per placement, not in the abstract.
+4. Cut every variant that over-promises the body. The subhead's job is to re-scope honestly — pair a bold headline with a subhead that narrows to what's actually delivered.
+5. Read finalists to someone in the target audience and ask them to guess what the piece promises. Their guess is the headline's real meaning; any gap between guess and content means the pair is wrong.
+6. Keep the losing variants in a swipe file with their job tags — they're raw material for the A/B test and for the next piece's batch one.
 
-**Illustrative example [extension]:** a benefit-promising subhead like "The 5 Minute Proof Test".
-
----
-
-## Provenance
-
-- **Source:** PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1
-- **License:** PLR (Private Label Rights) — redistribution and derivation permitted under the SuperSalesMachine PLR grant; attribution retained via this provenance block
-- **Source hash:** `569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e`
-- **Extracted:** 2026-08-21T17:34:35.972Z via deepseek-v4-flash
-- **Fidelity pre-score:** 0.70 (subhead guidance and example marked `[extension]` in the 2026-08-22 revise pass)
-
-### Source quote (verification anchor)
-
-> Write 25 headlines for this article, each with a clear outcome and a hint of tension, and avoid vague words like 'better'.
+Selection is the human skill here; generation is cheap. Never ship a headline you didn't choose from a field.

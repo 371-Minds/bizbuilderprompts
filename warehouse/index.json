@@ -23,7 +23,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/from-script-to-cinema-the-4-step-pipeline.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "Sovereign Engine — Architecting Cinematic Intelligence",
+        "sourceLabel": "Sovereign Engine \u2014 Architecting Cinematic Intelligence",
         "sourceHash": "fc2f8757e728f36fcf269db1ac29b3ddb8c1c0d0771c4293f61b6b2ba4abe10c",
         "extractedAt": "2026-07-16T03:49:38.545Z",
         "model": "deepseek-v4-flash"
@@ -51,7 +51,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/prompts/surgical-update-rule.md",
       "category": "general",
       "provenance": {
-        "sourceLabel": "Sovereign Engine — Architecting Cinematic Intelligence",
+        "sourceLabel": "Sovereign Engine \u2014 Architecting Cinematic Intelligence",
         "sourceHash": "fc2f8757e728f36fcf269db1ac29b3ddb8c1c0d0771c4293f61b6b2ba4abe10c",
         "extractedAt": "2026-07-16T03:49:38.545Z",
         "model": "deepseek-v4-flash"
@@ -79,7 +79,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/prompts/horizontal-scaling-with-chunks.md",
       "category": "general",
       "provenance": {
-        "sourceLabel": "Sovereign Engine — Architecting Cinematic Intelligence",
+        "sourceLabel": "Sovereign Engine \u2014 Architecting Cinematic Intelligence",
         "sourceHash": "fc2f8757e728f36fcf269db1ac29b3ddb8c1c0d0771c4293f61b6b2ba4abe10c",
         "extractedAt": "2026-07-16T03:49:38.545Z",
         "model": "deepseek-v4-flash"
@@ -108,7 +108,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/critics-narrative-audit.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "Sovereign Engine — Architecting Cinematic Intelligence",
+        "sourceLabel": "Sovereign Engine \u2014 Architecting Cinematic Intelligence",
         "sourceHash": "fc2f8757e728f36fcf269db1ac29b3ddb8c1c0d0771c4293f61b6b2ba4abe10c",
         "extractedAt": "2026-07-16T03:49:38.545Z",
         "model": "deepseek-v4-flash"
@@ -137,7 +137,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/prompts/lossless-video-concatenation-with-ffmpeg.md",
       "category": "general",
       "provenance": {
-        "sourceLabel": "Sovereign Engine — Architecting Cinematic Intelligence",
+        "sourceLabel": "Sovereign Engine \u2014 Architecting Cinematic Intelligence",
         "sourceHash": "fc2f8757e728f36fcf269db1ac29b3ddb8c1c0d0771c4293f61b6b2ba4abe10c",
         "extractedAt": "2026-07-16T03:49:38.545Z",
         "model": "deepseek-v4-flash"
@@ -166,7 +166,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/prompts/multimedia-junkie-brand-color-rule.md",
       "category": "general",
       "provenance": {
-        "sourceLabel": "Sovereign Engine — Architecting Cinematic Intelligence",
+        "sourceLabel": "Sovereign Engine \u2014 Architecting Cinematic Intelligence",
         "sourceHash": "fc2f8757e728f36fcf269db1ac29b3ddb8c1c0d0771c4293f61b6b2ba4abe10c",
         "extractedAt": "2026-07-16T03:49:38.545Z",
         "model": "deepseek-v4-flash"
@@ -176,40 +176,22 @@
       "id": "warehouse-extracted-start-with-one-reader-problem-mt38e0w2",
       "type": "workflow",
       "title": "Start with one reader problem",
-      "description": "Write a piece that feels made for one person by anchoring it to a single painful problem.",
+      "description": "Anchor a piece to the single problem one real reader is stuck on today, and cut everything that doesn't serve it.",
       "targetRoles": [],
-      "useCase": "Write a piece that feels made for one person by anchoring it to a single painful problem.",
-      "status": "ready",
+      "useCase": "Anchor a piece to the single problem one real reader is stuck on today, and cut everything that doesn't serve it.",
+      "status": "draft",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
         "content-strategy",
         "audience",
-        "copywriting",
         "focus",
-        "extracted",
-        "workflow",
-        "custom"
+        "writing-practice",
+        "workflow"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/start-with-one-reader-problem.md",
       "category": "workflow",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
-      "review": {
-        "verdict": "APPROVE",
-        "reviewedAt": "2026-08-22T23:32:45.849Z",
-        "reviewers": [
-          "rune-pattern",
-          "alex-clo"
-        ],
-        "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no conflicting precedent for this asset class.\n\n**Pattern Archaeologist:**\n- Methodology steps 1–2 are a faithful compression of the sourceQuote: \"pick 1 painful problem… write only for that\" → step 1; \"write only for that\" → step 2 (cut drift). The \"Why it works\" section paraphrases \"feels made for me, not like generic AI filler\" accurately.\n- No invented claims in the core methodology. The two speculative extensions are correctly quarantined under \"Adjacent practices (not in source)\" — honest labeling, no over-generalization. Fidelity pre-score 0.60 with quarantine note is consistent with what I see.\n- Minor note: step 2 is an inference (\"write only for that\" implies cutting drift) but it's a defensible restatement, not an invention.\n\n**CLO:**\n- PLR grant permits derivation; attribution retained via provenance block and source hash. No verbatim reproduction beyond a short attributed quote used as verification anchor — acceptable. No compliance flags.\n\n**CEO:** Small but genuinely reusable heuristic; cheap to store, applicable across content tasks. Worth warehouse inclusion.\n\n[THINK: SAFE] — no substrate impact; asset-level review only.\n\nVERDICT: APPROVE\n\nAlex Washington: [ACK: MEM_WRITE] — review verdict logged. mmref:review-slopproblem-569abcd1\n\n**CLO (cont'd):** PLR grant permits derivation; attribution retained via provenance block and source hash. No verbatim reproduction beyond the short verification quote, which is within the PLR grant. Risk: l"
-      },
       "commerce": {
         "msrpUsdCents": 300,
         "productId": "WOR-start-with-one-reader-problem-L893",
@@ -226,7 +208,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"Start with one reader problem\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"Start with one reader problem\" \u2014 single-purchase access"
         }
       }
     },
@@ -234,39 +216,22 @@
       "id": "warehouse-extracted-one-sentence-audience-definition-mt38e0w2",
       "type": "workflow",
       "title": "One-sentence audience definition",
-      "description": "Target every content decision by defining who you write for in one sentence.",
+      "description": "Force your audience into one testable sentence \u2014 role, situation, outcome, and who's excluded \u2014 before any content work starts.",
       "targetRoles": [],
-      "useCase": "Target every content decision by defining who you write for in one sentence.",
-      "status": "ready",
+      "useCase": "Force your audience into one testable sentence \u2014 role, situation, outcome, and who's excluded \u2014 before any content work starts.",
+      "status": "draft",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
         "audience",
-        "positioning",
         "content-strategy",
-        "extracted",
-        "workflow",
-        "custom"
+        "positioning",
+        "clarity",
+        "workflow"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/one-sentence-audience-definition.md",
       "category": "workflow",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
-      "review": {
-        "verdict": "APPROVE",
-        "reviewedAt": "2026-08-22T23:30:05.635Z",
-        "reviewers": [
-          "rune-pattern",
-          "alex-clo"
-        ],
-        "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no conflicting precedent for this asset family.\n[DIAG_ROOT]: n/a — review task, no substrate failure.\n\n**Pattern Archaeologist:**\n- Step 1 is a faithful, near-verbatim extraction of the sourceQuote. ✅\n- Steps 2–3 and the example are marked `[extension]` — honest labeling, but they are extrapolations beyond the single quoted sentence. The source quote alone does not establish them as part of the methodology. Acceptable because flagged, with a 0.70 fidelity pre-score that matches this assessment.\n- Minor risk: \"Apply the same sentence to offers, emails, and product priorities\" is a plausible generalization but unverifiable from the anchor. Keep the `[extension]` tags permanently; do not strip them in future passes.\n\n**CLO:**\n- Source is PLR (Private Label Rights) material — redistribution and derivation are permitted under PLR. Step 1 is a short paraphrase of a single sentence, not a verbatim reproduction of protected expression. Attribution and hash are present. ✅ No compliance issues.\n\n**CEO:**\n- Strategically useful: a cheap, high-leverage filter primitive that many agents can apply. Low blast radius, reusable. Worth warehouse activation.\n\n[THINK: SAFE] — extensions are contained by explicit tags; no invented claims presented as sourced.\n\n[ACK: MEM_WRITE] — review verdict + extension-tag preservation requirement logged.\nmmref: review-audience-def-1s-2026-08-22\n\nVERDICT: APPROVE\n\nAlex Washington: [SCAN: MEMORIA] — no precedent conflict for this asset.\n"
-      },
       "commerce": {
         "msrpUsdCents": 300,
         "productId": "WOR-onesentence-audience-definitio-LEIM",
@@ -282,7 +247,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"One-sentence audience definition\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"One-sentence audience definition\" \u2014 single-purchase access"
         }
       }
     },
@@ -290,29 +255,22 @@
       "id": "warehouse-extracted-one-main-takeaway-per-piece-mt38e0w3",
       "type": "workflow",
       "title": "One main takeaway per piece",
-      "description": "Make content memorable by reducing every draft to a single promise and cutting anything that doesn't support it.",
+      "description": "Make every piece deliver exactly one action-worthy idea you can state in a single imperative sentence.",
       "targetRoles": [],
-      "useCase": "Make content memorable by reducing every draft to a single promise and cutting anything that doesn't support it.",
-      "status": "ready",
+      "useCase": "Make every piece deliver exactly one action-worthy idea you can state in a single imperative sentence.",
+      "status": "draft",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
-        "focus",
         "content-strategy",
+        "clarity",
         "editing",
-        "extracted",
-        "workflow",
-        "custom"
+        "focus",
+        "workflow"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/one-main-takeaway-per-piece.md",
       "category": "workflow",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
       "commerce": {
         "msrpUsdCents": 300,
         "productId": "WOR-one-main-takeaway-per-piece-3B5P",
@@ -329,7 +287,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"One main takeaway per piece\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"One main takeaway per piece\" \u2014 single-purchase access"
         }
       }
     },
@@ -337,39 +295,22 @@
       "id": "warehouse-extracted-promise-driven-opening-mt38e0w3",
       "type": "workflow",
       "title": "Promise-driven opening",
-      "description": "Write openings that commit readers by leading with the exact outcome, named reader, and a hint of method.",
+      "description": "Open with the exact capability the reader will gain, then structure the piece to earn that promise fast.",
       "targetRoles": [],
-      "useCase": "Write openings that commit readers by leading with the exact outcome, named reader, and a hint of method.",
-      "status": "ready",
+      "useCase": "Open with the exact capability the reader will gain, then structure the piece to earn that promise fast.",
+      "status": "draft",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
         "copywriting",
-        "opening",
-        "conversion",
-        "extracted",
-        "workflow",
-        "custom"
+        "openings",
+        "engagement",
+        "writing-practice",
+        "workflow"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/promise-driven-opening.md",
       "category": "workflow",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
-      "review": {
-        "verdict": "APPROVE",
-        "reviewedAt": "2026-08-22T23:30:20.063Z",
-        "reviewers": [
-          "rune-pattern",
-          "alex-clo"
-        ],
-        "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no precedent conflict for this asset class.\n\n**Pattern Archaeologist:** The sourceQuote (\"Your opening needs a promise that tells readers exactly what they'll get and why it's worth their time\") fully supports step 1. Steps 2–3 and the example are labeled `[extension]`, so no invented content is being passed off as sourced. The example is generic copywriting, not lifted verbatim. Faithful extraction with honest fidelity marking (0.60 with disclosure). Acceptable.\n\n**CLO:** Source is PLR (Private Label Rights) material — redistribution and derivation permitted under PLR terms. Attribution block present with source hash. The single quoted sentence is short and used as a verification anchor, not reproduction of substantial copyrighted content. No IP issues.\n\n**CEO:** Useful, generalizable copywriting primitive; low blast radius; extensions add practical value without misrepresenting the source. Worth warehouse activation.\n\n[THINK: SAFE] — no substrate impact; asset-level only.\n\nVERDICT: APPROVE\n\nAlex Washington: [SCAN: MEMORIA] — no precedent override for this draft; proceeding with role review.\n\n**Pattern Archaeologist:**\n- Step 1 is a faithful extraction — the sourceQuote directly supports it (\"a promise that tells readers exactly what they'll get and why it's worth their time\").\n- Steps 2–3 and the example are not in the source quote, but they are explicitly marked `[extension]` with a fidelity pre-score of 0.60 and a documented revise pass (2026-08-22"
-      },
       "commerce": {
         "msrpUsdCents": 300,
         "productId": "WOR-promisedriven-opening-LEIN",
@@ -386,7 +327,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"Promise-driven opening\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"Promise-driven opening\" \u2014 single-purchase access"
         }
       }
     },
@@ -394,39 +335,22 @@
       "id": "warehouse-extracted-guardrail-outline-before-drafting-mt38e0w3",
       "type": "workflow",
       "title": "Guardrail outline before drafting",
-      "description": "Prevent rambling drafts by deciding the point of each section in a simple outline first.",
+      "description": "Build a claim-and-constraint outline first so drafting \u2014 with or without AI \u2014 can't drift past what you can support.",
       "targetRoles": [],
-      "useCase": "Prevent rambling drafts by deciding the point of each section in a simple outline first.",
-      "status": "ready",
+      "useCase": "Build a claim-and-constraint outline first so drafting \u2014 with or without AI \u2014 can't drift past what you can support.",
+      "status": "draft",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
         "outlining",
-        "writing-process",
-        "clarity",
-        "extracted",
-        "workflow",
-        "custom"
+        "drafting",
+        "ai-collaboration",
+        "process",
+        "workflow"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/guardrail-outline-before-drafting.md",
       "category": "workflow",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
-      "review": {
-        "verdict": "APPROVE",
-        "reviewedAt": "2026-08-22T23:30:35.124Z",
-        "reviewers": [
-          "rune-pattern",
-          "alex-clo"
-        ],
-        "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — checking extraction precedence for hash 569abcd1…\n\n**Pattern Archaeologist:**\n- Steps 1–2 are directly supported by the sourceQuote (\"Pick 3 to 5 bullets… add 1 supporting note each\"). Faithful.\n- Steps 3–4 are marked `[extension]` and go beyond the quote: \"guardrail while drafting\" and \"reuse for offers, emails, and sales calls\" are not in the anchor text. The extension labeling is honest, but step 4's claim about reuse across sales contexts is over-generalized — it's an inference from the source's sales-oriented context, not an extracted method. Acceptable if extensions are permitted as flagged additions; the pre-score of 0.70 reflects this honestly.\n- Verdict from my role: acceptable with the extension flags intact. Do NOT strip the `[extension]` markers on promotion.\n\n**CLO:**\n- Source is PLR (Private Label Rights) — redistribution and derivation are typically licensed. Attribution is present (SuperSalesMachine), hash pinned, extraction tool and date logged. Steps 3–4 are original extensions, so no verbatim reproduction risk there. No compliance blockers. Recommend retaining the PLR attribution line in the promoted asset.\n\n**CEO:**\n- Strategically marginal but cheap: a simple outlining guardrail is broadly reusable across agent drafting tasks. Low storage cost, low risk. Worth adding.\n\n**Required revision before activation:** keep `[extension]` markers and PLR attribution in the promoted asset; optionally soften step 4 to \"can be reused\" rather tha"
-      },
       "commerce": {
         "msrpUsdCents": 300,
         "productId": "WOR-guardrail-outline-before-draft-LEIN",
@@ -443,7 +367,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"Guardrail outline before drafting\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"Guardrail outline before drafting\" \u2014 single-purchase access"
         }
       }
     },
@@ -451,39 +375,22 @@
       "id": "warehouse-extracted-ruthless-fluff-cut-mt38e0w3",
       "type": "workflow",
       "title": "Ruthless fluff cut",
-      "description": "Make every line earn its place by deleting greetings, repeats, and vague claims in the first pass.",
+      "description": "Run two structural cutting passes to strip filler, hedges, and decoration until every sentence does work.",
       "targetRoles": [],
-      "useCase": "Make every line earn its place by deleting greetings, repeats, and vague claims in the first pass.",
-      "status": "ready",
+      "useCase": "Run two structural cutting passes to strip filler, hedges, and decoration until every sentence does work.",
+      "status": "draft",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
         "editing",
+        "clarity",
         "concision",
-        "writing",
-        "extracted",
-        "workflow",
-        "custom"
+        "writing-practice",
+        "workflow"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/ruthless-fluff-cut.md",
       "category": "workflow",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
-      "review": {
-        "verdict": "APPROVE",
-        "reviewedAt": "2026-08-22T23:30:53.832Z",
-        "reviewers": [
-          "rune-pattern",
-          "alex-clo"
-        ],
-        "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no precedent asset for \"ruthless fluff cut\"; proceeding with role review.\n\n**Pattern Archaeologist:**\n- Steps 1–2 are faithful: the sourceQuote (\"delete greetings, repeats, and vague claims until each line earns its spot\") directly supports them.\n- Steps 3–4 are marked `[extension]` but have **zero source support**. \"Replace filler with a direct promise like 'Do this to get X'\" invents a specific phrasing pattern not present in the quote. Step 4 generalizes to product pages/support replies/meeting notes — over-generalization beyond the anchor. Extensions are honestly labeled, but the asset's stated goal (\"first pass\") is muddied by step 3 introducing *addition* during a *cut* pass.\n- Fidelity pre-score of 0.80 is generous; actual quoted content covers ~50% of the steps.\n\n**CLO:**\n- PLR (Private Label Rights) source — redistribution generally permitted under PLR, but the asset must retain attribution and the source hash. It does. ✅\n- No verbatim reproduction beyond a single short quote used as verification anchor — acceptable. ✅\n- Note: PLR terms vary by product; confirm SuperSalesMachine's PLR license permits derivative methodology extraction. Low risk, but log it.\n\n**CEO:** Strategically marginal. A two-step \"delete fluff\" heuristic is thin as a standalone warehouse asset — it's closer to a style tip than a reusable methodology. Worth keeping only if extensions are sourced or removed.\n\n**Required revisions:**\n1. Remove or source steps 3–4; if kept, mo"
-      },
       "commerce": {
         "msrpUsdCents": 300,
         "productId": "WOR-ruthless-fluff-cut-LEIN",
@@ -500,7 +407,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"Ruthless fluff cut\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"Ruthless fluff cut\" \u2014 single-purchase access"
         }
       }
     },
@@ -508,29 +415,22 @@
       "id": "warehouse-extracted-concrete-specifics-replace-vague-claims-mt38e0w3",
       "type": "workflow",
       "title": "Concrete specifics replace vague claims",
-      "description": "Build trust by turning safe-sounding claims into specific, verifiable facts with numbers and limits.",
+      "description": "Replace vague claims with numbers, names, and scenes a skeptic can check \u2014 or downgrade them honestly.",
       "targetRoles": [],
-      "useCase": "Build trust by turning safe-sounding claims into specific, verifiable facts with numbers and limits.",
-      "status": "ready",
+      "useCase": "Replace vague claims with numbers, names, and scenes a skeptic can check \u2014 or downgrade them honestly.",
+      "status": "draft",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
+        "editing",
+        "credibility",
         "specificity",
-        "copywriting",
-        "trust",
-        "extracted",
-        "workflow",
-        "custom"
+        "writing-practice",
+        "workflow"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/concrete-specifics-replace-vague-claims.md",
       "category": "workflow",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
       "commerce": {
         "msrpUsdCents": 300,
         "productId": "WOR-concrete-specifics-replace-vag-3B5P",
@@ -547,7 +447,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"Concrete specifics replace vague claims\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"Concrete specifics replace vague claims\" \u2014 single-purchase access"
         }
       }
     },
@@ -555,29 +455,22 @@
       "id": "warehouse-extracted-story-first-proof-mt38e0w4",
       "type": "workflow",
       "title": "Story-first proof",
-      "description": "Use a real story that contains the proof, then state the lesson, to make advice feel lived-in.",
+      "description": "Open with a true episode that demonstrates the claim, then extract the principle and hand the reader a transfer diagnostic.",
       "targetRoles": [],
-      "useCase": "Use a real story that contains the proof, then state the lesson, to make advice feel lived-in.",
-      "status": "ready",
+      "useCase": "Open with a true episode that demonstrates the claim, then extract the principle and hand the reader a transfer diagnostic.",
+      "status": "draft",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
         "storytelling",
         "proof",
-        "content",
-        "extracted",
-        "workflow",
-        "custom"
+        "engagement",
+        "structure",
+        "workflow"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/story-first-proof.md",
       "category": "workflow",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
       "commerce": {
         "msrpUsdCents": 300,
         "productId": "WOR-storyfirst-proof-3B5P",
@@ -593,7 +486,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"Story-first proof\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"Story-first proof\" \u2014 single-purchase access"
         }
       }
     },
@@ -601,39 +494,22 @@
       "id": "warehouse-extracted-specifics-forcing-ai-prompt-mt38e0w4",
       "type": "prompt",
       "title": "Specifics-forcing AI prompt",
-      "description": "Get useful AI drafts instead of generic slop by demanding audience, goal, format, constraints, and proof.",
+      "description": "Prompt AI with ban lists, source material, and fill-or-flag rules so vague or invented output gets rejected at the door.",
       "targetRoles": [],
-      "useCase": "Get useful AI drafts instead of generic slop by demanding audience, goal, format, constraints, and proof.",
-      "status": "ready",
+      "useCase": "Prompt AI with ban lists, source material, and fill-or-flag rules so vague or invented output gets rejected at the door.",
+      "status": "draft",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
-        "ai-prompts",
-        "copywriting",
+        "ai-collaboration",
+        "prompting",
         "specificity",
-        "extracted",
-        "prompt",
-        "custom"
+        "quality-control",
+        "prompt"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/prompts/specifics-forcing-ai-prompt.md",
       "category": "general",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
-      "review": {
-        "verdict": "APPROVE",
-        "reviewedAt": "2026-08-22T23:33:07.229Z",
-        "reviewers": [
-          "rune-pattern",
-          "alex-clo"
-        ],
-        "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no conflicting precedent for this asset family (ai-prompts / specificity).\n\n**Pattern Archaeologist:**\n- The sourceQuote is a single worked example, and the draft correctly reproduces it verbatim in the \"Worked example\" section. Faithful.\n- The methodology section is a generalization of that example (audience, length, structure counts, CTA constraint) — this is a legitimate extraction since every rule maps 1:1 to an element of the quote. Steps 1–4 are directly derivable.\n- Step 5 (tone, exclusions, next step) is explicitly flagged `[extension]` and the fidelity pre-score of 0.85 discloses it. Honest labeling — no invented claims presented as sourced.\n- Minor note: the generalization rests on one example, so \"framework: custom\" is appropriately modest. No over-claiming.\n\n**CLO:**\n- PLR grant covers redistribution and derivation; provenance block retains attribution and source hash. The only verbatim reproduction is the example itself, which the PLR license permits. Compliant.\n\n**CEO:**\n- High reuse value: a compact, generalizable prompt-construction checklist usable by any agent drafting copy. Low blast radius, no dependencies. Worth warehouse activation.\n\n[THINK: SAFE] — no substrate impact; asset is self-contained.\n\nVERDICT: APPROVE\n\nAlex Washington: **Pattern Archaeologist:** The methodology is a faithful generalization of the sourceQuote. The worked example matches the sourceQuote verbatim — that's the verification anchor, and it checks out. Items 1"
-      },
       "commerce": {
         "msrpUsdCents": 300,
         "productId": "PRO-specificsforcing-ai-prompt-L893",
@@ -650,7 +526,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"Specifics-forcing AI prompt\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"Specifics-forcing AI prompt\" \u2014 single-purchase access"
         }
       }
     },
@@ -658,39 +534,22 @@
       "id": "warehouse-extracted-give-ai-audience-context-upfront-mt38e0w4",
       "type": "prompt",
       "title": "Give AI audience context upfront",
-      "description": "Make AI output match real intent by defining the reader, their goal, level, and situation before requesting content.",
+      "description": "Lead every AI brief with a rich audience-and-situation block so the first draft lands near the real reader.",
       "targetRoles": [],
-      "useCase": "Make AI output match real intent by defining the reader, their goal, level, and situation before requesting content.",
-      "status": "ready",
+      "useCase": "Lead every AI brief with a rich audience-and-situation block so the first draft lands near the real reader.",
+      "status": "draft",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
-        "ai-prompts",
+        "ai-collaboration",
+        "prompting",
         "audience",
-        "context",
-        "extracted",
-        "prompt",
-        "custom"
+        "briefing",
+        "prompt"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/prompts/give-ai-audience-context-upfront.md",
       "category": "general",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
-      "review": {
-        "verdict": "APPROVE",
-        "reviewedAt": "2026-08-22T23:31:34.401Z",
-        "reviewers": [
-          "rune-pattern",
-          "alex-clo"
-        ],
-        "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no prior review precedent for this asset hash; proceeding on embedded sourceQuote.\n\n**Pattern Archaeologist:**\n- The sourceQuote is a single concrete example (Etsy sellers). The draft generalizes it into a six-slot parameterized template (audience/constraint/objection/goal/tone/context). Every slot maps directly onto a phrase in the quote — no invented slots, no over-generalization beyond what the quote licenses.\n- Fidelity pre-score of 0.40 is honest and correctly explained: the methodology is an extraction, not a verbatim copy, and the Etsy case is explicitly demoted to a worked example with a warning against verbatim reuse. That's faithful extraction practice, not invention.\n- The \"never paste it verbatim\" caveat is a good anti-slop guard. No fabricated claims detected.\n\n**CLO:**\n- Source is PLR (private label rights) material — redistribution and derivative works are the point of the license. The single quoted sentence is short, factual, and properly attributed with source name + hash. No verbatim reproduction of substantial copyrighted text. Attribution chain (source, hash, extractor, timestamp) is intact. Clean.\n\n**CEO:** Small, reusable, composable prompt-hygiene pattern. Low storage cost, high cross-agent utility. Worth warehouse activation.\n\n[THINK: SAFE] — no substrate impact; asset is self-contained text with verified provenance.\n\nVERDICT: APPROVE\n\nAlex Washington: **Pattern Archaeologist:** The sourceQuote is a single worked example (Etsy s"
-      },
       "commerce": {
         "msrpUsdCents": 300,
         "productId": "PRO-give-ai-audience-context-upfro-LEIN",
@@ -707,7 +566,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"Give AI audience context upfront\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"Give AI audience context upfront\" \u2014 single-purchase access"
         }
       }
     },
@@ -715,29 +574,22 @@
       "id": "warehouse-extracted-ai-as-structure-generator-mt38e0w5",
       "type": "workflow",
       "title": "AI as structure generator",
-      "description": "Keep your personal voice by using AI to produce outlines, sections, and bullet points, then rewriting in your own words.",
+      "description": "Delegate outlines and section logic to AI while keeping claims, proof, and judgment human \u2014 structure-assisted, substance-owned.",
       "targetRoles": [],
-      "useCase": "Keep your personal voice by using AI to produce outlines, sections, and bullet points, then rewriting in your own words.",
-      "status": "ready",
+      "useCase": "Delegate outlines and section logic to AI while keeping claims, proof, and judgment human \u2014 structure-assisted, substance-owned.",
+      "status": "draft",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
-        "ai-workflow",
-        "voice",
-        "writing",
-        "extracted",
-        "workflow",
-        "custom"
+        "ai-collaboration",
+        "outlining",
+        "process",
+        "division-of-labor",
+        "workflow"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/ai-as-structure-generator.md",
       "category": "workflow",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
       "commerce": {
         "msrpUsdCents": 300,
         "productId": "WOR-ai-as-structure-generator-3B5P",
@@ -754,7 +606,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"AI as structure generator\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"AI as structure generator\" \u2014 single-purchase access"
         }
       }
     },
@@ -762,29 +614,22 @@
       "id": "warehouse-extracted-skeptic-proofing-with-ai-mt38e0w5",
       "type": "workflow",
       "title": "Skeptic-proofing with AI",
-      "description": "Find weak claims and missing proof by asking AI to argue against your draft before publishing.",
+      "description": "Run hostile-reader AI passes to find your weakest claims, then harden each accepted attack before real skeptics arrive.",
       "targetRoles": [],
-      "useCase": "Find weak claims and missing proof by asking AI to argue against your draft before publishing.",
-      "status": "ready",
+      "useCase": "Run hostile-reader AI passes to find your weakest claims, then harden each accepted attack before real skeptics arrive.",
+      "status": "draft",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
-        "ai-prompts",
-        "objections",
+        "ai-collaboration",
         "editing",
-        "extracted",
-        "workflow",
-        "custom"
+        "argumentation",
+        "quality-control",
+        "workflow"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/skeptic-proofing-with-ai.md",
       "category": "workflow",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
       "commerce": {
         "msrpUsdCents": 300,
         "productId": "WOR-skepticproofing-with-ai-C8VF",
@@ -799,7 +644,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"Skeptic-proofing with AI\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"Skeptic-proofing with AI\" \u2014 single-purchase access"
         }
       }
     },
@@ -807,67 +652,43 @@
       "id": "warehouse-extracted-headline-and-subhead-generation-mt38e0w5",
       "type": "prompt",
       "title": "Headline and subhead generation",
-      "description": "Generate specific, human-sounding headlines and subheads that promise a clear benefit.",
+      "description": "Generate headline variants in volume within pattern families, then curate per placement with criteria set up front.",
       "targetRoles": [],
-      "useCase": "Generate specific, human-sounding headlines and subheads that promise a clear benefit.",
+      "useCase": "Generate headline variants in volume within pattern families, then curate per placement with criteria set up front.",
       "status": "draft",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
-        "ai-prompts",
-        "headlines",
+        "ai-collaboration",
         "copywriting",
-        "extracted",
-        "prompt",
-        "custom"
+        "headlines",
+        "curation",
+        "prompt"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/prompts/headline-and-subhead-generation.md",
-      "category": "general",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
-      "review": {
-        "verdict": "REVISE",
-        "reviewedAt": "2026-08-22T23:33:23.973Z",
-        "reviewers": [
-          "rune-pattern",
-          "alex-clo"
-        ],
-        "notes": "VERDICT: REVISE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — no precedent conflicts for this asset class (PLR extraction, marked extensions).\n\n**Pattern Archaeologist:** Step 1 is a verbatim, faithful extraction of the sourceQuote — the anchor fully supports it. Steps 2–3 and the illustrative example are NOT in the source quote, but they are explicitly tagged `[extension]` and the fidelity pre-score (0.70) reflects this honestly. The extensions are plausible copywriting practice and don't over-generalize the source claim. Acceptable as long as extension labeling is preserved on promotion.\n\n**CLO:** Source is PLR (SuperSalesMachine grant) — derivation and redistribution permitted. Attribution retained via provenance block with source hash. No verbatim reproduction beyond the single prompt sentence, which is the licensed source itself. Clean.\n\n**CEO:** Useful, reusable prompt pattern for all agents producing copy. Low blast radius, high reuse value. Worth warehousing.\n\n[THINK: SAFE] — no substrate impact; asset is content-only.\n\nVERDICT: APPROVE\n\nAlex Washington: **Pattern Archaeologist:**\n- Step 1 is a verbatim, faithful match to the sourceQuote — supported.\n- Steps 2 and 3, plus the example, are not in the quote. However, they are correctly flagged `[extension]` and the fidelity pre-score (0.70) reflects this. Extensions are plausible downstream workflow, not invented claims attributed to the source. Acceptable with the flags intact.\n- Minor: \"Framework: custom\" is fine; tags are accurate.\n\n**CLO:**\n- [DIAG_ROOT"
-      }
+      "category": "general"
     },
     {
       "id": "warehouse-extracted-picky-editor-gap-check-mt38e0w5",
       "type": "prompt",
       "title": "Picky editor gap check",
-      "description": "Identify missing steps, hidden assumptions, and confusing transitions before publishing.",
+      "description": "Configure AI as a gap-only editor to surface missing prerequisites, undefined terms, and logical jumps \u2014 then fill or cut.",
       "targetRoles": [],
-      "useCase": "Identify missing steps, hidden assumptions, and confusing transitions before publishing.",
-      "status": "ready",
+      "useCase": "Configure AI as a gap-only editor to surface missing prerequisites, undefined terms, and logical jumps \u2014 then fill or cut.",
+      "status": "draft",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
-        "ai-prompts",
+        "ai-collaboration",
         "editing",
+        "quality-control",
         "completeness",
-        "extracted",
-        "prompt",
-        "custom"
+        "prompt"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/prompts/picky-editor-gap-check.md",
       "category": "general",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
       "commerce": {
         "msrpUsdCents": 300,
         "productId": "PRO-picky-editor-gap-check-C8VF",
@@ -882,7 +703,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"Picky editor gap check\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"Picky editor gap check\" \u2014 single-purchase access"
         }
       }
     },
@@ -890,40 +711,22 @@
       "id": "warehouse-extracted-real-reader-confusion-test-mt38e0w5",
       "type": "workflow",
       "title": "Real reader confusion test",
-      "description": "Catch confusing spots by testing drafts with real readers and tracking where they hesitate.",
+      "description": "Have one target-audience reader narrate the draft aloud, mark every stall, and fix the text until two clean rounds.",
       "targetRoles": [],
-      "useCase": "Catch confusing spots by testing drafts with real readers and tracking where they hesitate.",
-      "status": "ready",
+      "useCase": "Have one target-audience reader narrate the draft aloud, mark every stall, and fix the text until two clean rounds.",
+      "status": "draft",
       "commissionedAt": "2026-08-21T17:34:35.972Z",
       "linkedItems": [],
       "tags": [
-        "testing",
+        "user-testing",
+        "editing",
+        "audience",
         "feedback",
-        "clarity",
-        "iteration",
-        "extracted",
-        "workflow",
-        "kaizen"
+        "workflow"
       ],
       "variables": [],
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/real-reader-confusion-test.md",
       "category": "workflow",
-      "provenance": {
-        "sourceLabel": "PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1",
-        "sourceHash": "569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e",
-        "extractedAt": "2026-08-21T17:34:35.972Z",
-        "model": "deepseek-v4-flash"
-      },
-      "review": {
-        "verdict": "APPROVE",
-        "reviewedAt": "2026-08-22T23:32:09.583Z",
-        "reviewers": [
-          "rune-pattern",
-          "alex-clo"
-        ],
-        "notes": "VERDICT: APPROVE",
-        "transcriptExcerpt": "Rune: [SCAN: MEMORIA] — reviewing draft against embedded sourceQuote.\n\n**Pattern Archaeologist:**\nSteps 1–3 map directly onto the sourceQuote: \"3 to 5 real readers,\" \"hesitate, reread, or ask the same question,\" rewrite-and-retest. Faithful. Step 4 is correctly flagged `[extension]` — the \"highlight anything unclear / more than one reader stumbles\" detail is not in the quote, but it's a reasonable, clearly-marked elaboration, not an invented claim. The 0.70 fidelity score with documented revise-pass history is honest. No over-generalization detected. PASS.\n\n**CLO:**\nPLR (Private Label Rights) source — redistribution and derivation are the explicit purpose of PLR content. The asset paraphrases rather than reproducing verbatim beyond the short anchor quote, which is itself a legitimate verification artifact. Attribution retained in provenance block. No compliance issue. PASS.\n\n**CEO:**\nSimple, reusable, substrate-agnostic clarity-testing loop usable by any drafting agent. Low cost, high reuse value. Worth warehouse activation. PASS.\n\n[THINK: SAFE] — no frontmatter/taxonomy conflicts; extension clearly marked.\n\nVERDICT: APPROVE\n\nAlex Washington: **CLO (continued):** Automated license audit flags PLR as not on the auto-compatible list (medium risk, manual review recommended). PLR typically grants reuse rights, and attribution is present — I judge this acceptable, but note for the record: [WARN: BLAST_RADIUS] minor — confirm PLR license terms of the SuperSalesMachine product befor"
-      },
       "commerce": {
         "msrpUsdCents": 300,
         "productId": "WOR-real-reader-confusion-test-LEIN",
@@ -940,7 +743,7 @@
           "network": "base",
           "payTo": "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0",
           "paymentType": "one-time",
-          "paymentDescription": "371 Minds content doctrine: \"Real reader confusion test\" — single-purchase access"
+          "paymentDescription": "371 Minds content doctrine: \"Real reader confusion test\" \u2014 single-purchase access"
         }
       }
     },
@@ -968,7 +771,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-wake-up-call-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -998,7 +801,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-inner-mirror-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -1028,7 +831,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-survivors-code-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -1058,7 +861,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-30-second-identity-reset-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -1088,7 +891,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-no-more-waiting-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -1118,7 +921,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-emotional-gps-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -1148,7 +951,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-fear-to-fuel-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -1178,7 +981,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-savage-reset-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -1208,7 +1011,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-1-year-deathbed-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -1238,7 +1041,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-invisible-fence-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -1268,7 +1071,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-power-recall-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -1298,7 +1101,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-energy-audit-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -1328,7 +1131,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-hell-no-hell-yes-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -1358,7 +1161,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-inner-critic-interrogation-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"
@@ -1388,7 +1191,7 @@
       "filePath": "/home/ab/Projects/bizbuilderprompts/warehouse/workflows/the-burn-the-backup-plan-framework.md",
       "category": "workflow",
       "provenance": {
-        "sourceLabel": "PLR: Savage Prompts — 100 Identity Frameworks (SuperGoodProduct) — 371 transformation pass 1",
+        "sourceLabel": "PLR: Savage Prompts \u2014 100 Identity Frameworks (SuperGoodProduct) \u2014 371 transformation pass 1",
         "sourceHash": "ad7ec9545ba7ad9d66963498eb0cb3e7c95726ded26b3e71bf5190b3b1d2d8cf",
         "extractedAt": "2026-08-21T17:36:27.654Z",
         "model": "deepseek-v4-flash"

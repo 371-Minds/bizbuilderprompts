@@ -1,28 +1,17 @@
 # One-sentence audience definition
 
-> **Goal:** Target every content decision by defining who you write for in one sentence.
+> **Goal:** Force the audience into one testable sentence before any content is planned or briefed.
 > **Framework:** custom
-> **Tags:** audience, positioning, content-strategy
+> **Tags:** audience, content-strategy, positioning, clarity
 
 ---
 
 ## Methodology
 
-1. Write one sentence that names the person, their situation, and their goal.
-2. [extension] Use the sentence as a filter for stories, tone, examples, and detail level.
-3. [extension] Apply the same sentence to offers, emails, and product priorities.
+1. Draft the sentence in this shape: "This is for [role] who [situation] and want [specific outcome], not [adjacent audience you are explicitly excluding]." The exclusion half is what makes the definition sharp.
+2. Stress-test each variable. If the role could describe a million people identically ("marketers"), add the constraint that separates your reader ("marketers at solo B2B consultancies who bill by the retainer").
+3. Check the outcome is observable. "Understand funnel basics" fails; "write a working landing page this week" passes. If you can't tell whether a reader achieved it, rewrite the outcome.
+4. Pin the sentence at the top of the brief, the doc, or the ticket — it is the substrate every later decision sits on. Any section that doesn't serve this sentence gets cut.
+5. Revisit the definition quarterly. Audiences drift; a sentence that was true at the last planning cycle may quietly describe nobody you actually serve now.
 
-**Illustrative example [extension]:** "busy freelance designers who want to raise rates without sounding salesy."
-
----
-
-## Provenance
-
-- **Source:** PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1
-- **Source hash:** `569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e`
-- **Extracted:** 2026-08-21T17:34:35.972Z via deepseek-v4-flash
-- **Fidelity pre-score:** 0.70 (steps 2–3 and the example marked `[extension]` in the 2026-08-22 revise pass)
-
-### Source quote (verification anchor)
-
-> write one sentence that names the person, their situation, and their goal.
+When briefing AI tools, paste this sentence first — it removes the most common failure mode, content written for an average reader who doesn't exist.

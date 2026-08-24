@@ -1,28 +1,17 @@
 # Promise-driven opening
 
-> **Goal:** Write openings that commit readers by leading with an explicit promise of what they will get and why it is worth their time.
+> **Goal:** Open by telling the reader exactly what they'll be able to do after reading — then earn it fast.
 > **Framework:** custom
-> **Tags:** copywriting, opening, conversion
+> **Tags:** copywriting, openings, engagement, writing-practice
 
 ---
 
 ## Methodology
 
-1. Open with a promise that tells readers exactly what they'll get and why it's worth their time.
-2. [extension] Name the reader in the promise and hint at your method or proof.
-3. [extension] Use that promise as the standard for every section that follows.
+1. Decide the promised capability before the first sentence exists: after this piece, the reader can [verb] [specific thing] under [condition]. "You'll be able to spot the three billing errors that cost clinics the most" — concrete, bounded, checkable.
+2. Open with the promise in the first two lines, before any story, context, or throat-clearing. Context that arrives after a promise reads as setup; context that arrives before it reads as a delay.
+3. Scope the promise honestly. Over-promise and the ending betrays the reader; under-promise and they never start. Aim for the edge of what the piece actually delivers.
+4. Deliver the payoff structure in reading order — don't make the reader wait until the end for the core method. The ending should deepen the promise, not finally fulfill it.
+5. In review, ask one question of the opening: could the reader repeat the promise back after a single read? If not, the opening is decoration; rewrite it until the promise is unmistakable.
 
-**Illustrative example [extension]:** "In the next 5 minutes, you'll learn 3 subject lines that doubled replies for my last campaign, plus the template."
-
----
-
-## Provenance
-
-- **Source:** PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1
-- **Source hash:** `569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e`
-- **Extracted:** 2026-08-21T17:34:35.972Z via deepseek-v4-flash
-- **Fidelity pre-score:** 0.60 (steps 2–3 and the example marked `[extension]` in the 2026-08-22 revise pass)
-
-### Source quote (verification anchor)
-
-> Your opening needs a promise that tells readers exactly what they'll get and why it's worth their time.
+A kept promise is the cheapest trust-builder in content: the reader's cognitive loop remembers "this writer delivered," and the next opening gets an easier hearing.

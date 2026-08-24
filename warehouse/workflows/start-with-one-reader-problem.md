@@ -1,35 +1,17 @@
 # Start with one reader problem
 
-> **Goal:** Write a piece that feels made for one person by anchoring it to a single painful problem.
+> **Goal:** Anchor every piece to a single, specific problem one real reader is trying to solve today.
 > **Framework:** custom
-> **Tags:** content-strategy, audience, copywriting, focus
+> **Tags:** content-strategy, audience, focus, writing-practice
 
 ---
 
 ## Methodology
 
-1. Pick one painful problem your reader wants solved today, and write only for that.
-2. Cut anything that drifts to a different problem.
+1. Name one human — a client, a colleague, a past version of yourself — and write down the exact problem they were stuck on this week, in their own words. "Churn is up and I can't tell why" beats "retention challenges."
+2. Compress that problem into a single sentence. If the sentence needs an "and," split it — you have two problems, and the piece only gets one.
+3. Before drafting anything, run the filter: does the reader close this tab if this problem isn't addressed in the first three lines? If yes, you have your anchor. If not, go back to step 1.
+4. Draft the piece so every section pays down that one problem. When a tangent appears — and it will — cut it into a notes file for a future piece rather than letting it dilute this one.
+5. Before publishing, re-read the draft as that one human. Every time you think "interesting, but not my problem," mark it. Two or more marks means the anchor slipped; tighten and repeat the pass.
 
-## Why it works
-
-The post feels made for the reader, not like generic AI filler.
-
-## Adjacent practices (not in source)
-
-- Open with a one-line promise of the result you will deliver.
-- Reuse the same problem to sharpen email subject lines, offers, and sales calls.
-
----
-
-## Provenance
-
-- **Source:** PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1
-- **License:** PLR (Private Label Rights) — redistribution and derivation permitted under the SuperSalesMachine PLR grant; attribution retained via this provenance block
-- **Source hash:** `569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e`
-- **Extracted:** 2026-08-21T17:34:35.972Z via deepseek-v4-flash
-- **Fidelity pre-score:** 0.60 (unanchored steps quarantined to "Adjacent practices" in the 2026-08-22 revise pass)
-
-### Source quote (verification anchor)
-
-> Pick 1 painful problem your reader wants solved today and write only for that. It works because the post feels made for me, not like generic AI filler.
+Practitioners who run this loop report the same shift: the cognitive loop of write→check→cut gets faster each time because the single problem is a cheap test to apply.

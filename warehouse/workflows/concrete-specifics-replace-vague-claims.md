@@ -1,24 +1,18 @@
 # Concrete specifics replace vague claims
 
-> **Goal:** Build trust by turning safe-sounding claims into specific, verifiable facts with numbers and limits.
+> **Goal:** Swap every unverifiable general claim for a number, a name, a date, or a scene the reader can check or picture.
 > **Framework:** custom
-> **Tags:** specificity, copywriting, trust
+> **Tags:** editing, credibility, specificity, writing-practice
 
 ---
 
 ## Methodology
 
-1. Circle every vague claim like 'fast results' or 'high quality'. 2. Replace each with a number, timeframe, name, step, or limit. 3. Give the reader a finish line and a method. 4. Example: 'We help you grow your email list quickly' becomes 'Get 200 new subscribers in 30 days using 3 popups, 1 lead magnet, and 2 welcome emails.' 5. Keep only specifics you can verify.
+1. Highlight every comparative and superlative in the draft: "better," "faster," "significantly," "best-in-class." Each is now a debt — it must be paid with a specific or removed.
+2. Pay each debt with the strongest support you actually hold: a measurement ("cut approval time from nine days to four"), a named case ("the two-person team at Larkspur Dental"), or a countable pattern ("six of the last eight launches").
+3. Where you can't pay, downgrade honestly — "in my experience" is weaker than a number but far stronger than a naked superlative, and it keeps provenance intact.
+4. Anchor scenes in sensory specifics: the dashboard they had open, the email that started the problem, what the spreadsheet looked like at 2am. One precise scene outperforms three paragraphs of adjectives.
+5. Verify each specific against its source before publishing — a wrong number does more damage than a vague claim ever could. Keep the receipts in your notes.
+6. Final pass: pick the three driest sentences and ask what a skeptic would demand to believe each. Add that demand's answer or cut the sentence.
 
----
-
-## Provenance
-
-- **Source:** PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1
-- **Source hash:** `569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e`
-- **Extracted:** 2026-08-21T17:34:35.972Z via deepseek-v4-flash
-- **Fidelity pre-score:** 0.85
-
-### Source quote (verification anchor)
-
-> swap "We help you grow your email list quickly" with "Get 200 new subscribers in 30 days using 3 popups, 1 lead magnet, and 2 welcome emails."
+Specifics are also what make writing useful rather than merely pleasant: a reader can act on "nine days to four" and can't act on "much faster."

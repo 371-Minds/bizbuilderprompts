@@ -1,24 +1,17 @@
 # One main takeaway per piece
 
-> **Goal:** Make content memorable by reducing every draft to a single promise and cutting anything that doesn't support it.
+> **Goal:** Make each piece deliver exactly one idea the reader can act on — and be able to state it in a sentence.
 > **Framework:** custom
-> **Tags:** focus, content-strategy, editing
+> **Tags:** content-strategy, clarity, editing, focus
 
 ---
 
 ## Methodology
 
-1. Pick the one takeaway you want readers to remember and use today. 2. State it early. 3. List every supporting point and delete anything that does not serve that promise. 4. End with a practical repeat of that takeaway. 5. Use the same discipline in emails, sales pages, and product onboarding.
+1. Before drafting, write the takeaway as a single imperative sentence — "Audit your onboarding for the three moments users drop," not "thoughts on onboarding." If you can't, you have a topic, not a takeaway.
+2. Put the takeaway near the top, stated plainly. Readers should be able to stop after reading it and still leave with the value.
+3. Build the body as evidence for that one sentence: one explanation, one worked example, one objection handled. Three supports is plenty; a fourth usually serves a second takeaway that belongs in its own piece.
+4. During editing, tag each paragraph with the takeaway it serves. Untagged paragraphs are either connective tissue or drift — keep the former, cut the latter into an idea file.
+5. End by restating the takeaway as a next action the reader can take today. If the restatement is stronger than the opening version, move it up and repeat the pass.
 
----
-
-## Provenance
-
-- **Source:** PLR: 50 Ways to Avoid Lazy AI Slop (SuperSalesMachine) — 371 transformation pass 1
-- **Source hash:** `569abcd11b44999af47b8f9e6dfec5d7d3b5f74987f63321b06897b6d5ed378e`
-- **Extracted:** 2026-08-21T17:34:35.972Z via deepseek-v4-flash
-- **Fidelity pre-score:** 0.80
-
-### Source quote (verification anchor)
-
-> Pick 1 main takeaway, say it early, and keep every point supporting it. It works because readers remember 1 promise.
+The discipline compounds: a library of pieces that each hold one clean takeaway is searchable, excerptable, and far easier to repurpose than long pieces carrying five muddy ideas.
