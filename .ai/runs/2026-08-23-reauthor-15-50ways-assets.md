@@ -32,8 +32,8 @@ Replace the 15 "50 Ways"-derived warehouse assets with wholly original 371 conte
 
 ### Phase 2: Re-author assets
 
-- [ ] 2.1 Write 15 fresh content files (warehouse/workflows/, in place)
-- [ ] 2.2 Update index.json: remove provenance, status draft, fresh descriptions/tags; verify commerce untouched
+- [x] 2.1 Write 15 fresh content files (warehouse/workflows/, in place) — 30c3179
+- [x] 2.2 Update index.json: remove provenance, status draft, fresh descriptions/tags; verify commerce untouched — 30c3179
 
 ### Phase 3: C-Suite review gate
 
@@ -58,8 +58,8 @@ Engine: om-auto-create-pr (steps: 8, --loop: no)
 > Convention: `- [ ]` pending, `- [x]` done. Append ` — <commit sha>` when a step lands. Do not rename step titles.
 
 - [ ] 1.1 Commit this plan; push branch; open bare draft PR
-- [ ] 2.1 Write 15 fresh content files (warehouse/workflows/, in place)
-- [ ] 2.2 Update index.json: remove provenance, status draft, fresh descriptions/tags; verify commerce untouched
+- [x] 2.1 Write 15 fresh content files (warehouse/workflows/, in place) — 30c3179
+- [x] 2.2 Update index.json: remove provenance, status draft, fresh descriptions/tags; verify commerce untouched — 30c3179
 - [ ] 3.1 Write gate script (revise_transcripts pattern + Alex originality focus, transcript persistence)
 - [ ] 3.2 Run gate; APPROVE → ready; REVISE → fix once, re-run, else leave draft with transcript
 - [ ] 4.1 Run `bunx vitest run` gate; fix failures
