@@ -39,7 +39,13 @@ function loadCatalog(): WarehouseCatalog {
   }
   try {
     const raw = readFileSync(CATALOG_PATH, "utf-8");
-    return JSON.parse(raw) as WarehouseCatalog;
+    const parsed = JSON.parse(raw);
+    // index.json has been written both as {items,bundles} and as a bare
+    // items array at different times — normalize so bundles always exists.
+    if (Array.isArray(parsed)) {
+      return { items: parsed, bundles: [], lastUpdated: new Date().toISOString(), totalCount: parsed.length };
+    }
+    return { bundles: [], ...parsed } as WarehouseCatalog;
   } catch {
     return { items: [], bundles: [], lastUpdated: new Date().toISOString(), totalCount: 0 };
   }
