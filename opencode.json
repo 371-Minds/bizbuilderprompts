@@ -1,0 +1,31 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "router371": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "371 Router (sovereign spine)",
+      "options": {
+        "baseURL": "http://127.0.0.1:3000/v1",
+        "apiKey": "sk-371router"
+      },
+      "models": {
+        "zai-coding/glm-5.1": {
+          "name": "GLM 5.1 coding (via 371 Router)"
+        },
+        "deepseek-v4-flash": {
+          "name": "DeepSeek v4 flash (via 371 Router)"
+        },
+        "csuite-sovereign": {
+          "name": "C-Suite sovereign (substrate doctrine injected at routing layer)"
+        }
+      }
+    }
+  },
+  "model": "router371/zai-coding/glm-5.1",
+  "permission": {
+    "edit": "allow",
+    "bash": "allow",
+    "webfetch": "allow"
+  },
+  "share": "disabled"
+}
