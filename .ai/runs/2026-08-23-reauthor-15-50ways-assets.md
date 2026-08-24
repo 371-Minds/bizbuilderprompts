@@ -42,8 +42,8 @@ Replace the 15 "50 Ways"-derived warehouse assets with wholly original 371 conte
 
 ### Phase 4: Validation & PR
 
-- [ ] 4.1 Run `bunx vitest run` gate; fix failures
-- [ ] 4.2 Final commits, PR body, ready flip, summary comment
+- [x] 4.1 Run `bunx vitest run` gate; fix failures
+- [x] 4.2 Final commits, PR body, ready flip, summary comment
 
 ## Risks
 
@@ -55,6 +55,8 @@ Engine: om-auto-create-pr (steps: 8, --loop: no)
 
 ## Progress
 
+PR: #9 (link: https://github.com/371-Minds/bizbuilderprompts/pull/9)
+
 > Convention: `- [ ]` pending, `- [x]` done. Append ` — <commit sha>` when a step lands. Do not rename step titles.
 
 - [ ] 1.1 Commit this plan; push branch; open bare draft PR
@@ -62,5 +64,5 @@ Engine: om-auto-create-pr (steps: 8, --loop: no)
 - [x] 2.2 Update index.json: remove provenance, status draft, fresh descriptions/tags; verify commerce untouched — 30c3179
 - [x] 3.1 Write gate script (revise_transcripts pattern + Alex originality focus, transcript persistence) — 3a9bab7
 - [x] 3.2 Run gate; APPROVE → ready; REVISE → fix once, re-run, else leave draft with transcript — 3a9bab7
-- [ ] 4.1 Run `bunx vitest run` gate; fix failures
-- [ ] 4.2 Final commits, PR body, ready flip, summary comment
+- [x] 4.1 Run `bunx vitest run` gate; fix failures
+- [x] 4.2 Final commits, PR body, ready flip, summary comment
