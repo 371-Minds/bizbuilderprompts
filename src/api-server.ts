@@ -18,11 +18,14 @@ import { classify } from "../src/ingestion/classifier.ts";
 import { listIngestionCategories } from "../src/ingestion/categories.ts";
 import { createOrder, getOrder, listOrders } from "../src/orders/manager.ts";
 import { resolvePurchaseOffer, settlePurchase } from "../src/commerce/purchase.ts";
+import { buildBazaarDiscovery, bazaarExtensionFor } from "../src/warehouse/discovery.ts";
 import { readFileSync } from "fs";
 
 
 const PORT = parseInt(process.env.PORT || "8003");
 const HOST = process.env.HOST || "127.0.0.1";
+// Public absolute base for discovery docs; localhost fallback = dev-only.
+const PUBLIC_URL = process.env.WAREHOUSE_PUBLIC_URL || `http://127.0.0.1:${PORT}`;
 
 console.log("◆ BizBuilderPrompts — loading manifest...");
 const manifest = await buildManifest();
@@ -32,8 +35,16 @@ const agentList = listAgents();
 console.log(`  ${manifest.prompts.length} prompts, ${manifest.workflows.length} workflows`);
 
 function getPromptContent(entry: any): string {
-  try { return readFileSync(entry.filePath, "utf-8"); } 
+  try { return readFileSync(entry.filePath, "utf-8"); }
   catch { return entry.content || ""; }
+}
+
+/** Decode the `accepts` array out of a base64 X-PAYMENT-REQUIRED header. */
+function decodeAcceptsFromHeader(header: string): unknown | null {
+  try {
+    const payload = JSON.parse(Buffer.from(header, "base64").toString("utf-8"));
+    return payload.accepts ?? null;
+  } catch { return null; }
 }
 
 function summarize(entry: any) {
@@ -209,6 +220,21 @@ const server = Bun.serve({
       }, { headers: corsHeaders });
     }
 
+    // ── x402 Bazaar Discovery ──
+    if ((url.pathname === "/warehouse/discovery" || url.pathname === "/.well-known/x402") && req.method === "GET") {
+      const doc = buildBazaarDiscovery({
+        baseUrl: PUBLIC_URL,
+        items: catalog.items,
+        bundles: catalog.bundles.map(b => ({ id: b.id, title: b.title, itemCount: b.itemIds.length })),
+        resolveOfferAccepts: (id: string) => {
+          const offer = resolvePurchaseOffer(id);
+          if (offer.kind !== "offer") return null;
+          return decodeAcceptsFromHeader(offer.header);
+        },
+      });
+      return Response.json(doc, { headers: corsHeaders });
+    }
+
     // ── x402 Purchase ──
     const buyMatch = url.pathname.match(/^\/warehouse\/buy\/(.+)$/);
     if (buyMatch) {
@@ -222,11 +248,13 @@ const server = Bun.serve({
         if (offer.kind === "conflict") {
           return Response.json({ error: offer.reason, itemId: id, status: offer.status }, { status: 409, headers: corsHeaders });
         }
+        const item = catalog.items.find((i: any) => i.id === id);
         return Response.json(
           {
             error: "X402 Payment Required",
             storefrontCard: offer.storefrontCard,
             payment: offer.instructions,
+            ...(item ? { extensions: bazaarExtensionFor(item, PUBLIC_URL) } : {}),
           },
           {
             status: 402,
