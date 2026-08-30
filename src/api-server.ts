@@ -252,6 +252,10 @@ const server = Bun.serve({
         return Response.json(
           {
             error: "X402 Payment Required",
+            // x402 v1 client contract: the official fetch wrapper parses the
+            // 402 body for x402Version + accepts (zod-validated requirements).
+            x402Version: 1,
+            accepts: decodeAcceptsFromHeader(offer.header) ?? [],
             storefrontCard: offer.storefrontCard,
             payment: offer.instructions,
             ...(item ? { extensions: bazaarExtensionFor(item, PUBLIC_URL) } : {}),
@@ -279,8 +283,21 @@ const server = Bun.serve({
         if (result.kind === "payment-required") {
           const offer = resolvePurchaseOffer(id);
           const header = offer.kind === "offer" ? offer.header : undefined;
+          const item = catalog.items.find((i: any) => i.id === id);
           return Response.json(
-            { error: result.reason, hint: "Pay per the X-PAYMENT-REQUIRED header, then retry with the X-PAYMENT header" },
+            {
+              error: result.reason,
+              hint: "Pay per the X-PAYMENT-REQUIRED header, then retry with the X-PAYMENT header",
+              // x402 client contract: even POST-branch 402s carry the parsed
+              // requirements — agents often fire the POST first.
+              ...(offer.kind === "offer"
+                ? {
+                    x402Version: 1,
+                    accepts: decodeAcceptsFromHeader(header!) ?? [],
+                    ...(item ? { extensions: bazaarExtensionFor(item, PUBLIC_URL) } : {}),
+                  }
+                : {}),
+            },
             {
               status: 402,
               headers: { ...corsHeaders, ...(header ? { "X-PAYMENT-REQUIRED": header } : {}) },
