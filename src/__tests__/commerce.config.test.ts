@@ -1,5 +1,7 @@
 import { describe, it, expect } from "vitest";
 import {
+  X402_PAY_TO,
+  resolvePayTo,
   formatMsrp,
   formatX402Price,
   buildX402PaymentRequiredHeader,
@@ -338,7 +340,7 @@ describe("validateCommerceConfig", () => {
     expect(validateCommerceConfig(config)).toEqual([]);
   });
 
-  it("errors when x402 payTo is missing", () => {
+  it("accepts a blank x402 payTo — SKUs inherit the centralized wallet", () => {
     const config: Partial<CommerceConfig> = {
       x402: {
         enabled: true,
@@ -350,7 +352,17 @@ describe("validateCommerceConfig", () => {
       },
     };
     const errors = validateCommerceConfig(config);
-    expect(errors.some((e) => e.includes("payTo"))).toBe(true);
+    expect(errors.some((e) => e.includes("payTo"))).toBe(false);
+  });
+
+  it("resolves payTo from the centralized config when unset or blank", () => {
+    expect(resolvePayTo({ enabled: true, price: 1, asset: "USDC", network: "base" } as X402Config)).toBe(X402_PAY_TO);
+    expect(resolvePayTo({ enabled: true, price: 1, asset: "USDC", network: "base", payTo: "  " } as X402Config)).toBe(X402_PAY_TO);
+    expect(
+      resolvePayTo({ enabled: true, price: 1, asset: "USDC", network: "base", payTo: "0xabc" } as X402Config)
+    ).toBe("0xabc");
+    expect(typeof X402_PAY_TO).toBe("string");
+    expect(X402_PAY_TO.startsWith("0x")).toBe(true);
   });
 
   it("errors when x402 price is zero or negative", () => {

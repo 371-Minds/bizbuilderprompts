@@ -125,7 +125,7 @@ describe("resolveFacilitatorBase", () => {
   });
 
   it("resolves the canonical allowlisted base regardless of path/query", () => {
-    expect(resolveFacilitatorBase("https://x402.org/some/path?q=1")).toBe("https://x402.org");
+    expect(resolveFacilitatorBase("https://x402.org/some/path?q=1")).toBe("https://x402.org/facilitator");
   });
 
   it("verify URL is derived from the allowlisted default", () => {
@@ -147,7 +147,8 @@ describe("resolvePurchaseOffer", () => {
     expect(decoded!.accepts).toHaveLength(1);
     expect(decoded!.accepts[0]).toMatchObject({
       scheme: "exact",
-      network: "eip155:8453",
+      // Conformance shim emits legacy network NAMES for x402 v1 clients.
+      network: "base",
       maxAmountRequired: "3000000",
       payTo: PAY_TO,
       asset: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
@@ -244,7 +245,11 @@ describe("settlePurchase", () => {
     const [verify, event] = env.fetchCalls;
     expect(verify.url).toBe(VERIFY_URL);
     expect(verify.init?.method).toBe("POST");
-    expect(JSON.parse(String(verify.init?.body))).toMatchObject({ paymentPayload: X_PAYMENT });
+    expect(JSON.parse(String(verify.init?.body))).toMatchObject({
+      // Conformance shim sends the payment decoded (with x402Version stamped).
+      paymentPayload: { signature: "0xdeadbeef", x402Version: 1 },
+      x402PaymentHeader: Buffer.from(JSON.stringify({ signature: "0xdeadbeef", x402Version: 1 })).toString("base64"),
+    });
     expect(event.url).toBe("http://127.0.0.1:3710/api/events");
     expect(JSON.parse(String(event.init?.body))).toMatchObject({
       type: "warehouse.sale",

@@ -9,20 +9,21 @@
  * Port: 8003
  */
 
-import { buildManifest } from "../src/manifest.ts";
-import { searchPrompts, suggestPrompts } from "../src/utils/search.ts";
-import { fillTemplate } from "../src/utils/template.ts";
-import { buildWarehouseCatalog, searchWarehouse, getWarehouseItemById, getWarehouseItemContent, listBundles, getBundle, updateWarehouseItem } from "../src/warehouse/catalog.ts";
-import { loadAgentRegistry, getAgentPersona, registerAgent, listAgents } from "../src/agents/registry.ts";
-import { classify } from "../src/ingestion/classifier.ts";
-import { listIngestionCategories } from "../src/ingestion/categories.ts";
-import { createOrder, getOrder, listOrders } from "../src/orders/manager.ts";
-import { resolvePurchaseOffer, settlePurchase } from "../src/commerce/purchase.ts";
+import { buildManifest } from "./manifest.js";
+import { searchPrompts, suggestPrompts } from "./utils/search.js";
+import { buildWarehouseCatalog, searchWarehouse, getWarehouseItemById, getWarehouseItemContent } from "./warehouse/catalog.js";
+import { loadAgentRegistry, getAgentPersona, listAgents } from "./agents/registry.js";
+import { fulfillOrder } from "./orders/fulfiller.js";
+import { resolvePurchaseOffer, settlePurchase } from "./commerce/purchase.js";
+import { buildBazaarDiscovery, bazaarExtensionFor } from "./warehouse/discovery.js";
+import { serveFetch } from "./utils/node-serve.js";
 import { readFileSync } from "fs";
 
 
 const PORT = parseInt(process.env.PORT || "8003");
 const HOST = process.env.HOST || "127.0.0.1";
+// Public absolute base for discovery docs; localhost fallback = dev-only.
+const PUBLIC_URL = process.env.WAREHOUSE_PUBLIC_URL || `http://127.0.0.1:${PORT}`;
 
 console.log("◆ BizBuilderPrompts — loading manifest...");
 const manifest = await buildManifest();
@@ -32,8 +33,16 @@ const agentList = listAgents();
 console.log(`  ${manifest.prompts.length} prompts, ${manifest.workflows.length} workflows`);
 
 function getPromptContent(entry: any): string {
-  try { return readFileSync(entry.filePath, "utf-8"); } 
+  try { return readFileSync(entry.filePath, "utf-8"); }
   catch { return entry.content || ""; }
+}
+
+/** Decode the `accepts` array out of a base64 X-PAYMENT-REQUIRED header. */
+function decodeAcceptsFromHeader(header: string): unknown | null {
+  try {
+    const payload = JSON.parse(Buffer.from(header, "base64").toString("utf-8"));
+    return payload.accepts ?? null;
+  } catch { return null; }
 }
 
 function summarize(entry: any) {
@@ -45,10 +54,7 @@ function summarize(entry: any) {
   };
 }
 
-const server = Bun.serve({
-  port: PORT,
-  hostname: HOST,
-  async fetch(req) {
+serveFetch(PORT, HOST, async (req) => {
     const url = new URL(req.url);
 
     // CORS
@@ -97,13 +103,26 @@ const server = Bun.serve({
     }
 
     // ── Health ──
-    if (url.pathname === "/health") {
+    if (url.pathname === "/health" || url.pathname === "/healthz") {
       return Response.json({
         status: "ok",
         prompts: manifest.prompts.length,
         workflows: manifest.workflows.length,
         uptime: process.uptime(),
       }, { headers: corsHeaders });
+    }
+
+    // ── Public SKU catalog (id, title, price, network) ──
+    if (url.pathname === "/skus" && req.method === "GET") {
+      const skus = catalog.items
+        .filter((item) => item.commerce?.x402?.enabled)
+        .map((item) => ({
+          id: item.id,
+          title: item.title,
+          price: item.commerce?.x402?.price ?? null,
+          network: item.commerce?.x402?.network ?? null,
+        }));
+      return Response.json({ count: skus.length, skus }, { headers: corsHeaders });
     }
 
     // ── List Prompts ──
@@ -209,6 +228,21 @@ const server = Bun.serve({
       }, { headers: corsHeaders });
     }
 
+    // ── x402 Bazaar Discovery ──
+    if ((url.pathname === "/warehouse/discovery" || url.pathname === "/.well-known/x402") && req.method === "GET") {
+      const doc = buildBazaarDiscovery({
+        baseUrl: PUBLIC_URL,
+        items: catalog.items,
+        bundles: catalog.bundles.map(b => ({ id: b.id, title: b.title, itemCount: b.itemIds.length })),
+        resolveOfferAccepts: (id: string) => {
+          const offer = resolvePurchaseOffer(id);
+          if (offer.kind !== "offer") return null;
+          return decodeAcceptsFromHeader(offer.header);
+        },
+      });
+      return Response.json(doc, { headers: corsHeaders });
+    }
+
     // ── x402 Purchase ──
     const buyMatch = url.pathname.match(/^\/warehouse\/buy\/(.+)$/);
     if (buyMatch) {
@@ -222,11 +256,17 @@ const server = Bun.serve({
         if (offer.kind === "conflict") {
           return Response.json({ error: offer.reason, itemId: id, status: offer.status }, { status: 409, headers: corsHeaders });
         }
+        const item = catalog.items.find((i: any) => i.id === id);
         return Response.json(
           {
             error: "X402 Payment Required",
+            // x402 v1 client contract: the official fetch wrapper parses the
+            // 402 body for x402Version + accepts (zod-validated requirements).
+            x402Version: 1,
+            accepts: decodeAcceptsFromHeader(offer.header) ?? [],
             storefrontCard: offer.storefrontCard,
             payment: offer.instructions,
+            ...(item ? { extensions: bazaarExtensionFor(item, PUBLIC_URL) } : {}),
           },
           {
             status: 402,
@@ -251,8 +291,21 @@ const server = Bun.serve({
         if (result.kind === "payment-required") {
           const offer = resolvePurchaseOffer(id);
           const header = offer.kind === "offer" ? offer.header : undefined;
+          const item = catalog.items.find((i: any) => i.id === id);
           return Response.json(
-            { error: result.reason, hint: "Pay per the X-PAYMENT-REQUIRED header, then retry with the X-PAYMENT header" },
+            {
+              error: result.reason,
+              hint: "Pay per the X-PAYMENT-REQUIRED header, then retry with the X-PAYMENT header",
+              // x402 client contract: even POST-branch 402s carry the parsed
+              // requirements — agents often fire the POST first.
+              ...(offer.kind === "offer"
+                ? {
+                    x402Version: 1,
+                    accepts: decodeAcceptsFromHeader(header!) ?? [],
+                    ...(item ? { extensions: bazaarExtensionFor(item, PUBLIC_URL) } : {}),
+                  }
+                : {}),
+            },
             {
               status: 402,
               headers: { ...corsHeaders, ...(header ? { "X-PAYMENT-REQUIRED": header } : {}) },
@@ -279,6 +332,33 @@ const server = Bun.serve({
     if (whMatch && req.method === "GET") {
       const item = getWarehouseItemById(whMatch[1]);
       if (!item) return Response.json({ error: "Not found" }, { status: 404, headers: corsHeaders });
+
+      // Gated delivery: sellable x402 items must pay first. The 402 body
+      // carries the x402 challenge (x402Version + parsed accepts) and the
+      // header carries the machine-readable X-PAYMENT-REQUIRED payload.
+      const offer = resolvePurchaseOffer(whMatch[1]);
+      if (offer.kind === "offer") {
+        return Response.json(
+          {
+            error: "X402 Payment Required",
+            x402Version: 1,
+            accepts: decodeAcceptsFromHeader(offer.header) ?? [],
+            storefrontCard: offer.storefrontCard,
+            payment: offer.instructions,
+            metadata: item,
+            extensions: bazaarExtensionFor(item, PUBLIC_URL),
+          },
+          {
+            status: 402,
+            headers: {
+              ...corsHeaders,
+              "X-PAYMENT-REQUIRED": offer.header,
+              "Access-Control-Expose-Headers": "X-PAYMENT-REQUIRED",
+            },
+          },
+        );
+      }
+
       return Response.json({
         metadata: item,
         content: getWarehouseItemContent(item),
@@ -306,12 +386,11 @@ const server = Bun.serve({
     // ── Order ──
     if (url.pathname === "/order" && req.method === "POST") {
       const body = await req.json().catch(() => ({}));
-      const fulfillment = await createOrder(body.role, body.intent, manifest, body.urgency);
+      const fulfillment = await fulfillOrder(body.role, body.intent, manifest, body.urgency);
       return Response.json(fulfillment, { headers: corsHeaders });
     }
 
     return Response.json({ error: "Not Found" }, { status: 404, headers: corsHeaders });
-  },
 });
 
 console.log(`◆ BizBuilderPrompts API Server — ready`);

@@ -7,6 +7,25 @@ import type {
 import { X402_NETWORK_IDS, USDC_ADDRESSES } from "./types.js";
 
 /**
+ * Single source of truth for the x402 recipient wallet. SKUs inherit this
+ * value when their own `commerce.x402.payTo` is unset/blank. Swap the wallet
+ * once here (or via the `X402_PAY_TO` env var) and every SKU follows.
+ *
+ * Active default (2026-09-18, operator-directed): AB's MetaMask — personal
+ * bridge until the business wallet exists; swap trigger = first $100 received.
+ * Sovereign alternative (funded seed treasury, $610.95 USDC on Base as of
+ * 2026-08-15, mref_3z1cr52): 0x57C63D275C66345819E2116c93B5ee3Bb0f497b0
+ */
+export const X402_PAY_TO: string =
+  (process.env.X402_PAY_TO && process.env.X402_PAY_TO.trim()) ||
+  "0xa413d84c3da0e387f76F7bAED3016e1414D6BD2b";
+
+/** Resolve the effective payTo address for an x402 config (per-SKU or global). */
+export function resolvePayTo(x402: X402Config): string {
+  return (x402.payTo && x402.payTo.trim()) || X402_PAY_TO;
+}
+
+/**
  * Build the x402 `X-PAYMENT-REQUIRED` header payload for a given item.
  * Returns a base64-encoded JSON string ready to set as the header value.
  *
@@ -37,7 +56,7 @@ export function buildX402PaymentRequiredHeader(config: X402Config): string {
         scheme: "exact",
         network: networkId,
         maxAmountRequired: String(config.price),
-        payTo: config.payTo,
+        payTo: resolvePayTo(config),
         asset: assetAddress,
       },
     ],
@@ -161,7 +180,7 @@ export function validateCommerceConfig(config: Partial<CommerceConfig>): string[
   if (config.x402) {
     const { x402 } = config;
     if (x402.enabled) {
-      if (!x402.payTo || x402.payTo.length < 10) {
+      if (resolvePayTo(x402).length < 10) {
         errors.push("x402.payTo must be a valid wallet address");
       }
       if (typeof x402.price !== "number" || x402.price <= 0) {
