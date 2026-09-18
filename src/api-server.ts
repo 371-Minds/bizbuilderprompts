@@ -9,16 +9,14 @@
  * Port: 8003
  */
 
-import { buildManifest } from "../src/manifest.ts";
-import { searchPrompts, suggestPrompts } from "../src/utils/search.ts";
-import { fillTemplate } from "../src/utils/template.ts";
-import { buildWarehouseCatalog, searchWarehouse, getWarehouseItemById, getWarehouseItemContent, listBundles, getBundle, updateWarehouseItem } from "../src/warehouse/catalog.ts";
-import { loadAgentRegistry, getAgentPersona, registerAgent, listAgents } from "../src/agents/registry.ts";
-import { classify } from "../src/ingestion/classifier.ts";
-import { listIngestionCategories } from "../src/ingestion/categories.ts";
-import { createOrder, getOrder, listOrders } from "../src/orders/manager.ts";
-import { resolvePurchaseOffer, settlePurchase } from "../src/commerce/purchase.ts";
-import { buildBazaarDiscovery, bazaarExtensionFor } from "../src/warehouse/discovery.ts";
+import { buildManifest } from "./manifest.js";
+import { searchPrompts, suggestPrompts } from "./utils/search.js";
+import { buildWarehouseCatalog, searchWarehouse, getWarehouseItemById, getWarehouseItemContent } from "./warehouse/catalog.js";
+import { loadAgentRegistry, getAgentPersona, listAgents } from "./agents/registry.js";
+import { fulfillOrder } from "./orders/fulfiller.js";
+import { resolvePurchaseOffer, settlePurchase } from "./commerce/purchase.js";
+import { buildBazaarDiscovery, bazaarExtensionFor } from "./warehouse/discovery.js";
+import { serveFetch } from "./utils/node-serve.js";
 import { readFileSync } from "fs";
 
 
@@ -56,10 +54,7 @@ function summarize(entry: any) {
   };
 }
 
-const server = Bun.serve({
-  port: PORT,
-  hostname: HOST,
-  async fetch(req) {
+serveFetch(PORT, HOST, async (req) => {
     const url = new URL(req.url);
 
     // CORS
@@ -108,13 +103,26 @@ const server = Bun.serve({
     }
 
     // ── Health ──
-    if (url.pathname === "/health") {
+    if (url.pathname === "/health" || url.pathname === "/healthz") {
       return Response.json({
         status: "ok",
         prompts: manifest.prompts.length,
         workflows: manifest.workflows.length,
         uptime: process.uptime(),
       }, { headers: corsHeaders });
+    }
+
+    // ── Public SKU catalog (id, title, price, network) ──
+    if (url.pathname === "/skus" && req.method === "GET") {
+      const skus = catalog.items
+        .filter((item) => item.commerce?.x402?.enabled)
+        .map((item) => ({
+          id: item.id,
+          title: item.title,
+          price: item.commerce?.x402?.price ?? null,
+          network: item.commerce?.x402?.network ?? null,
+        }));
+      return Response.json({ count: skus.length, skus }, { headers: corsHeaders });
     }
 
     // ── List Prompts ──
@@ -324,6 +332,33 @@ const server = Bun.serve({
     if (whMatch && req.method === "GET") {
       const item = getWarehouseItemById(whMatch[1]);
       if (!item) return Response.json({ error: "Not found" }, { status: 404, headers: corsHeaders });
+
+      // Gated delivery: sellable x402 items must pay first. The 402 body
+      // carries the x402 challenge (x402Version + parsed accepts) and the
+      // header carries the machine-readable X-PAYMENT-REQUIRED payload.
+      const offer = resolvePurchaseOffer(whMatch[1]);
+      if (offer.kind === "offer") {
+        return Response.json(
+          {
+            error: "X402 Payment Required",
+            x402Version: 1,
+            accepts: decodeAcceptsFromHeader(offer.header) ?? [],
+            storefrontCard: offer.storefrontCard,
+            payment: offer.instructions,
+            metadata: item,
+            extensions: bazaarExtensionFor(item, PUBLIC_URL),
+          },
+          {
+            status: 402,
+            headers: {
+              ...corsHeaders,
+              "X-PAYMENT-REQUIRED": offer.header,
+              "Access-Control-Expose-Headers": "X-PAYMENT-REQUIRED",
+            },
+          },
+        );
+      }
+
       return Response.json({
         metadata: item,
         content: getWarehouseItemContent(item),
@@ -351,12 +386,11 @@ const server = Bun.serve({
     // ── Order ──
     if (url.pathname === "/order" && req.method === "POST") {
       const body = await req.json().catch(() => ({}));
-      const fulfillment = await createOrder(body.role, body.intent, manifest, body.urgency);
+      const fulfillment = await fulfillOrder(body.role, body.intent, manifest, body.urgency);
       return Response.json(fulfillment, { headers: corsHeaders });
     }
 
     return Response.json({ error: "Not Found" }, { status: 404, headers: corsHeaders });
-  },
 });
 
 console.log(`◆ BizBuilderPrompts API Server — ready`);

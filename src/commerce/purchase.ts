@@ -15,6 +15,7 @@ import {
   decodeX402Header,
   buildStorefrontCard,
   formatX402Price,
+  resolvePayTo,
 } from "./config.js";
 import type { X402PaymentRequiredPayload } from "./types.js";
 
@@ -118,7 +119,7 @@ export function resolvePurchaseOffer(id: string): PurchaseOffer {
   };
   const resourceUrl = `${PUBLIC_BASE_URL}/warehouse/buy/${item.id}`;
   payload.x402Version = 1; // facilitators read version from the payload too
-  payload.accepts = (payload.accepts ?? []).map((req: Record<string, unknown>) => ({
+  payload.accepts = (payload.accepts ?? []).map((req) => ({
     ...req,
     x402Version: 1,
     network: LEGACY_NETWORK_NAMES[String(req.network)] ?? req.network,
@@ -143,7 +144,7 @@ export function resolvePurchaseOffer(id: string): PurchaseOffer {
       asset: x402.asset,
       network: x402.network,
       paymentType: x402.paymentType,
-      payTo: x402.payTo,
+      payTo: resolvePayTo(x402),
       memo: x402.paymentDescription || item.title,
       howToPay:
         `Pay ${priceDisplay} to unlock this asset. Send an x402 exact-scheme payment per the ` +
