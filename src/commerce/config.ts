@@ -10,10 +10,15 @@ import { X402_NETWORK_IDS, USDC_ADDRESSES } from "./types.js";
  * Single source of truth for the x402 recipient wallet. SKUs inherit this
  * value when their own `commerce.x402.payTo` is unset/blank. Swap the wallet
  * once here (or via the `X402_PAY_TO` env var) and every SKU follows.
+ *
+ * Active default (2026-09-18, operator-directed): AB's MetaMask — personal
+ * bridge until the business wallet exists; swap trigger = first $100 received.
+ * Sovereign alternative (funded seed treasury, $610.95 USDC on Base as of
+ * 2026-08-15, mref_3z1cr52): 0x57C63D275C66345819E2116c93B5ee3Bb0f497b0
  */
 export const X402_PAY_TO: string =
   (process.env.X402_PAY_TO && process.env.X402_PAY_TO.trim()) ||
-  "0x57C63D275C66345819E2116c93B5ee3Bb0f497b0";
+  "0xa413d84c3da0e387f76F7bAED3016e1414D6BD2b";
 
 /** Resolve the effective payTo address for an x402 config (per-SKU or global). */
 export function resolvePayTo(x402: X402Config): string {
