@@ -43,8 +43,12 @@ export interface X402Config {
   asset: string;
   /** Blockchain network to settle payments on. */
   network: X402Network;
-  /** Wallet address that receives payment. Usually the Mercury-linked address or a multisig. */
-  payTo: string;
+  /**
+   * Wallet address that receives payment. Optional per-SKU override — when
+   * unset/blank the SKU inherits the centralized `commerce.x402.payTo`
+   * value (see `resolvePayTo` in config.ts / the `X402_PAY_TO` env var).
+   */
+  payTo?: string;
   /** Payment model — defaults to "per-access". */
   paymentType: X402PaymentType;
   /**
@@ -202,28 +206,43 @@ export interface CommerceConfig {
  *
  * @see https://docs.cdp.coinbase.com/x402/welcome
  */
+export interface X402AcceptRequirement {
+  /** Payment scheme — "exact" for fixed-price assets. */
+  scheme: "exact";
+  /** Network identifier string (e.g. "eip155:8453" for Base mainnet). */
+  network: string;
+  /** Amount as a decimal string (e.g. "1000000" for 1 USDC). */
+  maxAmountRequired: string;
+  /** Recipient wallet address. */
+  payTo: string;
+  /** Token contract address (use zero address for native tokens). */
+  asset: string;
+  /** Hex-encoded extra data for the payment contract (optional). */
+  extra?: string | Record<string, unknown>;
+  /** x402 protocol version — legacy clients may omit it. */
+  x402Version?: number;
+  /** Resolvable resource URL for the gated asset. */
+  resource?: string;
+  /** Human-readable description of what the payment unlocks. */
+  description?: string;
+  /** Response MIME type for the gated asset. */
+  mimeType?: string;
+  /** Maximum payment authorization window, in seconds. */
+  maxTimeoutSeconds?: number;
+  [key: string]: unknown;
+}
+
 export interface X402PaymentRequiredPayload {
   /** The x402 protocol version. */
   version: "1.0";
   /** Payment instructions. */
-  accepts: Array<{
-    /** Payment scheme — "exact" for fixed-price assets. */
-    scheme: "exact";
-    /** Network identifier string (e.g. "eip155:8453" for Base mainnet). */
-    network: string;
-    /** Amount as a decimal string (e.g. "1000000" for 1 USDC). */
-    maxAmountRequired: string;
-    /** Recipient wallet address. */
-    payTo: string;
-    /** Token contract address (use zero address for native tokens). */
-    asset: string;
-    /** Hex-encoded extra data for the payment contract (optional). */
-    extra?: string;
-  }>;
+  accepts: X402AcceptRequirement[];
   /** Human-readable description of what the payment unlocks. */
   memo?: string;
   /** ISO 8601 timestamp after which this payment offer expires. */
   expiresAt?: string;
+  /** x402 protocol version — stamped by the conformance shim. */
+  x402Version?: number;
 }
 
 /** Network ID mapping for x402 EIP-155 chain identifiers. */

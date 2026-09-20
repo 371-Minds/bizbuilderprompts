@@ -15,6 +15,7 @@ import {
   decodeX402Header,
   buildStorefrontCard,
   formatX402Price,
+  resolvePayTo,
 } from "./config.js";
 import type { X402PaymentRequiredPayload } from "./types.js";
 
@@ -28,7 +29,7 @@ import type { X402PaymentRequiredPayload } from "./types.js";
  */
 export const FACILITATOR_ALLOWLIST = [
   "https://api.cdp.coinbase.com/platform/v1/x402",
-  "https://x402.org",
+  "https://x402.org/facilitator",
 ] as const;
 
 const DEFAULT_FACILITATOR = FACILITATOR_ALLOWLIST[0];
@@ -54,6 +55,9 @@ export const FACILITATOR_BASE: string =
   DEFAULT_FACILITATOR;
 
 export const VERIFY_URL = `${FACILITATOR_BASE}/verify`;
+
+/** Absolute base for requirement `resource` fields (must be resolvable by buyers). */
+export const PUBLIC_BASE_URL = process.env.WAREHOUSE_PUBLIC_URL || `http://127.0.0.1:${process.env.PORT || 8003}`;
 
 // ── Offer resolution (GET → 402) ─────────────────────────────────────────────
 
@@ -97,10 +101,42 @@ export function resolvePurchaseOffer(id: string): PurchaseOffer {
     return { kind: "conflict", reason: "failed to build payment requirements", status: item.status };
   }
 
+  // Spec-conformance pass (x402 v1 PaymentRequirementsSchema): the official
+  // client zod-parses accepts and requires resource/description/mimeType/
+  // maxTimeoutSeconds — enrich + re-encode so the offer validates everywhere.
+  // Legacy clients also speak network NAMES (not CAIP-2) and need the token
+  // domain (extra.name/version) to sign the EIP-3009 transfer.
+  const LEGACY_NETWORK_NAMES: Record<string, string> = {
+    "eip155:8453": "base",
+    "eip155:84532": "base-sepolia",
+  };
+  // EIP-712 domains are whatever the TOKEN says on-chain — facilitators
+  // multicall name()/version() and reject mismatches. Verified on-chain:
+  // Base mainnet USDC = "USD Coin" v2; Base Sepolia USDC = "USDC" v2.
+  const LEGACY_TOKEN_DOMAINS: Record<string, { name: string, version: string }> = {
+    "eip155:8453": { name: "USD Coin", version: "2" },
+    "eip155:84532": { name: "USDC", version: "2" },
+  };
+  const resourceUrl = `${PUBLIC_BASE_URL}/warehouse/buy/${item.id}`;
+  payload.x402Version = 1; // facilitators read version from the payload too
+  payload.accepts = (payload.accepts ?? []).map((req) => ({
+    ...req,
+    x402Version: 1,
+    network: LEGACY_NETWORK_NAMES[String(req.network)] ?? req.network,
+    resource: resourceUrl,
+    description: x402.paymentDescription || item.title,
+    mimeType: "application/json",
+    maxTimeoutSeconds: 60,
+    ...(LEGACY_TOKEN_DOMAINS[String(req.network)]
+      ? { extra: LEGACY_TOKEN_DOMAINS[String(req.network)] }
+      : {}),
+  }));
+  const conformantHeader = Buffer.from(JSON.stringify(payload)).toString("base64");
+
   const priceDisplay = formatX402Price(x402.price, x402.asset);
   return {
     kind: "offer",
-    header,
+    header: conformantHeader,
     payload,
     storefrontCard: buildStorefrontCard(item),
     instructions: {
@@ -108,7 +144,7 @@ export function resolvePurchaseOffer(id: string): PurchaseOffer {
       asset: x402.asset,
       network: x402.network,
       paymentType: x402.paymentType,
-      payTo: x402.payTo,
+      payTo: resolvePayTo(x402),
       memo: x402.paymentDescription || item.title,
       howToPay:
         `Pay ${priceDisplay} to unlock this asset. Send an x402 exact-scheme payment per the ` +
@@ -159,16 +195,29 @@ async function verifyWithFacilitator(
   xPaymentHeader: string,
   requirements: X402PaymentRequiredPayload,
   deps: SettlementDeps,
+  paymentDecoded?: Record<string, unknown> | null,
 ): Promise<{ ok: true; body: VerifyResponse } | { ok: false; error: string }> {
   const doFetch = deps.fetchImpl ?? fetch;
   const verifyUrl = deps.verifyUrl ?? VERIFY_URL;
+  // The facilitator reads scheme/network off a SINGLE requirement object;
+  // send the first conformed requirement (plus the array for older shapes).
+  const firstRequirement = (requirements.accepts ?? [])[0] ?? requirements;
   try {
     const res = await doFetch(verifyUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        paymentPayload: xPaymentHeader,
-        paymentRequirements: requirements,
+        x402Version: 1,
+        // Different facilitator generations read different shapes: today's
+        // x402.org/facilitator wants paymentPayload as a DECODED object
+        // (reads .x402Version off it) and paymentRequirements as ONE
+        // requirement (reads .scheme/.network); older v1 wanted the base64
+        // string + full payload.
+        paymentPayload: paymentDecoded ?? xPaymentHeader,
+        x402PaymentHeader: xPaymentHeader,
+        paymentRequirements: firstRequirement,
+        accepts: requirements.accepts ?? [],
+        paymentRequirementsPayload: requirements,
       }),
     });
     const body = (await res.json().catch(() => ({}))) as VerifyResponse;
@@ -199,8 +248,21 @@ export async function settlePurchase(
     return { kind: "invalid-payment", reason: "X-PAYMENT header is not a valid base64 JSON payload" };
   }
 
-  const verification = await verifyWithFacilitator(xPaymentHeader, offer.payload, deps);
-  if (!verification.ok) {
+  // Conformance shim: legacy clients (x402-fetch 0.6.x) omit x402Version in
+  // the payment payload; today's facilitator requires it. Decode → stamp →
+  // re-encode before forwarding. No signature bytes are touched.
+  let paymentForFacilitator = xPaymentHeader;
+  let paymentDecoded: Record<string, unknown> | null = null;
+  try {
+    const decoded = JSON.parse(Buffer.from(xPaymentHeader, "base64").toString("utf-8"));
+    paymentDecoded = decoded;
+    if (decoded.x402Version === undefined) {
+      decoded.x402Version = 1;
+      paymentForFacilitator = Buffer.from(JSON.stringify(decoded)).toString("base64");
+    }
+  } catch { /* header already validated above */ }
+
+  const verification = await verifyWithFacilitator(paymentForFacilitator, offer.payload, deps, paymentDecoded);  if (!verification.ok) {
     return { kind: "facilitator-error", reason: verification.error };
   }
   if (!verification.body.isValid) {

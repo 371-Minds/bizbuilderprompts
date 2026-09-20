@@ -15,9 +15,10 @@
 
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse.js";
-import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
-import { buildManifest } from "../src/manifest.ts";
-import { createServer } from "../src/server.ts";
+import { WebStandardStreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/webStandardStreamableHttp.js";
+import { buildManifest } from "./manifest.js";
+import { createServer } from "./server.js";
+import { serveFetch } from "./utils/node-serve.js";
 
 const PORT = parseInt(process.env.PORT || "8003");
 const HOST = process.env.HOST || "127.0.0.1";
@@ -26,67 +27,72 @@ console.log("◆ BizBuilderPrompts MCP Server — starting...");
 const manifest = await buildManifest();
 console.log(`  Loaded ${manifest.prompts.length} prompts, ${manifest.workflows.length} workflows`);
 
-const server = Bun.serve({
-  port: PORT,
-  hostname: HOST,
+// Sessioned SSE fallback transports, keyed by session id.
+const sseTransports = new Map<string, SSEServerTransport>();
 
-  async fetch(req) {
-    const url = new URL(req.url);
+serveFetch(PORT, HOST, async (req, ctx) => {
+  const url = new URL(req.url);
 
-    // Discovery
-    if (url.pathname === "/") {
-      return Response.json({
-        service: "bizbuilderprompts-mcp",
-        version: "2.0.0",
-        transport: ["streamable-http", "sse"],
-        endpoints: {
-          "POST /mcp": "Streamable HTTP MCP transport",
-          "GET /sse": "SSE MCP transport (legacy fallback)",
-          "GET /health": "Health and stats",
-        },
-        stats: {
-          prompts: manifest.prompts.length,
-          workflows: manifest.workflows.length,
-          categories: [...new Set(manifest.prompts.map(p => p.category))],
-        },
-      });
-    }
-
-    // Health check
-    if (url.pathname === "/health") {
-      return Response.json({
-        status: "ok",
+  // Discovery
+  if (url.pathname === "/") {
+    return Response.json({
+      service: "bizbuilderprompts-mcp",
+      version: "2.0.0",
+      transport: ["streamable-http", "sse"],
+      endpoints: {
+        "POST /mcp": "Streamable HTTP MCP transport",
+        "GET /sse": "SSE MCP transport (legacy fallback)",
+        "GET /health": "Health and stats",
+      },
+      stats: {
         prompts: manifest.prompts.length,
         workflows: manifest.workflows.length,
-      });
-    }
+        categories: [...new Set(manifest.prompts.map(p => p.category))],
+      },
+    });
+  }
 
-    // Streamable HTTP MCP transport
-    if (url.pathname === "/mcp") {
-      const mcpServer = createServer(manifest);
-      const transport = new StreamableHTTPServerTransport({
-        sessionIdGenerator: undefined,
-      });
-      await mcpServer.connect(transport);
-      return transport.handleRequest(req);
-    }
+  // Health check
+  if (url.pathname === "/health") {
+    return Response.json({
+      status: "ok",
+      prompts: manifest.prompts.length,
+      workflows: manifest.workflows.length,
+    });
+  }
 
-    // SSE transport (legacy fallback for clients that prefer SSE)
-    if (url.pathname === "/sse") {
-      const mcpServer = createServer(manifest);
-      const transport = new SSEServerTransport("/messages", new Response(""));
-      await mcpServer.connect(transport);
-      // Return the SSE stream
-      const headers = new Headers();
-      headers.set("Content-Type", "text/event-stream");
-      headers.set("Cache-Control", "no-cache");
-      headers.set("Connection", "keep-alive");
-      // SSEServerTransport handles the actual streaming internally
-      return new Response("SSE endpoint — connect via MCP client", { headers });
-    }
+  // Streamable HTTP MCP transport (web-standard fetch surface).
+  if (url.pathname === "/mcp") {
+    const mcpServer = createServer(manifest);
+    const transport = new WebStandardStreamableHTTPServerTransport({
+      sessionIdGenerator: undefined,
+    });
+    await mcpServer.connect(transport);
+    return transport.handleRequest(req);
+  }
 
-    return new Response("Not Found", { status: 404 });
-  },
+  // SSE transport (legacy fallback) — SSEServerTransport owns the raw socket.
+  if (url.pathname === "/sse") {
+    const mcpServer = createServer(manifest);
+    const transport = new SSEServerTransport("/messages", ctx.nodeRes);
+    await mcpServer.connect(transport);
+    sseTransports.set(transport.sessionId, transport);
+    await transport.start();
+    return null;
+  }
+
+  // SSE inbound message endpoint.
+  if (url.pathname === "/messages" && req.method === "POST") {
+    const sessionId = url.searchParams.get("sessionId") ?? "";
+    const transport = sseTransports.get(sessionId);
+    if (!transport) {
+      return Response.json({ error: "unknown SSE session" }, { status: 404 });
+    }
+    await transport.handlePostMessage(ctx.nodeReq, ctx.nodeRes);
+    return null;
+  }
+
+  return new Response("Not Found", { status: 404 });
 });
 
 console.log(`◆ BizBuilderPrompts MCP Server — ready`);
